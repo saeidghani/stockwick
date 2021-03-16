@@ -1,0 +1,12 @@
+.ant-btn > span {
+  color: #47B7FE;
+}
+.ant-btn:not([disabled]):hover {
+  border: 1px solid #47B7FE !important;
+}
+.ant-btn:hover,
+.ant-btn:focus,
+.ant-btn:active {
+  border: 1px solid #47B7FE;
+}
+/*# sourceMappingURL=customAntd.css.map */
