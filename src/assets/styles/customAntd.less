@@ -1,22 +1,88 @@
-@primary-color: #47B7FE;
-@secondary-color: #6651D4;
-@third-color: #FBAA9E;
+@primary-color: #001560;
+@secondary-color: #5FE90A;
+@accent-color: #FBAA9E;
 @danger-color: #EB6B6B;
 @warning-color: #F3BA2F;
 @success-color: #4AC8AA;
-@surface-color: #283763;
-@background-color: #334271;
-@overline-color: #D3D6E8;
-@title-color: #FFF;
+@gray-color: #ABABAB;
 
-.ant-btn > span {
-  color: @primary-color;
+@border-radius: 6px;
+@button-padding: 25px 32px;
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto:wght@400;700&display=swap');
+@font-family: 'Comfortaa', cursive;
+@font-family: 'Roboto', sans-serif;
+
+.c-primary-btn {
+  .ant-btn {
+    background-color: transparent !important;
+    border: 1px solid @secondary-color !important;
+    border-radius: @border-radius;
+    padding: @button-padding;
+    &:focus, &:active {
+      border: none !important;
+      background-color: @secondary-color !important;
+      p {
+        color: @primary-color !important;
+      }
+    }
+  }
+  .ant-btn > p {
+    color: @secondary-color !important;
+  }
+
+  .ant-btn:not([disabled]):hover {
+    background-color: fade(@secondary-color, 15%) !important;
+  }
+
+    &--disabled {
+    .ant-btn {
+      background-color: transparent !important;
+      border: 1px solid @gray-color !important;
+      border-radius: @border-radius;
+      padding: @button-padding;
+    }
+    .ant-btn > p {
+      color: @gray-color !important;
+    }
+  }
 }
 
-.ant-btn:not([disabled]):hover {
-  border: 1px solid @primary-color !important;
+.c-secondary-btn {
+  .ant-btn {
+    background-color: transparent !important;
+    border: 2px solid @primary-color !important;
+    border-radius: @border-radius;
+    padding: @button-padding;
+    &:focus, &:active {
+      border: none !important;
+      background-color: @primary-color !important;
+      p {
+        color: #EEEFF2 !important;
+      }
+    }
+  }
+  .ant-btn > p {
+    color: @primary-color !important;
+  }
+
+  .ant-btn:not([disabled]):hover {
+    background-color: fade(@primary-color, 15%) !important;
+  }
+
+  &--disabled {
+    .ant-btn {
+      background-color: transparent !important;
+      border: 2px solid @gray-color !important;
+      border-radius: @border-radius;
+      padding: @button-padding;
+    }
+    .ant-btn > p {
+      color: @gray-color !important;
+    }
+  }
 }
 
-.ant-btn:hover, .ant-btn:focus, .ant-btn:active {
-  border: 1px solid @primary-color;
+.ant-badge-count {
+  box-shadow: none !important;
 }
