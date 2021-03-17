@@ -11,21 +11,31 @@ import Button from '../../components/common/Button';
 function Header({ isAuth }) {
   const stockSummaryItems = [...Array(10).keys()];
 
-  const StockSummary = () => (
-    <div className="flex justify-center py-5 w-60">
-      <div className="flex flex-col space-y-2">
-        <div className="flex space-x-4">
-          <span className="text-white">S&P 500</span>
-          <span className="text-white">3136.32</span>
-        </div>
-        <div className="flex items-center">
-          <CaretUpOutlined className="text-secondaryColor text-xl mr-2" />
-          <span className="text-secondaryColor mr-6">0.39%</span>
-          <span className="text-secondaryColor">12.2</span>
-        </div>
+  // eslint-disable-next-line no-shadow,react/prop-types
+  const StockSummary = ({ stockSummaryItems }) => {
+    return (
+      <div className="flex divide-x divide-fadePrimaryColor overflow-auto">
+        {/* eslint-disable-next-line react/prop-types */}
+        {stockSummaryItems.map((i) => (
+          <div key={i} className="border-t border-b border-solid border-fadePrimaryColor">
+            <div className="flex justify-center py-5 w-60">
+              <div className="flex flex-col space-y-2">
+                <div className="flex space-x-4">
+                  <span className="text-white">S&P 500</span>
+                  <span className="text-white">3136.32</span>
+                </div>
+                <div className="flex items-center">
+                  <CaretUpOutlined className="text-secondaryColor text-xl mr-2" />
+                  <span className="text-secondaryColor mr-6">0.39%</span>
+                  <span className="text-secondaryColor">12.2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <header className="bg-primaryColor px-4">
@@ -68,15 +78,7 @@ function Header({ isAuth }) {
             </div>
           )}
         </div>
-        {isAuth && (
-          <div className="flex divide-x divide-fadePrimaryColor">
-            {stockSummaryItems.map((i) => (
-              <div key={i} className="border-t border-b border-solid border-fadePrimaryColor">
-                <StockSummary />
-              </div>
-            ))}
-          </div>
-        )}
+        {isAuth && <StockSummary stockSummaryItems={stockSummaryItems} />}
       </div>
       <div className="block md:hidden">
         <div
@@ -89,6 +91,7 @@ function Header({ isAuth }) {
           </div>
           <MenuOutlined className="justify-self-end text-base text-white pt-1" />
         </div>
+        {isAuth && <StockSummary stockSummaryItems={stockSummaryItems} />}
         <div
           className="flex justify-center items-center space-x-8 pt-4 pb-2
                        border-b border-solid border-fadePrimaryColor"
