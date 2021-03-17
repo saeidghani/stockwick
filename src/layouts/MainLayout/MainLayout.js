@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
 
-function MainLayout({ children, isAuth }) {
+function MainLayout({ children, isAuth, mainClassName }) {
   return (
     <div className="">
       <Header isAuth={isAuth} />
-      <main className="min-h-screen">{children}</main>
+      <main className={`min-h-screen ${mainClassName}`}>{children}</main>
       <Footer />
     </div>
   );
@@ -16,8 +16,11 @@ function MainLayout({ children, isAuth }) {
 MainLayout.propTypes = {
   children: PropTypes.node.isRequired,
   isAuth: PropTypes.bool.isRequired,
+  mainClassName: PropTypes.string,
 };
 
-MainLayout.defaultProps = {};
+MainLayout.defaultProps = {
+  mainClassName: '',
+};
 
 export default MainLayout;

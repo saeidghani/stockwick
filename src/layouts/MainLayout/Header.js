@@ -9,8 +9,6 @@ import avatarImg from '../../assets/images/avatar.jpg';
 import Button from '../../components/common/Button';
 
 function Header({ isAuth }) {
-  const stockSummaryItems = [...Array(10).keys()];
-
   // eslint-disable-next-line no-shadow,react/prop-types
   const StockSummary = ({ stockSummaryItems }) => {
     return (
@@ -78,7 +76,7 @@ function Header({ isAuth }) {
             </div>
           )}
         </div>
-        {isAuth && <StockSummary stockSummaryItems={stockSummaryItems} />}
+        {isAuth && <StockSummary stockSummaryItems={[1, 2, 3, 4, 5, 6, 7]} />}
       </div>
       <div className="block md:hidden">
         <div
@@ -91,7 +89,7 @@ function Header({ isAuth }) {
           </div>
           <MenuOutlined className="justify-self-end text-base text-white pt-1" />
         </div>
-        {isAuth && <StockSummary stockSummaryItems={stockSummaryItems} />}
+        {isAuth && <StockSummary stockSummaryItems={[1, 2, 3, 4, 5, 6, 7]} />}
         <div
           className="flex justify-center items-center space-x-8 pt-4 pb-2
                        border-b border-solid border-fadePrimaryColor"

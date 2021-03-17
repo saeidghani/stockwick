@@ -14,6 +14,7 @@ module.exports = {
         secondaryColor: '#5FE90A',
         accentColor: '#FBAA9E',
         fadePrimaryColor: '#182D70',
+        cardBorderColor: 'rgba(0, 0, 0, 0.1)',
       },
     },
   },
