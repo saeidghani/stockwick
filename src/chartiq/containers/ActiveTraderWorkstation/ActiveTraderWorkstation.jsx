@@ -1,0 +1,130 @@
+/* eslint-disable */
+import React from 'react';
+import { CIQ } from 'chartiq/js/componentUI';
+
+import ChartTemplate from './Template';
+
+const { channelWrite } = CIQ.UI.BaseComponent.prototype;
+
+/**
+ * This is a fully functional example showing how to load a chart with the Active Trader plugin and UI.
+ *
+ * @export
+ * @class ActiveTraderWorkstation
+ * @extends {React.Component}
+ */
+export default class ActiveTraderWorkstation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.container = React.createRef();
+    this.chart = new CIQ.UI.Chart();
+    this.stx = null;
+    this.UIContext = null;
+  }
+
+  componentDidMount() {
+    const container = this.container.current;
+    // eslint-disable-next-line react/prop-types
+    const { config, chartInitialized } = this.props;
+
+    // eslint-disable-next-line no-multi-assign
+    const uiContext = (this.UIContext = this.chart.createChartAndUI({
+      container,
+      config,
+    }));
+    // eslint-disable-next-line no-multi-assign
+    const chartEngine = (this.stx = uiContext.stx);
+
+    this.cryptoSetup(uiContext.stx);
+
+    if (window.d3) {
+      this.setUpMoneyFlowChart(uiContext.stx);
+    } else {
+      CIQ.loadScript('https://d3js.org/d3.v5.min.js', () => {
+        this.setUpMoneyFlowChart(uiContext.stx);
+      });
+    }
+
+    // Request TFC channel open
+    // eslint-disable-next-line react/prop-types
+    channelWrite(config.channels.tfc, true, uiContext.stx);
+
+    if (chartInitialized) {
+      chartInitialized({ chartEngine, uiContext });
+    }
+  }
+
+  componentWillUnmount() {
+    // Destroy the ChartEngine instance when unloading the component.
+    // This will stop internal processes such as quotefeed polling.
+    this.stx.moneyFlowChart.destroy();
+    this.stx.destroy();
+  }
+
+  // eslint-disable-next-line react/sort-comp
+  cryptoSetup(stx) {
+    stx.setChartType('line');
+    CIQ.extend(stx.layout, {
+      crosshair: true,
+      headsUp: { static: true },
+      l2heatmap: true,
+      rangeSlider: true,
+      marketDepth: true,
+      extended: false,
+    });
+    stx.changeOccurred('layout');
+
+    // Simulate L2 data using https://documentation.chartiq.com/CIQ.ChartEngine.html#updateCurrentMarketData
+    CIQ.simulateL2({ stx, onInterval: 1000, onTrade: true });
+  }
+
+  setUpMoneyFlowChart(stx) {
+    // eslint-disable-next-line no-param-reassign,no-use-before-define
+    stx.moneyFlowChart = moneyFlowChart(stx);
+
+    function moneyFlowChart(stx) {
+      const initialPieData = {
+        Up: { index: 1 },
+        Down: { index: 2 },
+        Even: { index: 3 },
+      };
+
+      const pieChart = new CIQ.Visualization({
+        container: 'cq-tradehistory-table div[pie-chart] div',
+        renderFunction: CIQ.SVGChart.renderPieChart,
+        colorRange: ['#8cc176', '#b82c0c', '#7c7c7c'],
+        className: 'pie',
+        valueFormatter: CIQ.condenseInt,
+      }).updateData(CIQ.clone(initialPieData));
+
+      let last = null;
+      stx.append('updateCurrentMarketData', (data, chart, symbol, params) => {
+        if (symbol) return;
+        const items = document.querySelectorAll('cq-tradehistory-body cq-item');
+        const d = {};
+        for (var i = 0; i < items.length; i++) {
+          const item = items[i];
+          if (item === last) break;
+          let dir = item.getAttribute('dir');
+          if (!dir) dir = 'even';
+          dir = CIQ.capitalize(dir);
+          if (!d[dir]) d[dir] = 0;
+          d[dir] += parseFloat(item.querySelector('[col=amount]').getAttribute('rawval'));
+        }
+        if (i) pieChart.updateData(d, 'add');
+        last = items[0];
+      });
+      stx.addEventListener('symbolChange', (obj) => {
+        pieChart.updateData(CIQ.clone(initialPieData));
+      });
+      return pieChart;
+    }
+  }
+
+  render() {
+    let chartTemplate = <ChartTemplate />;
+    if (this.props.children) chartTemplate = this.props.children;
+
+    return <cq-context ref={this.container}>{chartTemplate}</cq-context>;
+  }
+}

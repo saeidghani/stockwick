@@ -9,6 +9,7 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 import Routes from './routes';
 import NotificationProvider from './NotificationProvider';
+import './chartiq/styles/base-imports';
 import 'antd/dist/antd.css';
 import './assets/styles/customAntd.css';
 import './assets/styles/utilityStyles.css';
