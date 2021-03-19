@@ -6,7 +6,7 @@ import {
   // MultiChart,
   // Enable ActiveTraderWorkstation
   // ActiveTraderWorkstation,
-  // CustomChart,
+  CustomChart,
   HelloWorldChart,
 } from '../chartiq';
 
@@ -14,6 +14,9 @@ function Demo() {
   return (
     <Layout>
       <HelloWorldChart />
+      <br />
+      <br />
+      <CustomChart />
     </Layout>
   );
 }

@@ -207,43 +207,11 @@ export default class CustomChart extends React.Component {
           setDrawingToolShortcuts={(shortcuts) => {
             this.setDrawingToolShortcuts(shortcuts);
           }}
-        ></ShortcutDialog>
+        />
       );
 
     return (
       <>
-        <div className="info">
-          <h2>Custom chart</h2>
-
-          <div>
-            ...is a customization of the AdvancedChart template, featuring the addition of:
-            <ul>
-              <li>
-                A native React component that enhances the ChartIQ symbol lookup web component by
-                storing previously entered symbols and making them accessible in the lookup's RECENT
-                tab.
-                <br />
-                <span className="instruction">
-                  Select Enter Symbol in the upper left corner of the chart or + Compare...
-                </span>
-              </li>
-              <li>
-                A dialog box implemented in React to add{' '}
-                <a
-                  href="https://documentation.chartiq.com/tutorial-Navigation.html#drawing_palette_keyboard_shortcuts"
-                  target="shortcuts"
-                >
-                  keystroke shortcuts
-                </a>{' '}
-                to the chart drawing tools and display information about the tools.
-                <br />
-                <span className="instruction">
-                  Select Drawing Tools from the Preferences (cog wheel) menu.
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
         <div className="chartWrapper">
           <AdvancedChart
             config={this.config}

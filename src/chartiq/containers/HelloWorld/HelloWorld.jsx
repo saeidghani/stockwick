@@ -810,7 +810,7 @@ export default class HelloWorld extends React.Component {
             position: 'relative',
             border: 'solid 1px #aaa',
           }}
-        ></div>
+        />
       </div>
     );
   }
