@@ -19,67 +19,76 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
 }
-.c-primary-btn .ant-btn {
-  background-color: transparent !important;
-  border: 1px solid #5FE90A !important;
-  border-radius: 6px;
-  padding: 25px 32px;
-}
-.c-primary-btn .ant-btn:focus,
-.c-primary-btn .ant-btn:active {
-  border: none !important;
-  background-color: #5FE90A !important;
-}
-.c-primary-btn .ant-btn:focus p,
-.c-primary-btn .ant-btn:active p {
-  color: #001560 !important;
-}
-.c-primary-btn .ant-btn > p {
-  color: #5FE90A !important;
-}
-.c-primary-btn .ant-btn:not([disabled]):hover {
-  background-color: rgba(95, 233, 10, 0.15) !important;
-}
-.c-primary-btn--disabled .ant-btn {
-  background-color: transparent !important;
-  border: 1px solid #ABABAB !important;
-  border-radius: 6px;
-  padding: 25px 32px;
-}
-.c-primary-btn--disabled .ant-btn > p {
-  color: #ABABAB !important;
-}
 .c-secondary-btn .ant-btn {
   background-color: transparent !important;
-  border: 2px solid #001560 !important;
+  border: 1px solid #5FE90A !important;
   border-radius: 6px;
   padding: 25px 32px;
 }
 .c-secondary-btn .ant-btn:focus,
 .c-secondary-btn .ant-btn:active {
   border: none !important;
-  background-color: #001560 !important;
+  background-color: #5FE90A !important;
 }
 .c-secondary-btn .ant-btn:focus p,
 .c-secondary-btn .ant-btn:active p {
-  color: #EEEFF2 !important;
-}
-.c-secondary-btn .ant-btn > p {
   color: #001560 !important;
 }
+.c-secondary-btn .ant-btn > p {
+  color: #5FE90A !important;
+}
 .c-secondary-btn .ant-btn:not([disabled]):hover {
-  background-color: rgba(0, 21, 96, 0.15) !important;
+  background-color: rgba(95, 233, 10, 0.15) !important;
 }
 .c-secondary-btn--disabled .ant-btn {
   background-color: transparent !important;
-  border: 2px solid #ABABAB !important;
+  border: 1px solid #ABABAB !important;
   border-radius: 6px;
   padding: 25px 32px;
 }
 .c-secondary-btn--disabled .ant-btn > p {
   color: #ABABAB !important;
 }
+.c-primary-btn .ant-btn {
+  background-color: transparent !important;
+  border: 2px solid #001560 !important;
+  border-radius: 6px;
+  padding: 25px 32px;
+}
+.c-primary-btn .ant-btn:focus,
+.c-primary-btn .ant-btn:active {
+  border: none !important;
+  background-color: #001560 !important;
+}
+.c-primary-btn .ant-btn:focus p,
+.c-primary-btn .ant-btn:active p {
+  color: #EEEFF2 !important;
+}
+.c-primary-btn .ant-btn > p {
+  color: #001560 !important;
+}
+.c-primary-btn .ant-btn:not([disabled]):hover {
+  background-color: rgba(0, 21, 96, 0.15) !important;
+}
+.c-primary-btn--disabled .ant-btn {
+  background-color: transparent !important;
+  border: 2px solid #ABABAB !important;
+  border-radius: 6px;
+  padding: 25px 32px;
+}
+.c-primary-btn--disabled .ant-btn > p {
+  color: #ABABAB !important;
+}
 .ant-badge-count {
-  box-shadow: none !important;
+  box-shadow: 0 0 0 3px #001560 !important;
+  font-size: 10px !important;
+}
+.c-checkbox .ant-checkbox-inner {
+  width: 20.5px !important;
+  height: 20.5px !important;
+  border: none !important;
+}
+.c-input-border-none .ant-input {
+  border: none !important;
 }
 /*# sourceMappingURL=customAntd.css.map */

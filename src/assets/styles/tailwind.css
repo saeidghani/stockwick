@@ -4,6 +4,9 @@
 
 @layer components {
     .card {
-        @apply border border-solid border-cardBorderColor bg-white p-6;
+        @apply border border-solid border-cardBorder bg-white p-6;
+    }
+    .boldPrimaryText {
+        @apply text-primary font-bold;
     }
 }

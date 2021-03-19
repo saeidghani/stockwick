@@ -5,16 +5,38 @@ module.exports = {
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
     },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1rem',
+        md: '1rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+      },
+    },
     extend: {
       fontFamily: {
         comfortaa: ['Comfortaa', 'sans-serif'],
       },
       colors: {
-        primaryColor: '#001560',
-        secondaryColor: '#5FE90A',
-        accentColor: '#FBAA9E',
-        fadePrimaryColor: '#182D70',
-        cardBorderColor: 'rgba(0, 0, 0, 0.1)',
+        primary: '#001560',
+        secondary: '#5FE90A',
+        accent: '#E90A3D',
+        fadePrimary: '#0F2572',
+        lightGreen: '#B2DF8A',
+        darkGreen: '#42950F',
+        lightPink: '#FB9A99',
+        lightBlue: '#A6CEE3',
+        cardBorder: 'rgba(0, 0, 0, 0.1)',
+        lightGray: '#BCBCBC',
+        mediumGray: '#E9E9E9',
+        darkGray: '#808081',
+        black: '#1C1C1C',
+      },
+      borderRadius: {
+        '6px': '6px',
       },
     },
   },

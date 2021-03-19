@@ -11,6 +11,7 @@ import Routes from './routes';
 import NotificationProvider from './NotificationProvider';
 import 'antd/dist/antd.css';
 import './assets/styles/customAntd.css';
+import './assets/styles/utilityStyles.css';
 import './assets/styles/tailwind.css';
 
 const persistor = getPersistor();

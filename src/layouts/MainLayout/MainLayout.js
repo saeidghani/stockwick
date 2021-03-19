@@ -7,7 +7,7 @@ function MainLayout({ children, isAuth, mainClassName }) {
   return (
     <div className="">
       <Header isAuth={isAuth} />
-      <main className={`min-h-screen ${mainClassName}`}>{children}</main>
+      <main className={`min-h-screen container ${mainClassName}`}>{children}</main>
       <Footer />
     </div>
   );

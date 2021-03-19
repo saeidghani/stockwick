@@ -5,7 +5,7 @@ import twitter from '../../assets/images/icons/twitter.png';
 
 function Footer() {
   return (
-    <footer className="bg-primaryColor pt-4 pb-12 sm:pb-4">
+    <footer className="bg-primary pt-4 pb-12 sm:pb-4">
       <div className="flex flex-col items-center space-y-2">
         <div className="text-white opacity-50">socialize with us</div>
         <div className="flex space-x-4">

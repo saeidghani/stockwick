@@ -13,7 +13,7 @@
 @font-family: 'Comfortaa', cursive;
 @font-family: 'Roboto', sans-serif;
 
-.c-primary-btn {
+.c-secondary-btn {
   .ant-btn {
     background-color: transparent !important;
     border: 1px solid @secondary-color !important;
@@ -48,7 +48,7 @@
   }
 }
 
-.c-secondary-btn {
+.c-primary-btn {
   .ant-btn {
     background-color: transparent !important;
     border: 2px solid @primary-color !important;
@@ -84,5 +84,20 @@
 }
 
 .ant-badge-count {
-  box-shadow: none !important;
+  box-shadow: 0 0 0 3px @primary-color !important;
+  font-size: 10px !important;
+}
+
+.c-checkbox {
+  .ant-checkbox-inner {
+    width: 20.5px !important;
+    height: 20.5px !important;
+    border: none !important;
+  }
+}
+
+.c-input-border-none {
+  .ant-input {
+   border: none !important;
+  }
 }
