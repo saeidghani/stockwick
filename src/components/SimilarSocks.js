@@ -1,13 +1,12 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import apple from '../assets/images/icons/apple.svg';
+import LogoIcon from './LogoIcon';
 
 function SimilarSocks() {
   const StockItem = () => (
     <div className="flex flex-col items-center">
-      <div className="w-24 h-24 rounded-full bg-primary relative mb-3">
-        <img src={apple} alt="" className="absolute top-0 left-0 pl-6 pt-5" />
-      </div>
+      <LogoIcon icon={apple} wrapperClassName="w-24 h-24 mb-3" iconClassName="pl-6 pt-5" />
       <div className="text-primary text-lg">Apple nc.</div>
       <div className="text-secondary text-base">300,000$</div>
     </div>
@@ -16,8 +15,8 @@ function SimilarSocks() {
   return (
     <div className="card">
       <div className="boldPrimaryText text-xl mb-4">similar stocks</div>
-      <div className="flex space-x-8">
-        {[1, 2, 3, 4, 5].map((i) => (
+      <div className="flex space-x-8 overflow-auto">
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
           <StockItem key={i} />
         ))}
       </div>

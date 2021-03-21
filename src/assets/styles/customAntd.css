@@ -1,41 +1,20 @@
-@font-face {
-  font-family: 'Comfortaa';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/comfortaa/v30/1Pt_g8LJRfWJmhDAuUsSQamb1W0lwk4S4WjMPrQ.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
-}
 .c-secondary-btn .ant-btn {
   background-color: transparent !important;
-  border: 1px solid #5FE90A !important;
+  border: 1px solid #5fe90a !important;
   border-radius: 6px;
   padding: 25px 32px;
 }
 .c-secondary-btn .ant-btn:focus,
 .c-secondary-btn .ant-btn:active {
   border: none !important;
-  background-color: #5FE90A !important;
+  background-color: #5fe90a !important;
 }
 .c-secondary-btn .ant-btn:focus p,
 .c-secondary-btn .ant-btn:active p {
   color: #001560 !important;
 }
 .c-secondary-btn .ant-btn > p {
-  color: #5FE90A !important;
+  color: #5fe90a !important;
 }
 .c-secondary-btn .ant-btn:not([disabled]):hover {
   background-color: rgba(95, 233, 10, 0.15) !important;
@@ -79,6 +58,54 @@
 .c-primary-btn--disabled .ant-btn > p {
   color: #ABABAB !important;
 }
+.c-blue-outline-btn .ant-btn {
+  background-color: transparent !important;
+  border: 1px solid #45B8F5 !important;
+  border-radius: 6px;
+  padding: 25px 32px;
+}
+.c-blue-outline-btn .ant-btn > p {
+  color: #45B8F5 !important;
+}
+.c-blue-outline-btn .ant-btn:focus {
+  border: none !important;
+  background-color: #45B8F5 !important;
+}
+.c-blue-outline-btn .ant-btn:focus p {
+  color: #fff !important;
+}
+.c-blue-outline-btn--disabled .ant-btn {
+  background-color: transparent !important;
+  border: 1px solid #ABABAB !important;
+  border-radius: 6px;
+  padding: 25px 32px;
+}
+.c-blue-outline-btn--disabled .ant-btn > p {
+  color: #ABABAB !important;
+}
+.c-filled-btn .ant-btn {
+  border: none !important;
+  border-radius: 6px;
+  padding: 25px 32px;
+}
+.c-filled-btn .ant-btn > p {
+  color: #fff !important;
+}
+.c-filled-btn--blue .ant-btn {
+  background-color: #45B8F5 !important;
+}
+.c-filled-btn--primary .ant-btn {
+  background-color: #001560 !important;
+}
+.c-filled-btn--disabled .ant-btn {
+  background-color: transparent !important;
+  border: 1px solid #ABABAB !important;
+  border-radius: 6px;
+  padding: 25px 32px;
+}
+.c-filled-btn--disabled .ant-btn > p {
+  color: #ABABAB !important;
+}
 .ant-badge-count {
   box-shadow: 0 0 0 3px #001560 !important;
   font-size: 10px !important;
@@ -90,5 +117,47 @@
 }
 .c-input-border-none .ant-input {
   border: none !important;
+}
+.c-white-collapse .ant-collapse > .ant-collapse-item:last-child,
+.c-white-collapse .ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
+  padding-left: 7px !important;
+  background-color: #fff !important;
+}
+.c-white-collapse .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+  font-size: 20px !important;
+  color: #001560 !important;
+  transform: rotate(90deg) !important;
+  padding: 10px 8px !important;
+}
+.c-white-collapse .ant-collapse-item-active svg {
+  transform: rotate(180deg) !important;
+}
+.c-white-collapse .ant-collapse-content {
+  border: none !important;
+}
+.c-white-collapse .ant-collapse-content-box {
+  padding-left: 8px !important;
+  padding-right: 12px !important;
+}
+.c-tabs .ant-tabs-tab {
+  justify-content: center !important;
+  width: 100% !important;
+}
+.c-tabs .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list,
+.c-tabs .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+  width: 99% !important;
+}
+.c-tabs .ant-tabs-ink-bar {
+  background: #001560;
+}
+.c-tabs .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar,
+.c-tabs .ant-tabs-bottom > .ant-tabs-nav .ant-tabs-ink-bar,
+.c-tabs .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar,
+.c-tabs .ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-ink-bar {
+  height: 4px !important;
+}
+.c-primary-input .ant-input {
+  border: 1px solid #001560 !important;
+  border-radius: 8px;
 }
 /*# sourceMappingURL=customAntd.css.map */

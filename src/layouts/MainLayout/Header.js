@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Avatar, Badge } from 'antd';
+import { Badge } from 'antd';
 import { PlusOutlined, MenuOutlined, BellOutlined, CaretUpOutlined } from '@ant-design/icons';
 import clock from '../../assets/images/icons/clock.svg';
 import usFlag from '../../assets/images/icons/usFlag.svg';
-import avatarImg from '../../assets/images/avatar.jpg';
 import Button from '../../components/Button';
+import Avatar from '../../components/Avatar';
 
 function Header({ isAuth }) {
   // eslint-disable-next-line no-shadow,react/prop-types
@@ -91,14 +91,14 @@ function Header({ isAuth }) {
                 <Badge count={4} offset={[-2, 5]} size="small">
                   <BellOutlined className="text-white text-xl" />
                 </Badge>
-                <Avatar src={avatarImg} />
+                <Avatar />
               </div>
-              <Button text="Post" wrapperClassName="c-primary-btn" />
+              <Button text="Post" wrapperClassName="c-secondary-btn" />
             </div>
           ) : (
             <div className="flex items-center space-x-5">
               <Button text="Register" textClassName="text-secondary" type="link" />
-              <Button text="Login" wrapperClassName="c-primary-btn" />
+              <Button text="Login" wrapperClassName="c-secondary-btn" />
             </div>
           )}
         </div>
@@ -135,9 +135,11 @@ function Header({ isAuth }) {
 }
 
 Header.propTypes = {
-  isAuth: PropTypes.bool.isRequired,
+  isAuth: PropTypes.bool,
 };
 
-Header.defaultProps = {};
+Header.defaultProps = {
+  isAuth: false,
+};
 
 export default Header;

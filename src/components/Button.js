@@ -7,6 +7,7 @@ import { Button } from 'antd';
 const _Button = ({
   type,
   size,
+  block,
   onClick,
   children,
   ghost,
@@ -33,10 +34,11 @@ const _Button = ({
     <div className={wrapperClassName}>
       <Button
         disabled={disabled}
-        className={`flex justify-center items-center ${className}`}
+        className={`flex items-center ${className}`}
         onClick={href ? () => {} : onClick}
         href={href}
         size={size}
+        block={block}
         type={type}
         ghost={ghost}
         loading={loading}
@@ -67,6 +69,7 @@ const _Button = ({
 _Button.propTypes = {
   type: PropTypes.string,
   size: PropTypes.oneOf(['large', 'middle', 'small']),
+  block: PropTypes.bool,
   href: PropTypes.string,
   onClick: (props, propName) => {
     if (props.href && (!props[propName] || typeof props[propName] !== 'function')) {
@@ -93,6 +96,7 @@ _Button.defaultProps = {
   type: 'primary',
   size: 'large',
   iconPosition: 'left',
+  block: false,
   shape: '',
   icon: null,
   ghost: false,

@@ -2,9 +2,9 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import monitors from '../assets/images/monitors.png';
 
-function NewRelease() {
+function NewsReleaseDetailed() {
   return (
-    <div className="card p-4 overflow-auto" style={{ height: 750 }}>
+    <div className="card p-4 overflow-auto" style={{ maxHeight: 750 }}>
       <div className="boldPrimaryText text-xl mb-4">news release</div>
       {[1, 2, 3].map((i) => (
         <div key={i} className="flex flex-col mb-8">
@@ -21,8 +21,8 @@ function NewRelease() {
   );
 }
 
-NewRelease.propTypes = {
+NewsReleaseDetailed.propTypes = {
   //
 };
 
-export default NewRelease;
+export default NewsReleaseDetailed;

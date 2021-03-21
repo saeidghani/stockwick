@@ -9,4 +9,13 @@
     .boldPrimaryText {
         @apply text-primary font-bold;
     }
+    .grayBorderBottom {
+        @apply border-b border-solid border-itemBorder;
+    }
+    .storyRing {
+        @apply border-2 border-solid border-secondary p-0.5 rounded-full;
+    }
+    .storyRingLg {
+        @apply border-4 border-solid border-secondary p-0.5 rounded-full;
+    }
 }

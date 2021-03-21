@@ -24,7 +24,7 @@ _Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string,
   labelClass: PropTypes.string,
   textNode: PropTypes.node,

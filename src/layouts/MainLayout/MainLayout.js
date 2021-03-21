@@ -7,7 +7,7 @@ function MainLayout({ children, isAuth, mainClassName }) {
   return (
     <div className="">
       <Header isAuth={isAuth} />
-      <main className={`min-h-screen container ${mainClassName}`}>{children}</main>
+      <main className={`min-h-screen ${mainClassName}`}>{children}</main>
       <Footer />
     </div>
   );
@@ -15,12 +15,13 @@ function MainLayout({ children, isAuth, mainClassName }) {
 
 MainLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  isAuth: PropTypes.bool.isRequired,
+  isAuth: PropTypes.bool,
   mainClassName: PropTypes.string,
 };
 
 MainLayout.defaultProps = {
   mainClassName: '',
+  isAuth: false,
 };
 
 export default MainLayout;

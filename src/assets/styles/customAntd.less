@@ -1,15 +1,16 @@
 @primary-color: #001560;
-@secondary-color: #5FE90A;
+@secondary-color: #5fe90a;
 @accent-color: #FBAA9E;
 @danger-color: #EB6B6B;
 @warning-color: #F3BA2F;
 @success-color: #4AC8AA;
 @gray-color: #ABABAB;
+@blue-color: #45B8F5;
 
 @border-radius: 6px;
+@border-radius-lg: 8px;
 @button-padding: 25px 32px;
 
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto:wght@400;700&display=swap');
 @font-family: 'Comfortaa', cursive;
 @font-family: 'Roboto', sans-serif;
 
@@ -83,6 +84,72 @@
   }
 }
 
+.c-blue-outline-btn {
+  .ant-btn {
+    background-color: transparent !important;
+    border: 1px solid @blue-color !important;
+    border-radius: @border-radius;
+    padding: @button-padding;
+
+    & > p {
+      color: @blue-color !important;
+    }
+    &:focus {
+      border: none !important;
+      background-color: @blue-color !important;
+      p {
+        color: #fff !important;
+      }
+    }
+  }
+
+  &--disabled {
+    .ant-btn {
+      background-color: transparent !important;
+      border: 1px solid @gray-color !important;
+      border-radius: @border-radius;
+      padding: @button-padding;
+    }
+    .ant-btn > p {
+      color: @gray-color !important;
+    }
+  }
+}
+
+.c-filled-btn {
+  .ant-btn {
+    border: none !important;
+    border-radius: @border-radius;
+    padding: @button-padding;
+
+    & > p {
+      color: #fff !important;
+    }
+  }
+  &--blue {
+    .ant-btn {
+      background-color: @blue-color !important;
+    }
+  }
+  &--primary {
+    .ant-btn {
+      background-color: @primary-color !important;
+    }
+  }
+
+  &--disabled {
+    .ant-btn {
+      background-color: transparent !important;
+      border: 1px solid @gray-color !important;
+      border-radius: @border-radius;
+      padding: @button-padding;
+    }
+    .ant-btn > p {
+      color: @gray-color !important;
+    }
+  }
+}
+
 .ant-badge-count {
   box-shadow: 0 0 0 3px @primary-color !important;
   font-size: 10px !important;
@@ -101,3 +168,59 @@
    border: none !important;
   }
 }
+
+.c-white-collapse {
+  .ant-collapse > .ant-collapse-item:last-child, .ant-collapse > .ant-collapse-item:last-child > .ant-collapse-header {
+    padding-left: 7px !important;
+    background-color: #fff !important;
+  }
+
+  .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
+    font-size: 20px !important;
+    color: @primary-color !important;
+    transform: rotate(90deg) !important;
+    padding: 10px 8px !important;
+  }
+
+  .ant-collapse-item-active {
+    svg {
+      transform: rotate(180deg) !important;
+    }
+  }
+
+  .ant-collapse-content {
+    border: none !important;
+    &-box {
+      padding-left: 8px !important;
+      padding-right: 12px !important;
+    }
+  }
+}
+
+.c-tabs {
+  .ant-tabs-tab {
+    justify-content: center !important;
+    width: 100% !important;
+  }
+
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+    width: 99% !important;
+  }
+
+  .ant-tabs-ink-bar {
+    background: @primary-color;
+  }
+
+  .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-bottom > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-ink-bar {
+    height: 4px !important;
+  }
+}
+
+.c-primary-input {
+  .ant-input {
+   border: 1px solid @primary-color !important;
+   border-radius: @border-radius-lg;
+  }
+}
+
+

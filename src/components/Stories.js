@@ -1,6 +1,5 @@
 import React from 'react';
-import { Avatar } from 'antd';
-import avatarImg from '../assets/images/avatar.jpg';
+import Avatar from './Avatar';
 // import PropTypes from 'prop-types';
 
 const AddStoryIcon = () => (
@@ -34,18 +33,16 @@ function Stories() {
   return (
     <div className="card py-1 px-3">
       <div className="boldPrimaryText text-xl mb-2">live stories</div>
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 overflow-auto">
         <div className="flex flex-col items-center space-y-2">
           <div className="bg-primary bg-opacity-60 border-4 border-solid border-primary rounded-full">
             <AddStoryIcon />
           </div>
           <div className="text-primary font-medium">Roy Mason</div>
         </div>
-        {[1, 2, 3, 4, 5].map((i) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
           <div key={i} className="flex flex-col items-center space-y-2">
-            <div className="border-2 border-solid border-secondary p-0.5 rounded-full">
-              <Avatar src={avatarImg} className="w-20 h-20" />
-            </div>
+            <Avatar wrapperClassName="storyRing" avatarClassName="w-20 h-20" />
             <div className="text-primary font-medium">Roy Mason</div>
           </div>
         ))}

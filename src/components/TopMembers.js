@@ -1,18 +1,17 @@
 import React from 'react';
-import { Avatar } from 'antd';
 // import PropTypes from 'prop-types';
-import avatarImg from '../assets/images/avatar.jpg';
 import RingChart from './RingChart';
+import Avatar from './Avatar';
 
 function TopMembers() {
   return (
-    <div className="card p-5 w-full">
+    <div className="card p-5 w-full" style={{ minWidth: 700 }}>
       <div className="boldPrimaryText text-base mb-4">char title #1</div>
-      <div className="grid grid-cols-3 align-items-center">
-        <div className="flex flex-col space-y-6">
+      <div className="flex justify-between items-center">
+        <div className="flex flex-col space-y-6 w-96">
           {[1, 2, 3]?.map((i, index) => (
             <div key={i} className="flex justify-between items-center">
-              <div className="flex space-x-3 items-center">
+              <div className="flex justify-between space-x-3 items-center">
                 <div>
                   <div
                     className={`w-10 h-10 rounded-6px ${
@@ -20,9 +19,7 @@ function TopMembers() {
                     }`}
                   />
                 </div>
-                <div>
-                  <Avatar src={avatarImg} className="w-14 h-14" />
-                </div>
+                <Avatar />
                 <div className="flex flex-col">
                   <div className="boldPrimaryText text-lg">Oliver Beck</div>
                   <div className="text-darkGray">Swiss International LLC.</div>
@@ -32,7 +29,9 @@ function TopMembers() {
             </div>
           ))}
         </div>
-        <RingChart wrapperClassName="col-start-3 justify-self-end" />
+        <div className="w-56">
+          <RingChart />
+        </div>
       </div>
     </div>
   );

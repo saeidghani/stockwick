@@ -29,11 +29,15 @@ module.exports = {
         darkGreen: '#42950F',
         lightPink: '#FB9A99',
         lightBlue: '#A6CEE3',
-        cardBorder: 'rgba(0, 0, 0, 0.1)',
         lightGray: '#BCBCBC',
         mediumGray: '#E9E9E9',
         darkGray: '#808081',
         black: '#1C1C1C',
+        cardBorder: 'rgba(0, 0, 0, 0.1)',
+        itemBorder: '#EDEDED',
+      },
+      fontSize: {
+        '22px': '22px',
       },
       borderRadius: {
         '6px': '6px',
