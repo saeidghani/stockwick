@@ -20,13 +20,14 @@ const _Input = ({
   wrapperClassName,
   size,
   disabled,
+  wrapperStyles,
   inputStyles,
   onPressEnter,
 }) => {
   const [_type, setType] = React.useState(type);
 
   return (
-    <div name={name} className={`flex flex-col  ${wrapperClassName}`}>
+    <div name={name} className={`flex flex-col  ${wrapperClassName}`} style={wrapperStyles}>
       {labelText || (extrainfoText && extrainfoLink) ? (
         <div className="flex justify-between items-center mb-10p pl-1">
           {labelText ? (
@@ -101,6 +102,7 @@ _Input.propTypes = {
   size: PropTypes.string,
   value: PropTypes.string,
   disabled: PropTypes.bool,
+  wrapperStyles: PropTypes.shape({}),
   inputStyles: PropTypes.shape({}),
   onExtraInfoLinkClick: PropTypes.func,
   onPressEnter: PropTypes.func,
@@ -119,6 +121,7 @@ _Input.defaultProps = {
   size: 'large',
   value: '',
   disabled: false,
+  wrapperStyles: {},
   inputStyles: {},
   onExtraInfoLinkClick: () => {},
   onPressEnter: () => {},

@@ -6,10 +6,14 @@
 @success-color: #4AC8AA;
 @gray-color: #ABABAB;
 @blue-color: #45B8F5;
+@fade-primary-color: #415087;
 
 @border-radius: 6px;
+@border-radius-lg: 12px;
 @button-padding: 25px 32px;
 @input-padding: 12px 10px;
+@input-padding-lg: 20px 10px;
+@input-padding-xl: 32px 10px;
 
 @font-family: 'Comfortaa', cursive;
 @font-family: 'Roboto', sans-serif;
@@ -233,6 +237,68 @@
   }
 }
 
+.c-primary-filled-input {
+  .ant-input{
+   border: none !important;
+   border-radius: @border-radius;
+   padding: @input-padding !important;
+   background-color: @fade-primary-color !important;
+  }
+}
+
+.c-round-filled-input {
+  .ant-input{
+   border: none !important;
+   border-radius: @border-radius-lg;
+   padding: @input-padding-lg !important;
+   background-color: rgba(209,215,227, 0.3) !important;
+  }
+  &--light {
+    .ant-input{
+      border: none !important;
+      border-radius: @border-radius-lg;
+      padding: @input-padding !important;
+      background-color: rgba(241,243,247, 0.3) !important;
+    }
+  }
+}
+
+.c-round-filled-select-item {
+  .ant-form-item-label {
+    position: absolute;
+    top: 0;
+    left: 10px;
+  }
+  .ant-form-item-label > label {
+    font-size: 14px !important;
+    color: @primary-color !important;
+    &::before {
+      content: '' !important;
+    }
+    &::after {
+      content: '' !important;
+    }
+  }
+}
+
+.c-round-filled-select {
+  .ant-select-selection-search {
+    padding-top: 20px !important;
+  }
+  .ant-select-selector {
+   border: none !important;
+   border-radius: @border-radius-lg !important;
+   padding: @input-padding-xl !important;
+   background-color: rgba(209,215,227, 0.3) !important;
+  }
+  .ant-select-arrow {
+    font-size: 16px !important;
+    color: @primary-color !important;
+    margin-right: 10px !important;
+    top: 59% !important;
+  }
+}
+
 .c-primary-input {
   .ant-input{
    border: 1px solid @primary-color !important;
@@ -256,11 +322,32 @@
   }
 }
 
+.ant-modal-content {
+  border-radius: @border-radius !important;
+}
+
+button.ant-modal-close {
+  outline: none !important;
+}
+
 .ant-modal-close-x {
   font-size: 20px !important;
+  outline: none !important;
+  border: none !important;
+  &:focus, &:active {
+   outline: none !important;
+  border: none !important;
+  }
   .anticon {
     color: @primary-color !important;
   }
 }
+
+.c-modal-padding-none {
+  .ant-modal-body {
+    padding: 0 !important;
+  }
+}
+
 
 

@@ -61,7 +61,7 @@ _Modal.defaultProps = {
   cancelButtonProps: {},
   okText: '',
   cancelText: '',
-  width: 679,
+  width: 900,
   onOk: () => {},
 };
 

@@ -170,6 +170,54 @@
 .c-tabs .ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-ink-bar {
   height: 4px !important;
 }
+.c-primary-filled-input .ant-input {
+  border: none !important;
+  border-radius: 6px;
+  padding: 12px 10px !important;
+  background-color: #415087 !important;
+}
+.c-round-filled-input .ant-input {
+  border: none !important;
+  border-radius: 12px;
+  padding: 20px 10px !important;
+  background-color: rgba(209, 215, 227, 0.3) !important;
+}
+.c-round-filled-input--light .ant-input {
+  border: none !important;
+  border-radius: 12px;
+  padding: 12px 10px !important;
+  background-color: rgba(241, 243, 247, 0.3) !important;
+}
+.c-round-filled-select-item .ant-form-item-label {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+.c-round-filled-select-item .ant-form-item-label > label {
+  font-size: 14px !important;
+  color: #001560 !important;
+}
+.c-round-filled-select-item .ant-form-item-label > label::before {
+  content: '' !important;
+}
+.c-round-filled-select-item .ant-form-item-label > label::after {
+  content: '' !important;
+}
+.c-round-filled-select .ant-select-selection-search {
+  padding-top: 20px !important;
+}
+.c-round-filled-select .ant-select-selector {
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 32px 10px !important;
+  background-color: rgba(209, 215, 227, 0.3) !important;
+}
+.c-round-filled-select .ant-select-arrow {
+  font-size: 16px !important;
+  color: #001560 !important;
+  margin-right: 10px !important;
+  top: 59% !important;
+}
 .c-primary-input .ant-input {
   border: 1px solid #001560 !important;
   border-radius: 6px;
@@ -186,10 +234,26 @@
 .c-primary-password-input svg {
   fill: #001560 !important;
 }
+.ant-modal-content {
+  border-radius: 6px !important;
+}
+button.ant-modal-close {
+  outline: none !important;
+}
 .ant-modal-close-x {
   font-size: 20px !important;
+  outline: none !important;
+  border: none !important;
+}
+.ant-modal-close-x:focus,
+.ant-modal-close-x:active {
+  outline: none !important;
+  border: none !important;
 }
 .ant-modal-close-x .anticon {
   color: #001560 !important;
+}
+.c-modal-padding-none .ant-modal-body {
+  padding: 0 !important;
 }
 /*# sourceMappingURL=customAntd.css.map */

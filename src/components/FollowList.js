@@ -15,16 +15,10 @@ function FollowList() {
 
   // eslint-disable-next-line react/prop-types
   const FollowColumn = ({ items }) => (
-    <div className="flex flex-col px-4">
+    <div className="flex flex-col px-4 child-borderBottom">
       {/* eslint-disable-next-line react/prop-types */}
       {items.map((i) => (
-        <div
-          key={i}
-          className={`flex justify-between items-center space-x-2 py-4 ${
-            // eslint-disable-next-line react/prop-types
-            i !== items.length ? 'grayBorderBottom' : ''
-          }`}
-        >
+        <div key={i} className="flex justify-between items-center space-x-2 py-4">
           <div className="flex items-center space-x-2 w-full">
             <Avatar avatarClassName="w-11 h-11" />
             <div className="text-primary text-base font-medium mb-1">Jason Smith</div>

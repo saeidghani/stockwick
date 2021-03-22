@@ -5,6 +5,45 @@
 @warning-color: #F3BA2F;
 @success-color: #4AC8AA;
 @gray-color: #ABABAB;
+@item-border-color: #EDEDED;
 
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto:wght@400;700&display=swap');
+
+.child-mb {
+  &--sm {
+  &>* {
+    margin-bottom: 14px;
+  }
+  }
+  &--base {
+  &>* {
+    margin-bottom: 16px;
+  }
+  }
+  &--lg {
+  &>* {
+    margin-bottom: 18px;
+  }
+  }
+  &--xl {
+  &>* {
+    margin-bottom: 20px;
+  }
+  }
+}
+
+.child-borderBottom {
+  & > *:not(:last-child) {
+    border-bottom: 1px solid @item-border-color;
+  }
+}
+
+.primary-placeholder {
+  &--fade {
+  input::placeholder {
+   color: @primary-color !important;
+   opacity: 0.6 !important;
+  }
+ }
+}
 

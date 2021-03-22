@@ -64,7 +64,7 @@ function StockWall() {
           </div>
         ))}
       </div>
-      <AddPost />
+      <AddPost uploadBtsPosition="end" />
     </div>
   );
 }

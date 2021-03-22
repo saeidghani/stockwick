@@ -19,6 +19,12 @@ import RegisterModal from '../components/RegisterModal';
 import FindAccountModal from '../components/FindAccountModal';
 import ResetYourPasswordModal from '../components/ResetYourPasswordModal';
 import CreateAccountModal from '../components/CreateAccountModal';
+import FollowListModal from '../components/FollowListModal';
+import AddPostModal from '../components/AddPostModal';
+import DirectMessageModal from '../components/DirectMessageModal';
+import CommentMessageModal from '../components/CommentMessageModal';
+import StoryViewModal from '../components/StoryViewModal';
+import NotificationModal from '../components/NotificationModal';
 // import AutoComplete from '../components/AutoComplete';
 
 function Demo() {
@@ -27,6 +33,12 @@ function Demo() {
   const [findAccountModalVisible, setFindAccountModalVisible] = useState(false);
   const [resetYourPasswordModalVisible, setResetYourPasswordModalVisible] = useState(false);
   const [createAccountModalVisible, setCreateAccountModalVisible] = useState(false);
+  const [followListModalVisible, setFollowListModalVisible] = useState(false);
+  const [addPostModalVisible, setAddPostModalVisible] = useState(false);
+  const [directMessageModalVisible, setDirectMessageModalVisible] = useState(false);
+  const [commentMessageModalVisible, setCommentMessageModalVisible] = useState(false);
+  const [storyViewModalVisible, setStoryViewModalVisible] = useState(false);
+  const [notificationModalVisible, setNotificationModalVisible] = useState(false);
 
   return (
     <Layout>
@@ -47,7 +59,28 @@ function Demo() {
         visible={createAccountModalVisible}
         onCancel={() => setCreateAccountModalVisible(false)}
       />
-      <div className="flex space-x-10 p-10">
+      <FollowListModal
+        visible={followListModalVisible}
+        onCancel={() => setFollowListModalVisible(false)}
+      />
+      <AddPostModal visible={addPostModalVisible} onCancel={() => setAddPostModalVisible(false)} />
+      <DirectMessageModal
+        visible={directMessageModalVisible}
+        onCancel={() => setDirectMessageModalVisible(false)}
+      />
+      <CommentMessageModal
+        visible={commentMessageModalVisible}
+        onCancel={() => setCommentMessageModalVisible(false)}
+      />
+      <StoryViewModal
+        visible={storyViewModalVisible}
+        onCancel={() => setStoryViewModalVisible(false)}
+      />
+      <NotificationModal
+        visible={notificationModalVisible}
+        onCancel={() => setNotificationModalVisible(false)}
+      />
+      <div className="flex flex-wrap space-x-10 p-10 child-mb--xl">
         <Button text="Login Modal" onClick={() => setLoginModalVisible(true)} />
         <Button text="Register Modal" onClick={() => setRegisterModalVisible(true)} />
         <Button text="Find Account Modal" onClick={() => setFindAccountModalVisible(true)} />
@@ -56,6 +89,12 @@ function Demo() {
           onClick={() => setResetYourPasswordModalVisible(true)}
         />
         <Button text="Create Account Modal" onClick={() => setCreateAccountModalVisible(true)} />
+        <Button text="Follow List Modal" onClick={() => setFollowListModalVisible(true)} />
+        <Button text="Add Post Modal" onClick={() => setAddPostModalVisible(true)} />
+        <Button text="Direct Message Modal" onClick={() => setDirectMessageModalVisible(true)} />
+        <Button text="Comment Message Modal" onClick={() => setCommentMessageModalVisible(true)} />
+        <Button text="Story View Modal" onClick={() => setStoryViewModalVisible(true)} />
+        <Button text="Notification Modal" onClick={() => setNotificationModalVisible(true)} />
       </div>
       <div className="flex flex-col items-center space-y-10 p-8">
         <div className="bg-fadePrimary w-1/2 h-40 flex justify-center space-x-8 p-6">

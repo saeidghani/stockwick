@@ -7,14 +7,9 @@ function Activity() {
   return (
     <div className="card p-4 overflow-auto">
       <div className="boldPrimaryText text-xl mb-5">follower’s activity</div>
-      <div className="flex flex-col">
+      <div className="flex flex-col child-borderBottom">
         {items.map((i) => (
-          <div
-            key={i}
-            className={`flex items-start space-x-2 py-4 ${
-              i !== items.length ? 'grayBorderBottom' : ''
-            }`}
-          >
+          <div key={i} className="flex items-start space-x-2 py-4">
             <Avatar avatarClassName="w-11 h-11" />
             <div className="flex flex-col w-full">
               <div className="flex justify-between items-center w-full">

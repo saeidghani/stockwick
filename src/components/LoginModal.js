@@ -19,7 +19,7 @@ function LoginModal({ visible, onOk, onCancel }) {
   };
 
   return (
-    <Modal onCancel={onCancel} onOk={onOk} visible={visible} width={900}>
+    <Modal onCancel={onCancel} onOk={onOk} visible={visible}>
       <div className="flex flex-col items-center mb-7">
         <div className="text-22px text-primary mb-2">Login</div>
         <div className="flex opacity-75">

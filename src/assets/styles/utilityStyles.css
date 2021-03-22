@@ -19,4 +19,23 @@
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmWUlvAw.ttf) format('truetype');
 }
+.child-mb--sm > * {
+  margin-bottom: 14px;
+}
+.child-mb--base > * {
+  margin-bottom: 16px;
+}
+.child-mb--lg > * {
+  margin-bottom: 18px;
+}
+.child-mb--xl > * {
+  margin-bottom: 20px;
+}
+.child-borderBottom > *:not(:last-child) {
+  border-bottom: 1px solid #EDEDED;
+}
+.primary-placeholder--fade input::placeholder {
+  color: #001560 !important;
+  opacity: 0.6 !important;
+}
 /*# sourceMappingURL=utilityStyles.css.map */
