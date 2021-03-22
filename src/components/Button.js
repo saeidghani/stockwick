@@ -21,6 +21,7 @@ const _Button = ({
   wrapperClassName,
   textClassName,
   iconClassName,
+  justify,
   disabled,
   danger,
   htmlType,
@@ -34,7 +35,7 @@ const _Button = ({
     <div className={wrapperClassName}>
       <Button
         disabled={disabled}
-        className={`flex items-center ${className}`}
+        className={`flex items-center justify-${justify} ${className}`}
         onClick={href ? () => {} : onClick}
         href={href}
         size={size}
@@ -90,6 +91,7 @@ _Button.propTypes = {
   disabled: PropTypes.bool,
   danger: PropTypes.bool,
   htmlType: PropTypes.string,
+  justify: PropTypes.string,
 };
 
 _Button.defaultProps = {
@@ -111,6 +113,7 @@ _Button.defaultProps = {
   disabled: false,
   danger: false,
   htmlType: 'button',
+  justify: 'center',
   // eslint-disable-next-line no-alert
   onClick: () => console.log('Coming soon'),
 };

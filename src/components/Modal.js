@@ -39,7 +39,7 @@ _Modal.propTypes = {
   closable: PropTypes.bool,
   title: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
-  onOk: PropTypes.func.isRequired,
+  onOk: PropTypes.func,
   children: PropTypes.node,
   className: PropTypes.string,
   wrapClassName: PropTypes.string,
@@ -62,6 +62,7 @@ _Modal.defaultProps = {
   okText: '',
   cancelText: '',
   width: 679,
+  onOk: () => {},
 };
 
 export default _Modal;

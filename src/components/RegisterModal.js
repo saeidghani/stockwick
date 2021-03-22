@@ -5,11 +5,11 @@ import { Form, Input, Checkbox } from 'antd';
 import Modal from './Modal';
 import Button from './Button';
 import SocialAuthButtons from './SocialAuthButtons';
-import { passwordRules, emailRules } from '../constants/formRules';
+import { passwordRules, userNameRules } from '../constants/formRules';
 
 const { Item } = Form;
 
-function LoginModal({ visible, onOk, onCancel }) {
+function RegisterModal({ visible, onOk, onCancel }) {
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -21,10 +21,10 @@ function LoginModal({ visible, onOk, onCancel }) {
   return (
     <Modal onCancel={onCancel} onOk={onOk} visible={visible} width={900}>
       <div className="flex flex-col items-center mb-7">
-        <div className="text-22px text-primary mb-2">Login</div>
+        <div className="text-22px text-primary mb-2">Register</div>
         <div className="flex opacity-75">
-          <div className="text-base text-primary">Don’t have an account yet?</div>
-          <Button text="Sign Up" type="link" className="pl-1 pb-5 text-base" />
+          <div className="text-base text-primary">Already have an account?</div>
+          <Button text="Sign In" type="link" className="pl-1 pb-5 text-base" />
         </div>
       </div>
       <div className="grid grid-cols-2 divide-x w-full px-8 pb-6">
@@ -37,7 +37,11 @@ function LoginModal({ visible, onOk, onCancel }) {
           onFinishFailed={onFinishFailed}
           className="pr-4"
         >
-          <Item name="email" rules={emailRules} className="c-primary-input">
+          <Item name="username" rules={userNameRules} className="c-primary-input">
+            <Input placeholder="Username*" />
+          </Item>
+
+          <Item name="email" rules={userNameRules} className="c-primary-input">
             <Input placeholder="Email*" />
           </Item>
 
@@ -45,18 +49,16 @@ function LoginModal({ visible, onOk, onCancel }) {
             <Input.Password placeholder="Password*" />
           </Item>
 
-          <Item name="remember" valuePropName="checked">
-            <Checkbox className="c-checkbox-primary text-primary">Remember me</Checkbox>
-          </Item>
-
           <Item>
-            <Button htmlType="submit" wrapperClassName="c-filled-btn c-filled-btn--blue" block>
+            <Button
+              type="primary"
+              htmlType="submit"
+              wrapperClassName="c-filled-btn c-filled-btn--blue"
+              block
+            >
               Sign In
             </Button>
           </Item>
-          <Button type="link" wrapperClassName="-mt-5" className="p-0 text-primary">
-            Forgot Password ?
-          </Button>
         </Form>
         <SocialAuthButtons wrapperClassName="pl-4" />
       </div>
@@ -64,10 +66,10 @@ function LoginModal({ visible, onOk, onCancel }) {
   );
 }
 
-LoginModal.propTypes = {
+RegisterModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };
 
-export default LoginModal;
+export default RegisterModal;

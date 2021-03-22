@@ -17,7 +17,7 @@ import Tag from './Tag';
 function AddPost() {
   // eslint-disable-next-line react/prop-types
   const ShareTo = ({ children, text }) => (
-    <Checkbox className="c-checkbox flex items-center" onChange={() => {}} checked={false}>
+    <Checkbox className="c-checkbox-simple flex items-center" onChange={() => {}} checked={false}>
       <div className="flex items-center space-x-2 pb-0.5">
         <div>{children}</div>
         <div className="text-primary text-xs font-medium">{text}</div>

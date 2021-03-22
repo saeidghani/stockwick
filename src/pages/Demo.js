@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 import Button from '../components/Button';
-import Input from '../components/Input';
 import Layout from '../layouts/MainLayout/MainLayout';
 import SimilarSocks from '../components/SimilarSocks';
 import TopMembers from '../components/TopMembers';
@@ -16,17 +15,47 @@ import Activity from '../components/Activity';
 import ProfileIntro from '../components/ProfileIntro';
 import SocialAuthButtons from '../components/SocialAuthButtons';
 import LoginModal from '../components/LoginModal';
+import RegisterModal from '../components/RegisterModal';
+import FindAccountModal from '../components/FindAccountModal';
+import ResetYourPasswordModal from '../components/ResetYourPasswordModal';
+import CreateAccountModal from '../components/CreateAccountModal';
 // import AutoComplete from '../components/AutoComplete';
 
 function Demo() {
-  // eslint-disable-next-line no-unused-vars
-  const [loginModalVisible, setLoginModalVisible] = useState(true);
+  const [loginModalVisible, setLoginModalVisible] = useState(false);
+  const [registerModalVisible, setRegisterModalVisible] = useState(false);
+  const [findAccountModalVisible, setFindAccountModalVisible] = useState(false);
+  const [resetYourPasswordModalVisible, setResetYourPasswordModalVisible] = useState(false);
+  const [createAccountModalVisible, setCreateAccountModalVisible] = useState(false);
 
   return (
     <Layout>
       <LoginModal visible={loginModalVisible} onCancel={() => setLoginModalVisible(false)} />
+      <RegisterModal
+        visible={registerModalVisible}
+        onCancel={() => setRegisterModalVisible(false)}
+      />
+      <FindAccountModal
+        visible={findAccountModalVisible}
+        onCancel={() => setFindAccountModalVisible(false)}
+      />
+      <ResetYourPasswordModal
+        visible={resetYourPasswordModalVisible}
+        onCancel={() => setResetYourPasswordModalVisible(false)}
+      />
+      <CreateAccountModal
+        visible={createAccountModalVisible}
+        onCancel={() => setCreateAccountModalVisible(false)}
+      />
       <div className="flex space-x-10 p-10">
         <Button text="Login Modal" onClick={() => setLoginModalVisible(true)} />
+        <Button text="Register Modal" onClick={() => setRegisterModalVisible(true)} />
+        <Button text="Find Account Modal" onClick={() => setFindAccountModalVisible(true)} />
+        <Button
+          text="Reset Your Password Modal"
+          onClick={() => setResetYourPasswordModalVisible(true)}
+        />
+        <Button text="Create Account Modal" onClick={() => setCreateAccountModalVisible(true)} />
       </div>
       <div className="flex flex-col items-center space-y-10 p-8">
         <div className="bg-fadePrimary w-1/2 h-40 flex justify-center space-x-8 p-6">
@@ -67,10 +96,11 @@ function Demo() {
         <div className="w-80">
           <ProfileIntro />
         </div>
-        <Input wrapperClassName="c-primary-input" />
         <Button wrapperClassName="c-filled-btn c-filled-btn--blue" text="Sign In" />
         <Button wrapperClassName="c-filled-btn c-filled-btn--primary" text="Sign In" />
-        <SocialAuthButtons />
+        <div className="w-1/3">
+          <SocialAuthButtons />
+        </div>
       </div>
     </Layout>
   );
