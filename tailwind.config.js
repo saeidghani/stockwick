@@ -25,6 +25,7 @@ module.exports = {
         secondary: '#5FE90A',
         accent: '#E90A3D',
         fadePrimary: '#0F2572',
+        fadePrimary2: '#0D276B',
         lightGreen: '#B2DF8A',
         darkGreen: '#42950F',
         lightPink: '#FB9A99',

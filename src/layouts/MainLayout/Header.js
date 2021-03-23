@@ -64,7 +64,7 @@ function Header({ isAuth }) {
       <div className="hidden md:block">
         <div className="flex justify-between py-4 container">
           <div className="flex items-center space-x-5">
-            <div className="text-secondary text-2xl font-Comfortaa">stockwick</div>
+            <div className="textLogo text-2xl">stockwick</div>
             <div className="">
               <div className="text-white">NYSE closes in</div>
               <div className="text-white">03 : 03 : 59</div>

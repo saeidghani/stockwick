@@ -7,6 +7,7 @@
 @gray-color: #ABABAB;
 @blue-color: #45B8F5;
 @fade-primary-color: #415087;
+@fade-primary-color-2: #0D276B;
 
 @border-radius: 6px;
 @border-radius-lg: 12px;
@@ -326,6 +327,13 @@
   border-radius: @border-radius !important;
 }
 
+.c-primary-modal {
+  .ant-modal-content {
+    background-color: @fade-primary-color-2 !important;
+    border-radius: @border-radius !important;
+  }
+}
+
 button.ant-modal-close {
   outline: none !important;
 }
@@ -338,8 +346,21 @@ button.ant-modal-close {
    outline: none !important;
   border: none !important;
   }
-  .anticon {
-    color: @primary-color !important;
+}
+
+.c-close-x-primary {
+  .ant-modal-close-x {
+    .anticon {
+      color: @primary-color !important;
+    }
+  }
+}
+
+.c-close-x-white {
+  .ant-modal-close-x {
+    .anticon {
+      color: #fff !important;
+    }
   }
 }
 
@@ -363,11 +384,38 @@ button.ant-modal-close {
   }
 }
 
-.c-dropdown-hover-less {
-  .ant-dropdown-trigger > .anticon.anticon-down, .ant-dropdown-link > .anticon.anticon-down, .ant-dropdown-button > .anticon.anticon-down {
-    font-size: 14px !important;
+.c-select {
+  .ant-select {
+    height: 100% !important;
+    .ant-select-selector {
+     height: 100% !important;
+     background-color: @fade-primary-color-2 !important;
+     padding-top: 10px !important;
+     padding-left: 20px !important;
+    }
+    .ant-select-selection-search {
+      input {
+        height: 100% !important;
+        max-width: 0 !important;
+      }
+    }
+    .ant-select-arrow {
+      color: @secondary-color !important;
+    }
   }
 }
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  //color: currentColor !important;
+}
+.ant-select-item {
+  background-color: transparent !important;
+}
 
+.c-divider {
+.ant-divider-horizontal {
+  margin: 10px auto !important;
+  min-width: 70% !important;
+}
+}
 
 

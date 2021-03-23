@@ -237,6 +237,10 @@
 .ant-modal-content {
   border-radius: 6px !important;
 }
+.c-primary-modal .ant-modal-content {
+  background-color: #0D276B !important;
+  border-radius: 6px !important;
+}
 button.ant-modal-close {
   outline: none !important;
 }
@@ -250,8 +254,11 @@ button.ant-modal-close {
   outline: none !important;
   border: none !important;
 }
-.ant-modal-close-x .anticon {
+.c-close-x-primary .ant-modal-close-x .anticon {
   color: #001560 !important;
+}
+.c-close-x-white .ant-modal-close-x .anticon {
+  color: #fff !important;
 }
 .c-modal-padding-none .ant-modal-body {
   padding: 0 !important;
@@ -265,9 +272,27 @@ button.ant-modal-close {
 .c-autocomplete .ant-select-selector .ant-select-selection-placeholder {
   padding-top: 10px !important;
 }
-.c-dropdown-hover-less .ant-dropdown-trigger > .anticon.anticon-down,
-.c-dropdown-hover-less .ant-dropdown-link > .anticon.anticon-down,
-.c-dropdown-hover-less .ant-dropdown-button > .anticon.anticon-down {
-  font-size: 14px !important;
+.c-select .ant-select {
+  height: 100% !important;
+}
+.c-select .ant-select .ant-select-selector {
+  height: 100% !important;
+  background-color: #0D276B !important;
+  padding-top: 10px !important;
+  padding-left: 20px !important;
+}
+.c-select .ant-select .ant-select-selection-search input {
+  height: 100% !important;
+  max-width: 0 !important;
+}
+.c-select .ant-select .ant-select-arrow {
+  color: #5fe90a !important;
+}
+.ant-select-item {
+  background-color: transparent !important;
+}
+.c-divider .ant-divider-horizontal {
+  margin: 10px auto !important;
+  min-width: 70% !important;
 }
 /*# sourceMappingURL=customAntd.css.map */

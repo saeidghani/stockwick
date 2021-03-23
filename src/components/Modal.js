@@ -6,6 +6,7 @@ const _Modal = ({
   title,
   className,
   wrapClassName,
+  closeXClassName,
   visible,
   onOk,
   onCancel,
@@ -19,7 +20,7 @@ const _Modal = ({
   ...props
 }) => (
   <Modal
-    className={`p-0 ${className}`}
+    className={`p-0 ${closeXClassName} ${className}`}
     wrapClassName={wrapClassName}
     centered
     title={title}
@@ -43,6 +44,7 @@ _Modal.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   wrapClassName: PropTypes.string,
+  closeXClassName: PropTypes.string,
   okButtonProps: PropTypes.shape({}),
   cancelButtonProps: PropTypes.shape({}),
   okText: PropTypes.string,
@@ -57,6 +59,7 @@ _Modal.defaultProps = {
   title: '',
   className: '',
   wrapClassName: '',
+  closeXClassName: 'c-close-x-primary',
   okButtonProps: {},
   cancelButtonProps: {},
   okText: '',

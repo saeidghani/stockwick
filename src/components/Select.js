@@ -12,6 +12,8 @@ const _Dropdown = ({
   labelInValue,
   wrapperClassName,
   className,
+  dropdownClassName,
+  optionClassName,
   placeholder,
   showSearch,
   size,
@@ -23,18 +25,20 @@ const _Dropdown = ({
     <Select
       loading={loading}
       showSearch={showSearch}
-      className={`c-arrow-color text-xs ${className} ${type}-dropdown`}
+      className={`c-arrow-color text-xs ${className} ${type}-dropdown w-full`}
+      dropdownClassName={dropdownClassName}
       onChange={onChange}
       placeholder={placeholder}
       size={size}
       labelInValue={labelInValue}
       value={value || undefined}
       defaultValue={defaultValue || undefined}
+      dropdownAlign={{ offset: [0, 0] }}
     >
       {options?.length > 0
         ? options.map((el, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Option key={i} value={el.value}>
+            <Option key={i} value={el.value} className={optionClassName}>
               {el.title}
             </Option>
           ))
@@ -48,6 +52,8 @@ _Dropdown.propTypes = {
   loading: PropTypes.bool,
   wrapperClassName: PropTypes.string,
   className: PropTypes.string,
+  optionClassName: PropTypes.string,
+  dropdownClassName: PropTypes.string,
   placeholder: PropTypes.string,
   showSearch: PropTypes.bool,
   size: PropTypes.string,
@@ -67,6 +73,8 @@ _Dropdown.defaultProps = {
   loading: false,
   wrapperClassName: '',
   className: '',
+  dropdownClassName: '',
+  optionClassName: '',
   placeholder: '',
   showSearch: true,
   size: 'large',
