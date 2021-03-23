@@ -14,6 +14,8 @@ import StocksList from '../components/StocksList';
 import Activity from '../components/Activity';
 import ProfileIntro from '../components/ProfileIntro';
 import SocialAuthButtons from '../components/SocialAuthButtons';
+import StockSummary from '../components/StockSummary';
+import CategoriesSearch from '../components/CategoriesSearch';
 import LoginModal from '../components/LoginModal';
 import RegisterModal from '../components/RegisterModal';
 import FindAccountModal from '../components/FindAccountModal';
@@ -97,6 +99,12 @@ function Demo() {
         <Button text="Notification Modal" onClick={() => setNotificationModalVisible(true)} />
       </div>
       <div className="flex flex-col items-center space-y-10 p-8">
+        <div className="w-60 mb-20">
+          <CategoriesSearch />
+        </div>
+        <div className="w-full px-24 mt-10">
+          <StockSummary />
+        </div>
         <div className="bg-fadePrimary w-1/2 h-40 flex justify-center space-x-8 p-6">
           <Button text="Post" wrapperClassName="c-secondary-btn" />
           <Button text="Post" wrapperClassName="c-secondary-btn c-secondary-btn--disabled" />

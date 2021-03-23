@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import PropTypes from 'prop-types';
-import directMessageIcon from '../assets/images/icons/directMessage.svg';
+import directMessageIcon from '../assets/icons/directMessage.svg';
 import Modal from './Modal';
 import Avatar from './Avatar';
 

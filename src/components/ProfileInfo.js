@@ -1,7 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import Avatar from './Avatar';
-import edit from '../assets/images/icons/edit.svg';
+import edit from '../assets/icons/edit.svg';
 
 function ProfileInfo() {
   return (

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
-import googleColorful from '../assets/images/icons/googleColorful.svg';
-import twitterColorful from '../assets/images/icons/twitterColorful.svg';
-import linkedinColorful from '../assets/images/icons/linkedinColorful.svg';
-import facebookColorful from '../assets/images/icons/facebookColorful.svg';
+import googleColorful from '../assets/icons/googleColorful.svg';
+import twitterColorful from '../assets/icons/twitterColorful.svg';
+import linkedinColorful from '../assets/icons/linkedinColorful.svg';
+import facebookColorful from '../assets/icons/facebookColorful.svg';
 
 function SocialAuthButtons({ wrapperClassName }) {
   return (

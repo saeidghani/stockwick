@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import story from '../assets/images/story.png';
-import dotsMenuIcon from '../assets/images/icons/dotsMenu.svg';
+import dotsMenuIcon from '../assets/icons/dotsMenu.svg';
 import Modal from './Modal';
 import Avatar from './Avatar';
 

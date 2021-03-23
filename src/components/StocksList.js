@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import apple from '../assets/images/icons/apple.svg';
+import apple from '../assets/icons/apple.svg';
 import LogoIcon from './LogoIcon';
 
 function StocksList({ children }) {

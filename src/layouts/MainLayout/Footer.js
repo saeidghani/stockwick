@@ -1,7 +1,7 @@
 import React from 'react';
-import facebook from '../../assets/images/icons/facebook.png';
-import linkedin from '../../assets/images/icons/linkedin.png';
-import twitter from '../../assets/images/icons/twitter.png';
+import facebook from '../../assets/icons/facebook.png';
+import linkedin from '../../assets/icons/linkedin.png';
+import twitter from '../../assets/icons/twitter.png';
 
 function Footer() {
   return (

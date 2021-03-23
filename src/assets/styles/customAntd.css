@@ -256,4 +256,18 @@ button.ant-modal-close {
 .c-modal-padding-none .ant-modal-body {
   padding: 0 !important;
 }
+.c-autocomplete .ant-select-selector {
+  height: 100% !important;
+}
+.c-autocomplete .ant-select-selector .ant-select-selection-search input {
+  height: 100% !important;
+}
+.c-autocomplete .ant-select-selector .ant-select-selection-placeholder {
+  padding-top: 10px !important;
+}
+.c-dropdown-hover-less .ant-dropdown-trigger > .anticon.anticon-down,
+.c-dropdown-hover-less .ant-dropdown-link > .anticon.anticon-down,
+.c-dropdown-hover-less .ant-dropdown-button > .anticon.anticon-down {
+  font-size: 14px !important;
+}
 /*# sourceMappingURL=customAntd.css.map */

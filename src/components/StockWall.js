@@ -1,10 +1,10 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-import likeFilledIcon from '../assets/images/icons/likeFilled.svg';
-import dislikeOutlineIcon from '../assets/images/icons/dislikeOutline.svg';
-import arrowFilledIcon from '../assets/images/icons/arrowFilled.svg';
-import bullishIcon from '../assets/images/icons/bullish.svg';
-import bearishIcon from '../assets/images/icons/bearish.svg';
+import likeFilledIcon from '../assets/icons/likeFilled.svg';
+import dislikeOutlineIcon from '../assets/icons/dislikeOutline.svg';
+import arrowFilledIcon from '../assets/icons/arrowFilled.svg';
+import bullishIcon from '../assets/icons/bullish.svg';
+import bearishIcon from '../assets/icons/bearish.svg';
 import AddPost from './AddPost';
 import Avatar from './Avatar';
 

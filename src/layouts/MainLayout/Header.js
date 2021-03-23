@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Badge } from 'antd';
 import { PlusOutlined, MenuOutlined, BellOutlined, CaretUpOutlined } from '@ant-design/icons';
-import clock from '../../assets/images/icons/clock.svg';
-import usFlag from '../../assets/images/icons/usFlag.svg';
+import clock from '../../assets/icons/clock.svg';
+import usFlag from '../../assets/icons/usFlag.svg';
 import Button from '../../components/Button';
 import Avatar from '../../components/Avatar';
 

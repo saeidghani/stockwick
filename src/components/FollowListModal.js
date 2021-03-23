@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
-import searchIcon from '../assets/images/icons/search.svg';
+import searchIcon from '../assets/icons/search.svg';
 import Modal from './Modal';
 import Button from './Button';
 import Avatar from './Avatar';

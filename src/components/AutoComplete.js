@@ -9,10 +9,6 @@ const _AutoComplete = ({
   className,
   onSelect,
   options,
-  labelText,
-  extrainfoText,
-  extrainfoLink,
-  onExtraInfoLinkClick,
   name,
   size,
   placeholder,
@@ -22,44 +18,15 @@ const _AutoComplete = ({
   loading,
   disabled,
 }) => (
-  <div name={name} className={`flex flex-col w-full ${wrapperClassName}`}>
-    {labelText || (extrainfoText && extrainfoLink) ? (
-      <div className="flex justify-between items-center mb-10p pl-1">
-        {labelText ? (
-          <label className="text-heading" htmlFor={name}>
-            {labelText}
-          </label>
-        ) : null}
-
-        {extrainfoText && extrainfoLink ? (
-          <div>
-            <a
-              className="text-black underline text-antgray-100 text-12px pl-2 sm:pl-0"
-              href={extrainfoLink}
-              onClick={(e) => {
-                if (!extrainfoLink) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                }
-
-                onExtraInfoLinkClick(e);
-              }}
-            >
-              {extrainfoText}
-            </a>
-          </div>
-        ) : null}
-      </div>
-    ) : null}
-
+  <div name={name} className={`${wrapperClassName}`}>
     <AutoComplete
       disabled={disabled}
       loading={loading}
       placeholder={placeholder}
       id={name}
       value={value}
-      className={`c-autocomplete c-sufix-prefix-gray text-12px w-full ${className}`}
-      dropdownClassName="capitalize"
+      className={`c-autocomplete text-12px w-full ${className}`}
+      dropdownClassName=""
       onSelect={(_, val) => {
         const selectedItem = options.find(({ id }) => id * 1 === val.key * 1);
 
@@ -80,10 +47,6 @@ const _AutoComplete = ({
 _AutoComplete.propTypes = {
   wrapperClassName: PropTypes.string,
   className: PropTypes.string,
-  labelText: PropTypes.string,
-  extrainfoText: PropTypes.string,
-  extrainfoLink: PropTypes.string,
-  onExtraInfoLinkClick: PropTypes.func,
   name: PropTypes.string,
   size: PropTypes.string,
   onSelect: PropTypes.func.isRequired,
@@ -106,10 +69,6 @@ _AutoComplete.defaultProps = {
   className: '',
   value: '',
   placeholder: '',
-  labelText: '',
-  extrainfoText: '',
-  extrainfoLink: '',
-  onExtraInfoLinkClick: () => {},
   name: '',
   size: 'large',
   errorMessage: '',
