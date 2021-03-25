@@ -26,10 +26,11 @@ module.exports = {
         accent: '#E90A3D',
         fadePrimary: '#0F2572',
         fadePrimary2: '#0D276B',
-        lightGreen: '#B2DF8A',
         darkGreen: '#42950F',
-        lightPink: '#FB9A99',
         blue: '#45B8F5',
+        blueGray: 'rgba(237, 241, 255, 0.5)',
+        lightGreen: '#B2DF8A',
+        lightPink: '#FB9A99',
         lightBlue: '#A6CEE3',
         lightGray: '#BCBCBC',
         mediumGray: '#E9E9E9',
@@ -48,6 +49,9 @@ module.exports = {
       },
       opacity: {
         40: '40%',
+      },
+      screens: {
+        xs: '576px',
       },
     },
   },

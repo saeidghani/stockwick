@@ -1,17 +1,17 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
 import PropTypes from 'prop-types';
-import { LeftOutlined } from '@ant-design/icons';
 import directMessageIcon from '../assets/icons/directMessage.svg';
-import Modal from './Modal';
-import Avatar from './Avatar';
 import { useQuery } from '../hooks/useQuery';
-import Input from './Input';
 import happyStickerIcon from '../assets/icons/happySticker.svg';
 import thumbnailIcon from '../assets/icons/thumbnail.svg';
 import directMessageColorfulIcon from '../assets/icons/directMessageColorful.svg';
+import Modal from './Modal';
+import Avatar from './Avatar';
+import Input from './Input';
+import Drawer from './Drawer';
+import BackButton from './BackButton';
 
-function DirectMessageModal({ visible, onOk, onCancel }) {
+function DirectMessageModal({ modalVisible, drawerVisible, onOk, onCancel }) {
   // eslint-disable-next-line no-unused-vars
   const [parsedQuery, query, setQuery] = useQuery();
 
@@ -46,17 +46,6 @@ function DirectMessageModal({ visible, onOk, onCancel }) {
 
   const SMDirectMessageList = () => (
     <>
-      <div
-        className="flex justify-between items-center pt-5 pb-4 px-4
-           border-b border-solid border-itemBorder"
-      >
-        <div className="cursor-pointer flex items-center" onClick={onCancel}>
-          <LeftOutlined className="text-base mr-2" />
-          <div className="text-base pt-0.5">BACK</div>
-        </div>
-        <div className="boldPrimaryText text-xl text-center pr-4">Direct Message</div>
-        <div />
-      </div>
       <div className="flex flex-col boldPrimaryText text-xl child-borderBottom">
         {[1, 2, 3, 4, 5].map((i) => (
           <div
@@ -74,23 +63,6 @@ function DirectMessageModal({ visible, onOk, onCancel }) {
 
   const SMDirectMessageSingle = () => (
     <div>
-      <div
-        className="flex justify-between items-center space-x-2 w-full pt-4 pb-2 px-4
-                         border-b border-solid border-itemBorder"
-      >
-        <div
-          className="self-start cursor-pointer flex items-center"
-          onClick={() => setQuery({ messageTo: '' })}
-        >
-          <LeftOutlined className="text-base mr-2" />
-          <div className="text-base pt-0.5">BACK</div>
-        </div>
-        <div className="flex flex-col items-center space-y-2 pr-4">
-          <Avatar avatarClassName="w-11 h-11" />
-          <div className="text-primary text-base font-medium mb-1">Jason Smith</div>
-        </div>
-        <div />
-      </div>
       <div className="p-6">
         <div className="flex space-x-2 items-center w-full h-16 mb-2">
           <Avatar />
@@ -132,28 +104,56 @@ function DirectMessageModal({ visible, onOk, onCancel }) {
   );
 
   return (
-    <Modal
-      wrapClassName="c-modal-padding-none"
-      closeIconClassName="hidden md:block absolute top-5 md:right-5"
-      onCancel={() => {
-        setQuery({ messageTo: '' });
-        onCancel();
-      }}
-      onOk={onOk}
-      visible={visible}
-    >
-      <div className="hidden md:block">
+    <div>
+      <Modal
+        wrapClassName="c-modal-padding-none"
+        closeIconClassName=""
+        onCancel={() => {
+          setQuery({ messageTo: '' });
+          onCancel();
+        }}
+        onOk={onOk}
+        visible={modalVisible}
+      >
         <MdDirectMessage />
-      </div>
-      <div className="block md:hidden">
+      </Modal>
+      <Drawer
+        visible={drawerVisible}
+        onClose={onCancel}
+        wrapClassName="w-full h-full"
+        headerStyle={{}}
+        title={
+          <div className="flex justify-between items-center px-4">
+            <BackButton
+              onClick={() => {
+                if (parsedQuery.messageTo) {
+                  setQuery({ messageTo: '' });
+                } else {
+                  onCancel();
+                }
+              }}
+            />
+            {parsedQuery.messageTo ? (
+              <div className="flex flex-col items-center space-y-2 pr-4">
+                <Avatar avatarClassName="w-11 h-11" />
+                <div className="text-primary text-base font-medium mb-1">Jason Smith</div>
+              </div>
+            ) : (
+              <div className="boldPrimaryText text-xl text-center pr-4">Direct Message</div>
+            )}
+            <div />
+          </div>
+        }
+      >
         <SMDirectMessage />
-      </div>
-    </Modal>
+      </Drawer>
+    </div>
   );
 }
 
 DirectMessageModal.propTypes = {
-  visible: PropTypes.bool.isRequired,
+  modalVisible: PropTypes.bool.isRequired,
+  drawerVisible: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };

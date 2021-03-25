@@ -1,3 +1,24 @@
+const nameRules = [
+  {
+    required: true,
+    message: 'Please input your name!',
+  },
+];
+
+const bioRules = [
+  {
+    required: true,
+    message: 'Please input your bio!',
+  },
+];
+
+const mobileRules = [
+  {
+    required: true,
+    message: 'Please input your mobile!',
+  },
+];
+
 const userNameRules = [
   {
     required: true,
@@ -60,6 +81,9 @@ const minutesRules = [
 
 // eslint-disable-next-line import/prefer-default-export
 export {
+  nameRules,
+  bioRules,
+  mobileRules,
   userNameRules,
   emailRules,
   passwordRules,

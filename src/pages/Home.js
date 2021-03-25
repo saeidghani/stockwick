@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Grid } from 'antd';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../layouts/MainLayout/MainLayout';
 import CategoriesSearch from '../components/CategoriesSearch';
@@ -6,12 +7,12 @@ import ChangeTimeZoneModal from '../components/ChangeTimeZoneModal';
 import ChangeMarketModal from '../components/ChangeMarketModal';
 import RegisterModal from '../components/RegisterModal';
 import LoginModal from '../components/LoginModal';
-import FindAccountModal from '../components/FindAccountModal';
 import DirectMessageModal from '../components/DirectMessageModal';
 import NotificationModal from '../components/NotificationModal';
 import AddPostModal from '../components/AddPostModal';
+// import FindAccountModal from '../components/FindAccountModal';
 // import ResetYourPasswordModal from '../components/ResetYourPasswordModal';
-// import CreateAccountModal from '../components/CreateAccountModal';
+import CreateAccountModal from '../components/CreateAccountModal';
 
 export default function Home() {
   const [changeTimeZoneModalVisible, setChangeTimeZoneModalVisible] = useState(false);
@@ -24,6 +25,8 @@ export default function Home() {
   const [addPostModalVisible, setAddPostModalVisible] = useState(false);
 
   const [parsedQuery] = useQuery();
+  const { useBreakpoint } = Grid;
+  const { sm: isSmScreen } = useBreakpoint();
 
   return (
     <Layout
@@ -37,7 +40,8 @@ export default function Home() {
       isAuth={parsedQuery.auth}
     >
       <ChangeTimeZoneModal
-        visible={changeTimeZoneModalVisible}
+        modalVisible={isSmScreen && changeTimeZoneModalVisible}
+        drawerVisible={!isSmScreen && changeTimeZoneModalVisible}
         onCancel={() => setChangeTimeZoneModalVisible(false)}
       />
       <ChangeMarketModal
@@ -45,24 +49,28 @@ export default function Home() {
         onCancel={() => setChangeMarketModalVisible(false)}
       />
       <RegisterModal
+        modalVisible={isSmScreen && registerModalVisible}
+        drawerVisible={!isSmScreen && registerModalVisible}
         onCancel={() => setRegisterModalVisible(false)}
-        visible={registerModalVisible}
       />
       <LoginModal
-        onCancel={() => setLoginModalVisible(false)}
-        visible={loginModalVisible}
+        modalVisible={isSmScreen && loginModalVisible}
+        drawerVisible={!isSmScreen && loginModalVisible}
         onForgotPasswordClick={() => {
           setLoginModalVisible(false);
           setFindAccountModalVisible(true);
         }}
+        onCancel={() => setLoginModalVisible(false)}
       />
-      <FindAccountModal
+      <CreateAccountModal
+        modalVisible={isSmScreen && findAccountModalVisible}
+        drawerVisible={!isSmScreen && findAccountModalVisible}
         onCancel={() => setFindAccountModalVisible(false)}
-        visible={findAccountModalVisible}
       />
       <DirectMessageModal
+        modalVisible={isSmScreen && directMessageModalVisible}
+        drawerVisible={!isSmScreen && directMessageModalVisible}
         onCancel={() => setDirectMessageModalVisible(false)}
-        visible={directMessageModalVisible}
       />
       <NotificationModal
         onCancel={() => setNotificationModalVisible(false)}

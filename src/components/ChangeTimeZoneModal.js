@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
@@ -8,17 +9,13 @@ import africaIcon from '../assets/icons/africa.svg';
 import asiaIcon from '../assets/icons/asia.svg';
 import Input from './Input';
 import searchIcon from '../assets/icons/search.svg';
+import BackButton from './BackButton';
+import Drawer from './Drawer';
+import styleVar from '../constants/styleVariables';
 
-function ChangeTimeZoneModal({ visible, onOk, onCancel }) {
-  return (
-    <Modal
-      wrapClassName="c-modal-padding-none c-primary-modal"
-      closeIconClassName="text-white pt-4 pl-5"
-      onCancel={onCancel}
-      onOk={onOk}
-      visible={visible}
-      width={400}
-    >
+function ChangeTimeZoneModal({ visible, onOk, onCancel, modalVisible, drawerVisible }) {
+  const Content = () => (
+    <>
       <div className="text-white text-center pt-6 mb-10">Change Time Zone</div>
       <div className="flex justify-between px-4">
         <div className="flex flex-col justify-between items-center">
@@ -51,7 +48,38 @@ function ChangeTimeZoneModal({ visible, onOk, onCancel }) {
         />
         <img className="absolute top-4 right-10" src={searchIcon} alt="" />
       </div>
-    </Modal>
+    </>
+  );
+
+  return (
+    <div>
+      <Modal
+        wrapClassName="c-modal-padding-none c-primary-modal"
+        closeIconClassName="text-white text-xl"
+        onCancel={onCancel}
+        onOk={onOk}
+        visible={modalVisible}
+        width={400}
+      >
+        <Content />
+      </Modal>
+      <Drawer
+        visible={drawerVisible}
+        onClose={onCancel}
+        wrapClassName="w-full h-full"
+        headerStyle={{ backgroundColor: styleVar.colors.fadePrimary2, border: 0 }}
+        bodyStyle={{ backgroundColor: styleVar.colors.fadePrimary2 }}
+        title={
+          <BackButton
+            onClick={onCancel}
+            iconClassName="text-white text-base mr-2"
+            textClassName="text-white text-base mr-2"
+          />
+        }
+      >
+        <Content />
+      </Drawer>
+    </div>
   );
 }
 

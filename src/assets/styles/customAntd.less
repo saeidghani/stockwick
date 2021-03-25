@@ -311,6 +311,7 @@
 .c-primary-password-input {
   #basic-password.ant-input {
     background-color: #5FE90A !important;
+    color: @primary-color !important;
   }
   .ant-input-affix-wrapper {
    border: 1px solid @primary-color !important;
@@ -320,6 +321,35 @@
 
   svg {
     fill: @primary-color !important;
+  }
+  &--primary-input {
+  .ant-input {
+    color: @primary-color !important;
+  }
+}
+}
+
+
+
+.c-edit-profile-form {
+  .ant-form-item {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .ant-form-item-label {
+    align-self: flex-start !important;
+    margin-bottom: 7px !important;
+  }
+  .ant-form-item-label > label {
+    font-size: 14px !important;
+    color: @primary-color !important;
+    opacity: 0.4;
+    &::before {
+      content: '' !important;
+    }
+    &::after {
+      content: '' !important;
+    }
   }
 }
 
@@ -398,19 +428,14 @@
 }
 }
 
-.ant-drawer-content {
+.c-drawer-round {
+ .ant-drawer-content {
   border-top-left-radius: 20px !important;
-  .ant-drawer-wrapper-body {
-    background-color: @fade-primary-color-2 !important;
-    padding: 0 20px !important;
-    .ant-drawer-header {
-      background-color: transparent !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-    .ant-drawer-title {
-      text-align: center !important;
-    }
-  }
+ }
+}
+
+.ant-modal-close {
+  outline: none !important;
 }
 
 

@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Menu, Dropdown } from 'antd';
 import Avatar from './Avatar';
+import routes from '../constants/routes';
 
 const { Item } = Menu;
 
@@ -15,7 +16,7 @@ const ProfileDropdown = ({ src }) => {
       title: 'view profile',
       titleClassName: 'text-white',
       onClick: () => {
-        history.push('/');
+        history.push(routes.profile.index);
       },
     },
     {
@@ -23,7 +24,7 @@ const ProfileDropdown = ({ src }) => {
       title: 'edit profile',
       titleClassName: 'text-white',
       onClick: () => {
-        history.push('/');
+        history.push(routes.profile.edit);
       },
     },
     {

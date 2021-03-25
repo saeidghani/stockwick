@@ -8,6 +8,7 @@ import Button from '../../components/Button';
 import ProfileDropdown from '../../components/ProfileDropdown';
 import MenuDrawer from '../../components/MenuDrawer';
 import { MessagesIcon } from '../../components/Icons';
+import { useQuery } from '../../hooks/useQuery';
 
 function Header({
   isAuth,
@@ -19,6 +20,8 @@ function Header({
   onNotificationClick,
   onPostClick,
 }) {
+  const [parsedQuery] = useQuery();
+
   // eslint-disable-next-line no-shadow,react/prop-types
   const StockSummary = ({ stockSummaryItems }) => {
     return (
@@ -113,10 +116,13 @@ function Header({
           </div>
           <MenuDrawer
             wrapperClassName="justify-self-end text-base text-white pt-1"
+            isAuth={parsedQuery.auth}
             onLoginClick={onLoginClick}
             onRegisterClick={onRegisterClick}
             onTimeZoneClick={onTimeZoneClick}
             onMarketClick={onMarketClick}
+            onMessagesClick={onMessagesClick}
+            onNotificationsClick={onNotificationClick}
           />
         </div>
         {isAuth && <StockSummary stockSummaryItems={[1, 2, 3, 4, 5, 6, 7]} />}
