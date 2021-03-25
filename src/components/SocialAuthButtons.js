@@ -10,41 +10,39 @@ function SocialAuthButtons({ wrapperClassName }) {
   return (
     <div className={`flex flex-col space-y-4 w-full ${wrapperClassName}`}>
       <Button
-        justify="start"
         wrapperClassName="c-filled-btn c-filled-btn--primary flex"
-        className=""
+        className="justify-center md:justify-start"
         block
       >
         <img src={googleColorful} alt="" className="mr-4" />
         <p>Sign in with Google</p>
       </Button>
-      <Button
-        justify="start"
-        wrapperClassName="c-filled-btn c-filled-btn--primary"
-        className=""
-        block
-      >
-        <img src={twitterColorful} alt="" className="mr-4" />
-        <p>Sign in with Twitter</p>
-      </Button>
-      <Button
-        justify="start"
-        wrapperClassName="c-filled-btn c-filled-btn--primary"
-        className=""
-        block
-      >
-        <img src={linkedinColorful} alt="" className="mr-4" />
-        <p>Sign in with Linkedin</p>
-      </Button>
-      <Button
-        justify="start"
-        wrapperClassName="c-filled-btn c-filled-btn--primary"
-        className=""
-        block
-      >
-        <img src={facebookColorful} alt="" className="mr-4" />
-        <p>Sign in with Facebook</p>
-      </Button>
+      <div className="grid grid-cols-3 gap-x-2 md:grid-cols-1 md:gap-y-4">
+        <Button
+          wrapperClassName="c-filled-btn c-filled-btn--primary w-full"
+          className="justify-center md:justify-start"
+          block
+        >
+          <img src={twitterColorful} alt="" className="mr-4" />
+          <p className="hidden md:block">Sign in with Twitter</p>
+        </Button>
+        <Button
+          wrapperClassName="c-filled-btn c-filled-btn--primary w-full"
+          className="justify-center md:justify-start"
+          block
+        >
+          <img src={linkedinColorful} alt="" className="mr-4" />
+          <p className="hidden md:block">Sign in with Linkedin</p>
+        </Button>
+        <Button
+          wrapperClassName="c-filled-btn c-filled-btn--primary w-full"
+          className="justify-center md:justify-start"
+          block
+        >
+          <img src={facebookColorful} alt="" className="mr-4" />
+          <p className="hidden md:block">Sign in with Facebook</p>
+        </Button>
+      </div>
     </div>
   );
 }

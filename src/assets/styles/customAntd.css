@@ -241,30 +241,15 @@
   background-color: #0D276B !important;
   border-radius: 6px !important;
 }
-button.ant-modal-close {
-  outline: none !important;
-}
-.ant-modal-close-x {
-  font-size: 20px !important;
-  outline: none !important;
-  border: none !important;
-}
-.ant-modal-close-x:focus,
-.ant-modal-close-x:active {
-  outline: none !important;
-  border: none !important;
-}
-.c-close-x-primary .ant-modal-close-x .anticon {
-  color: #001560 !important;
-}
-.c-close-x-white .ant-modal-close-x .anticon {
-  color: #fff !important;
-}
 .c-modal-padding-none .ant-modal-body {
   padding: 0 !important;
 }
 .c-autocomplete .ant-select-selector {
   height: 100% !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-top-right-radius: 6px !important;
+  border-bottom-right-radius: 6px !important;
 }
 .c-autocomplete .ant-select-selector .ant-select-selection-search input {
   height: 100% !important;
@@ -276,10 +261,17 @@ button.ant-modal-close {
   height: 100% !important;
 }
 .c-select .ant-select .ant-select-selector {
+  border: none !important;
+  outline: none !important;
   height: 100% !important;
   background-color: #0D276B !important;
   padding-top: 10px !important;
   padding-left: 20px !important;
+}
+.c-select .ant-select .ant-select-selector:focus,
+.c-select .ant-select .ant-select-selector:active {
+  border: none !important;
+  outline: none !important;
 }
 .c-select .ant-select .ant-select-selection-search input {
   height: 100% !important;
@@ -294,5 +286,19 @@ button.ant-modal-close {
 .c-divider .ant-divider-horizontal {
   margin: 10px auto !important;
   min-width: 70% !important;
+}
+.ant-drawer-content {
+  border-top-left-radius: 20px !important;
+}
+.ant-drawer-content .ant-drawer-wrapper-body {
+  background-color: #0D276B !important;
+  padding: 0 20px !important;
+}
+.ant-drawer-content .ant-drawer-wrapper-body .ant-drawer-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.ant-drawer-content .ant-drawer-wrapper-body .ant-drawer-title {
+  text-align: center !important;
 }
 /*# sourceMappingURL=customAntd.css.map */

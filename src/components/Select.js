@@ -33,13 +33,13 @@ const _Dropdown = ({
       labelInValue={labelInValue}
       value={value || undefined}
       defaultValue={defaultValue || undefined}
-      dropdownAlign={{ offset: [0, 0] }}
+      dropdownAlign={{ offset: [-1, -2] }}
     >
       {options?.length > 0
         ? options.map((el, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <Option key={i} value={el.value} className={optionClassName}>
-              {el.title}
+            <Option key={i} value={el.value}>
+              <span className={optionClassName}>{el.title}</span>
             </Option>
           ))
         : null}
@@ -58,12 +58,12 @@ _Dropdown.propTypes = {
   showSearch: PropTypes.bool,
   size: PropTypes.string,
   type: PropTypes.string,
-  defaultValue: PropTypes.string,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
   labelInValue: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.number,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
       title: PropTypes.string,
     }),
   ).isRequired,

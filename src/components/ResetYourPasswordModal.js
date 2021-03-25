@@ -18,36 +18,38 @@ function ResetYourPasswordModal({ visible, onOk, onCancel }) {
   };
 
   return (
-    <Modal onCancel={onCancel} onOk={onOk} visible={visible}>
-      <div className="flex flex-col items-center w-1/3 mx-auto">
-        <div className="text-22px text-primary mt-12 mb-8">Reset your password</div>
-        <Form
-          name="basic"
-          initialValues={{
-            remember: true,
-          }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          className="w-full"
-        >
-          <Item name="password" rules={passwordRules} className="c-primary-password-input">
-            <Input.Password placeholder="Password *" />
-          </Item>
-
-          <Item
-            name="repeatPassword"
-            rules={repeatPasswordRules}
-            className="c-primary-password-input"
+    <Modal onCancel={onCancel} onOk={onOk} visible={visible} width={600}>
+      <div className="flex flex-col items-center">
+        <div className="text-22px text-primary mt-10 mb-8">Reset your password</div>
+        <div className="w-full grid grid-cols-12">
+          <Form
+            name="basic"
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            className="w-full col-span-12 md:col-start-4 md:col-span-6"
           >
-            <Input.Password placeholder="Repeat Password *" />
-          </Item>
+            <Item name="password" rules={passwordRules} className="c-primary-password-input">
+              <Input.Password placeholder="Password *" />
+            </Item>
 
-          <Item>
-            <Button htmlType="submit" wrapperClassName="c-filled-btn c-filled-btn--blue" block>
-              Save Password
-            </Button>
-          </Item>
-        </Form>
+            <Item
+              name="repeatPassword"
+              rules={repeatPasswordRules}
+              className="c-primary-password-input"
+            >
+              <Input.Password placeholder="Repeat Password *" />
+            </Item>
+
+            <Item>
+              <Button htmlType="submit" wrapperClassName="c-filled-btn c-filled-btn--blue" block>
+                Save Password
+              </Button>
+            </Item>
+          </Form>
+        </div>
       </div>
     </Modal>
   );

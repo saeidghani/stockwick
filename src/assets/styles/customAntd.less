@@ -334,36 +334,6 @@
   }
 }
 
-button.ant-modal-close {
-  outline: none !important;
-}
-
-.ant-modal-close-x {
-  font-size: 20px !important;
-  outline: none !important;
-  border: none !important;
-  &:focus, &:active {
-   outline: none !important;
-  border: none !important;
-  }
-}
-
-.c-close-x-primary {
-  .ant-modal-close-x {
-    .anticon {
-      color: @primary-color !important;
-    }
-  }
-}
-
-.c-close-x-white {
-  .ant-modal-close-x {
-    .anticon {
-      color: #fff !important;
-    }
-  }
-}
-
 .c-modal-padding-none {
   .ant-modal-body {
     padding: 0 !important;
@@ -373,6 +343,10 @@ button.ant-modal-close {
 .c-autocomplete {
   .ant-select-selector {
     height: 100% !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: @border-radius !important;
+    border-bottom-right-radius: @border-radius !important;
     .ant-select-selection-search {
       input {
        height: 100% !important;
@@ -388,10 +362,16 @@ button.ant-modal-close {
   .ant-select {
     height: 100% !important;
     .ant-select-selector {
+     border: none !important;
+     outline: none !important;
      height: 100% !important;
      background-color: @fade-primary-color-2 !important;
      padding-top: 10px !important;
      padding-left: 20px !important;
+     &:focus, &:active {
+      border: none !important;
+      outline: none !important;
+     }
     }
     .ant-select-selection-search {
       input {
@@ -405,7 +385,7 @@ button.ant-modal-close {
   }
 }
 .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
-  //color: currentColor !important;
+  // color: @secondary-color !important;
 }
 .ant-select-item {
   background-color: transparent !important;
@@ -416,6 +396,21 @@ button.ant-modal-close {
   margin: 10px auto !important;
   min-width: 70% !important;
 }
+}
+
+.ant-drawer-content {
+  border-top-left-radius: 20px !important;
+  .ant-drawer-wrapper-body {
+    background-color: @fade-primary-color-2 !important;
+    padding: 0 20px !important;
+    .ant-drawer-header {
+      background-color: transparent !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .ant-drawer-title {
+      text-align: center !important;
+    }
+  }
 }
 
 

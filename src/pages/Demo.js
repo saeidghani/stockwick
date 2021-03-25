@@ -30,7 +30,6 @@ import StoryViewModal from '../components/StoryViewModal';
 import NotificationModal from '../components/NotificationModal';
 import ChangeMarketModal from '../components/ChangeMarketModal';
 import ChangeTimeZoneModal from '../components/ChangeTimeZoneModal';
-// import AutoComplete from '../components/AutoComplete';
 
 function Demo() {
   const [loginModalVisible, setLoginModalVisible] = useState(false);

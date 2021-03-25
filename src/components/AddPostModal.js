@@ -1,9 +1,7 @@
-/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
 import AddPost from './AddPost';
-import AddPoll from './AddPoll';
 
 function AddPostModal({ visible, onOk, onCancel }) {
   return (
@@ -24,6 +22,10 @@ AddPostModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
+};
+
+AddPostModal.defaultProps = {
+  onOk: () => {},
 };
 
 export default AddPostModal;

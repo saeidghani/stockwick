@@ -8,25 +8,25 @@ function ChangeMarketModal({ visible, onOk, onCancel }) {
   return (
     <Modal
       wrapClassName="c-modal-padding-none c-primary-modal"
-      closeXClassName="c-close-x-white"
-      className=""
+      closeIconClassName="text-white pt-4 pr-4"
       onCancel={onCancel}
       onOk={onOk}
       visible={visible}
+      switchCloseIcon={false}
       width={220}
     >
-      <div className="text-white text-center pt-6">Change Market</div>
+      <div className="text-white text-center pt-2">Change Market</div>
       <div className="flex flex-col items-center pb-4 mt-8 mb-6 px-6">
         <Button text="Tokyo Japan" type="link" textClassName="text-white text-opacity-60 text-xs" />
-        <Divider wrapperClassName="c-divider" className="bg-white bg-opacity-5 w-16" />
+        <Divider className="bg-opacity-5 w-16" />
         <Button text="New York United States" type="link" textClassName="text-white text-base" />
-        <Divider wrapperClassName="c-divider" className="bg-white bg-opacity-5 w-16" />
+        <Divider className="bg-opacity-5 w-16" />
         <Button
           text="LondonEngland"
           type="link"
           textClassName="text-white text-opacity-60 text-xs"
         />
-        <Divider wrapperClassName="c-divider" className="bg-white bg-opacity-5 w-16" />
+        <Divider className="bg-opacity-5 w-16" />
         <Button
           text="SydneyAustralia"
           type="link"

@@ -7,13 +7,14 @@ function NotificationModal({ visible, onOk, onCancel }) {
   return (
     <Modal
       wrapClassName="c-modal-padding-none"
+      closeIconClassName="px-4 pt-4 pb-4 md:pb-0"
       onCancel={onCancel}
       onOk={onOk}
       visible={visible}
-      width={500}
+      width={400}
     >
       <div className="relative">
-        <div className="boldPrimaryText text-xl pt-4 pb-6 pl-6">Notifications</div>
+        <div className="boldPrimaryText text-xl pb-4 pl-6">Notifications</div>
         <div
           className="flex flex-col px-4
            border-t border-solid border-itemBorder"

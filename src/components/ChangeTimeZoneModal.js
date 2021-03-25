@@ -13,8 +13,7 @@ function ChangeTimeZoneModal({ visible, onOk, onCancel }) {
   return (
     <Modal
       wrapClassName="c-modal-padding-none c-primary-modal"
-      closeXClassName="c-close-x-white"
-      className=""
+      closeIconClassName="text-white pt-4 pl-5"
       onCancel={onCancel}
       onOk={onOk}
       visible={visible}
