@@ -1,6 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Badge } from 'antd';
+/*eslint-disable*/
+import React, { useState } from 'react';
+import { useLocation, Link } from 'react-router-dom';
+// import PropTypes from 'prop-types';
+import { Badge, Grid } from 'antd';
 import { PlusOutlined, BellOutlined, CaretUpOutlined } from '@ant-design/icons';
 import clock from '../../assets/icons/clock.svg';
 import usFlag from '../../assets/icons/usFlag.svg';
@@ -9,51 +11,99 @@ import ProfileDropdown from '../../components/ProfileDropdown';
 import MenuDrawer from '../../components/MenuDrawer';
 import { MessagesIcon } from '../../components/Icons';
 import { useQuery } from '../../hooks/useQuery';
+import CategoriesSearch from '../../components/CategoriesSearch';
+import StockSummarySlider from '../../components/StockSummarySlider';
+import ChangeTimeZoneModal from '../../components/ChangeTimeZoneModal';
+import ChangeMarketModal from '../../components/ChangeMarketModal';
+import RegisterModal from '../../components/RegisterModal';
+import LoginModal from '../../components/LoginModal';
+import CreateAccountModal from '../../components/CreateAccountModal';
+import DirectMessageModal from '../../components/DirectMessageModal';
+import NotificationModal from '../../components/NotificationModal';
+import AddPostModal from '../../components/AddPostModal';
+import routes from '../../constants/routes';
+import menuIcon from '../../assets/icons/menu.svg';
+// import FindAccountModal from '../components/FindAccountModal';
+// import ResetYourPasswordModal from '../components/ResetYourPasswordModal';
 
-function Header({
-  isAuth,
-  onTimeZoneClick,
-  onMarketClick,
-  onRegisterClick,
-  onLoginClick,
-  onMessagesClick,
-  onNotificationClick,
-  onPostClick,
-}) {
+function Header() {
+  const [changeTimeZoneModalVisible, setChangeTimeZoneModalVisible] = useState(false);
+  const [changeMarketModalVisible, setChangeMarketModalVisible] = useState(false);
+  const [registerModalVisible, setRegisterModalVisible] = useState(false);
+  const [loginModalVisible, setLoginModalVisible] = useState(false);
+  const [findAccountModalVisible, setFindAccountModalVisible] = useState(false);
+  const [notificationModalVisible, setNotificationModalVisible] = useState(false);
+  const [directMessageModalVisible, setDirectMessageModalVisible] = useState(false);
+  const [addPostModalVisible, setAddPostModalVisible] = useState(false);
+  const [drawerVisible, setDrawerVisible] = useState(false);
+
+  const { pathname, search } = useLocation();
   const [parsedQuery] = useQuery();
-
-  // eslint-disable-next-line no-shadow,react/prop-types
-  const StockSummary = ({ stockSummaryItems }) => {
-    return (
-      <div className="flex divide-x divide-fadePrimary overflow-auto">
-        {/* eslint-disable-next-line react/prop-types */}
-        {stockSummaryItems.map((i) => (
-          <div key={i} className="border-t border-b border-solid border-fadePrimary">
-            <div className="flex justify-center py-5 w-60">
-              <div className="flex flex-col space-y-2">
-                <div className="flex space-x-4">
-                  <span className="text-white">S&P 500</span>
-                  <span className="text-white">3136.32</span>
-                </div>
-                <div className="flex items-center">
-                  <CaretUpOutlined className="text-secondary text-xl mr-2" />
-                  <span className="text-secondary mr-6">0.39%</span>
-                  <span className="text-secondary">12.2</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    );
-  };
+  const { useBreakpoint } = Grid;
+  const { sm: isSmScreen } = useBreakpoint();
 
   return (
     <header className="bg-primary px-4">
+      <ChangeTimeZoneModal
+        modalVisible={isSmScreen && changeTimeZoneModalVisible}
+        drawerVisible={!isSmScreen && changeTimeZoneModalVisible}
+        onCancel={() => setChangeTimeZoneModalVisible(false)}
+      />
+      <ChangeMarketModal
+        visible={changeMarketModalVisible}
+        onCancel={() => setChangeMarketModalVisible(false)}
+      />
+      <RegisterModal
+        modalVisible={isSmScreen && registerModalVisible}
+        drawerVisible={!isSmScreen && registerModalVisible}
+        onCancel={() => setRegisterModalVisible(false)}
+      />
+      <LoginModal
+        modalVisible={isSmScreen && loginModalVisible}
+        drawerVisible={!isSmScreen && loginModalVisible}
+        onForgotPasswordClick={() => {
+          setLoginModalVisible(false);
+          setFindAccountModalVisible(true);
+        }}
+        onCancel={() => setLoginModalVisible(false)}
+      />
+      <CreateAccountModal
+        modalVisible={isSmScreen && findAccountModalVisible}
+        drawerVisible={!isSmScreen && findAccountModalVisible}
+        onCancel={() => setFindAccountModalVisible(false)}
+      />
+      <DirectMessageModal
+        modalVisible={isSmScreen && directMessageModalVisible}
+        drawerVisible={!isSmScreen && directMessageModalVisible}
+        onCancel={() => setDirectMessageModalVisible(false)}
+      />
+      <NotificationModal
+        visible={notificationModalVisible}
+        onCancel={() => setNotificationModalVisible(false)}
+      />
+      <AddPostModal
+        modalVisible={isSmScreen && addPostModalVisible}
+        drawerVisible={!isSmScreen && addPostModalVisible}
+        onCancel={() => setAddPostModalVisible(false)}
+      />
+      <MenuDrawer
+        isAuth={!!parsedQuery.auth}
+        visible={drawerVisible}
+        onClose={() => setDrawerVisible(false)}
+        onLoginClick={() => setLoginModalVisible(true)}
+        onRegisterClick={() => setRegisterModalVisible(true)}
+        onTimeZoneClick={() => setChangeTimeZoneModalVisible(true)}
+        onMarketClick={() => setChangeMarketModalVisible(true)}
+        onMessagesClick={() => setDirectMessageModalVisible(true)}
+        onNotificationsClick={() => setNotificationModalVisible(true)}
+      />
       <div className="hidden md:block">
         <div className="flex justify-between py-4 lg:container">
           <div className="flex items-center space-x-3 lg:space-x-5">
-            <div className="textLogo text-2xl">stockwick</div>
+            {/* TODO just use routes.home after adding auth */}
+            <Link to={!!parsedQuery.auth ? `${routes.home}?auth=true` : routes.home}>
+              <div className="textLogo text-2xl cursor-pointer">stockwick</div>
+            </Link>
             <div className="">
               <div className="text-white">NYSE closes in</div>
               <div className="text-white">03 : 03 : 59</div>
@@ -64,32 +114,46 @@ function Header({
               <img src={clock} alt="" />
               <div
                 className="text-white whitespace-nowrap cursor-pointer"
-                onClick={onTimeZoneClick}
+                onClick={() => setChangeTimeZoneModalVisible(true)}
               >
                 15 : 46 : 01
               </div>
             </div>
             <div className="flex items-center space-x-1">
               <img src={usFlag} alt="" />
-              <div className="text-white whitespace-nowrap cursor-pointer" onClick={onMarketClick}>
+              <div
+                className="text-white whitespace-nowrap cursor-pointer"
+                onClick={() => setChangeMarketModalVisible(true)}
+              >
                 New York
               </div>
             </div>
+            {!pathname.includes(routes.home) && <CategoriesSearch />}
           </div>
-          {isAuth ? (
+          {parsedQuery.auth ? (
             <div className="flex items-center space-x-4 lg:space-x-10">
               <div className="flex items-center space-x-5">
-                <Badge count={1} offset={[3, 3]} size="small">
-                  <div className="pt-1 cursor-pointer" onClick={onMessagesClick}>
+                <Badge count={1} offset={[3, 2]} size="small">
+                  <div
+                    className="cursor-pointer"
+                    onClick={() => setDirectMessageModalVisible(true)}
+                  >
                     <MessagesIcon />
                   </div>
                 </Badge>
                 <Badge count={4} offset={[-2, 5]} size="small">
-                  <BellOutlined className="text-white text-xl" onClick={onNotificationClick} />
+                  <BellOutlined
+                    className="text-white text-xl"
+                    onClick={() => setNotificationModalVisible(true)}
+                  />
                 </Badge>
                 <ProfileDropdown />
               </div>
-              <Button text="Post" wrapperClassName="c-secondary-btn" onClick={onPostClick} />
+              <Button
+                text="Post"
+                wrapperClassName="c-secondary-btn"
+                onClick={() => setAddPostModalVisible(true)}
+              />
             </div>
           ) : (
             <div className="flex items-center space-x-5">
@@ -97,40 +161,49 @@ function Header({
                 text="Register"
                 textClassName="text-secondary"
                 type="link"
-                onClick={onRegisterClick}
+                onClick={() => setRegisterModalVisible(true)}
               />
-              <Button text="Login" wrapperClassName="c-secondary-btn" onClick={onLoginClick} />
+              <Button
+                text="Login"
+                wrapperClassName="c-secondary-btn"
+                onClick={() => setLoginModalVisible(true)}
+              />
             </div>
           )}
         </div>
-        {isAuth && <StockSummary stockSummaryItems={[1, 2, 3, 4, 5, 6, 7]} />}
+        {parsedQuery.auth && <StockSummarySlider />}
       </div>
       <div className="block md:hidden container">
         <div
           className="grid grid-cols-3 items-center pt-4 pb-2
                        border-b border-solid border-fadePrimary"
         >
-          {isAuth ? <PlusOutlined className="justify-self-start text-base text-white" /> : <div />}
-          <div className="justify-self-center text-secondary text-2xl font-Comfortaa">
-            stockwick
-          </div>
-          <MenuDrawer
-            wrapperClassName="justify-self-end text-base text-white pt-1"
-            isAuth={parsedQuery.auth}
-            onLoginClick={onLoginClick}
-            onRegisterClick={onRegisterClick}
-            onTimeZoneClick={onTimeZoneClick}
-            onMarketClick={onMarketClick}
-            onMessagesClick={onMessagesClick}
-            onNotificationsClick={onNotificationClick}
+          {parsedQuery.auth ? (
+            <PlusOutlined className="justify-self-start text-base text-white" />
+          ) : (
+            <div />
+          )}
+          {/* TODO just use routes.home after adding auth */}
+          <Link
+            className="justify-self-center"
+            to={!!parsedQuery.auth ? `${routes.home}?auth=true` : routes.home}
+          >
+            <div className="textLogo justify-self-center text-2xl">stockwick</div>
+          </Link>
+          <Button
+            type="link"
+            onClick={() => setDrawerVisible(true)}
+            icon={<img src={menuIcon} alt="" />}
+            className="p-0"
+            wrapperClassName="justify-self-end"
           />
         </div>
-        {isAuth && <StockSummary stockSummaryItems={[1, 2, 3, 4, 5, 6, 7]} />}
+        {parsedQuery.auth && <StockSummarySlider />}
         <div
           className="flex justify-center items-center space-x-8 pt-4 pb-2
                        border-b border-solid border-fadePrimary"
         >
-          <div className="flex space-x-2" onClick={onTimeZoneClick}>
+          <div className="flex space-x-2" onClick={() => setChangeTimeZoneModalVisible(true)}>
             <div className="text-white whitespace-nowrap">15 : 46 : 01</div>
             <div className="text-white opacity-50">GMT+3</div>
           </div>
@@ -144,26 +217,8 @@ function Header({
   );
 }
 
-Header.propTypes = {
-  isAuth: PropTypes.bool,
-  onTimeZoneClick: PropTypes.func,
-  onMarketClick: PropTypes.func,
-  onRegisterClick: PropTypes.func,
-  onLoginClick: PropTypes.func,
-  onMessagesClick: PropTypes.func,
-  onNotificationClick: PropTypes.func,
-  onPostClick: PropTypes.func,
-};
+Header.propTypes = {};
 
-Header.defaultProps = {
-  isAuth: false,
-  onTimeZoneClick: () => {},
-  onMarketClick: () => {},
-  onRegisterClick: () => {},
-  onLoginClick: () => {},
-  onMessagesClick: () => {},
-  onNotificationClick: () => {},
-  onPostClick: () => {},
-};
+Header.defaultProps = {};
 
 export default Header;

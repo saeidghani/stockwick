@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Drawer from './Drawer';
-import menuIcon from '../assets/icons/menu.svg';
 import styles from '../constants/styleVariables';
 import routes from '../constants/routes';
 
 function MenuDrawer({
+  visible,
+  onClose,
+  isAuth,
   wrapperClassName,
   onTimeZoneClick,
   onMarketClick,
@@ -15,24 +17,11 @@ function MenuDrawer({
   onLoginClick,
   onMessagesClick,
   onNotificationsClick,
-  isAuth,
 }) {
-  const [visible, setVisible] = useState(false);
   const history = useHistory();
-
-  const handleClose = () => {
-    setVisible(false);
-  };
 
   return (
     <div className={wrapperClassName}>
-      <Button
-        type="link"
-        onClick={() => setVisible(true)}
-        icon={<img src={menuIcon} alt="" />}
-        className="p-0"
-        iconClassName=""
-      />
       <Drawer
         title="stockwick"
         titleClassName="textLogo text-center"
@@ -44,7 +33,7 @@ function MenuDrawer({
           borderTopLeftRadius: '20px',
         }}
         bodyStyle={{ backgroundColor: styles.colors.fadePrimary2, padding: '0 20px' }}
-        onClose={handleClose}
+        onClose={onClose}
         closable={false}
         visible={visible}
         width={250}
@@ -57,7 +46,7 @@ function MenuDrawer({
               wrapperClassName="flex justify-center mb-6"
               textClassName="text-white"
               onClick={() => {
-                handleClose();
+                onClose();
                 history.push(routes.profile.index);
               }}
             />
@@ -67,7 +56,7 @@ function MenuDrawer({
               wrapperClassName="flex justify-center mb-6"
               textClassName="text-white"
               onClick={() => {
-                handleClose();
+                onClose();
                 onMessagesClick();
               }}
             />
@@ -77,7 +66,7 @@ function MenuDrawer({
               wrapperClassName="flex justify-center mb-6"
               textClassName="text-white"
               onClick={() => {
-                handleClose();
+                onClose();
                 onNotificationsClick();
               }}
             />
@@ -90,7 +79,7 @@ function MenuDrawer({
               wrapperClassName="flex justify-center mb-6"
               textClassName="text-white"
               onClick={() => {
-                handleClose();
+                onClose();
                 onLoginClick();
               }}
             />
@@ -100,7 +89,7 @@ function MenuDrawer({
               wrapperClassName="flex justify-center mb-6"
               textClassName="text-white"
               onClick={() => {
-                handleClose();
+                onClose();
                 onRegisterClick();
               }}
             />
@@ -112,7 +101,7 @@ function MenuDrawer({
           wrapperClassName="flex justify-center mb-6"
           textClassName="text-white"
           onClick={() => {
-            handleClose();
+            onClose();
             onTimeZoneClick();
           }}
         />
@@ -122,7 +111,7 @@ function MenuDrawer({
           wrapperClassName="flex justify-center mb-6"
           textClassName="text-white"
           onClick={() => {
-            handleClose();
+            onClose();
             onMarketClick();
           }}
         />
@@ -139,7 +128,9 @@ MenuDrawer.propTypes = {
   onLoginClick: PropTypes.func,
   onMessagesClick: PropTypes.func,
   onNotificationsClick: PropTypes.func,
+  onClose: PropTypes.func,
   isAuth: PropTypes.bool,
+  visible: PropTypes.bool,
 };
 
 MenuDrawer.defaultProps = {
@@ -150,7 +141,9 @@ MenuDrawer.defaultProps = {
   onLoginClick: () => {},
   onMessagesClick: () => {},
   onNotificationsClick: () => {},
+  onClose: () => {},
   isAuth: false,
+  visible: false,
 };
 
 export default MenuDrawer;

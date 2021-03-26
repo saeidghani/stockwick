@@ -85,9 +85,13 @@ function FollowListModal({ visible, onOk, onCancel }) {
 }
 
 FollowListModal.propTypes = {
-  visible: PropTypes.bool.isRequired,
+  visible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
+};
+
+FollowListModal.defaultProps = {
+  visible: false,
 };
 
 export default FollowListModal;

@@ -1,34 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Form, Input } from 'antd';
-import Modal from './Modal';
-import Button from './Button';
-import Divider from './Divider';
-import SocialAuthButtons from './SocialAuthButtons';
-import { emailRules, passwordRules, userNameRules } from '../constants/formRules';
+import facebookIcon from '../assets/icons/facebook.svg';
+import twitterIcon from '../assets/icons/twitter.svg';
+import linkedinIcon from '../assets/icons/linkedin.svg';
 
-const { Item } = Form;
-
-function RegisterModal({ visible, onOk, onCancel }) {
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-
-  return <Modal onCancel={onCancel} onOk={onOk} visible={visible} />;
-}
-
-RegisterModal.propTypes = {
-  visible: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  onOk: PropTypes.func,
-};
-
-RegisterModal.defaultProps = {
-  onOk: () => {},
-};
-
-export default RegisterModal;
+<div className="flex space-x-2">
+  <ShareTo text="select all" textClassName="sm:pl-0" />
+  <ShareTo text="facebook">
+    <img src={facebookIcon} alt="" />
+  </ShareTo>
+  <ShareTo text="twitter">
+    <img src={twitterIcon} alt="" />
+  </ShareTo>
+  <ShareTo text="linkedin">
+    <img src={linkedinIcon} alt="" />
+  </ShareTo>
+</div>;

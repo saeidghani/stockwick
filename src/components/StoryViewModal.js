@@ -36,12 +36,13 @@ function StoryViewModal({ visible, onOk, onCancel }) {
 }
 
 StoryViewModal.propTypes = {
-  visible: PropTypes.bool.isRequired,
+  visible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };
 
 StoryViewModal.defaultProps = {
+  visible: false,
   onOk: () => {},
 };
 

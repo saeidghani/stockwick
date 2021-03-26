@@ -1,7 +1,8 @@
 export default {
-  home: '/',
+  home: '/home',
   profile: {
     index: '/profile',
     edit: '/profile/edit',
   },
+  chart: '/chart',
 };

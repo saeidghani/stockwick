@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import facebook from '../../assets/icons/facebook.png';
 import linkedin from '../../assets/icons/linkedin.png';
 import twitter from '../../assets/icons/twitter.png';
@@ -9,9 +10,15 @@ function Footer() {
       <div className="flex flex-col items-center space-y-2">
         <div className="text-white opacity-50">socialize with us</div>
         <div className="flex space-x-4">
-          <img src={facebook} alt="" />
-          <img src={linkedin} alt="" />
-          <img src={twitter} alt="" />
+          <Link to="#">
+            <img src={facebook} alt="" />
+          </Link>
+          <Link to="#">
+            <img src={linkedin} alt="" />
+          </Link>
+          <Link to="#">
+            <img src={twitter} alt="" />
+          </Link>
         </div>
         <div className="text-white opacity-50">© stockwick inc.</div>
       </div>

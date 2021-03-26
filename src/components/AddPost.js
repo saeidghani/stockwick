@@ -1,9 +1,11 @@
-import React from 'react';
+/*eslint-disable*/
+import React, { useState } from 'react';
+import { Form, Input } from 'antd';
 import PropTypes from 'prop-types';
-import TextArea from './TextArea';
 import uploadImageIcon from '../assets/icons/uploadImage.svg';
 import uploadGifIcon from '../assets/icons/uploadGif.svg';
 import uploadVideoIcon from '../assets/icons/uploadVideo.svg';
+import pollIcon from '../assets/icons/poll.svg';
 import chartIcon from '../assets/icons/chart.svg';
 import { BullishIcon } from './Icons';
 import balancedIcon from '../assets/icons/balanced.svg';
@@ -17,14 +19,18 @@ import Tag from './Tag';
 import Avatar from './Avatar';
 import AddPoll from './AddPoll';
 
+const { TextArea } = Input;
+const { Item } = Form;
+
 function AddPost({
   contentClassName,
   postBtnClassName,
   placeholder,
   displayAvatar,
-  displayAddPoll,
   uploadBtsPosition,
 }) {
+  const [addPoll, setAddPoll] = useState(false);
+
   // eslint-disable-next-line react/prop-types
   const ShareTo = ({ children, text, textClassName = '' }) => (
     <Checkbox className="c-checkbox-simple flex items-center" onChange={() => {}} checked={false}>
@@ -36,34 +42,53 @@ function AddPost({
   );
 
   return (
-    <div className="">
+    <div className="h-full">
       <div
-        className={`flex items-center space-x-3 w-full my-auto
-        border border-solid border-gray-100 py-2 pr-6 pl-4 ${contentClassName}`}
+        className={`flex flex-col justify-between items-center space-x-3 w-full h-full my-auto
+        xs:border xs:border-solid xs:border-gray-100 py-2 pr-6 pl-4 ${contentClassName}`}
       >
-        <div className="w-full flex">
+        <Button
+          htmlType="submit"
+          wrapperClassName="block xs:hidden absolute top-4 right-4"
+          textClassName="text-primary"
+          text="Post"
+          type="link"
+        />
+        <div className="w-full flex space-x-4 mb-4">
           {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
-          {!displayAddPoll ? (
-            <TextArea
-              wrapperClassName="c-input-border-none w-full"
-              className="pt-3"
-              placeholder={placeholder}
-              name="post"
-              onChange={() => {}}
-            />
-          ) : (
-            <AddPoll wrapperClassName="ml-4 mt-12 w-full" />
-          )}
+          <div className="flex flex-col w-full">
+            <Item name="text" label="" className="c-input-border-none w-full mb-0">
+              <TextArea
+                className="w-full pt-3"
+                placeholder={placeholder}
+                name="text"
+                onChange={() => {}}
+                rows={4}
+              />
+            </Item>
+            <AddPoll wrapperClassName={`w-full mt-4 ${addPoll ? '' : 'hidden'}`} />
+          </div>
         </div>
-        <div className={`justify-self-end self-${uploadBtsPosition} flex items-center space-x-3`}>
-          <img src={uploadImageIcon} alt="" />
-          <img src={uploadGifIcon} alt="" />
-          <img src={uploadVideoIcon} alt="" />
+        <div
+          className={`justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 absolute bottom-32 xs:bottom-0 pb-6 xs:pb-0 xs:relative`}
+        >
+          <Item name="uploadImage" className="cursor-pointer m-0">
+            <img src={uploadImageIcon} alt="" />
+          </Item>
+          <Item name="uploadGif" className="cursor-pointer m-0">
+            <img src={uploadGifIcon} alt="" />
+          </Item>
+          <Item name="uploadVideo" className="cursor-pointer m-0">
+            <img src={uploadVideoIcon} alt="" />
+          </Item>
+          <div className="cursor-pointer" onClick={() => setAddPoll(true)}>
+            <img src={pollIcon} alt="" />
+          </div>
         </div>
       </div>
-      <div className="p-6 bg-mediumGray flex justify-between">
+      <div className="px-2 py-4 xs:p-6 bg-mediumGray flex justify-between absolute bottom-0 xs:relative">
         <div className="">
-          <div className="flex items-center space-x-4 mb-4">
+          <div className="flex items-center space-x-2 xs:space-x-4 mb-4">
             <Tag text="all">
               <img src={chartIcon} alt="" className="bg-primary px-1.5" />
             </Tag>
@@ -94,7 +119,11 @@ function AddPost({
             </ShareTo>
           </div>
         </div>
-        <Button wrapperClassName={`c-primary-btn ${postBtnClassName}`} text="Post" />
+        <Button
+          htmlType="submit"
+          wrapperClassName={`c-primary-btn hidden xs:block ${postBtnClassName}`}
+          text="Post"
+        />
       </div>
     </div>
   );
@@ -106,7 +135,6 @@ AddPost.propTypes = {
   placeholder: PropTypes.string,
   uploadBtsPosition: PropTypes.string,
   displayAvatar: PropTypes.bool,
-  displayAddPoll: PropTypes.bool,
 };
 
 AddPost.defaultProps = {
@@ -115,7 +143,6 @@ AddPost.defaultProps = {
   uploadBtsPosition: 'start',
   placeholder: 'Start typing',
   displayAvatar: false,
-  displayAddPoll: false,
 };
 
 export default AddPost;

@@ -5,10 +5,14 @@ import { UserOutlined } from '@ant-design/icons';
 import avatarImg from '../assets/images/avatar.jpg';
 
 function _Avatar({ wrapperClassName, avatarClassName, src }) {
-  console.log(src);
   return (
-    <div className={wrapperClassName}>
-      <Avatar src={avatarImg} className={`${avatarClassName}`} icon={<UserOutlined />} />
+    <div className={wrapperClassName || 'flex justify-center'}>
+      {/* TODO remove avatarImg */}
+      <Avatar
+        src={src || avatarImg}
+        className={avatarClassName || 'w-14 h-14'}
+        icon={<UserOutlined />}
+      />
     </div>
   );
 }
@@ -21,7 +25,7 @@ _Avatar.propTypes = {
 
 _Avatar.defaultProps = {
   wrapperClassName: '',
-  avatarClassName: 'w-14 h-14',
+  avatarClassName: '',
   src: '',
 };
 

@@ -203,13 +203,16 @@
 .c-round-filled-select-item .ant-form-item-label > label::after {
   content: '' !important;
 }
+.c-round-filled-select .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  height: 50px !important;
+}
 .c-round-filled-select .ant-select-selection-search {
   padding-top: 20px !important;
 }
 .c-round-filled-select .ant-select-selector {
   border: none !important;
   border-radius: 12px !important;
-  padding: 32px 10px !important;
+  padding: 20px 0 10px 20px  !important;
   background-color: rgba(209, 215, 227, 0.3) !important;
 }
 .c-round-filled-select .ant-select-arrow {

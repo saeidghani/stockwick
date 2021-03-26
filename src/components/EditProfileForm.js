@@ -35,9 +35,9 @@ function EditProfileForm({ wrapperClassName }) {
         className="c-edit-profile-form"
       >
         <div className="grid grid-cols-3">
-          <Item className="col-start-2 justify-self-center flex flex-col">
-            <Avatar />
-            <div className="text-secondary mt-2">Edit Picture</div>
+          <Item className="col-start-2 justify-self-center flex flex-col items-center">
+            <Avatar avatarClassName="w-16 h-16" />
+            <div className="text-secondary text-center mt-2">Edit Picture</div>
           </Item>
           <Item className="col-start-3 justify-self-end">
             <Button
@@ -72,7 +72,7 @@ function EditProfileForm({ wrapperClassName }) {
         <div className="text-primary text-center mt-16 mb-6">Change Password</div>
 
         <Item
-          name="password"
+          name="currentPassword"
           label="Your Current Password"
           rules={passwordRules}
           className="c-primary-password-input c-primary-password-input--primary-input"
@@ -81,7 +81,7 @@ function EditProfileForm({ wrapperClassName }) {
         </Item>
 
         <Item
-          name="password"
+          name="newPassword"
           label="New Password"
           rules={passwordRules}
           className="c-primary-password-input c-primary-password-input--primary-input"
@@ -90,7 +90,7 @@ function EditProfileForm({ wrapperClassName }) {
         </Item>
 
         <Item
-          name="password"
+          name="repeatNewPassword"
           label="Repeat New Password"
           rules={passwordRules}
           className="c-primary-password-input c-primary-password-input--primary-input"

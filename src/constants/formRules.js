@@ -47,37 +47,42 @@ const repeatPasswordRules = [
   },
 ];
 
+const questionRules = [
+  {
+    required: true,
+    message: 'Please input your question',
+  },
+];
+
 const choiceRules = [
   {
     required: true,
-    whitespace: true,
-    message: 'Please input your choice or delete this field.',
+    message: 'Please input your choice',
   },
 ];
 
 const daysRules = [
   {
     required: true,
-    whitespace: true,
-    message: 'Please input day field.',
+    message: 'Please input day field',
   },
 ];
 
 const hoursRules = [
   {
     required: true,
-    whitespace: true,
-    message: 'Please input day field.',
+    message: 'Please input hour field',
   },
 ];
 
 const minutesRules = [
   {
     required: true,
-    whitespace: true,
-    message: 'Please input day field.',
+    message: 'Please input minute field',
   },
 ];
+
+const testRules = [];
 
 // eslint-disable-next-line import/prefer-default-export
 export {
@@ -92,4 +97,6 @@ export {
   daysRules,
   hoursRules,
   minutesRules,
+  testRules,
+  questionRules,
 };

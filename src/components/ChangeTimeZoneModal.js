@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
@@ -13,7 +12,7 @@ import BackButton from './BackButton';
 import Drawer from './Drawer';
 import styleVar from '../constants/styleVariables';
 
-function ChangeTimeZoneModal({ visible, onOk, onCancel, modalVisible, drawerVisible }) {
+function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
   const Content = () => (
     <>
       <div className="text-white text-center pt-6 mb-10">Change Time Zone</div>
@@ -84,12 +83,15 @@ function ChangeTimeZoneModal({ visible, onOk, onCancel, modalVisible, drawerVisi
 }
 
 ChangeTimeZoneModal.propTypes = {
-  visible: PropTypes.bool.isRequired,
+  modalVisible: PropTypes.bool,
+  drawerVisible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };
 
 ChangeTimeZoneModal.defaultProps = {
+  modalVisible: false,
+  drawerVisible: false,
   onOk: () => {},
 };
 

@@ -283,13 +283,16 @@
 }
 
 .c-round-filled-select {
+  .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+    height: 50px !important;
+  }
   .ant-select-selection-search {
     padding-top: 20px !important;
   }
   .ant-select-selector {
    border: none !important;
    border-radius: @border-radius-lg !important;
-   padding: @input-padding-xl !important;
+   padding: 20px 0 10px 20px  !important;
    background-color: rgba(209,215,227, 0.3) !important;
   }
   .ant-select-arrow {

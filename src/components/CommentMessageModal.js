@@ -79,12 +79,13 @@ function CommentMessageModal({ visible, onOk, onCancel }) {
 }
 
 CommentMessageModal.propTypes = {
-  visible: PropTypes.bool.isRequired,
+  visible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };
 
 CommentMessageModal.defaultProps = {
+  visible: false,
   onOk: () => {},
 };
 

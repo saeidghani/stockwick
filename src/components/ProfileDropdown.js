@@ -2,13 +2,16 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Menu, Dropdown } from 'antd';
-import Avatar from './Avatar';
 import routes from '../constants/routes';
+import { useQuery } from '../hooks/useQuery';
+import Avatar from './Avatar';
 
 const { Item } = Menu;
 
-const ProfileDropdown = ({ src }) => {
+function ProfileDropdown({ src }) {
   const history = useHistory();
+  // eslint-disable-next-line no-unused-vars
+  const [parsedQuery, query, setQuery] = useQuery();
 
   const options = [
     {
@@ -32,7 +35,7 @@ const ProfileDropdown = ({ src }) => {
       title: 'sign out',
       titleClassName: 'text-red-500',
       onClick: () => {
-        history.push('/');
+        setQuery({ auth: '' });
       },
     },
   ];
@@ -57,7 +60,7 @@ const ProfileDropdown = ({ src }) => {
       </a>
     </Dropdown>
   );
-};
+}
 
 ProfileDropdown.propTypes = {
   src: PropTypes.string,

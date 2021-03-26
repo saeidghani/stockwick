@@ -152,13 +152,15 @@ function DirectMessageModal({ modalVisible, drawerVisible, onOk, onCancel }) {
 }
 
 DirectMessageModal.propTypes = {
-  modalVisible: PropTypes.bool.isRequired,
-  drawerVisible: PropTypes.bool.isRequired,
+  modalVisible: PropTypes.bool,
+  drawerVisible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };
 
 DirectMessageModal.defaultProps = {
+  modalVisible: false,
+  drawerVisible: false,
   onOk: () => {},
 };
 
