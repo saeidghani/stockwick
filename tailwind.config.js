@@ -41,6 +41,7 @@ module.exports = {
         itemBorder: '#EDEDED',
       },
       fontSize: {
+        '8px': '8px',
         '22px': '22px',
         '26px': '26px',
       },

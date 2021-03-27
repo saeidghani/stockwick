@@ -43,7 +43,7 @@ function Header() {
   const { sm: isSmScreen } = useBreakpoint();
 
   return (
-    <header className="bg-primary px-4">
+    <header className="bg-primary">
       <ChangeTimeZoneModal
         modalVisible={isSmScreen && changeTimeZoneModalVisible}
         drawerVisible={!isSmScreen && changeTimeZoneModalVisible}
@@ -98,7 +98,7 @@ function Header() {
         onNotificationsClick={() => setNotificationModalVisible(true)}
       />
       <div className="hidden md:block">
-        <div className="flex justify-between py-4 lg:container">
+        <div className="flex justify-between px-4 py-4 lg:container">
           <div className="flex items-center space-x-3 lg:space-x-5">
             {/* TODO just use routes.home after adding auth */}
             <Link to={!!parsedQuery.auth ? `${routes.home}?auth=true` : routes.home}>
@@ -173,11 +173,8 @@ function Header() {
         </div>
         {parsedQuery.auth && <StockSummarySlider />}
       </div>
-      <div className="block md:hidden container">
-        <div
-          className="grid grid-cols-3 items-center pt-4 pb-2
-                       border-b border-solid border-fadePrimary"
-        >
+      <div className="block md:hidden md:container">
+        <div className="grid grid-cols-3 items-center pt-4 px-6 pb-2">
           {parsedQuery.auth ? (
             <PlusOutlined className="justify-self-start text-base text-white" />
           ) : (
@@ -200,7 +197,7 @@ function Header() {
         </div>
         {parsedQuery.auth && <StockSummarySlider />}
         <div
-          className="flex justify-center items-center space-x-8 pt-4 pb-2
+          className="flex justify-center items-center space-x-8 pb-2
                        border-b border-solid border-fadePrimary"
         >
           <div className="flex space-x-2" onClick={() => setChangeTimeZoneModalVisible(true)}>
