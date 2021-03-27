@@ -27,11 +27,13 @@ function AddPost({
   postBtnClassName,
   placeholder,
   displayAvatar,
+  uploadBtnClassName,
   uploadBtsPosition,
+  children,
 }) {
   const [addPoll, setAddPoll] = useState(false);
 
-  // eslint-disable-next-line react/prop-types
+  // eslint-disable-next-line react/prop-types,no-shadow
   const ShareTo = ({ children, text, textClassName = '' }) => (
     <Checkbox className="c-checkbox-simple flex items-center" onChange={() => {}} checked={false}>
       <div className="flex items-center pb-0.5">
@@ -42,7 +44,7 @@ function AddPost({
   );
 
   return (
-    <div className="h-full">
+    <div className="h-full relative">
       <div
         className={`flex flex-col justify-between items-center space-x-3 w-full h-full my-auto
         xs:border xs:border-solid xs:border-gray-100 py-2 pr-6 pl-4 ${contentClassName}`}
@@ -54,23 +56,28 @@ function AddPost({
           text="Post"
           type="link"
         />
-        <div className="w-full flex space-x-4 mb-4">
-          {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
-          <div className="flex flex-col w-full">
-            <Item name="text" label="" className="c-input-border-none w-full mb-0">
-              <TextArea
-                className="w-full pt-3"
-                placeholder={placeholder}
-                name="text"
-                onChange={() => {}}
-                rows={4}
-              />
-            </Item>
-            <AddPoll wrapperClassName={`w-full mt-4 ${addPoll ? '' : 'hidden'}`} />
+        {!children ? (
+          <div className="w-full flex space-x-4 mb-4">
+            {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
+            <div className="flex flex-col w-full">
+              <Item name="text" label="" className="c-input-border-none w-full mb-0">
+                <TextArea
+                  className="w-full pt-3"
+                  placeholder={placeholder}
+                  name="text"
+                  onChange={() => {}}
+                  rows={4}
+                />
+              </Item>
+              <AddPoll wrapperClassName={`w-full mt-4 ${addPoll ? '' : 'hidden'}`} />
+            </div>
           </div>
-        </div>
+        ) : (
+          children
+        )}
         <div
-          className={`justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 absolute bottom-32 xs:bottom-0 pb-6 xs:pb-0 xs:relative`}
+          className={`justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 
+                     absolute bottom-32 xs:bottom-0 pb-6 xs:pb-0 xs:relative ${uploadBtnClassName}`}
         >
           <Item name="uploadImage" className="cursor-pointer m-0">
             <img src={uploadImageIcon} alt="" />
@@ -131,18 +138,22 @@ function AddPost({
 
 AddPost.propTypes = {
   contentClassName: PropTypes.string,
+  uploadBtnClassName: PropTypes.string,
   postBtnClassName: PropTypes.string,
   placeholder: PropTypes.string,
   uploadBtsPosition: PropTypes.string,
   displayAvatar: PropTypes.bool,
+  children: PropTypes.node,
 };
 
 AddPost.defaultProps = {
   contentClassName: '',
+  uploadBtnClassName: '',
   postBtnClassName: '',
   uploadBtsPosition: 'start',
   placeholder: 'Start typing',
   displayAvatar: false,
+  children: null,
 };
 
 export default AddPost;

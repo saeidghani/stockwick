@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
@@ -10,10 +9,10 @@ import Input from '../UI/Input';
 import { useQuery } from '../../hooks/useQuery';
 
 const { TabPane } = Tabs;
-const { Search } = Input;
 
 function FollowListModal({ visible, onOk, onCancel }) {
   const allItems = [1, 2, 3, 4, 5, 6, 7];
+  // eslint-disable-next-line no-unused-vars
   const [parsedQuery, query, setQuery] = useQuery();
   const { tab } = parsedQuery;
 
@@ -23,9 +22,8 @@ function FollowListModal({ visible, onOk, onCancel }) {
     { title: 'Blocklist', count: 21, items: allItems, key: 'blocklist' },
   ];
 
-  const callback = (tab) => {
-    console.log(tab);
-    setQuery({ tab });
+  const callback = (key) => {
+    setQuery({ tab: key });
   };
 
   // eslint-disable-next-line react/prop-types
@@ -92,6 +90,7 @@ FollowListModal.propTypes = {
 
 FollowListModal.defaultProps = {
   visible: false,
+  onOk: () => {},
 };
 
 export default FollowListModal;

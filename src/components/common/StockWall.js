@@ -1,14 +1,13 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import likeFilledIcon from '../../assets/icons/likeFilled.svg';
 import dislikeOutlineIcon from '../../assets/icons/dislikeOutline.svg';
 import arrowFilledIcon from '../../assets/icons/arrowFilled.svg';
 import bullishIcon from '../../assets/icons/bullish.svg';
 import bearishIcon from '../../assets/icons/bearish.svg';
-import AddPost from './AddPost';
 import Avatar from '../UI/Avatar';
 
-function StockWall() {
+function StockWall({ wrapperClassName, displayTitle }) {
   // eslint-disable-next-line react/prop-types
   const Post = ({ isBullish, isBearish }) => (
     <div className="flex space-x-2">
@@ -54,9 +53,9 @@ function StockWall() {
   );
 
   return (
-    <div className="card p-0">
+    <div className={wrapperClassName}>
       <div className="px-3 py-2 overflow-auto" style={{ maxHeight: 610 }}>
-        <div className="boldPrimaryText text-xl mb-8">appl wall</div>
+        {displayTitle && <div className="boldPrimaryText text-xl mb-8">appl wall</div>}
         <Post isBullish />
         {[1, 2, 3].map((i) => (
           <div key={i} className="mt-8 ml-14">
@@ -64,13 +63,18 @@ function StockWall() {
           </div>
         ))}
       </div>
-      <AddPost uploadBtsPosition="end" />
     </div>
   );
 }
 
 StockWall.propTypes = {
-  //
+  wrapperClassName: PropTypes.string,
+  displayTitle: PropTypes.bool,
+};
+
+StockWall.defaultProps = {
+  wrapperClassName: '',
+  displayTitle: false,
 };
 
 export default StockWall;

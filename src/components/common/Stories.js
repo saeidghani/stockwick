@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Avatar from '../UI/Avatar';
-// import PropTypes from 'prop-types';
 
 const AddStoryIcon = () => (
   <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -29,30 +29,36 @@ const AddStoryIcon = () => (
   </svg>
 );
 
-function Stories() {
+function Stories({ wrapperClassName }) {
   return (
-    <div className="card py-1 px-3">
-      <div className="boldPrimaryText text-xl mb-2">live stories</div>
-      <div className="flex space-x-4 overflow-auto">
-        <div className="flex flex-col items-center space-y-2">
-          <div className="bg-primary bg-opacity-60 border-4 border-solid border-primary rounded-full">
-            <AddStoryIcon />
-          </div>
-          <div className="text-primary font-medium">Roy Mason</div>
-        </div>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-          <div key={i} className="flex flex-col items-center space-y-2">
-            <Avatar wrapperClassName="storyRing" avatarClassName="w-20 h-20" />
+    <div className={wrapperClassName}>
+      <div className="card py-1 px-3">
+        <div className="boldPrimaryText text-xl mb-2">live stories</div>
+        <div className="flex space-x-4 overflow-auto">
+          <div className="flex flex-col items-center space-y-2">
+            <div className="bg-primary bg-opacity-60 border-4 border-solid border-primary rounded-full">
+              <AddStoryIcon />
+            </div>
             <div className="text-primary font-medium">Roy Mason</div>
           </div>
-        ))}
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+            <div key={i} className="flex flex-col items-center space-y-2">
+              <Avatar wrapperClassName="storyRing" avatarClassName="w-20 h-20" />
+              <div className="text-primary font-medium">Roy Mason</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 Stories.propTypes = {
-  //
+  wrapperClassName: PropTypes.string,
+};
+
+Stories.defaultProps = {
+  wrapperClassName: '',
 };
 
 export default Stories;
