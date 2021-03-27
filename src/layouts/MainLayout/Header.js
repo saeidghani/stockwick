@@ -6,22 +6,22 @@ import { Badge, Grid } from 'antd';
 import { PlusOutlined, BellOutlined, CaretUpOutlined } from '@ant-design/icons';
 import clock from '../../assets/icons/clock.svg';
 import usFlag from '../../assets/icons/usFlag.svg';
-import Button from '../../components/Button';
-import ProfileDropdown from '../../components/ProfileDropdown';
-import MenuDrawer from '../../components/MenuDrawer';
-import { MessagesIcon } from '../../components/Icons';
+import Button from '../../components/UI/Button';
+import ProfileDropdown from '../../components/common/ProfileDropdown';
+import MenuDrawer from '../../components/common/MenuDrawer';
+import { MessagesIcon } from '../../components/common/Icons';
 import { useQuery } from '../../hooks/useQuery';
-import CategoriesSearch from '../../components/CategoriesSearch';
-import StockSummarySlider from '../../components/StockSummarySlider';
-import ChangeTimeZoneModal from '../../components/ChangeTimeZoneModal';
-import ChangeMarketModal from '../../components/ChangeMarketModal';
-import RegisterModal from '../../components/RegisterModal';
-import LoginModal from '../../components/LoginModal';
-import CreateAccountModal from '../../components/CreateAccountModal';
-import DirectMessageModal from '../../components/DirectMessageModal';
-import NotificationModal from '../../components/NotificationModal';
-import AddPostModal from '../../components/AddPostModal';
-import routes from '../../constants/routes';
+import CategoriesSearch from '../../components/common/CategoriesSearch';
+import StockDataSlider from '../../components/common/StockDataSlider';
+import ChangeTimeZoneModal from '../../components/common/ChangeTimeZoneModal';
+import ChangeMarketModal from '../../components/common/ChangeMarketModal';
+import RegisterModal from '../../components/common/RegisterModal';
+import LoginModal from '../../components/common/LoginModal';
+import CreateAccountModal from '../../components/common/CreateAccountModal';
+import DirectMessageModal from '../../components/common/DirectMessageModal';
+import NotificationModal from '../../components/common/NotificationModal';
+import AddPostModal from '../../components/common/AddPostModal';
+import routes from '../../routes/RouteMap';
 import menuIcon from '../../assets/icons/menu.svg';
 // import FindAccountModal from '../components/FindAccountModal';
 // import ResetYourPasswordModal from '../components/ResetYourPasswordModal';
@@ -37,13 +37,13 @@ function Header() {
   const [addPostModalVisible, setAddPostModalVisible] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
 
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
   const [parsedQuery] = useQuery();
   const { useBreakpoint } = Grid;
   const { sm: isSmScreen } = useBreakpoint();
 
   return (
-    <header className="bg-primary">
+    <header className="page-header">
       <ChangeTimeZoneModal
         modalVisible={isSmScreen && changeTimeZoneModalVisible}
         drawerVisible={!isSmScreen && changeTimeZoneModalVisible}
@@ -98,83 +98,91 @@ function Header() {
         onNotificationsClick={() => setNotificationModalVisible(true)}
       />
       <div className="hidden md:block">
-        <div className="flex justify-between px-4 py-4 lg:container">
-          <div className="flex items-center space-x-3 lg:space-x-5">
-            {/* TODO just use routes.home after adding auth */}
-            <Link to={!!parsedQuery.auth ? `${routes.home}?auth=true` : routes.home}>
-              <div className="textLogo text-2xl cursor-pointer">stockwick</div>
-            </Link>
-            <div className="">
-              <div className="text-white">NYSE closes in</div>
-              <div className="text-white">03 : 03 : 59</div>
-            </div>
-          </div>
-          <div className="flex items-center space-x-4 lg:space-x-10">
-            <div className="flex items-center space-x-1">
-              <img src={clock} alt="" />
-              <div
-                className="text-white whitespace-nowrap cursor-pointer"
-                onClick={() => setChangeTimeZoneModalVisible(true)}
-              >
-                15 : 46 : 01
+        <div className="page-header-base bg-primary">
+          <div className="flex justify-between px-4 py-4 lg:container">
+            <div className="flex items-center space-x-3 lg:space-x-5">
+              {/* TODO just use routes.home after adding auth */}
+              <Link to={!!parsedQuery?.auth ? `${routes?.home}?auth=true` : routes?.home}>
+                <div className="textLogo text-2xl cursor-pointer">stockwick</div>
+              </Link>
+              <div className="">
+                <div className="text-white">NYSE closes in</div>
+                <div className="text-white">03 : 03 : 59</div>
               </div>
             </div>
-            <div className="flex items-center space-x-1">
-              <img src={usFlag} alt="" />
-              <div
-                className="text-white whitespace-nowrap cursor-pointer"
-                onClick={() => setChangeMarketModalVisible(true)}
-              >
-                New York
-              </div>
-            </div>
-            {!pathname.includes(routes.home) && <CategoriesSearch />}
-          </div>
-          {parsedQuery.auth ? (
             <div className="flex items-center space-x-4 lg:space-x-10">
-              <div className="flex items-center space-x-5">
-                <Badge count={1} offset={[3, 2]} size="small">
-                  <div
-                    className="cursor-pointer"
-                    onClick={() => setDirectMessageModalVisible(true)}
-                  >
-                    <MessagesIcon />
-                  </div>
-                </Badge>
-                <Badge count={4} offset={[-2, 5]} size="small">
-                  <BellOutlined
-                    className="text-white text-xl"
-                    onClick={() => setNotificationModalVisible(true)}
-                  />
-                </Badge>
-                <ProfileDropdown />
+              <div className="flex items-center space-x-1">
+                <img src={clock} alt="" />
+                <div
+                  className="text-white whitespace-nowrap cursor-pointer"
+                  onClick={() => setChangeTimeZoneModalVisible(true)}
+                >
+                  15 : 46 : 01
+                </div>
               </div>
-              <Button
-                text="Post"
-                wrapperClassName="c-secondary-btn"
-                onClick={() => setAddPostModalVisible(true)}
-              />
+              <div className="flex items-center space-x-1">
+                <img src={usFlag} alt="" />
+                <div
+                  className="text-white whitespace-nowrap cursor-pointer"
+                  onClick={() => setChangeMarketModalVisible(true)}
+                >
+                  New York
+                </div>
+              </div>
+              {!pathname.includes(routes.home) && <CategoriesSearch />}
             </div>
-          ) : (
-            <div className="flex items-center space-x-5">
-              <Button
-                text="Register"
-                textClassName="text-secondary"
-                type="link"
-                onClick={() => setRegisterModalVisible(true)}
-              />
-              <Button
-                text="Login"
-                wrapperClassName="c-secondary-btn"
-                onClick={() => setLoginModalVisible(true)}
-              />
-            </div>
-          )}
+            {parsedQuery.auth ? (
+              <div className="flex items-center space-x-4 lg:space-x-10">
+                <div className="flex items-center space-x-5">
+                  <Badge count={1} offset={[3, 2]} size="small">
+                    <div
+                      className="cursor-pointer"
+                      onClick={() => setDirectMessageModalVisible(true)}
+                    >
+                      <MessagesIcon />
+                    </div>
+                  </Badge>
+                  <Badge count={4} offset={[-2, 5]} size="small">
+                    <BellOutlined
+                      className="text-white text-xl"
+                      onClick={() => setNotificationModalVisible(true)}
+                    />
+                  </Badge>
+                  <ProfileDropdown />
+                </div>
+                <Button
+                  text="Post"
+                  wrapperClassName="c-secondary-btn"
+                  onClick={() => setAddPostModalVisible(true)}
+                />
+              </div>
+            ) : (
+              <div className="flex items-center space-x-5">
+                <Button
+                  text="Register"
+                  textClassName="text-secondary"
+                  type="link"
+                  onClick={() => setRegisterModalVisible(true)}
+                />
+                <Button
+                  text="Login"
+                  wrapperClassName="c-secondary-btn"
+                  onClick={() => setLoginModalVisible(true)}
+                />
+              </div>
+            )}
+          </div>
         </div>
-        {parsedQuery.auth && <StockSummarySlider />}
+        {(!pathname?.includes(routes.home) ||
+          (pathname?.includes(routes.home) && parsedQuery.auth)) && (
+          <StockDataSlider wrapperClassName="page-header-slider" />
+        )}
       </div>
       <div className="block md:hidden md:container">
-        <div className="grid grid-cols-3 items-center pt-4 px-6 pb-2">
+        <div
+          className="bg-primary grid grid-cols-3 items-center pt-4 px-6 pb-2
+                        border-b border-solid border-fadePrimary"
+        >
           {parsedQuery.auth ? (
             <PlusOutlined className="justify-self-start text-base text-white" />
           ) : (
@@ -195,9 +203,10 @@ function Header() {
             wrapperClassName="justify-self-end"
           />
         </div>
-        {parsedQuery.auth && <StockSummarySlider />}
+        {pathname?.includes(routes.home) && parsedQuery.auth && <StockDataSlider />}
+        {!pathname?.includes(routes.home) && <StockDataSlider wrapperClassName="hidden sm:block" />}
         <div
-          className="flex justify-center items-center space-x-8 pb-2
+          className="bg-primary flex justify-center items-center space-x-8 py-2
                        border-b border-solid border-fadePrimary"
         >
           <div className="flex space-x-2" onClick={() => setChangeTimeZoneModalVisible(true)}>

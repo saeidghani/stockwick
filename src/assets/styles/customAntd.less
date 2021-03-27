@@ -12,6 +12,7 @@
 @border-radius: 6px;
 @border-radius-lg: 12px;
 @button-padding: 25px 32px;
+@button-padding-sm: 22px 18px;
 @input-padding: 12px 10px;
 @input-padding-lg: 20px 10px;
 @input-padding-xl: 32px 10px;
@@ -31,6 +32,11 @@
       p {
         color: @primary-color !important;
       }
+    }
+  }
+  &--sm {
+    .ant-btn {
+      padding: @button-padding-sm;
     }
   }
   .ant-btn > p {

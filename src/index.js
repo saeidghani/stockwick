@@ -7,7 +7,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import reportWebVitals from './reportWebVitals';
 
 import store from './store';
-import Routes from './routes';
+import Routes from './routes/index';
 import NotificationProvider from './NotificationProvider';
 import './chartiq/styles/base-imports';
 import 'antd/dist/antd.css';

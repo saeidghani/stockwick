@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../layouts/MainLayout/MainLayout';
-import EditProfileForm from '../components/EditProfileForm';
+import EditProfileForm from '../components/common/EditProfileForm';
 
 function EditProfile() {
   return (

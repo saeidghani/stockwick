@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from '../layouts/MainLayout/MainLayout';
-import CategoriesSearch from '../components/CategoriesSearch';
+import CategoriesSearch from '../components/common/CategoriesSearch';
 
 export default function Home() {
   return (

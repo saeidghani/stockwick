@@ -13,6 +13,9 @@
 .c-secondary-btn .ant-btn:active p {
   color: #001560 !important;
 }
+.c-secondary-btn--sm .ant-btn {
+  padding: 22px 18px;
+}
 .c-secondary-btn .ant-btn > p {
   color: #5fe90a !important;
 }
