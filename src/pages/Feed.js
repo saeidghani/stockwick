@@ -85,7 +85,10 @@ function Feed() {
               wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
               isBullish
             />
-            <StockWall wrapperClassName="mt-4 p-4 bg-white rounded" displayChart />
+            <StockWall
+              wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-itemBorder"
+              displayChart
+            />
             <StockWall
               wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-accent"
               isBearish

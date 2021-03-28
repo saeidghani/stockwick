@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { useEffect } from 'react';
 import { Tabs } from 'antd';
 import { useQuery } from '../hooks/useQuery';
