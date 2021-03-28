@@ -113,9 +113,13 @@
   box-shadow: 0 0 0 3px #001560 !important;
   font-size: 10px !important;
 }
+.c-checkbox-simple .ant-checkbox + span {
+  padding-left: 1px !important;
+  padding-right: 1px !important;
+}
 .c-checkbox-simple .ant-checkbox-inner {
-  width: 20.5px !important;
-  height: 20.5px !important;
+  width: 16px !important;
+  height: 16px !important;
   border: none !important;
 }
 .c-checkbox-primary .ant-checkbox-inner {

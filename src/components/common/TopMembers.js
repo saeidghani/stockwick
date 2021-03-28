@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import RingChart from './RingChart';
 import Avatar from '../UI/Avatar';
 
-function TopMembers({ wrapperClassName }) {
+function TopMembers({ wrapperClassName, width }) {
   return (
     <div className={wrapperClassName}>
-      <div className="card p-5 w-full" style={{ width: 700 }}>
+      <div className="card p-5 w-full" style={{ width }}>
         <div className="boldPrimaryText text-base mb-4">char title #1</div>
         <div className="flex justify-between items-center">
           <div className="flex flex-col space-y-6 w-96">
@@ -45,10 +45,12 @@ function TopMembers({ wrapperClassName }) {
 
 TopMembers.propTypes = {
   wrapperClassName: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 TopMembers.defaultProps = {
   wrapperClassName: '',
+  width: 700,
 };
 
 export default TopMembers;

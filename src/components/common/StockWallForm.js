@@ -4,8 +4,9 @@ import { Form } from 'antd';
 import AddPost from './AddPost';
 import StockWall from './StockWall';
 
-function StockWallForm({ wrapperClassName }) {
+function StockWallForm({ wrapperClassName, maxHeight, displayChart }) {
   const [form] = Form.useForm();
+  console.log(displayChart);
 
   const onFinish = (values) => {
     console.log('Success:', values);
@@ -45,7 +46,7 @@ function StockWallForm({ wrapperClassName }) {
           placeholder="#stonksgame #strong, post something…"
           displayAvatar
         >
-          <StockWall />
+          <StockWall displayChart={displayChart} maxHeight={maxHeight} />
         </AddPost>
       </Form>
     </div>
@@ -54,10 +55,14 @@ function StockWallForm({ wrapperClassName }) {
 
 StockWallForm.propTypes = {
   wrapperClassName: PropTypes.string,
+  displayChart: PropTypes.bool,
+  maxHeight: PropTypes.number,
 };
 
 StockWallForm.defaultProps = {
   wrapperClassName: '',
+  displayChart: false,
+  maxHeight: null,
 };
 
 export default StockWallForm;

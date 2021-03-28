@@ -11,8 +11,8 @@ import Button from '../UI/Button';
 
 function StockSummary() {
   return (
-    <div className="grid grid-cols-9 gap-y-4 items-center bg-primary text-white w-full px-2 pt-5 pb-5">
-      <div className="col-start-1 row-start-1 col-span-3 sm:col-start-1 sm:row-start-1 sm:col-span-2 md:col-start-1 md:row-start-1 md:col-span-1 flex items-center space-x-3">
+    <div className="grid grid-cols-9 gap-y-4 md:flex md:justify-between items-center bg-primary text-white w-full px-2 pt-5 pb-5">
+      <div className="col-start-1 row-start-1 col-span-3 sm:col-start-1 sm:row-start-1 sm:col-span-2 flex items-center space-x-3">
         <LogoIcon
           icon={apple}
           wrapperClassName="bg-white rounded-full relative"
@@ -24,11 +24,11 @@ function StockSummary() {
           <div className="whitespace-no-wrap text-sm capitalize">apple, Inc.</div>
         </div>
       </div>
-      <div className="col-start-1 row-start-2 col-span-2 sm:col-start-3 sm:row-start-1 sm:col-span-2 sm:justify-self-start sm:pt-4 md:justify-self-center md:pt-0 md:col-start-2 md:row-start-1 md:col-span-1 flex flex-col sm:flex-row md:flex-col justify-between items-center h-full">
+      <div className="col-start-1 row-start-2 col-span-2 sm:col-start-3 sm:row-start-1 sm:col-span-2 sm:justify-self-start sm:pt-4 md:pt-0 md:col-start-2 flex flex-col sm:flex-row md:flex-col justify-between items-center h-full">
         <img className="w-8 mb-2" src={usFlag} alt="" />
         <div className="text-sm sm:ml-2 sm:mb-2 md:ml-0 md:mb-0">nasdaq</div>
       </div>
-      <div className="col-start-4 row-start-1 col-span-3 sm:col-start-1 sm:row-start-2 sm:col-span-2 sm:justify-self-end sm:relative sm:left-6 md:justify-self-center md:left-0 md:col-start-3 md:row-start-1 md:col-span-1 flex flex-col justify-between items-center h-full">
+      <div className="col-start-4 row-start-1 col-span-3 sm:col-start-1 sm:row-start-2 sm:col-span-2 sm:justify-self-end sm:relative sm:left-6 md:left-0 flex flex-col justify-between items-center h-full">
         <div className="flex items-center space-x-2">
           <div className="text-22px text-secondary">7.13</div>
           <img src={upArrowColorfulIcon} className="w-5" alt="" />
@@ -36,7 +36,7 @@ function StockSummary() {
         </div>
         <div className="text-sm">price</div>
       </div>
-      <div className="col-start-7 row-start-1 col-span-3 sm:col-start-4 sm:row-start-2 sm:col-span-2 md:col-start-4 md:row-start-1 md:col-span-1 flex flex-col justify-between items-center h-full">
+      <div className="col-start-7 row-start-1 col-span-3 sm:col-start-4 sm:row-start-2 sm:col-span-2 flex flex-col justify-between items-center h-full">
         <div className="flex">
           <div className="mr-2 text-xl text-accent mb-2">400 M</div>
           <img src={downArrowColorfulIcon} className="w-5" alt="" />
@@ -48,19 +48,19 @@ function StockSummary() {
           <div className="text-sm">market cap</div>
         </div>
       </div>
-      <div className="col-start-3 row-start-2 col-span-3 justify-self-end sm:justify-self-center sm:col-start-6 sm:row-start-2 sm:col-span-2 md:col-start-5 md:row-start-1 md:col-span-1 flex flex-col justify-between items-center h-full capitalize">
+      <div className="col-start-3 row-start-2 col-span-3 justify-self-end sm:justify-self-center sm:col-start-6 sm:row-start-2 sm:col-span-2 flex flex-col justify-between items-center h-full capitalize">
         <div className="text-base mb-1">may 04</div>
         <div className="text-sm">upcoming earnings</div>
       </div>
-      <div className="col-start-6 row-start-2 col-span-2 justify-self-end sm:justify-self-center sm:col-start-8 sm:row-start-2 sm:col-span-1 md:col-start-6 md:row-start-1 md:col-span-1 flex flex-col justify-between items-center h-full">
+      <div className="col-start-6 row-start-2 col-span-2 justify-self-end sm:justify-self-center sm:col-start-8 sm:row-start-2 sm:col-span-1 flex flex-col justify-between items-center h-full">
         <div className="text-lg text-secondary">6.0%</div>
         <div className="text-sm">div yield </div>
       </div>
-      <div className="col-start-8 row-start-2 col-span-2 justify-self-end sm:justify-self-center pr-4 sm:col-start-9 sm:row-start-2 sm:col-span-1 md:pr-0 md:col-start-7 md:row-start-1 md:col-span-1 flex flex-col justify-between items-center h-full">
+      <div className="col-start-8 row-start-2 col-span-2 justify-self-end sm:justify-self-center pr-4 sm:col-start-9 sm:row-start-2 sm:col-span-1 md:pr-0 flex flex-col justify-between items-center h-full">
         <div className="text-lg text-secondary">4.1</div>
         <div className="text-sm">eps</div>
       </div>
-      <div className="col-start-8 row-start-3 col-span-2 justify-self-center sm:col-start-9 sm:row-start-1 sm:col-span-1 md:col-start-8 md:row-start-1 md:col-span-1 text-sm self-center">
+      <div className="col-start-8 row-start-3 col-span-2 justify-self-center sm:col-start-9 sm:row-start-1 sm:col-span-1 text-sm self-center">
         <div className="hidden md:block">21.4k followers</div>
         <div className="flex items-end space-x-2 ml-5 md:hidden">
           <div className="">2.1 K</div>
@@ -69,7 +69,7 @@ function StockSummary() {
       </div>
       <Button
         text="+follow stock"
-        wrapperClassName="col-start-1 row-start-3 col-span-7 sm:col-start-7 sm:row-start-1 sm:col-span-2 md:col-start-9 md:row-start-1 md:col-span-1 c-secondary-btn c-secondary-btn--sm"
+        wrapperClassName="col-start-1 row-start-3 col-span-7 sm:col-start-7 sm:row-start-1 sm:col-span-2 c-secondary-btn c-secondary-btn--sm"
         textClassName="text-sm"
         block
       />

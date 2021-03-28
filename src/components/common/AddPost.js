@@ -34,11 +34,11 @@ function AddPost({
   const [addPoll, setAddPoll] = useState(false);
 
   // eslint-disable-next-line react/prop-types,no-shadow
-  const ShareTo = ({ children, text, textClassName = '' }) => (
+  const ShareTo = ({ children, text, textClassName = 'ml-2' }) => (
     <Checkbox className="c-checkbox-simple flex items-center" onChange={() => {}} checked={false}>
-      <div className="flex items-center pb-0.5">
+      <div className="flex items-center pb-0.5 ml-1">
         <div>{children}</div>
-        <div className={`text-primary text-xs font-medium pl-1 ${textClassName}`}>{text}</div>
+        <div className={`text-primary text-xs font-medium ${textClassName}`}>{text}</div>
       </div>
     </Checkbox>
   );
@@ -46,16 +46,20 @@ function AddPost({
   return (
     <div className="h-full relative">
       <div
-        className={`flex flex-col justify-between items-center space-x-3 w-full h-full my-auto
-        xs:border xs:border-solid xs:border-gray-100 py-2 pr-6 pl-4 ${contentClassName}`}
+        className={`flex flex-col justify-between items-center w-full h-full my-auto
+        xs:border xs:border-solid xs:border-gray-100 py-2 ${contentClassName} ${
+          children ? '' : 'pl-4'
+        }`}
       >
-        <Button
-          htmlType="submit"
-          wrapperClassName="block xs:hidden absolute top-4 right-4"
-          textClassName="text-primary"
-          text="Post"
-          type="link"
-        />
+        {!children && (
+          <Button
+            htmlType="submit"
+            wrapperClassName="block xs:hidden absolute top-4 right-4"
+            textClassName="text-primary"
+            text="Post"
+            type="link"
+          />
+        )}
         {!children ? (
           <div className="w-full flex space-x-4 mb-4">
             {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
@@ -77,7 +81,7 @@ function AddPost({
         )}
         <div
           className={`justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 
-                     absolute bottom-32 xs:bottom-0 pb-6 xs:pb-0 xs:relative ${uploadBtnClassName}`}
+                     absolute bottom-32 xs:bottom-0 py-1 pl-3 xs:pb-0 xs:relative ${uploadBtnClassName}`}
         >
           <Item name="uploadImage" className="cursor-pointer m-0">
             <img src={uploadImageIcon} alt="" />
@@ -93,9 +97,9 @@ function AddPost({
           </div>
         </div>
       </div>
-      <div className="px-2 py-4 xs:p-6 bg-mediumGray flex justify-between absolute bottom-0 xs:relative">
+      <div className="px-2 py-4 xs:p-6 w-full bg-mediumGray flex justify-between absolute bottom-0 xs:relative">
         <div className="">
-          <div className="flex items-center space-x-2 xs:space-x-4 mb-4">
+          <div className="flex justify-between items-center mb-4">
             <Tag text="all">
               <img src={chartIcon} alt="" className="bg-primary px-1.5" />
             </Tag>
@@ -113,16 +117,16 @@ function AddPost({
             </Tag>
           </div>
           <div className="text-darkGray mb-2">share to:</div>
-          <div className="flex space-x-2">
-            <ShareTo text="select all" textClassName="sm:pl-0" />
+          <div className="flex justify-between">
+            <ShareTo text="select all" textClassName="whitespace-no-wrap" />
             <ShareTo text="facebook">
-              <img src={facebookIcon} alt="" />
+              <img src={facebookIcon} className="w-4 h-4" alt="" />
             </ShareTo>
             <ShareTo text="twitter">
-              <img src={twitterIcon} alt="" />
+              <img src={twitterIcon} className="w-4 h-4" alt="" />
             </ShareTo>
             <ShareTo text="linkedin">
-              <img src={linkedinIcon} alt="" />
+              <img src={linkedinIcon} className="w-4 h-4" alt="" />
             </ShareTo>
           </div>
         </div>

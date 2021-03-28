@@ -5,7 +5,7 @@ function Tag({ children, text }) {
   return (
     <div className="flex h-8">
       {children}
-      <div className="flex items-center px-4 bg-white text-primary text-xs">
+      <div className="flex items-center px-2 sm:px-4 bg-white text-primary text-xs">
         <span className="">{text}</span>
       </div>
     </div>
