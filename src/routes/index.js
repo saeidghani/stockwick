@@ -7,6 +7,7 @@ import Home from '../pages/Home';
 import Profile from '../pages/Profile';
 import EditProfile from '../pages/EditProfile';
 import Stock from '../pages/Stock';
+import Feed from '../pages/Feed';
 import NotFound from '../pages/NotFound';
 import Chart from '../pages/Chart';
 
@@ -20,6 +21,7 @@ const Routes = () => {
       <Route exact path={routes.profile.index} component={Profile} />
       <Route exact path={routes.profile.edit} component={EditProfile} />
       <Route exact path={routes.stock.view(':stockId')} component={Stock} />
+      <Route exact path={routes.feed.index} component={Feed} />
       <Route component={NotFound} />
     </Switch>
   );

@@ -10,4 +10,7 @@ export default {
       return `/stock/${stockId}`;
     },
   },
+  feed: {
+    index: '/feed',
+  },
 };

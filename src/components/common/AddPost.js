@@ -47,9 +47,7 @@ function AddPost({
     <div className="h-full relative">
       <div
         className={`flex flex-col justify-between items-center w-full h-full my-auto
-        xs:border xs:border-solid xs:border-gray-100 py-2 ${contentClassName} ${
-          children ? '' : 'pl-4'
-        }`}
+        xs:border xs:border-solid xs:border-gray-100 ${contentClassName} ${children ? '' : ''}`}
       >
         {!children && (
           <Button

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Carousel } from 'antd';
 import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 
-function Slider({ wrapperClassName }) {
+function FilterSlider({ wrapperClassName, filterList }) {
   const carouselRef = React.createRef();
   const [activeSlide, setActiveSlide] = React.useState(0);
 
@@ -28,33 +28,39 @@ function Slider({ wrapperClassName }) {
   };
 
   return (
-    <div className={`w-full bg-primary px-4 py-3 rounded-3xl ${wrapperClassName}`}>
-      <div className="flex justify-between items-center space-x-4">
-        <LeftOutlined onClick={onPrevious} style={{ fontSize: '15px', color: '#fff' }} />
-        <div className="w-52">
+    <div className={`w-full bg-primary py-2 rounded-3xl ${wrapperClassName}`}>
+      <div className="w-full flex items-center px-3 relative">
+        <RightOutlined onClick={onNext} className="text-base text-white absolute right-2" />
+        <div className="w-full px-4">
           <Carousel {...settings} ref={carouselRef} draggable>
-            {[1, 2, 3, 4, 5, 6].map((i) => (
+            {filterList.map(({ key, title }) => (
               <div
-                key={i}
-                className={i === activeSlide + 1 ? 'text-white' : 'text-white opacity-50'}
+                key={key}
+                className={
+                  key === activeSlide + 1
+                    ? 'text-center text-white whitespace-no-wrap'
+                    : 'text-center text-white whitespace-no-wrap opacity-50'
+                }
               >
-                1 minute
+                {title}
               </div>
             ))}
           </Carousel>
         </div>
-        <RightOutlined onClick={onNext} style={{ fontSize: '15px', color: '#fff' }} />
+        <LeftOutlined onClick={onPrevious} className="text-base text-white absolute left-2" />
       </div>
     </div>
   );
 }
 
-Slider.propTypes = {
+FilterSlider.propTypes = {
   wrapperClassName: PropTypes.string,
+  filterList: PropTypes.arrayOf(PropTypes.shape({ key: PropTypes.number, title: PropTypes.string }))
+    .isRequired,
 };
 
-Slider.defaultProps = {
+FilterSlider.defaultProps = {
   wrapperClassName: '',
 };
 
-export default Slider;
+export default FilterSlider;

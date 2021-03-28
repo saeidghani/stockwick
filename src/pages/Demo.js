@@ -9,7 +9,7 @@ import StockWall from '../components/common/StockWall';
 import NewsReleaseDetailed from '../components/common/NewsReleaseDetailed';
 import NewsReleaseSummary from '../components/common/NewsReleaseSummary';
 import StockDetails from '../components/common/StockDetails';
-import Slider from '../components/common/Slider';
+import FilterSlider from '../components/common/FilterSlider';
 import StocksList from '../components/common/StocksList';
 import Activity from '../components/common/Activity';
 import ProfileIntro from '../components/common/ProfileIntro';
@@ -148,7 +148,7 @@ function Demo() {
         </div>
         <div className="w-80">
           <StocksList>
-            <Slider />
+            <FilterSlider />
           </StocksList>
         </div>
         <div className="w-80">

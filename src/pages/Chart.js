@@ -10,7 +10,7 @@ import {
   HelloWorldChart,
 } from '../chartiq';
 
-function Demo() {
+function Chart() {
   return (
     <Layout>
       <HelloWorldChart />
@@ -21,10 +21,10 @@ function Demo() {
   );
 }
 
-Demo.propTypes = {
+Chart.propTypes = {
   //
 };
 
-Demo.defaultProps = {};
+Chart.defaultProps = {};
 
-export default Demo;
+export default Chart;

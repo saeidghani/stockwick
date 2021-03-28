@@ -46,7 +46,7 @@ function StockWallForm({ wrapperClassName, maxHeight, displayChart }) {
           placeholder="#stonksgame #strong, post something…"
           displayAvatar
         >
-          <StockWall displayChart={displayChart} maxHeight={maxHeight} />
+          <StockWall displayChart={displayChart} maxHeight={maxHeight} comments={[1, 2, 3]} />
         </AddPost>
       </Form>
     </div>
