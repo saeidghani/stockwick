@@ -9,7 +9,7 @@ import BackButton from './BackButton';
 
 const { Item } = Form;
 
-function ResetYourPasswordModal({ modalVisible, drawerVisible, onOk, onCancel }) {
+function ResetPasswordModal({ modalVisible, drawerVisible, onOk, onCancel }) {
   const onFinish = (values) => {
     console.log('Success:', values);
   };
@@ -71,17 +71,17 @@ function ResetYourPasswordModal({ modalVisible, drawerVisible, onOk, onCancel })
   );
 }
 
-ResetYourPasswordModal.propTypes = {
+ResetPasswordModal.propTypes = {
   modalVisible: PropTypes.bool,
   drawerVisible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };
 
-ResetYourPasswordModal.defaultProps = {
+ResetPasswordModal.defaultProps = {
   modalVisible: false,
   drawerVisible: false,
   onOk: () => {},
 };
 
-export default ResetYourPasswordModal;
+export default ResetPasswordModal;

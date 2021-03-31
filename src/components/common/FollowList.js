@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Tabs } from 'antd';
 // import PropTypes from 'prop-types';
 import { useQuery } from '../../hooks/useQuery';
@@ -12,19 +12,15 @@ function FollowList() {
 
   // eslint-disable-next-line no-unused-vars
   const [parsedQuery, query, setQuery] = useQuery();
-  const { tab } = parsedQuery;
-
-  useEffect(() => {
-    setQuery({ tab: 'followers' });
-  }, []);
+  const { followTab } = parsedQuery;
 
   const onTabChange = (key) => {
-    setQuery({ tab: key });
+    setQuery({ followTab: key });
   };
 
   // eslint-disable-next-line react/prop-types
   const FollowColumn = ({ items }) => (
-    <div className="flex flex-col px-4 child-borderBottom">
+    <div className="flex flex-col px-4 child-borderBottom overflow-auto" style={{ height: 400 }}>
       {/* eslint-disable-next-line react/prop-types */}
       {items.map((i) => (
         <div key={i} className="flex justify-between items-center space-x-2 py-4">
@@ -40,11 +36,13 @@ function FollowList() {
 
   return (
     <div className="c-tabs">
-      <Tabs activeKey={tab} onChange={onTabChange}>
+      <Tabs activeKey={followTab} onChange={onTabChange}>
         <TabPane
           tab={
             <div
-              className={`flex flex-col items-center ${tab !== 'followers' ? 'opacity-40' : ''}`}
+              className={`flex flex-col items-center ${
+                followTab !== 'followers' ? 'opacity-40' : ''
+              }`}
             >
               <div className="boldPrimaryText text-xl">64</div>
               <div className="boldPrimaryText text-base">followers</div>
@@ -57,7 +55,9 @@ function FollowList() {
         <TabPane
           tab={
             <div
-              className={`flex flex-col items-center ${tab !== 'following' ? 'opacity-40' : ''}`}
+              className={`flex flex-col items-center ${
+                followTab !== 'following' ? 'opacity-40' : ''
+              }`}
             >
               <div className="boldPrimaryText text-xl">32</div>
               <div className="boldPrimaryText text-base">following</div>

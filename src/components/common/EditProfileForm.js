@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input } from 'antd';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   passwordRules,
@@ -9,14 +10,19 @@ import {
   bioRules,
   mobileRules,
 } from '../../constants/formRules';
+import googleColorfulIcon from '../../assets/icons/googleColorful.svg';
+import routes from '../../routes/RouteMap';
 import Button from '../UI/Button';
 import Avatar from '../UI/Avatar';
 
 const { Item } = Form;
 
 function EditProfileForm({ wrapperClassName }) {
+  const history = useHistory();
+
   const onFinish = (values) => {
     console.log('Success:', values);
+    history.push(routes.profile.index);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -68,6 +74,10 @@ function EditProfileForm({ wrapperClassName }) {
         <Item name="mobile" label="Mobile" rules={mobileRules} className="c-primary-input">
           <Input placeholder="Mobile" className="text-primary" />
         </Item>
+        <div className="flex items-center mt-6 mb-6">
+          <img src={googleColorfulIcon} alt="" />
+          <div className="boldPrimaryText text-sm ml-4">Logged in with Google</div>
+        </div>
 
         <div className="text-primary text-center mt-16 mb-6">Change Password</div>
 

@@ -40,7 +40,7 @@ const _Modal = ({
 _Modal.propTypes = {
   visible: PropTypes.bool,
   closable: PropTypes.bool,
-  title: PropTypes.string,
+  title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
   children: PropTypes.node,
@@ -61,7 +61,7 @@ _Modal.defaultProps = {
   title: '',
   className: '',
   wrapClassName: '',
-  closeIconClassName: 'text-primary',
+  closeIconClassName: '',
   okButtonProps: {},
   cancelButtonProps: {},
   okText: '',

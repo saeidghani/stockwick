@@ -1,16 +1,18 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import { Badge, Grid } from 'antd';
-import { PlusOutlined, BellOutlined, CaretUpOutlined } from '@ant-design/icons';
+import { PlusOutlined, BellOutlined } from '@ant-design/icons';
 import clock from '../../assets/icons/clock.svg';
 import usFlag from '../../assets/icons/usFlag.svg';
+import { useQuery } from '../../hooks/useQuery';
+import routes from '../../routes/RouteMap';
+import menuIcon from '../../assets/icons/menu.svg';
 import Button from '../../components/UI/Button';
 import ProfileDropdown from '../../components/common/ProfileDropdown';
 import MenuDrawer from '../../components/common/MenuDrawer';
 import { MessagesIcon } from '../../components/common/Icons';
-import { useQuery } from '../../hooks/useQuery';
 import CategoriesSearch from '../../components/common/CategoriesSearch';
 import StockDataSlider from '../../components/common/StockDataSlider';
 import ChangeTimeZoneModal from '../../components/common/ChangeTimeZoneModal';
@@ -21,10 +23,8 @@ import CreateAccountModal from '../../components/common/CreateAccountModal';
 import DirectMessageModal from '../../components/common/DirectMessageModal';
 import NotificationModal from '../../components/common/NotificationModal';
 import AddPostModal from '../../components/common/AddPostModal';
-import routes from '../../routes/RouteMap';
-import menuIcon from '../../assets/icons/menu.svg';
-// import FindAccountModal from '../components/FindAccountModal';
-// import ResetYourPasswordModal from '../components/ResetYourPasswordModal';
+import FindAccountModal from '../../components/common/FindAccountModal';
+import ResetPasswordModal from '../../components/common/ResetPasswordModal';
 
 function Header() {
   const [changeTimeZoneModalVisible, setChangeTimeZoneModalVisible] = useState(false);
@@ -32,21 +32,30 @@ function Header() {
   const [registerModalVisible, setRegisterModalVisible] = useState(false);
   const [loginModalVisible, setLoginModalVisible] = useState(false);
   const [findAccountModalVisible, setFindAccountModalVisible] = useState(false);
+  const [createAccountModalVisible, setCreateAccountModalVisible] = useState(false);
+  const [resetPasswordModalVisible, setResetPasswordModalVisible] = useState(false);
   const [notificationModalVisible, setNotificationModalVisible] = useState(false);
   const [directMessageModalVisible, setDirectMessageModalVisible] = useState(false);
   const [addPostModalVisible, setAddPostModalVisible] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
 
-  const { pathname } = useLocation();
-  const [parsedQuery] = useQuery();
   const { useBreakpoint } = Grid;
-  const { sm: isSmScreen } = useBreakpoint();
+  const { sm: smOrHigherScreen } = useBreakpoint();
+  const { pathname } = useLocation();
+  const [parsedQuery, query, setQuery] = useQuery();
+
+  const { market, timeZone } = parsedQuery || {};
+
+  useEffect(() => {
+    if (!market) setQuery({ market: 'New-York-United-States' });
+    if (!timeZone) setQuery({ timeZone: 'North-America' });
+  }, [query, market, timeZone]);
 
   return (
     <header className="page-header">
       <ChangeTimeZoneModal
-        modalVisible={isSmScreen && changeTimeZoneModalVisible}
-        drawerVisible={!isSmScreen && changeTimeZoneModalVisible}
+        modalVisible={smOrHigherScreen && changeTimeZoneModalVisible}
+        drawerVisible={!smOrHigherScreen && changeTimeZoneModalVisible}
         onCancel={() => setChangeTimeZoneModalVisible(false)}
       />
       <ChangeMarketModal
@@ -54,27 +63,36 @@ function Header() {
         onCancel={() => setChangeMarketModalVisible(false)}
       />
       <RegisterModal
-        modalVisible={isSmScreen && registerModalVisible}
-        drawerVisible={!isSmScreen && registerModalVisible}
+        modalVisible={smOrHigherScreen && registerModalVisible}
+        drawerVisible={!smOrHigherScreen && registerModalVisible}
         onCancel={() => setRegisterModalVisible(false)}
+        onOpenLoginModal={() => setLoginModalVisible(true)}
       />
       <LoginModal
-        modalVisible={isSmScreen && loginModalVisible}
-        drawerVisible={!isSmScreen && loginModalVisible}
-        onForgotPasswordClick={() => {
-          setLoginModalVisible(false);
-          setFindAccountModalVisible(true);
-        }}
+        modalVisible={smOrHigherScreen && loginModalVisible}
+        drawerVisible={!smOrHigherScreen && loginModalVisible}
+        onForgotPasswordClick={() => setFindAccountModalVisible(true)}
         onCancel={() => setLoginModalVisible(false)}
+        onOpenRegisterModal={() => setRegisterModalVisible(true)}
       />
-      <CreateAccountModal
-        modalVisible={isSmScreen && findAccountModalVisible}
-        drawerVisible={!isSmScreen && findAccountModalVisible}
+      <FindAccountModal
+        modalVisible={smOrHigherScreen && findAccountModalVisible}
+        drawerVisible={!smOrHigherScreen && findAccountModalVisible}
         onCancel={() => setFindAccountModalVisible(false)}
       />
+      <CreateAccountModal
+        modalVisible={smOrHigherScreen && createAccountModalVisible}
+        drawerVisible={!smOrHigherScreen && createAccountModalVisible}
+        onCancel={() => setCreateAccountModalVisible(false)}
+      />
+      <ResetPasswordModal
+        modalVisible={smOrHigherScreen && resetPasswordModalVisible}
+        drawerVisible={!smOrHigherScreen && resetPasswordModalVisible}
+        onCancel={() => setResetPasswordModalVisible(false)}
+      />
       <DirectMessageModal
-        modalVisible={isSmScreen && directMessageModalVisible}
-        drawerVisible={!isSmScreen && directMessageModalVisible}
+        modalVisible={smOrHigherScreen && directMessageModalVisible}
+        drawerVisible={!smOrHigherScreen && directMessageModalVisible}
         onCancel={() => setDirectMessageModalVisible(false)}
       />
       <NotificationModal
@@ -82,8 +100,8 @@ function Header() {
         onCancel={() => setNotificationModalVisible(false)}
       />
       <AddPostModal
-        modalVisible={isSmScreen && addPostModalVisible}
-        drawerVisible={!isSmScreen && addPostModalVisible}
+        modalVisible={smOrHigherScreen && addPostModalVisible}
+        drawerVisible={!smOrHigherScreen && addPostModalVisible}
         onCancel={() => setAddPostModalVisible(false)}
       />
       <MenuDrawer
@@ -98,7 +116,7 @@ function Header() {
         onNotificationsClick={() => setNotificationModalVisible(true)}
       />
       <div className="hidden md:block">
-        <div className="page-header-base bg-primary">
+        <div className="page-header-base bg-primary border-b border-solid border-fadePrimary">
           <div className="flex justify-between px-4 py-4 lg:container">
             <div className="flex items-center space-x-3 lg:space-x-5">
               {/* TODO just use routes.home after adding auth */}
@@ -173,9 +191,10 @@ function Header() {
             )}
           </div>
         </div>
-        {(!pathname?.includes(routes.home) ||
-          (pathname?.includes(routes.home) && parsedQuery.auth)) && (
-          <StockDataSlider wrapperClassName="page-header-slider" />
+        {parsedQuery.auth && (
+          <StockDataSlider
+            wrapperClassName={pathname.includes(routes.home) ? '' : 'page-header-slider'}
+          />
         )}
       </div>
       <div className="block md:hidden md:container">
@@ -203,8 +222,7 @@ function Header() {
             wrapperClassName="justify-self-end"
           />
         </div>
-        {pathname?.includes(routes.home) && parsedQuery.auth && <StockDataSlider />}
-        {!pathname?.includes(routes.home) && <StockDataSlider wrapperClassName="hidden sm:block" />}
+        {parsedQuery.auth && <StockDataSlider wrapperClassName="hidden sm:block" />}
         <div
           className="bg-primary flex justify-center items-center space-x-8 py-2
                        border-b border-solid border-fadePrimary"

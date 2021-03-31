@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { Tabs } from 'antd';
+/*eslint-disable*/
+import React, { useEffect, useState } from 'react';
+import { Grid, Tabs } from 'antd';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../layouts/MainLayout/MainLayout';
 import StockSummary from '../components/common/StockSummary';
@@ -10,40 +11,96 @@ import CircleChart from '../components/common/CircleChart';
 import SimilarSocks from '../components/common/SimilarSocks';
 import NewsReleaseDetailed from '../components/common/NewsReleaseDetailed';
 import TopMembers from '../components/common/TopMembers';
-import StockWallForm from '../components/common/StockWallForm';
+import FilterSlider from '../components/common/FilterSlider';
+import AddPost from '../components/common/AddPost';
+import StockWall from '../components/common/StockWall';
+import AddStoryModal from '../components/common/AddStoryModal';
+import StoryViewModal from '../components/common/StoryViewModal';
+import StoryViewersModal from '../components/common/StoryViewersModal';
 
 const { TabPane } = Tabs;
 
 function Stock() {
+  const [addStoryModalVisible, setAddStoryModalVisible] = useState(false);
+  const [storyViewModalVisible, setStoryViewModalVisible] = useState(false);
+  const [storyViewersModalVisible, setStoryViewersModalVisible] = useState(false);
+
   // eslint-disable-next-line no-unused-vars
   const [parsedQuery, query, setQuery] = useQuery();
   const { tab } = parsedQuery;
 
+  const { useBreakpoint } = Grid;
+  const { sm: smOrHigherScreen } = useBreakpoint();
+
   useEffect(() => {
-    setQuery({ tab: 'overview' });
+    setQuery({ auth: true, tab: 'overview' });
   }, []);
 
   const onTabChange = (key) => {
     setQuery({ tab: key });
   };
 
+  const comments = [{ key: 1 }, { key: 2 }, { key: 3 }, { key: 4 }, { key: 5 }, { key: 6 }];
+
+  const timeList = [
+    { key: 1, title: '1 minute' },
+    { key: 2, title: '5 minute' },
+    { key: 3, title: '15 minute' },
+    { key: 4, title: '20 minute' },
+    { key: 5, title: '30 minute' },
+    { key: 6, title: '45 minute' },
+  ];
+
+  const periodList = [
+    { key: 1, title: 'daily' },
+    { key: 2, title: 'weekly' },
+    { key: 3, title: 'monthly' },
+    { key: 4, title: 'yearly' },
+    { key: 5, title: 'yearly' },
+    { key: 6, title: 'yearly' },
+  ];
+
   return (
-    <Layout mainClassName="md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+      <AddStoryModal
+        onCancel={() => setAddStoryModalVisible(false)}
+        modalVisible={smOrHigherScreen && addStoryModalVisible}
+        drawerVisible={!smOrHigherScreen && addStoryModalVisible}
+      />
+      <StoryViewModal
+        onCancel={() => setStoryViewModalVisible(false)}
+        modalVisible={smOrHigherScreen && storyViewModalVisible}
+        drawerVisible={!smOrHigherScreen && storyViewModalVisible}
+        onStoryViewers={() => setStoryViewersModalVisible(true)}
+      />
+      <StoryViewersModal
+        onCancel={() => setStoryViewersModalVisible(false)}
+        modalVisible={smOrHigherScreen && storyViewersModalVisible}
+        drawerVisible={!smOrHigherScreen && storyViewersModalVisible}
+      />
       <div className="pb-2 md:bg-blueGray md:px-4 md:pt-4 md:pb-10">
         <StockSummary />
         <div className="hidden md:block mt-4">
           <div className="grid grid-cols-2 gap-x-4">
             <div className="">
-              <Chart wrapperClassName="w-full h-80 mb-4" />
-              <StockDetails wrapperClassName="mb-4" />
-              <div className="flex space-x-4">
-                <div className="w-full mb-4">
-                  <div className="boldPrimaryText text-lg mb-2">technical analysis</div>
-                  <CircleChart wrapperClassName="w-full h-80" />
+              <Chart wrapperClassName="mb-4 card p-4" title="advance charting" height={370} />
+              <div className="relative h-20">
+                <StockDetails wrapperClassName="mb-4 absolute w-full" />
+              </div>
+              <div className="flex space-x-3">
+                <div className="w-full mb-4 mr-2 md:bg-white md:p-3">
+                  <div className="boldPrimaryText text-lg mb-4">technical analysis</div>
+                  <div style={{ width: 300 }} className="mx-auto mb-4">
+                    <FilterSlider filterList={timeList} />
+                  </div>
+                  <CircleChart wrapperClassName="w-full h-48" />
                 </div>
-                <div className="w-full mb-4">
-                  <div className="boldPrimaryText text-lg mb-2">bull vs bear poll</div>
-                  <CircleChart wrapperClassName="w-full h-80" />
+                <div className="w-full mb-4 md:bg-white md:p-3">
+                  <div className="boldPrimaryText text-lg mb-4">bull vs bear poll</div>
+                  <div style={{ width: 300 }} className="mx-auto mb-4">
+                    <FilterSlider filterList={periodList} />
+                  </div>
+                  <CircleChart wrapperClassName="w-full h-48" />
                 </div>
               </div>
               <SimilarSocks wrapperClassName="mb-4" />
@@ -53,9 +110,40 @@ function Stock() {
               </div>
             </div>
             <div className="">
-              <Stories wrapperClassName="mb-4" />
-              <StockWallForm wrapperClassName="card p-0 mb-2" maxHeight={500} />
-              <StockWallForm wrapperClassName="card p-0 mb-2" maxHeight={485} displayChart />
+              <Stories
+                wrapperClassName="mb-4"
+                onAddStory={() => setAddStoryModalVisible(true)}
+                onStoryView={() => setStoryViewModalVisible(true)}
+              />
+              <AddPost
+                wrapperClassName="card p-0 mb-2"
+                uploadBtnClassName="border border-solid border-cardBorder justify-end w-full pr-4"
+                uploadBtsPosition="end"
+                formName="stockWall"
+              >
+                <StockWall
+                  wrapperClassName="px-4 pt-4"
+                  maxHeight={500}
+                  comments={comments}
+                  isBullish
+                  title="appl wall"
+                />
+              </AddPost>
+              <AddPost
+                wrapperClassName="card p-0 mb-2"
+                uploadBtnClassName="border border-solid border-cardBorder justify-end w-full pr-4"
+                uploadBtsPosition="end"
+                formName="stockCharts"
+              >
+                <StockWall
+                  wrapperClassName="px-4 pt-4"
+                  maxHeight={485}
+                  comments={comments}
+                  isBearish
+                  title="appl charts"
+                  displayChart
+                />
+              </AddPost>
             </div>
           </div>
           <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
@@ -76,7 +164,11 @@ function Stock() {
             }
             key="overview"
           >
-            <Stories wrapperClassName="mb-8" />
+            <Stories
+              wrapperClassName="mb-8"
+              onAddStory={() => setAddStoryModalVisible(true)}
+              onStoryView={() => setStoryViewModalVisible(true)}
+            />
             <div className="boldPrimaryText text-lg mb-2">advance charting</div>
             <Chart wrapperClassName="w-full h-80 mb-8" />
             <StockDetails wrapperClassName="mb-8" />
@@ -114,7 +206,9 @@ function Stock() {
             }
             key="appleWall"
           >
-            <StockWallForm wrapperClassName="card p-0 mb-8" />
+            <AddPost wrapperClassName="card p-0 mb-8" formName="stockWall">
+              <StockWall comments={comments} />
+            </AddPost>
           </TabPane>
           <TabPane
             tab={
@@ -124,7 +218,9 @@ function Stock() {
             }
             key="appleCharts"
           >
-            <StockWallForm wrapperClassName="card p-0 mb-8" displayChart />
+            <AddPost wrapperClassName="card p-0 mb-8" formName="stockCharts">
+              <StockWall comments={comments} displayChart />
+            </AddPost>
           </TabPane>
         </Tabs>
         <div className="text-lightGray text-center mt-3 mb-20">© stockwick inc.</div>

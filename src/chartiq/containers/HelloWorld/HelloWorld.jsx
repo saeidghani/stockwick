@@ -799,19 +799,16 @@ export default class HelloWorld extends React.Component {
 
   render() {
     return (
-      <div style={{ margin: '20px' }}>
-        <h2>Hello world static chart example</h2>
-        <div
-          ref={this.container}
-          className="chartContainer"
-          style={{
-            width: '800px',
-            height: '460px',
-            position: 'relative',
-            border: 'solid 1px #aaa',
-          }}
-        />
-      </div>
+      <div
+        ref={this.container}
+        className="chartContainer w-full"
+        style={{
+          //width: '460px',
+          height: '300px',
+          position: 'relative',
+          border: 'solid 1px #aaa',
+        }}
+      />
     );
   }
 }

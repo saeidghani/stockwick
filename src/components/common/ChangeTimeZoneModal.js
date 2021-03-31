@@ -1,50 +1,47 @@
 import React from 'react';
+import { Input } from 'antd';
 import PropTypes from 'prop-types';
-import Modal from '../UI/Modal';
 import northAmericaIcon from '../../assets/icons/northAmerica.svg';
 import southAmericaIcon from '../../assets/icons/southAmerica.svg';
 import europeIcon from '../../assets/icons/europe.svg';
 import africaIcon from '../../assets/icons/africa.svg';
 import asiaIcon from '../../assets/icons/asia.svg';
-import Input from '../UI/Input';
 import searchIcon from '../../assets/icons/search.svg';
-import BackButton from './BackButton';
-import Drawer from '../UI/Drawer';
 import styleVar from '../../constants/styleVariables';
+import BackButton from './BackButton';
+import Modal from '../UI/Modal';
+import Drawer from '../UI/Drawer';
+import { useQuery } from '../../hooks/useQuery';
 
 function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
+  // eslint-disable-next-line no-unused-vars
+  const [parsedQuery, query, setQuery] = useQuery();
+
+  const timeZones = [
+    { key: 1, title: 'North America', slug: 'North-America', icon: northAmericaIcon },
+    { key: 2, title: 'South America', slug: 'South-America', icon: southAmericaIcon },
+    { key: 3, title: 'Africa', slug: 'Africa', icon: africaIcon },
+    { key: 4, title: 'Europe', slug: 'Europe', icon: europeIcon },
+    { key: 5, title: 'Asia', slug: 'Asia', icon: asiaIcon },
+  ];
+
   const Content = () => (
     <>
       <div className="text-white text-center pt-6 mb-10">Change Time Zone</div>
       <div className="flex justify-between px-4">
-        <div className="flex flex-col justify-between items-center">
-          <img src={northAmericaIcon} alt="" />
-          <div className="text-white">North America</div>
-        </div>
-        <div className="flex flex-col justify-between items-center">
-          <img src={southAmericaIcon} alt="" />
-          <div className="text-white">South America</div>
-        </div>
-        <div className="flex flex-col justify-between items-center">
-          <img src={africaIcon} alt="" />
-          <div className="text-white">Africa</div>
-        </div>
-        <div className="flex flex-col justify-between items-center">
-          <img src={europeIcon} alt="" />
-          <div className="text-white">Europe</div>
-        </div>
-        <div className="flex flex-col justify-between items-center">
-          <img src={asiaIcon} alt="" />
-          <div className="text-white">Asia</div>
-        </div>
+        {timeZones.map((t) => (
+          <div
+            key={t.key}
+            className="flex flex-col justify-between items-center"
+            onClick={() => setQuery({ timeZone: t.slug })}
+          >
+            <img src={t.icon} alt="" />
+            <div className="text-white">{t.title}</div>
+          </div>
+        ))}
       </div>
-      <div className="flex px-6 relative mt-8 pb-80">
-        <Input
-          wrapperClassName="c-primary-filled-input w-full"
-          onChange={() => {}}
-          name="search"
-          placeholder="Search..."
-        />
+      <div className="flex px-6 relative mt-8 pb-80 c-primary-filled-input">
+        <Input name="search" placeholder="Search..." className="w-full text-white" />
         <img className="absolute top-4 right-10" src={searchIcon} alt="" />
       </div>
     </>

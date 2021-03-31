@@ -11,9 +11,17 @@ import { passwordRules, emailRules } from '../../constants/formRules';
 
 const { Item } = Form;
 
-function LoginModal({ modalVisible, drawerVisible, onOk, onCancel, onForgotPasswordClick }) {
+function LoginModal({
+  modalVisible,
+  drawerVisible,
+  onOk,
+  onCancel,
+  onForgotPasswordClick,
+  onOpenRegisterModal,
+}) {
   const onFinish = (values) => {
     console.log('Success:', values);
+    onCancel();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -26,7 +34,15 @@ function LoginModal({ modalVisible, drawerVisible, onOk, onCancel, onForgotPassw
         <div className="text-22px text-primary mb-2">Login</div>
         <div className="flex opacity-75">
           <div className="text-base text-primary">Don’t have an account yet?</div>
-          <Button text="Sign Up" type="link" className="pl-1 pb-5 text-base" />
+          <Button
+            text="Sign Up"
+            type="link"
+            className="pl-1 pb-5 text-base"
+            onClick={() => {
+              onCancel();
+              onOpenRegisterModal();
+            }}
+          />
         </div>
       </div>
       <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-4 w-full px-0 xs:px-1 sm:px-8 pb-6">
@@ -60,7 +76,10 @@ function LoginModal({ modalVisible, drawerVisible, onOk, onCancel, onForgotPassw
             type="link"
             wrapperClassName="-mt-5"
             className="p-0 text-primary"
-            onClick={onForgotPasswordClick}
+            onClick={() => {
+              onCancel();
+              onForgotPasswordClick();
+            }}
           >
             Forgot Password ?
           </Button>
@@ -99,6 +118,7 @@ LoginModal.propTypes = {
   drawerVisible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onForgotPasswordClick: PropTypes.func,
+  onOpenRegisterModal: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };
 

@@ -12,6 +12,7 @@ const { Item } = Form;
 function FindAccountModal({ modalVisible, drawerVisible, onOk, onCancel }) {
   const onFinish = (values) => {
     console.log('Success:', values);
+    onCancel();
   };
 
   const onFinishFailed = (errorInfo) => {

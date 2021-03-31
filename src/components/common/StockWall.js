@@ -13,7 +13,7 @@ function StockWall({
   maxHeight,
   isBullish,
   isBearish,
-  displayTitle,
+  title,
   displayChart,
   comments,
 }) {
@@ -32,7 +32,9 @@ function StockWall({
               }`}
             >
               <img src={isBullishType ? bullishIcon : bearishIcon} alt="" />
-              <div className="text-xs text-white font-medium">Bullish</div>
+              <div className="text-xs text-white font-medium">
+                {isBullishType ? 'Bullish' : 'Bearish'}
+              </div>
             </div>
           </div>
         </div>
@@ -55,7 +57,7 @@ function StockWall({
             <div className="boldPrimaryText">Reply</div>
           </div>
         </div>
-        {displayChartPost && <Chart wrapperClassName="w-full h-80 mt-2" />}
+        {displayChartPost && <Chart wrapperClassName="mt-5" />}
       </div>
     </div>
   );
@@ -63,11 +65,11 @@ function StockWall({
   return (
     <div className={wrapperClassName}>
       <div className="px-1 py-2 overflow-auto" style={{ maxHeight }}>
-        {displayTitle && <div className="boldPrimaryText text-xl mb-8">appl wall</div>}
+        {title && <div className="boldPrimaryText text-xl mb-8">{title}</div>}
         <Post isBullishType={isBullish} isBearishType={isBearish} displayChartPost={displayChart} />
-        {comments.map((i) => (
-          <div key={i} className="mt-8 ml-12">
-            <Post isBearish />
+        {comments.map((c) => (
+          <div key={c.key} className="mt-8 ml-12">
+            <Post isBearishType />
           </div>
         ))}
       </div>
@@ -77,17 +79,17 @@ function StockWall({
 
 StockWall.propTypes = {
   wrapperClassName: PropTypes.string,
-  displayTitle: PropTypes.bool,
+  title: PropTypes.string,
   displayChart: PropTypes.bool,
   isBullish: PropTypes.bool,
   isBearish: PropTypes.bool,
   maxHeight: PropTypes.number,
-  comments: PropTypes.arrayOf,
+  comments: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 StockWall.defaultProps = {
   wrapperClassName: '',
-  displayTitle: false,
+  title: '',
   displayChart: false,
   isBullish: false,
   isBearish: false,

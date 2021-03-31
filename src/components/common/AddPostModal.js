@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'antd';
 import Modal from '../UI/Modal';
-import AddPost from './AddPost';
 import BackButton from './BackButton';
+import AddPost from './AddPost';
 import Drawer from '../UI/Drawer';
 
 function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
@@ -14,47 +14,6 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
     onCancel();
   };
 
-  const onFinish = (values) => {
-    console.log('Success:', values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
-  };
-
-  const Content = () => (
-    <div className="xs:pt-12">
-      <Form
-        name="addPost"
-        initialValues={{
-          choice1: '',
-          choice2: '',
-          days: '',
-          extraChoices: '',
-          hours: '',
-          minutes: '',
-          question: '',
-          text: '',
-          uploadGif: '',
-          uploadImage: '',
-          uploadVideo: '',
-          remember: true,
-        }}
-        form={form}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        className="h-full"
-      >
-        <AddPost
-          contentClassName="flex-col sm:items-start"
-          postBtnClassName="self-end"
-          placeholder="#stonksgame #strong, post something…"
-          displayAvatar
-        />
-      </Form>
-    </div>
-  );
-
   return (
     <div>
       <Modal
@@ -63,7 +22,7 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
         onOk={onOk}
         visible={modalVisible}
       >
-        <Content />
+        <AddPost form={form} wrapperClassName="xs:pt-12" />
       </Modal>
       <Drawer
         visible={drawerVisible}
@@ -77,7 +36,11 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
           </div>
         }
       >
-        <Content />
+        <AddPost
+          form={form}
+          wrapperClassName="xs:pt-12"
+          contentClassName="xs:border xs:border-solid xs:border-gray-100"
+        />
       </Drawer>
     </div>
   );

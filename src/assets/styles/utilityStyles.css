@@ -41,7 +41,13 @@
 .page-header-slider {
   display: none;
 }
+.page-header-base {
+  height: 90px;
+}
 .page-header-base:hover + .page-header-slider {
   display: block;
+}
+.home-page {
+  min-height: calc(100vh - 315px);
 }
 /*# sourceMappingURL=utilityStyles.css.map */

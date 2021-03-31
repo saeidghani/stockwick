@@ -1,34 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
-import searchIcon from '../../assets/icons/search.svg';
+import { useQuery } from '../../hooks/useQuery';
 import Modal from '../UI/Modal';
 import Button from '../UI/Button';
+import Drawer from '../UI/Drawer';
+import BackButton from './BackButton';
 import Avatar from '../UI/Avatar';
 import Input from '../UI/Input';
-import { useQuery } from '../../hooks/useQuery';
+import searchIcon from '../../assets/icons/search.svg';
 
 const { TabPane } = Tabs;
 
-function FollowListModal({ visible, onOk, onCancel }) {
-  const allItems = [1, 2, 3, 4, 5, 6, 7];
+function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
   // eslint-disable-next-line no-unused-vars
   const [parsedQuery, query, setQuery] = useQuery();
-  const { tab } = parsedQuery;
+  const { modalFollowTab } = parsedQuery;
 
+  useEffect(() => {
+    setQuery({ modalFollowTab: 'following' });
+  }, []);
+
+  const onTabChange = (key) => {
+    setQuery({ modalFollowTab: key });
+  };
+
+  const allItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const allTabs = [
     { title: 'Following', count: 32, items: allItems, key: 'following' },
     { title: 'Followers', count: 21, items: allItems, key: 'followers' },
     { title: 'Blocklist', count: 21, items: allItems, key: 'blocklist' },
   ];
 
-  const callback = (key) => {
-    setQuery({ tab: key });
-  };
-
   // eslint-disable-next-line react/prop-types
-  const FollowColumn = ({ items }) => (
-    <div className="flex flex-col px-4 w-full">
+  const FollowColumn = ({ items, height }) => (
+    <div className="flex flex-col px-4 w-full overflow-auto" style={{ height }}>
       {/* eslint-disable-next-line react/prop-types */}
       {items?.map((i) => (
         <div key={i} className="flex justify-between items-center space-x-2 py-4">
@@ -54,42 +60,77 @@ function FollowListModal({ visible, onOk, onCancel }) {
     </div>
   );
 
-  return (
-    <Modal onCancel={onCancel} onOk={onOk} visible={visible}>
-      <div className="pt-4">
+  // eslint-disable-next-line react/prop-types
+  const Content = ({ height, wrapClassName }) => (
+    <div className={wrapClassName}>
+      <div className={drawerVisible ? 'c-tabs' : ''}>
         <Tabs
           defaultActiveKey="following"
-          activeKey={tab}
-          onChange={callback}
-          tabBarExtraContent={SearchInput}
+          activeKey={modalFollowTab}
+          onChange={onTabChange}
+          tabBarExtraContent={modalVisible && SearchInput}
         >
           {allTabs.map((t) => (
             <TabPane
               tab={
-                <div className={`flex flex-col items-center ${tab !== t.key ? 'opacity-40' : ''}`}>
+                <div
+                  className={`flex flex-col items-center ${
+                    modalFollowTab !== t.key ? 'opacity-40' : ''
+                  }`}
+                >
                   <div className="boldPrimaryText text-xl">{t.count}</div>
                   <div className="boldPrimaryText text-base">{t.title}</div>
                 </div>
               }
               key={t.key}
             >
-              <FollowColumn items={t.items} />
+              <FollowColumn items={t.items} height={height} />
             </TabPane>
           ))}
         </Tabs>
       </div>
-    </Modal>
+    </div>
+  );
+
+  return (
+    <div>
+      <Modal onCancel={onCancel} onOk={onOk} visible={modalVisible}>
+        <Content wrapClassName="pt-5" height={400} />
+      </Modal>
+      <Drawer
+        visible={drawerVisible}
+        onClose={onCancel}
+        wrapClassName="w-full h-full"
+        headerStyle={{ border: 0 }}
+        bodyStyle={{ paddingTop: 0 }}
+        title={
+          <div className="bg-primary grid grid-cols-3 justify-items-center items-center py-2 px-4">
+            <BackButton
+              wrapperClassName="justify-self-start"
+              textClassName="text-white text-base pt-0.5"
+              iconClassName="text-white text-base mr-2"
+              onClick={onCancel}
+            />
+            <div className="textLogo text-xl">stockwick</div>
+          </div>
+        }
+      >
+        <Content height={680} />
+      </Drawer>
+    </div>
   );
 }
 
 FollowListModal.propTypes = {
-  visible: PropTypes.bool,
+  modalVisible: PropTypes.bool,
+  drawerVisible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
 };
 
 FollowListModal.defaultProps = {
-  visible: false,
+  modalVisible: false,
+  drawerVisible: false,
   onOk: () => {},
 };
 

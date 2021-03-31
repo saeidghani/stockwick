@@ -1,10 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useQuery } from '../../hooks/useQuery';
 import Modal from '../UI/Modal';
 import Button from '../UI/Button';
 import Divider from '../UI/Divider';
 
 function ChangeMarketModal({ visible, onOk, onCancel }) {
+  // eslint-disable-next-line no-unused-vars
+  const [parsedQuery, query, setQuery] = useQuery();
+  const { market } = parsedQuery || {};
+
+  const markets = [
+    { key: 1, title: 'Tokyo Japan', slug: 'Tokyo-Japan' },
+    { key: 2, title: 'New York United States', slug: 'New-York-United-States' },
+    { key: 3, title: 'London England', slug: 'London-England' },
+    { key: 4, title: 'Sydney Australia', slug: 'Sydney-Australia' },
+  ];
+
   return (
     <Modal
       wrapClassName="c-modal-padding-none c-primary-modal"
@@ -17,21 +29,17 @@ function ChangeMarketModal({ visible, onOk, onCancel }) {
     >
       <div className="text-white text-center pt-5">Change Market</div>
       <div className="flex flex-col items-center pb-4 mt-6 mb-6 px-6">
-        <Button text="Tokyo Japan" type="link" textClassName="text-white text-opacity-60 text-xs" />
-        <Divider className="bg-opacity-5 w-16" />
-        <Button text="New York United States" type="link" textClassName="text-white text-base" />
-        <Divider className="bg-opacity-5 w-16" />
-        <Button
-          text="LondonEngland"
-          type="link"
-          textClassName="text-white text-opacity-60 text-xs"
-        />
-        <Divider className="bg-opacity-5 w-16" />
-        <Button
-          text="SydneyAustralia"
-          type="link"
-          textClassName="text-white text-opacity-60 text-xs"
-        />
+        {markets.map((m, index) => (
+          <div key={m.key}>
+            <Button
+              text={m.title}
+              onClick={() => setQuery({ market: m.slug })}
+              type="link"
+              textClassName={`text-white text-xs ${market === m.slug ? '' : 'text-opacity-60'}`}
+            />
+            {index !== markets.length - 1 && <Divider className="bg-opacity-5 w-16" />}
+          </div>
+        ))}
       </div>
     </Modal>
   );

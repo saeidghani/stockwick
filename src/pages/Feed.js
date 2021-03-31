@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import chartIcon from '../assets/icons/chart.svg';
 import balancedIcon from '../assets/icons/balanced.svg';
@@ -14,8 +14,27 @@ import Tag from '../components/common/Tag';
 import { BullishIcon } from '../components/common/Icons';
 import FilterSlider from '../components/common/FilterSlider';
 import StockWall from '../components/common/StockWall';
+import { useQuery } from '../hooks/useQuery';
+import AddStoryModal from '../components/common/AddStoryModal';
+import StoryViewModal from '../components/common/StoryViewModal';
+import StoryViewersModal from '../components/common/StoryViewersModal';
+import { Grid } from 'antd';
 
 function Feed() {
+  const [addStoryModalVisible, setAddStoryModalVisible] = useState(false);
+  const [storyViewModalVisible, setStoryViewModalVisible] = useState(false);
+  const [storyViewersModalVisible, setStoryViewersModalVisible] = useState(false);
+
+  // eslint-disable-next-line no-unused-vars
+  const [parsedQuery, query, setQuery] = useQuery();
+
+  const { useBreakpoint } = Grid;
+  const { sm: smOrHigherScreen } = useBreakpoint();
+
+  useEffect(() => {
+    setQuery({ auth: true });
+  }, []);
+
   const watchListFilterList = [
     { key: 1, title: 'all' },
     { key: 2, title: 'stocks' },
@@ -53,6 +72,22 @@ function Feed() {
 
   return (
     <Layout mainClassName="md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+      <AddStoryModal
+        onCancel={() => setAddStoryModalVisible(false)}
+        modalVisible={smOrHigherScreen && addStoryModalVisible}
+        drawerVisible={!smOrHigherScreen && addStoryModalVisible}
+      />
+      <StoryViewModal
+        onCancel={() => setStoryViewModalVisible(false)}
+        modalVisible={smOrHigherScreen && storyViewModalVisible}
+        drawerVisible={!smOrHigherScreen && storyViewModalVisible}
+        onStoryViewers={() => setStoryViewersModalVisible(true)}
+      />
+      <StoryViewersModal
+        onCancel={() => setStoryViewersModalVisible(false)}
+        modalVisible={smOrHigherScreen && storyViewersModalVisible}
+        drawerVisible={!smOrHigherScreen && storyViewersModalVisible}
+      />
       <div className="pb-2 bg-blueGray px-4 pt-6 md:pt-4 md:pb-10">
         <div className="hidden md:grid md:grid-cols-4 md:gap-x-4">
           <div className="col-start-1">
@@ -99,14 +134,22 @@ function Feed() {
             />
           </div>
           <div className="col-start-4">
-            <Stories wrapperClassName="mb-4" />
+            <Stories
+              wrapperClassName="mb-4"
+              onAddStory={() => setAddStoryModalVisible(true)}
+              onStoryView={() => setStoryViewModalVisible(true)}
+            />
             <NewsReleaseSummary wrapperClassName="mb-4" />
             <Activity />
           </div>
         </div>
         <div className="md:hidden">
           <Tags />
-          <Stories wrapperClassName="my-6" />
+          <Stories
+            wrapperClassName="my-6"
+            onAddStory={() => setAddStoryModalVisible(true)}
+            onStoryView={() => setStoryViewModalVisible(true)}
+          />
           <div className="">
             <div className="w-full boldPrimaryText text-xl p-4 bg-white border border-solid border-itemBorder">
               My Wall

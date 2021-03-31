@@ -10,8 +10,18 @@ function EditProfileDrawer({ visible, onCancel }) {
       visible={visible}
       onClose={onCancel}
       wrapClassName="w-full h-full"
-      headerStyle={{ border: 0 }}
-      title={<BackButton onClick={onCancel} />}
+      headerStyle={{ border: 0, padding: 0 }}
+      title={
+        <div className="bg-primary grid grid-cols-3 justify-items-center items-center py-2 px-4">
+          <BackButton
+            wrapperClassName="justify-self-start"
+            textClassName="text-white text-base pt-0.5"
+            iconClassName="text-white text-base mr-2"
+            onClick={onCancel}
+          />
+          <div className="textLogo text-xl">stockwick</div>
+        </div>
+      }
     >
       <EditProfileForm />
     </Drawer>

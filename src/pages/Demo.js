@@ -20,7 +20,7 @@ import MenuDrawer from '../components/common/MenuDrawer';
 import LoginModal from '../components/common/LoginModal';
 import RegisterModal from '../components/common/RegisterModal';
 import FindAccountModal from '../components/common/FindAccountModal';
-import ResetYourPasswordModal from '../components/common/ResetYourPasswordModal';
+import ResetPasswordModal from '../components/common/ResetPasswordModal';
 import CreateAccountModal from '../components/common/CreateAccountModal';
 import FollowListModal from '../components/common/FollowListModal';
 import AddPostModal from '../components/common/AddPostModal';
@@ -57,7 +57,7 @@ function Demo() {
         visible={findAccountModalVisible}
         onCancel={() => setFindAccountModalVisible(false)}
       />
-      <ResetYourPasswordModal
+      <ResetPasswordModal
         visible={resetYourPasswordModalVisible}
         onCancel={() => setResetYourPasswordModalVisible(false)}
       />

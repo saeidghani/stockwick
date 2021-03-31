@@ -323,7 +323,14 @@
 .c-drawer-round .ant-drawer-content {
   border-top-left-radius: 20px !important;
 }
+.ant-drawer-close:focus,
+.ant-drawer-close:hover {
+  outline: none !important;
+}
 .ant-modal-close {
   outline: none !important;
+}
+.c-modal-header-sm .ant-modal-header {
+  padding: 10px !important;
 }
 /*# sourceMappingURL=customAntd.css.map */
