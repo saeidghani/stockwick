@@ -1,8 +1,10 @@
+/*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Grid, Tabs } from 'antd';
 // import PropTypes from 'prop-types';
 import editIcon from '../assets/icons/edit.svg';
+import storyPreview from '../assets/images/storyPreview.png';
 import RouteMap from '../routes/RouteMap';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../layouts/MainLayout/MainLayout';
@@ -16,12 +18,21 @@ import FollowListModal from '../components/common/FollowListModal';
 import EditProfileDrawer from '../components/common/EditProfileDrawer';
 import Avatar from '../components/UI/Avatar';
 import Button from '../components/UI/Button';
+import StocksListModal from '../components/common/StocksListModal';
+import StoryPreview from '../components/common/StoryPreview';
+import AddStoryModal from '../components/common/AddStoryModal';
+import StoryViewModal from '../components/common/StoryViewModal';
+import StoryViewersModal from '../components/common/StoryViewersModal';
 
 const { TabPane } = Tabs;
 
 function Profile() {
   const [followListModalVisible, setFollowListModalVisible] = useState(false);
   const [editProfileDrawerVisible, setEditProfileDrawerVisible] = useState(false);
+  const [stocksListModalVisible, setStocksListModalVisible] = useState(false);
+  const [addStoryModalVisible, setAddStoryModalVisible] = useState(false);
+  const [storyViewModalVisible, setStoryViewModalVisible] = useState(false);
+  const [storyViewersModalVisible, setStoryViewersModalVisible] = useState(false);
 
   const history = useHistory();
   // eslint-disable-next-line no-unused-vars
@@ -32,7 +43,7 @@ function Profile() {
   const { sm: smOrHigherScreen } = useBreakpoint();
 
   useEffect(() => {
-    setQuery({ auth: true, tab: 'idea', followTab: 'followers' });
+    setQuery({ auth: true, tab: 'story', followTab: 'followers' });
   }, []);
 
   const onTabChange = (key) => {
@@ -58,6 +69,36 @@ function Profile() {
         onCancel={() => setFollowListModalVisible(false)}
         modalVisible={smOrHigherScreen && followListModalVisible}
         drawerVisible={!smOrHigherScreen && followListModalVisible}
+      />
+      <StocksListModal
+        modalVisible={smOrHigherScreen && stocksListModalVisible}
+        drawerVisible={!smOrHigherScreen && stocksListModalVisible}
+      >
+        <StocksList
+          title="My Watchlist"
+          wrapperClassName="mb-4"
+          expand={false}
+          height={!smOrHigherScreen ? 600 : 450}
+          onClose={() => setStocksListModalVisible(false)}
+        >
+          <FilterSlider filterList={watchListFilterList} />
+        </StocksList>
+      </StocksListModal>
+      <AddStoryModal
+        onCancel={() => setAddStoryModalVisible(false)}
+        modalVisible={smOrHigherScreen && addStoryModalVisible}
+        drawerVisible={!smOrHigherScreen && addStoryModalVisible}
+      />
+      <StoryViewModal
+        onCancel={() => setStoryViewModalVisible(false)}
+        modalVisible={smOrHigherScreen && storyViewModalVisible}
+        drawerVisible={!smOrHigherScreen && storyViewModalVisible}
+        onStoryViewers={() => setStoryViewersModalVisible(true)}
+      />
+      <StoryViewersModal
+        onCancel={() => setStoryViewersModalVisible(false)}
+        modalVisible={smOrHigherScreen && storyViewersModalVisible}
+        drawerVisible={!smOrHigherScreen && storyViewersModalVisible}
       />
       <div className="pb-2 bg-blueGray md:px-4 md:pt-4 md:pb-10">
         <div className="hidden md:grid md:grid-cols-4 md:gap-x-4">
@@ -87,38 +128,90 @@ function Profile() {
             <Activity />
           </div>
           <div className="col-start-2 col-span-2">
-            <div className="">
-              <div
-                className="w-full boldPrimaryText text-xl p-4 bg-white
+            <div
+              className="w-full boldPrimaryText text-xl px-4 py-2 bg-white
                     border border-solid border-itemBorder"
-              >
-                My Wall
-              </div>
-              <AddPost
-                uploadBtsPosition="end"
-                uploadBtnClassName="w-full bg-white border border-solid border-itemBorder"
-                placeholder="#stonksgame #strong, post something…"
-              />
+            >
+              My Wall
             </div>
-            <StockWall
-              wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
-              isBullish
-            />
-            <StockWall
-              wrapperClassName="mt-4 p-4 bg-white rounded rounded border border-solid border-itemBorder"
-              displayChart
-            />
-            <StockWall
-              wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-accent"
-              isBearish
-            />
-            <StockWall
-              wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
-              isBullish
-            />
+            <Tabs activeKey={tab} onChange={onTabChange} className="c-tabs c-tabs-sm">
+              <TabPane
+                tab={
+                  <div className={`boldPrimaryText text-lg ${tab !== 'idea' ? 'opacity-50' : ''}`}>
+                    ideas
+                  </div>
+                }
+                key="idea"
+              >
+                <AddPost
+                  miniBox
+                  uploadBtsPosition="end"
+                  placeholder="#stonksgame #strong, post something…"
+                />
+                <StockWall
+                  wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
+                  isBullish
+                />
+                <StockWall
+                  wrapperClassName="mt-4 p-4 bg-white rounded rounded border border-solid border-itemBorder"
+                  displayChart
+                />
+                <StockWall
+                  wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-accent"
+                  isBearish
+                />
+                <StockWall
+                  wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
+                  isBullish
+                />
+              </TabPane>
+              <TabPane
+                tab={
+                  <div className={`boldPrimaryText text-lg ${tab !== 'story' ? 'opacity-50' : ''}`}>
+                    stories
+                  </div>
+                }
+                key="story"
+              >
+                <div className="flex space-x-2 flex-wrap child-mb--lg">
+                  <StoryPreview
+                    wrapperClassName="ml-2"
+                    onAddStory={() => setAddStoryModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                </div>
+              </TabPane>
+            </Tabs>
           </div>
           <div className="col-start-4">
-            <StocksList title="My Watchlist" wrapperClassName="mb-4">
+            <StocksList
+              title="My Watchlist"
+              wrapperClassName="mb-4"
+              onExpandClick={() => setStocksListModalVisible(true)}
+            >
               <FilterSlider filterList={watchListFilterList} />
             </StocksList>
             <Activity />
@@ -173,14 +266,14 @@ function Profile() {
               >
                 <div className="">
                   <div
-                    className="w-full boldPrimaryText text-xl p-4 bg-white
-                     border border-solid border-itemBorder"
+                    className="w-full boldPrimaryText text-xl px-4 py-2 bg-white
+                               border border-solid border-itemBorder"
                   >
                     My Wall
                   </div>
                   <AddPost
+                    miniBox
                     uploadBtsPosition="end"
-                    uploadBtnClassName="w-full bg-white border border-solid border-itemBorder"
                     placeholder="#stonksgame #strong, post something…"
                   />
                 </div>

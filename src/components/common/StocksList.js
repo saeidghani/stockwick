@@ -1,16 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import apple from '../../assets/icons/apple.svg';
+import expandIcon from '../../assets/icons/expand.svg';
 import LogoIcon from './LogoIcon';
 
-function StocksList({ title, children, wrapperClassName }) {
+function StocksList({ title, expand, children, wrapperClassName, height, onExpandClick, onClose }) {
   const items = [1, 2, 3, 4, 5, 6, 7];
   return (
     <div className={wrapperClassName}>
       <div className="card px-2 py-4">
-        <div className="boldPrimaryText text-xl mb-3">{title}</div>
-        {children && <div className="w-full">{children}</div>}
-        <div className="flex flex-col child-borderBottom">
+        <div className="flex justify-between items-center mb-3">
+          <div className="boldPrimaryText text-xl">{title}</div>
+          {expand ? (
+            <div onClick={onExpandClick}>
+              <img src={expandIcon} className="w-5 cursor-pointer" alt="" />
+            </div>
+          ) : (
+            <div onClick={onClose}>
+              <img src={expandIcon} className="w-5 cursor-pointer transform -rotate-180" alt="" />
+            </div>
+          )}
+        </div>
+        {children && <div className="w-full mb-4">{children}</div>}
+        <div className="flex flex-col child-borderBottom overflow-auto" style={{ height }}>
           {items.map((i) => (
             <div key={i} className="flex justify-between items-center py-4">
               <div className="flex items-center space-x-2">
@@ -43,12 +55,20 @@ StocksList.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
   wrapperClassName: PropTypes.string,
+  height: PropTypes.number,
+  onExpandClick: PropTypes.func,
+  onClose: PropTypes.func,
+  expand: PropTypes.bool,
 };
 
 StocksList.defaultProps = {
   children: null,
   title: '',
   wrapperClassName: '',
+  height: 450,
+  onExpandClick: () => {},
+  onClose: () => {},
+  expand: true,
 };
 
 export default StocksList;

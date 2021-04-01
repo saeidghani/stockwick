@@ -18,7 +18,7 @@ function StockWall({
   comments,
 }) {
   // eslint-disable-next-line react/prop-types
-  const Post = ({ isBullishType, isBearishType, displayChartPost }) => (
+  const Post = ({ isComment, isBullishType, isBearishType, displayChartPost }) => (
     <div className="flex space-x-2">
       <Avatar avatarClassName="w-12 h-12" />
       <div className="flex flex-col">
@@ -46,16 +46,18 @@ function StockWall({
         <div className="flex space-x-6">
           <div className="flex items-center space-x-4">
             <img src={likeFilledIcon} alt="a" />
-            <div className="boldPrimaryText">Agree</div>
-          </div>
-          <div className="flex items-center space-x-4">
-            <img src={arrowFilledIcon} alt="a" />
-            <div className="boldPrimaryText">Disagree</div>
+            <div className="boldPrimaryText">{isComment ? 'Like' : 'Agree'}</div>
           </div>
           <div className="flex items-center space-x-4">
             <img src={dislikeOutlineIcon} alt="a" />
-            <div className="boldPrimaryText">Reply</div>
+            <div className="boldPrimaryText">{isComment ? 'Dislike' : 'Disagree'}</div>
           </div>
+          {!isComment && (
+            <div className="flex items-center space-x-4">
+              <img src={arrowFilledIcon} alt="a" />
+              <div className="boldPrimaryText">Reply</div>
+            </div>
+          )}
         </div>
         {displayChartPost && <Chart wrapperClassName="mt-5" />}
       </div>
@@ -69,7 +71,7 @@ function StockWall({
         <Post isBullishType={isBullish} isBearishType={isBearish} displayChartPost={displayChart} />
         {comments.map((c) => (
           <div key={c.key} className="mt-8 ml-12">
-            <Post isBearishType />
+            <Post isComment isBearishType />
           </div>
         ))}
       </div>

@@ -22,7 +22,12 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
         onOk={onOk}
         visible={modalVisible}
       >
-        <AddPost form={form} wrapperClassName="xs:pt-12" />
+        <AddPost
+          form={form}
+          wrapperClassName="xs:pt-12"
+          placeholder="#stonksgame #strong, post something…"
+          displayAvatar
+        />
       </Modal>
       <Drawer
         visible={drawerVisible}
@@ -40,6 +45,8 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
           form={form}
           wrapperClassName="xs:pt-12"
           contentClassName="xs:border xs:border-solid xs:border-gray-100"
+          placeholder="#stonksgame #strong, post something…"
+          displayAvatar
         />
       </Drawer>
     </div>

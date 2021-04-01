@@ -32,9 +32,25 @@ function AddPost({
   displayAvatar,
   uploadBtnClassName,
   uploadBtsPosition,
+  miniBox,
   children,
 }) {
   const [addPoll, setAddPoll] = useState(false);
+
+  const initialValues = {
+    choice1: '',
+    choice2: '',
+    days: '',
+    extraChoices: '',
+    hours: '',
+    minutes: '',
+    question: '',
+    text: '',
+    uploadGif: '',
+    uploadImage: '',
+    uploadVideo: '',
+    remember: true,
+  };
 
   // eslint-disable-next-line react/prop-types,no-shadow
   const ShareTo = ({ children, text, textClassName = 'ml-2' }) => (
@@ -58,20 +74,7 @@ function AddPost({
     <div className={wrapperClassName}>
       <Form
         name={formName}
-        initialValues={{
-          choice1: '',
-          choice2: '',
-          days: '',
-          extraChoices: '',
-          hours: '',
-          minutes: '',
-          question: '',
-          text: '',
-          uploadGif: '',
-          uploadImage: '',
-          uploadVideo: '',
-          remember: true,
-        }}
+        initialValues={initialValues}
         form={form}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -82,7 +85,7 @@ function AddPost({
             className={`flex flex-col justify-between items-center w-full h-full my-auto
          ${contentClassName} ${children ? '' : ''}`}
           >
-            {!children && (
+            {!miniBox && (
               <Button
                 htmlType="submit"
                 wrapperClassName="block xs:hidden absolute top-4 right-4"
@@ -91,42 +94,72 @@ function AddPost({
                 type="link"
               />
             )}
-            {!children ? (
-              <div className="w-full flex space-x-4 mb-4">
-                {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
-                <div className="flex flex-col w-full">
-                  <Item name="text" label="" className="c-input-border-none w-full mb-0">
-                    <TextArea
-                      className="w-full pt-3"
-                      placeholder={placeholder}
-                      name="text"
-                      onChange={() => {}}
-                      rows={4}
-                    />
-                  </Item>
-                  <AddPoll wrapperClassName={`w-full mt-4 ${addPoll ? '' : 'hidden'}`} />
+            {!miniBox ? (
+              <div className="w-full px-4">
+                <div className="w-full flex space-x-4 mb-4 pt-2 border-t border-solid border-itemBorder">
+                  {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
+                  <div className="flex flex-col w-full">
+                    <Item name="text" label="" className="c-input-border-none w-full mb-0">
+                      <TextArea
+                        className="w-full pt-3"
+                        placeholder={placeholder}
+                        name="text"
+                        onChange={() => {}}
+                        rows={4}
+                      />
+                    </Item>
+                    <AddPoll wrapperClassName={`w-full mt-4 ${addPoll ? '' : 'hidden'}`} />
+                  </div>
                 </div>
               </div>
             ) : (
               children
             )}
-            <div
-              className={`justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 
+            {!miniBox ? (
+              <div
+                className={`justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 
                      absolute bottom-32 xs:bottom-0 py-1 pl-3 xs:pb-0 xs:relative ${uploadBtnClassName}`}
-            >
-              <Item name="uploadImage" className="cursor-pointer m-0">
-                <img src={uploadImageIcon} alt="" />
-              </Item>
-              <Item name="uploadGif" className="cursor-pointer m-0">
-                <img src={uploadGifIcon} alt="" />
-              </Item>
-              <Item name="uploadVideo" className="cursor-pointer m-0">
-                <img src={uploadVideoIcon} alt="" />
-              </Item>
-              <div className="cursor-pointer" onClick={() => setAddPoll(true)}>
-                <img src={pollIcon} alt="" />
+              >
+                <Item name="uploadImage" className="cursor-pointer m-0">
+                  <img src={uploadImageIcon} alt="" />
+                </Item>
+                <Item name="uploadGif" className="cursor-pointer m-0">
+                  <img src={uploadGifIcon} alt="" />
+                </Item>
+                <Item name="uploadVideo" className="cursor-pointer m-0">
+                  <img src={uploadVideoIcon} alt="" />
+                </Item>
+                <div className="cursor-pointer" onClick={() => setAddPoll(true)}>
+                  <img src={pollIcon} alt="" />
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="w-full bg-white pr-4 flex justify-between border border-solid border-cardBorder">
+                <Item name="text" label="" className="c-input-border-none w-full mb-0">
+                  <TextArea
+                    className="w-full py-2"
+                    placeholder={placeholder}
+                    name="text"
+                    onChange={() => {}}
+                    rows={1}
+                  />
+                </Item>
+                <div
+                  className={`h-full justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 
+                     absolute bottom-32 xs:bottom-0 ml-3 xs:pb-0 xs:relative ${uploadBtnClassName}`}
+                >
+                  <Item name="uploadImage" className="cursor-pointer m-0">
+                    <img src={uploadImageIcon} className="w-6" alt="" />
+                  </Item>
+                  <Item name="uploadGif" className="cursor-pointer m-0">
+                    <img src={uploadGifIcon} className="w-5" alt="" />
+                  </Item>
+                  <Item name="uploadVideo" className="cursor-pointer m-0">
+                    <img src={uploadVideoIcon} className="w-6" alt="" />
+                  </Item>
+                </div>
+              </div>
+            )}
           </div>
           <div className="px-2 py-4 xs:p-6 w-full bg-mediumGray flex justify-between absolute bottom-0 xs:relative">
             <div className="">
@@ -183,6 +216,7 @@ AddPost.propTypes = {
   placeholder: PropTypes.string,
   uploadBtsPosition: PropTypes.string,
   displayAvatar: PropTypes.bool,
+  miniBox: PropTypes.bool,
 };
 
 AddPost.defaultProps = {
@@ -195,6 +229,7 @@ AddPost.defaultProps = {
   uploadBtsPosition: 'start',
   placeholder: 'Start typing',
   displayAvatar: false,
+  miniBox: false,
 };
 
 export default AddPost;

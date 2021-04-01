@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
+import { Grid } from 'antd';
 import chartIcon from '../assets/icons/chart.svg';
 import balancedIcon from '../assets/icons/balanced.svg';
 import bearishIcon from '../assets/icons/bearish.svg';
@@ -17,10 +18,14 @@ import StockWall from '../components/common/StockWall';
 import { useQuery } from '../hooks/useQuery';
 import AddStoryModal from '../components/common/AddStoryModal';
 import StoryViewModal from '../components/common/StoryViewModal';
+import StocksListModal from '../components/common/StocksListModal';
 import StoryViewersModal from '../components/common/StoryViewersModal';
-import { Grid } from 'antd';
 
 function Feed() {
+  const [stocksListModalVisible, setStocksListModalVisible] = useState({
+    watchlist: false,
+    stocks: false,
+  });
   const [addStoryModalVisible, setAddStoryModalVisible] = useState(false);
   const [storyViewModalVisible, setStoryViewModalVisible] = useState(false);
   const [storyViewersModalVisible, setStoryViewersModalVisible] = useState(false);
@@ -53,6 +58,11 @@ function Feed() {
     { key: 6, title: 'most agree' },
   ];
 
+  const stocksListCards = [
+    { key: 'watchlist', title: 'My Watchlist', filter: watchListFilterList },
+    { key: 'stocks', title: 'Stocks', filter: allStocksFilterList },
+  ];
+
   const Tags = () => (
     <div className="flex justify-between items-center mb-4">
       <Tag text="all">
@@ -72,6 +82,22 @@ function Feed() {
 
   return (
     <Layout mainClassName="md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+      {stocksListCards.map(({ key, title, filter }) => (
+        <StocksListModal
+          modalVisible={smOrHigherScreen && stocksListModalVisible[key]}
+          drawerVisible={!smOrHigherScreen && stocksListModalVisible[key]}
+        >
+          <StocksList
+            title={title}
+            wrapperClassName="mb-4"
+            expand={false}
+            onClose={() => setStocksListModalVisible({ [key]: false })}
+            height={!smOrHigherScreen ? 600 : 450}
+          >
+            <FilterSlider filterList={watchListFilterList} />
+          </StocksList>
+        </StocksListModal>
+      ))}
       <AddStoryModal
         onCancel={() => setAddStoryModalVisible(false)}
         modalVisible={smOrHigherScreen && addStoryModalVisible}
@@ -91,12 +117,15 @@ function Feed() {
       <div className="pb-2 bg-blueGray px-4 pt-6 md:pt-4 md:pb-10">
         <div className="hidden md:grid md:grid-cols-4 md:gap-x-4">
           <div className="col-start-1">
-            <StocksList title="My Watchlist" wrapperClassName="mb-4">
-              <FilterSlider filterList={watchListFilterList} />
-            </StocksList>
-            <StocksList title="Stocks" wrapperClassName="mb-4">
-              <FilterSlider filterList={allStocksFilterList} />
-            </StocksList>
+            {stocksListCards.map(({ key, title, filter }) => (
+              <StocksList
+                title={title}
+                wrapperClassName="mb-4"
+                onExpandClick={() => setStocksListModalVisible({ [key]: true })}
+              >
+                <FilterSlider filterList={filter} />
+              </StocksList>
+            ))}
             <div className="bg-primary flex justify-center items-center h-60 rounded">
               <div className="flex flex-col items-center">
                 <div className="text-white">powered by</div>
@@ -107,12 +136,12 @@ function Feed() {
           <div className="col-start-2 col-span-2">
             <Tags />
             <div className="">
-              <div className="w-full boldPrimaryText text-xl p-4 bg-white border border-solid border-itemBorder">
+              <div className="w-full boldPrimaryText text-xl px-4 py-2 bg-white border border-solid border-itemBorder">
                 My Wall
               </div>
               <AddPost
+                miniBox
                 uploadBtsPosition="end"
-                uploadBtnClassName="w-full bg-white border border-solid border-itemBorder"
                 placeholder="#stonksgame #strong, post something…"
               />
             </div>
@@ -151,12 +180,12 @@ function Feed() {
             onStoryView={() => setStoryViewModalVisible(true)}
           />
           <div className="">
-            <div className="w-full boldPrimaryText text-xl p-4 bg-white border border-solid border-itemBorder">
+            <div className="w-full boldPrimaryText text-xl px-4 py-2 bg-white border border-solid border-itemBorder">
               My Wall
             </div>
             <AddPost
+              miniBox
               uploadBtsPosition="end"
-              uploadBtnClassName="w-full bg-white border border-solid border-itemBorder"
               placeholder="#stonksgame #strong, post something…"
             />
           </div>

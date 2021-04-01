@@ -160,6 +160,16 @@
   padding-left: 8px !important;
   padding-right: 12px !important;
 }
+.c-tabs-sm .ant-tabs-tab {
+  padding: 5px;
+  padding-left: 10px !important;
+}
+.c-tabs-sm .ant-tabs-nav-wrap {
+  background-color: #fff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
 .c-tabs .ant-tabs-tab {
   justify-content: center !important;
   width: 100% !important;

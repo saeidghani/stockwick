@@ -14,6 +14,7 @@ import TopMembers from '../components/common/TopMembers';
 import FilterSlider from '../components/common/FilterSlider';
 import AddPost from '../components/common/AddPost';
 import StockWall from '../components/common/StockWall';
+import ChartModal from '../components/common/ChartModal';
 import AddStoryModal from '../components/common/AddStoryModal';
 import StoryViewModal from '../components/common/StoryViewModal';
 import StoryViewersModal from '../components/common/StoryViewersModal';
@@ -22,6 +23,7 @@ const { TabPane } = Tabs;
 
 function Stock() {
   const [addStoryModalVisible, setAddStoryModalVisible] = useState(false);
+  const [chartModalVisible, setChartModalVisible] = useState(false);
   const [storyViewModalVisible, setStoryViewModalVisible] = useState(false);
   const [storyViewersModalVisible, setStoryViewersModalVisible] = useState(false);
 
@@ -62,6 +64,18 @@ function Stock() {
 
   return (
     <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+      <ChartModal
+        modalVisible={smOrHigherScreen && chartModalVisible}
+        drawerVisible={!smOrHigherScreen && chartModalVisible}
+      >
+        <Chart
+          wrapperClassName="mb-4 card p-4"
+          title="advance charting"
+          height={370}
+          onClose={() => setChartModalVisible(false)}
+          unExpand
+        />
+      </ChartModal>
       <AddStoryModal
         onCancel={() => setAddStoryModalVisible(false)}
         modalVisible={smOrHigherScreen && addStoryModalVisible}
@@ -83,8 +97,14 @@ function Stock() {
         <div className="hidden md:block mt-4">
           <div className="grid grid-cols-2 gap-x-4">
             <div className="">
-              <Chart wrapperClassName="mb-4 card p-4" title="advance charting" height={370} />
-              <div className="relative h-20">
+              <Chart
+                wrapperClassName="mb-4 card p-4"
+                title="advance charting"
+                height={370}
+                onExpandClick={() => setChartModalVisible(true)}
+                expand
+              />
+              <div className="relative" style={{ height: 70 }}>
                 <StockDetails wrapperClassName="mb-4 absolute w-full" />
               </div>
               <div className="flex space-x-3">
@@ -116,8 +136,8 @@ function Stock() {
                 onStoryView={() => setStoryViewModalVisible(true)}
               />
               <AddPost
+                miniBox
                 wrapperClassName="card p-0 mb-2"
-                uploadBtnClassName="border border-solid border-cardBorder justify-end w-full pr-4"
                 uploadBtsPosition="end"
                 formName="stockWall"
               >
@@ -130,8 +150,8 @@ function Stock() {
                 />
               </AddPost>
               <AddPost
+                miniBox
                 wrapperClassName="card p-0 mb-2"
-                uploadBtnClassName="border border-solid border-cardBorder justify-end w-full pr-4"
                 uploadBtsPosition="end"
                 formName="stockCharts"
               >
@@ -206,7 +226,7 @@ function Stock() {
             }
             key="appleWall"
           >
-            <AddPost wrapperClassName="card p-0 mb-8" formName="stockWall">
+            <AddPost miniBox wrapperClassName="card p-0 mb-8" formName="stockWall">
               <StockWall comments={comments} />
             </AddPost>
           </TabPane>
@@ -218,7 +238,7 @@ function Stock() {
             }
             key="appleCharts"
           >
-            <AddPost wrapperClassName="card p-0 mb-8" formName="stockCharts">
+            <AddPost miniBox wrapperClassName="card p-0 mb-8" formName="stockCharts">
               <StockWall comments={comments} displayChart />
             </AddPost>
           </TabPane>
