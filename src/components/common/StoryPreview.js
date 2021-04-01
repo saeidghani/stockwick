@@ -18,7 +18,7 @@ function StoryPreview({ wrapperClassName, onAddStory, onViewStory, src }) {
         <div>
           <div className="cursor-pointer relative" onClick={onViewStory}>
             <img src={src} alt="" width={140} height={200} />
-            <div className="flex space-x-1 items-center absolute bottom-6 right-4">
+            <div className="flex space-x-1 items-center absolute bottom-2 right-2">
               <EyeFilled className="text-white text-sm" />
               <div className="text-white text-sm">54</div>
             </div>
