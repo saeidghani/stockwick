@@ -38,7 +38,7 @@ function CategoriesSearch({ wrapperClassName }) {
         <Select
           onChange={() => {}}
           options={categories}
-          wrapperClassName="h-14 w-20 md:w-32"
+          wrapperClassName="h-14 w-28 md:w-32"
           dropdownClassName="bg-fadePrimary2 relative bottom-4"
           className="text-secondary text-base"
           optionClassName="text-secondary"

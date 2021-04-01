@@ -25,9 +25,10 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
     { key: 5, title: 'Asia', slug: 'Asia', icon: asiaIcon },
   ];
 
-  const Content = () => (
-    <>
-      <div className="text-white text-center pt-6 mb-10">Change Time Zone</div>
+  // eslint-disable-next-line react/prop-types
+  const Content = ({ wrapperClassName }) => (
+    <div className={wrapperClassName}>
+      <div className="text-white text-center mb-10">Change Time Zone</div>
       <div className="flex justify-between px-4">
         {timeZones.map((t) => (
           <div
@@ -44,7 +45,7 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
         <Input name="search" placeholder="Search..." className="w-full text-white" />
         <img className="absolute top-4 right-10" src={searchIcon} alt="" />
       </div>
-    </>
+    </div>
   );
 
   return (
@@ -57,7 +58,7 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
         visible={modalVisible}
         width={400}
       >
-        <Content />
+        <Content wrapperClassName="pt-6" />
       </Modal>
       <Drawer
         visible={drawerVisible}

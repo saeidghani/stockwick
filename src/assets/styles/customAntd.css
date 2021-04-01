@@ -310,6 +310,7 @@
   background-color: #0D276B !important;
   padding-top: 10px !important;
   padding-left: 20px !important;
+  cursor: pointer !important;
 }
 .c-select .ant-select .ant-select-selector:focus,
 .c-select .ant-select .ant-select-selector:active {

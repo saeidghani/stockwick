@@ -31,7 +31,7 @@ function ProfileDropdown({ src }) {
       },
     },
     {
-      key: 2,
+      key: 3,
       title: 'sign out',
       titleClassName: 'text-red-500',
       onClick: () => {

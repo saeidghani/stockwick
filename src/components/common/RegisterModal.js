@@ -52,7 +52,7 @@ function RegisterModal({ modalVisible, drawerVisible, onOk, onCancel, onOpenLogi
           </div>
           <div className="grid grid-cols-1 xs:grid-cols-2 gap-y-4 w-full px-0 xs:px-1 sm:px-8 pb-6">
             <Form
-              name="basic"
+              name="register"
               initialValues={{
                 remember: true,
               }}

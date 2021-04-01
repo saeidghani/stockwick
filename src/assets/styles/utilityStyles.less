@@ -50,16 +50,26 @@
 .page-header {
   &-slider {
     display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
   }
   &-base {
     height: 90px;
   }
-  &-base:hover + &-slider {
+  &:hover &-slider {
     display: block;
   }
 }
 
 .home-page {
-  min-height: calc(100vh - 315px);
+  min-height: calc(100vh - 205px);
+  &_full {
+  min-height: calc(100vh - 303px);
+  @media(max-width: 640px) {
+  min-height: calc(100vh - 218px);
+  }
+  }
 }
 

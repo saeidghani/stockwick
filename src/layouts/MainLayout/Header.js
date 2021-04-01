@@ -115,7 +115,7 @@ function Header() {
         onMessagesClick={() => setDirectMessageModalVisible(true)}
         onNotificationsClick={() => setNotificationModalVisible(true)}
       />
-      <div className="hidden md:block">
+      <div className="hidden md:block relative">
         <div className="page-header-base bg-primary border-b border-solid border-fadePrimary">
           <div className="flex justify-between px-4 py-4 lg:container">
             <div className="flex items-center space-x-3 lg:space-x-5">
@@ -192,9 +192,11 @@ function Header() {
           </div>
         </div>
         {parsedQuery.auth && (
-          <StockDataSlider
-            wrapperClassName={pathname.includes(routes.home) ? '' : 'page-header-slider'}
-          />
+          <div className="relative">
+            <StockDataSlider
+              wrapperClassName={pathname.includes(routes.home) ? '' : 'page-header-slider'}
+            />
+          </div>
         )}
       </div>
       <div className="block md:hidden md:container">

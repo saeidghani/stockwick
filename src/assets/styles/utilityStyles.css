@@ -40,14 +40,26 @@
 }
 .page-header-slider {
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
 }
 .page-header-base {
   height: 90px;
 }
-.page-header-base:hover + .page-header-slider {
+.page-header:hover .page-header-slider {
   display: block;
 }
 .home-page {
-  min-height: calc(100vh - 315px);
+  min-height: calc(100vh - 205px);
+}
+.home-page_full {
+  min-height: calc(100vh - 303px);
+}
+@media (max-width: 640px) {
+  .home-page_full {
+    min-height: calc(100vh - 218px);
+  }
 }
 /*# sourceMappingURL=utilityStyles.css.map */

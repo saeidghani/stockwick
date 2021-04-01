@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <Layout mainClassName="">
       <div
-        className="home-page h-full bg-primary flex flex-col justify-center items-center space-y-4 px-2
-                     sm:px-8 pb-12"
+        className={`h-full bg-primary flex flex-col justify-center items-center space-y-4 px-2
+                     sm:px-8 pb-12 ${parsedQuery.auth ? 'home-page_full' : 'home-page'}`}
       >
         <div className="textLogo text-5xl sm:text-6xl md:text-7xl mb-10">stockwick</div>
         <div className="w-full grid grid-cols-12">
