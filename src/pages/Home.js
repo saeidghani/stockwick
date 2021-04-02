@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React, { useEffect } from 'react';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../layouts/MainLayout/MainLayout';

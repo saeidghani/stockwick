@@ -12,7 +12,7 @@ function NotFound() {
 
   return (
     <Layout>
-      <div className="flex justify-center">
+      <div className="min-h-screen flex justify-center">
         <h1>Not Found</h1>
       </div>
     </Layout>

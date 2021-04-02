@@ -36,8 +36,8 @@ function StocksListModal({ children, modalVisible, drawerVisible, onOk, onCancel
 StocksListModal.propTypes = {
   modalVisible: PropTypes.bool,
   drawerVisible: PropTypes.bool,
-  onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
+  onCancel: PropTypes.func,
   children: PropTypes.node,
 };
 
@@ -45,6 +45,7 @@ StocksListModal.defaultProps = {
   modalVisible: false,
   drawerVisible: false,
   onOk: () => {},
+  onCancel: () => {},
   children: null,
 };
 

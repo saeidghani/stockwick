@@ -45,16 +45,16 @@ function StockWall({
         </p>
         <div className="flex space-x-6">
           <div className="flex items-center space-x-4">
-            <img src={likeFilledIcon} alt="a" />
+            <img className="cursor-pointer" src={likeFilledIcon} alt="a" />
             <div className="boldPrimaryText">{isComment ? 'Like' : 'Agree'}</div>
           </div>
           <div className="flex items-center space-x-4">
-            <img src={dislikeOutlineIcon} alt="a" />
+            <img className="cursor-pointer" src={dislikeOutlineIcon} alt="a" />
             <div className="boldPrimaryText">{isComment ? 'Dislike' : 'Disagree'}</div>
           </div>
           {!isComment && (
             <div className="flex items-center space-x-4">
-              <img src={arrowFilledIcon} alt="a" />
+              <img className="cursor-pointer" src={arrowFilledIcon} alt="a" />
               <div className="boldPrimaryText">Reply</div>
             </div>
           )}

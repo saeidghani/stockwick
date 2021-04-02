@@ -65,23 +65,23 @@ function Feed() {
 
   const Tags = () => (
     <div className="flex justify-between items-center mb-4">
-      <Tag text="all">
-        <img src={chartIcon} alt="" className="bg-primary px-1.5" />
+      <Tag text="all" textClassName="px-2">
+        <img src={chartIcon} alt="" className="w-8 bg-primary px-1.5" />
       </Tag>
-      <Tag text="bullish">
-        <BullishIcon fill="secondary" wrapperClassName="bg-primary px-1.5 flex items-center" />
+      <Tag text="bullish" textClassName="px-2">
+        <BullishIcon fill="secondary" wrapperClassName="w-8 bg-primary px-1.5 flex items-center" />
       </Tag>
-      <Tag text="balanced">
-        <img src={balancedIcon} alt="" className="bg-primary px-1.5" />
+      <Tag text="balanced" textClassName="px-2">
+        <img src={balancedIcon} alt="" className="w-8 bg-primary px-1.5" />
       </Tag>
-      <Tag text="bearish">
-        <img src={bearishIcon} alt="" className="bg-primary px-1.5" />
+      <Tag text="bearish" textClassName="px-2">
+        <img src={bearishIcon} alt="" className="w-8 bg-primary px-1.5" />
       </Tag>
     </div>
   );
 
   return (
-    <Layout mainClassName="md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
       {stocksListCards.map(({ key, title, filter }) => (
         <StocksListModal
           modalVisible={smOrHigherScreen && stocksListModalVisible[key]}
@@ -114,7 +114,7 @@ function Feed() {
         modalVisible={smOrHigherScreen && storyViewersModalVisible}
         drawerVisible={!smOrHigherScreen && storyViewersModalVisible}
       />
-      <div className="pb-2 bg-blueGray px-4 pt-6 md:pt-4 md:pb-10">
+      <div className="pb-6 bg-blueGray px-4 pt-6 md:pt-4 md:pb-10">
         <div className="hidden md:grid md:grid-cols-4 md:gap-x-4">
           <div className="col-start-1">
             {stocksListCards.map(({ key, title, filter }) => (
@@ -141,6 +141,9 @@ function Feed() {
               </div>
               <AddPost
                 miniBox
+                footerClassName="flex-col xl:flex-row"
+                postBtnClassName="self-end xl:self-center"
+                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
                 uploadBtsPosition="end"
                 placeholder="#stonksgame #strong, post something…"
               />
@@ -164,7 +167,7 @@ function Feed() {
           </div>
           <div className="col-start-4">
             <Stories
-              wrapperClassName="mb-4"
+              wrapperClassName="card p-1 mb-4"
               onAddStory={() => setAddStoryModalVisible(true)}
               onStoryView={() => setStoryViewModalVisible(true)}
             />

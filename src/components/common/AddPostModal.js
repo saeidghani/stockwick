@@ -25,6 +25,7 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
         <AddPost
           form={form}
           wrapperClassName="xs:pt-12"
+          tagsClassName="flex space-x-2 items-center lg:pl-6 mb-2"
           placeholder="#stonksgame #strong, post something…"
           displayAvatar
         />

@@ -62,45 +62,45 @@ function DirectMessageModal({ modalVisible, drawerVisible, onOk, onCancel }) {
   );
 
   const SMDirectMessageSingle = () => (
-    <div>
-      <div className="p-6">
-        <div className="flex space-x-2 items-center w-full h-16 mb-2">
-          <Avatar />
-          <div
-            className="bg-midGray text-white py-1 px-4 text-base
-                 rounded-tl-md rounded-tr-md rounded-br-md bg-opacity-60"
-          >
-            Hey
-          </div>
-        </div>
+    <div className="h-full relative">
+      <div className="flex space-x-2 items-center w-full h-16 mb-2">
+        <Avatar />
         <div
-          className="ml-auto bg-blue text-white pt-1 pb-4 px-3 text-base
-                 rounded-tl-md rounded-tr-md rounded-bl-md mb-20"
-          style={{ width: 310 }}
+          className="bg-midGray text-white py-1 px-4 text-base
+                 rounded-tl-md rounded-tr-md rounded-br-md bg-opacity-60"
         >
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+          Hey
         </div>
-        <div className="mt-auto flex w-full">
-          <div className="relative flex-grow mr-4">
-            <Input
-              wrapperClassName="c-round-filled-input--light primary-placeholder--fade w-full"
-              onChange={() => {}}
-              name="comment"
-              placeholder="Write a Message…"
-            />
-            <div className="flex space-x-2 absolute top-3 right-4">
-              <img className="w-6" src={happyStickerIcon} alt="" />
-              <img className="w-6" src={thumbnailIcon} alt="" />
-            </div>
+      </div>
+      <div
+        className="ml-auto bg-blue text-white pt-1 pb-4 px-3 text-base
+                 rounded-tl-md rounded-tr-md rounded-bl-md mb-20"
+        style={{ width: 310 }}
+      >
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+      </div>
+      <div className="flex w-full absolute bottom-0">
+        <div className="relative flex-grow mr-4">
+          <Input
+            wrapperClassName="c-round-filled-input--light primary-placeholder--fade w-full"
+            onChange={() => {}}
+            name="comment"
+            placeholder="Write a Message…"
+          />
+          <div className="flex space-x-2 absolute top-3 right-4">
+            <img className="w-6" src={happyStickerIcon} alt="" />
+            <img className="w-6" src={thumbnailIcon} alt="" />
           </div>
-          <img className="w-10" src={directMessageColorfulIcon} alt="" />
         </div>
+        <img className="w-10" src={directMessageColorfulIcon} alt="" />
       </div>
     </div>
   );
 
   const SMDirectMessage = () => (
-    <div>{!parsedQuery.messageTo ? <SMDirectMessageList /> : <SMDirectMessageSingle />}</div>
+    <div className="h-full">
+      {!parsedQuery.messageTo ? <SMDirectMessageList /> : <SMDirectMessageSingle />}
+    </div>
   );
 
   return (
@@ -121,9 +121,9 @@ function DirectMessageModal({ modalVisible, drawerVisible, onOk, onCancel }) {
         visible={drawerVisible}
         onClose={onCancel}
         wrapClassName="w-full h-full"
-        headerStyle={{}}
+        headerStyle={{ padding: '5px 20px' }}
         title={
-          <div className="flex justify-between items-center px-4">
+          <div className="flex justify-between items-center">
             <BackButton
               onClick={() => {
                 if (parsedQuery.messageTo) {
@@ -134,7 +134,7 @@ function DirectMessageModal({ modalVisible, drawerVisible, onOk, onCancel }) {
               }}
             />
             {parsedQuery.messageTo ? (
-              <div className="flex flex-col items-center space-y-2 pr-4">
+              <div className="flex flex-col items-center space-y-2 pt-1 pr-4">
                 <Avatar avatarClassName="w-11 h-11" />
                 <div className="text-primary text-base font-medium mb-1">Jason Smith</div>
               </div>

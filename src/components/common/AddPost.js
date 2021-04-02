@@ -24,13 +24,15 @@ const { Item } = Form;
 
 function AddPost({
   wrapperClassName,
-  form,
-  formName,
   contentClassName,
   postBtnClassName,
+  uploadBtnClassName,
+  footerClassName,
+  tagsClassName,
+  form,
+  formName,
   placeholder,
   displayAvatar,
-  uploadBtnClassName,
   uploadBtsPosition,
   miniBox,
   children,
@@ -53,9 +55,9 @@ function AddPost({
   };
 
   // eslint-disable-next-line react/prop-types,no-shadow
-  const ShareTo = ({ children, text, textClassName = 'ml-2' }) => (
+  const ShareTo = ({ children, text, textClassName = 'ml-1' }) => (
     <Checkbox className="c-checkbox-simple flex items-center" onChange={() => {}} checked={false}>
-      <div className="flex items-center pb-0.5 ml-1">
+      <div className="flex justify-between items-center pb-0.5 ml-1">
         <div>{children}</div>
         <div className={`text-primary text-xs font-medium ${textClassName}`}>{text}</div>
       </div>
@@ -80,23 +82,23 @@ function AddPost({
         onFinishFailed={onFinishFailed}
         className="h-full"
       >
-        <div className="h-full relative">
+        {!miniBox && (
+          <Button
+            htmlType="submit"
+            wrapperClassName="block xs:hidden absolute top-4 right-2 z-10"
+            textClassName="text-primary"
+            text="Post"
+            type="link"
+          />
+        )}
+        <div className="h-full">
           <div
             className={`flex flex-col justify-between items-center w-full h-full my-auto
          ${contentClassName} ${children ? '' : ''}`}
           >
-            {!miniBox && (
-              <Button
-                htmlType="submit"
-                wrapperClassName="block xs:hidden absolute top-4 right-4"
-                textClassName="text-primary"
-                text="Post"
-                type="link"
-              />
-            )}
             {!miniBox ? (
               <div className="w-full px-4">
-                <div className="w-full flex space-x-4 mb-4 pt-2 border-t border-solid border-itemBorder">
+                <div className="w-full flex space-x-4 mb-4 pt-2 xs:border-t xs:border-solid xs:border-itemBorder">
                   {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
                   <div className="flex flex-col w-full">
                     <Item name="text" label="" className="c-input-border-none w-full mb-0">
@@ -161,45 +163,49 @@ function AddPost({
               </div>
             )}
           </div>
-          <div className="px-2 py-4 xs:p-6 w-full bg-mediumGray flex justify-between absolute bottom-0 xs:relative">
+          <footer
+            className={`px-4 py-4 lg:pl-0 lg:pt-6 lg:pb-6 w-full bg-mediumGray flex justify-between absolute bottom-0 xs:relative ${footerClassName}`}
+          >
             <div className="">
-              <div className="flex items-center space-x-4 mb-4">
-                <Tag text="all">
-                  <img src={chartIcon} alt="" className="bg-primary px-1.5" />
+              <div className={tagsClassName || 'flex space-x-2 items-center mb-2'}>
+                <Tag text="all" wrapperClassName="" textClassName="px-3">
+                  <img src={chartIcon} alt="" className="w-8 bg-primary px-1.5" />
                 </Tag>
                 <Tag text="bullish">
                   <BullishIcon
                     fill="secondary"
-                    wrapperClassName="bg-primary px-1.5 flex items-center"
+                    wrapperClassName="w-8 bg-primary px-1.5 flex items-center"
                   />
                 </Tag>
                 <Tag text="balanced">
-                  <img src={balancedIcon} alt="" className="bg-primary px-1.5" />
+                  <img src={balancedIcon} alt="" className="w-8 bg-primary px-1.5" />
                 </Tag>
                 <Tag text="bearish">
-                  <img src={bearishIcon} alt="" className="bg-primary px-1.5" />
+                  <img src={bearishIcon} alt="" className="w-8 bg-primary px-1.5" />
                 </Tag>
               </div>
-              <div className="text-darkGray mb-2">share to:</div>
-              <div className="flex justify-between">
-                <ShareTo text="select all" textClassName="whitespace-no-wrap" />
-                <ShareTo text="facebook">
-                  <img src={facebookIcon} className="w-4 h-4" alt="" />
-                </ShareTo>
-                <ShareTo text="twitter">
-                  <img src={twitterIcon} className="w-4 h-4" alt="" />
-                </ShareTo>
-                <ShareTo text="linkedin">
-                  <img src={linkedinIcon} className="w-4 h-4" alt="" />
-                </ShareTo>
+              <div className="lg:pl-6">
+                <div className="text-darkGray mb-2">share to:</div>
+                <div className="flex xl:grid grid-cols-4 lg:grid-cols-5">
+                  <ShareTo text="select all" textClassName="whitespace-no-wrap" />
+                  <ShareTo text="facebook">
+                    <img src={facebookIcon} className="w-4 h-4" alt="" />
+                  </ShareTo>
+                  <ShareTo text="twitter">
+                    <img src={twitterIcon} className="w-4 h-4" alt="" />
+                  </ShareTo>
+                  <ShareTo text="linkedin">
+                    <img src={linkedinIcon} className="w-4 h-4" alt="" />
+                  </ShareTo>
+                </div>
               </div>
             </div>
             <Button
               htmlType="submit"
-              wrapperClassName={`c-primary-btn hidden xs:block ${postBtnClassName}`}
+              wrapperClassName={`c-primary-btn hidden xs:block mt-4 xl:mt-0 ${postBtnClassName}`}
               text="Post"
             />
-          </div>
+          </footer>
         </div>
       </Form>
     </div>
@@ -209,12 +215,14 @@ function AddPost({
 AddPost.propTypes = {
   wrapperClassName: PropTypes.string,
   formName: PropTypes.string,
-  children: PropTypes.node,
   contentClassName: PropTypes.string,
   uploadBtnClassName: PropTypes.string,
   postBtnClassName: PropTypes.string,
+  footerClassName: PropTypes.string,
+  tagsClassName: PropTypes.string,
   placeholder: PropTypes.string,
   uploadBtsPosition: PropTypes.string,
+  children: PropTypes.node,
   displayAvatar: PropTypes.bool,
   miniBox: PropTypes.bool,
 };
@@ -222,12 +230,14 @@ AddPost.propTypes = {
 AddPost.defaultProps = {
   wrapperClassName: '',
   formName: '',
-  children: null,
   contentClassName: '',
   uploadBtnClassName: '',
   postBtnClassName: '',
+  footerClassName: '',
+  tagsClassName: '',
   uploadBtsPosition: 'start',
   placeholder: 'Start typing',
+  children: null,
   displayAvatar: false,
   miniBox: false,
 };

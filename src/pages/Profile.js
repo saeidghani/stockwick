@@ -43,7 +43,7 @@ function Profile() {
   const { sm: smOrHigherScreen } = useBreakpoint();
 
   useEffect(() => {
-    setQuery({ auth: true, tab: 'story', followTab: 'followers' });
+    setQuery({ auth: true, tab: 'idea', followTab: 'followers' });
   }, []);
 
   const onTabChange = (key) => {
@@ -60,10 +60,11 @@ function Profile() {
   ];
 
   return (
-    <Layout mainClassName="md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
       <EditProfileDrawer
         onCancel={() => setEditProfileDrawerVisible(false)}
-        visible={!smOrHigherScreen && editProfileDrawerVisible}
+        afterSave={() => setEditProfileDrawerVisible(false)}
+        visible={editProfileDrawerVisible}
       />
       <FollowListModal
         onCancel={() => setFollowListModalVisible(false)}
@@ -146,6 +147,9 @@ function Profile() {
                 <AddPost
                   miniBox
                   uploadBtsPosition="end"
+                  footerClassName="flex-col xl:flex-row"
+                  postBtnClassName="self-end xl:self-center"
+                  tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
                   placeholder="#stonksgame #strong, post something…"
                 />
                 <StockWall
@@ -302,7 +306,36 @@ function Profile() {
                 }
                 key="story"
               >
-                ssssssssssssss
+                <div className="flex space-x-2 flex-wrap child-mb--lg">
+                  <StoryPreview
+                    wrapperClassName="ml-2"
+                    onAddStory={() => setAddStoryModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                  <StoryPreview
+                    src={storyPreview}
+                    onViewStory={() => setStoryViewModalVisible(true)}
+                  />
+                </div>
               </TabPane>
             </Tabs>
           </div>

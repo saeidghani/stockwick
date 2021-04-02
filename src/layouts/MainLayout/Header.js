@@ -147,7 +147,11 @@ function Header() {
                   New York
                 </div>
               </div>
-              {!pathname.includes(routes.home) && <CategoriesSearch />}
+              {!pathname.includes(routes.home) && (
+                <div className="md:hidden">
+                  <CategoriesSearch />
+                </div>
+              )}
             </div>
             {parsedQuery.auth ? (
               <div className="flex items-center space-x-4 lg:space-x-10">

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, Input } from 'antd';
-import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   passwordRules,
@@ -11,18 +10,15 @@ import {
   mobileRules,
 } from '../../constants/formRules';
 import googleColorfulIcon from '../../assets/icons/googleColorful.svg';
-import routes from '../../routes/RouteMap';
 import Button from '../UI/Button';
 import Avatar from '../UI/Avatar';
 
 const { Item } = Form;
 
-function EditProfileForm({ wrapperClassName }) {
-  const history = useHistory();
-
+function EditProfileForm({ wrapperClassName, afterSave }) {
   const onFinish = (values) => {
     console.log('Success:', values);
-    history.push(routes.profile.index);
+    afterSave();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -114,10 +110,12 @@ function EditProfileForm({ wrapperClassName }) {
 
 EditProfileForm.propTypes = {
   wrapperClassName: PropTypes.string,
+  afterSave: PropTypes.func,
 };
 
 EditProfileForm.defaultProps = {
   wrapperClassName: '',
+  afterSave: () => {},
 };
 
 export default EditProfileForm;

@@ -4,7 +4,7 @@ import BackButton from './BackButton';
 import EditProfileForm from './EditProfileForm';
 import Drawer from '../UI/Drawer';
 
-function EditProfileDrawer({ visible, onCancel }) {
+function EditProfileDrawer({ visible, onCancel, afterSave }) {
   return (
     <Drawer
       visible={visible}
@@ -23,14 +23,20 @@ function EditProfileDrawer({ visible, onCancel }) {
         </div>
       }
     >
-      <EditProfileForm />
+      <EditProfileForm afterSave={afterSave} />
     </Drawer>
   );
 }
 
 EditProfileDrawer.propTypes = {
   visible: PropTypes.bool.isRequired,
-  onCancel: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
+  afterSave: PropTypes.func,
+};
+
+EditProfileDrawer.defaultProps = {
+  onCancel: () => {},
+  afterSave: () => {},
 };
 
 export default EditProfileDrawer;

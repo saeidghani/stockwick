@@ -55,7 +55,12 @@
   min-height: calc(100vh - 205px);
 }
 .home-page_full {
-  min-height: calc(100vh - 303px);
+  min-height: calc(100vh - 302px);
+}
+@media (max-width: 768px) {
+  .home-page_full {
+    min-height: calc(100vh - 295px);
+  }
 }
 @media (max-width: 640px) {
   .home-page_full {

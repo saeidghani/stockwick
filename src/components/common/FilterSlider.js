@@ -55,12 +55,14 @@ function FilterSlider({ wrapperClassName, filterList }) {
 
 FilterSlider.propTypes = {
   wrapperClassName: PropTypes.string,
-  filterList: PropTypes.arrayOf(PropTypes.shape({ key: PropTypes.number, title: PropTypes.string }))
-    .isRequired,
+  filterList: PropTypes.arrayOf(
+    PropTypes.shape({ key: PropTypes.number, title: PropTypes.string }),
+  ),
 };
 
 FilterSlider.defaultProps = {
   wrapperClassName: '',
+  filterList: [],
 };
 
 export default FilterSlider;

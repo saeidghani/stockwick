@@ -1,22 +1,20 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import Layout from '../layouts/MainLayout/MainLayout';
-import {
+/* import {
   // AdvancedChart,
   // MultiChart,
   // Enable ActiveTraderWorkstation
   // ActiveTraderWorkstation,
   CustomChart,
   HelloWorldChart,
-} from '../chartiq';
+} from '../chartiq'; */
 
 function Chart() {
   return (
     <Layout>
-      <HelloWorldChart />
       <br />
       <br />
-      <CustomChart />
     </Layout>
   );
 }

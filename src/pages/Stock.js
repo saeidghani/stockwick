@@ -92,7 +92,7 @@ function Stock() {
         modalVisible={smOrHigherScreen && storyViewersModalVisible}
         drawerVisible={!smOrHigherScreen && storyViewersModalVisible}
       />
-      <div className="pb-2 md:bg-blueGray md:px-4 md:pt-4 md:pb-10">
+      <div className="pb-2 bg-blueGray md:px-4 md:pt-4 md:pb-10">
         <StockSummary />
         <div className="hidden md:block mt-4">
           <div className="grid grid-cols-2 gap-x-4">
@@ -107,17 +107,17 @@ function Stock() {
               <div className="relative" style={{ height: 70 }}>
                 <StockDetails wrapperClassName="mb-4 absolute w-full" />
               </div>
-              <div className="flex space-x-3">
-                <div className="w-full mb-4 mr-2 md:bg-white md:p-3">
+              <div className="grid grid-cols-2 gap-x-2">
+                <div className="w-full mb-4 md:bg-white md:p-3">
                   <div className="boldPrimaryText text-lg mb-4">technical analysis</div>
-                  <div style={{ width: 300 }} className="mx-auto mb-4">
+                  <div className="mx-auto mb-4">
                     <FilterSlider filterList={timeList} />
                   </div>
                   <CircleChart wrapperClassName="w-full h-48" />
                 </div>
                 <div className="w-full mb-4 md:bg-white md:p-3">
                   <div className="boldPrimaryText text-lg mb-4">bull vs bear poll</div>
-                  <div style={{ width: 300 }} className="mx-auto mb-4">
+                  <div className="mx-auto mb-4">
                     <FilterSlider filterList={periodList} />
                   </div>
                   <CircleChart wrapperClassName="w-full h-48" />
@@ -131,13 +131,16 @@ function Stock() {
             </div>
             <div className="">
               <Stories
-                wrapperClassName="mb-4"
+                wrapperClassName="card mb-4 p-1"
                 onAddStory={() => setAddStoryModalVisible(true)}
                 onStoryView={() => setStoryViewModalVisible(true)}
               />
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
+                footerClassName="flex-col xl:flex-row"
+                postBtnClassName="self-end xl:self-center"
+                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
                 uploadBtsPosition="end"
                 formName="stockWall"
               >
@@ -152,6 +155,9 @@ function Stock() {
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
+                footerClassName="flex-col xl:flex-row"
+                postBtnClassName="self-end xl:self-center"
+                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
                 uploadBtsPosition="end"
                 formName="stockCharts"
               >
@@ -173,77 +179,120 @@ function Stock() {
           <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
           <div className="text-lightGray text-center mt-6">© stockwick inc.</div>
         </div>
-      </div>
-      <div className="md:hidden c-tabs px-4">
-        <Tabs activeKey={tab} onChange={onTabChange}>
-          <TabPane
-            tab={
-              <div className={`text-primary text-lg ${tab !== 'overview' ? 'opacity-40' : ''}`}>
-                Overview
+        <div className="md:hidden c-tabs px-4">
+          <Tabs activeKey={tab} onChange={onTabChange}>
+            <TabPane
+              tab={
+                <div className={`text-primary text-lg ${tab !== 'overview' ? 'opacity-40' : ''}`}>
+                  Overview
+                </div>
+              }
+              key="overview"
+            >
+              <Stories
+                wrapperClassName="mb-4"
+                onAddStory={() => setAddStoryModalVisible(true)}
+                onStoryView={() => setStoryViewModalVisible(true)}
+              />
+              <div className="boldPrimaryText text-lg mb-2">advance charting</div>
+              <Chart wrapperClassName="w-full h-80 mb-8" />
+              <div className="relative" style={{ height: 70 }}>
+                <StockDetails wrapperClassName="mb-4 absolute w-full" />
               </div>
-            }
-            key="overview"
-          >
-            <Stories
-              wrapperClassName="mb-8"
-              onAddStory={() => setAddStoryModalVisible(true)}
-              onStoryView={() => setStoryViewModalVisible(true)}
-            />
-            <div className="boldPrimaryText text-lg mb-2">advance charting</div>
-            <Chart wrapperClassName="w-full h-80 mb-8" />
-            <StockDetails wrapperClassName="mb-8" />
-            <div className="flex flex-col sm:flex-row sm:space-x-4">
-              <div className="w-full">
-                <div className="boldPrimaryText text-lg mb-2">technical analysis</div>
-                <CircleChart wrapperClassName="w-full h-80 mb-8" />
+              <div className="grid grid-cols-2 gap-x-2 mt-4 mb-4">
+                <div className="w-full mb-4 md:bg-white md:p-3">
+                  <div className="boldPrimaryText text-lg mb-4">technical analysis</div>
+                  <div className="card p-4">
+                    <div className="mx-auto mb-4">
+                      <FilterSlider filterList={timeList} />
+                    </div>
+                    <CircleChart wrapperClassName="w-full h-48" />
+                  </div>
+                </div>
+                <div className="w-full mb-4 md:bg-white md:p-3">
+                  <div className="boldPrimaryText text-lg mb-4">bull vs bear poll</div>
+                  <div className="card p-4">
+                    <div className="mx-auto mb-4">
+                      <FilterSlider filterList={periodList} />
+                    </div>
+                    <CircleChart wrapperClassName="w-full h-48" />
+                  </div>
+                </div>
               </div>
-              <div className="w-full">
-                <div className="boldPrimaryText text-lg mb-2">bull vs bear poll</div>
-                <CircleChart wrapperClassName="w-full h-80 mb-8" />
+              <div className="boldPrimaryText text-lg mb-2">similar stocks</div>
+              <SimilarSocks wrapperClassName="mb-8" />
+              <div className="sm:hidden">
+                <div className="boldPrimaryText text-lg mb-2">news release</div>
+                <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} />
               </div>
-            </div>
-            <div className="boldPrimaryText text-lg mb-2">similar stocks</div>
-            <SimilarSocks wrapperClassName="mb-8" />
-            <div className="sm:hidden">
-              <div className="boldPrimaryText text-lg mb-2">news release</div>
-              <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} />
-            </div>
-            <div className="hidden sm:flex flex-col sm:flex-row sm:space-x-4">
-              <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} displayTitle />
-              <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} displayTitle />
-            </div>
-            <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
-            <TopMembers wrapperClassName="overflow-auto mb-8" />
-            <TopMembers wrapperClassName="overflow-auto mb-8" />
-            <TopMembers wrapperClassName="overflow-auto mb-8" />
-            <TopMembers wrapperClassName="overflow-auto mb-8" />
-          </TabPane>
-          <TabPane
-            tab={
-              <div className={`text-primary text-lg ${tab !== 'appleWall' ? 'opacity-40' : ''}`}>
-                Apple Wall
+              <div className="hidden sm:flex flex-col sm:flex-row sm:space-x-4">
+                <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} displayTitle />
+                <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} displayTitle />
               </div>
-            }
-            key="appleWall"
-          >
-            <AddPost miniBox wrapperClassName="card p-0 mb-8" formName="stockWall">
-              <StockWall comments={comments} />
-            </AddPost>
-          </TabPane>
-          <TabPane
-            tab={
-              <div className={`text-primary text-lg ${tab !== 'appleCharts' ? 'opacity-40' : ''}`}>
-                Apple charts
-              </div>
-            }
-            key="appleCharts"
-          >
-            <AddPost miniBox wrapperClassName="card p-0 mb-8" formName="stockCharts">
-              <StockWall comments={comments} displayChart />
-            </AddPost>
-          </TabPane>
-        </Tabs>
-        <div className="text-lightGray text-center mt-3 mb-20">© stockwick inc.</div>
+              <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
+              <TopMembers wrapperClassName="overflow-auto mb-8" width="100%" />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width="100%" />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width="100%" />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width="100%" />
+            </TabPane>
+            <TabPane
+              tab={
+                <div className={`text-primary text-lg ${tab !== 'appleWall' ? 'opacity-40' : ''}`}>
+                  Apple Wall
+                </div>
+              }
+              key="appleWall"
+            >
+              <AddPost
+                miniBox
+                wrapperClassName="card p-0 mb-2"
+                footerClassName="flex-col xl:flex-row"
+                postBtnClassName="self-end xl:self-center"
+                tagsClassName="grid grid-cols-2 gap-y-2 mb-2"
+                uploadBtsPosition="end"
+                formName="stockWall"
+              >
+                <StockWall
+                  wrapperClassName="px-4 pt-4"
+                  maxHeight={500}
+                  comments={comments}
+                  isBullish
+                  title="appl wall"
+                />
+              </AddPost>
+            </TabPane>
+            <TabPane
+              tab={
+                <div
+                  className={`text-primary text-lg ${tab !== 'appleCharts' ? 'opacity-40' : ''}`}
+                >
+                  Apple charts
+                </div>
+              }
+              key="appleCharts"
+            >
+              <AddPost
+                miniBox
+                wrapperClassName="card p-0 mb-2"
+                footerClassName="flex-col xl:flex-row"
+                postBtnClassName="self-end xl:self-center"
+                tagsClassName="grid grid-cols-2 gap-y-2 mb-2"
+                uploadBtsPosition="end"
+                formName="stockCharts"
+              >
+                <StockWall
+                  wrapperClassName="px-4 pt-4"
+                  maxHeight={485}
+                  comments={comments}
+                  isBearish
+                  title="appl charts"
+                  displayChart
+                />
+              </AddPost>
+            </TabPane>
+          </Tabs>
+          <div className="text-lightGray text-center mt-3 mb-20">© stockwick inc.</div>
+        </div>
       </div>
     </Layout>
   );

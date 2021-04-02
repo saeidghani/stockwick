@@ -1,7 +1,8 @@
+/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import expandIcon from '../../assets/icons/expand.svg';
-import { HelloWorldChart } from '../../chartiq';
+// import { HelloWorldChart } from '../../chartiq';
 
 function Chart({ wrapperClassName, title, expand, unExpand, height, onExpandClick, onClose }) {
   return (
@@ -20,7 +21,7 @@ function Chart({ wrapperClassName, title, expand, unExpand, height, onExpandClic
           ''
         )}
       </div>
-      <HelloWorldChart />
+      <div className="bg-pink-100 h-52 w-full" />
     </div>
   );
 }

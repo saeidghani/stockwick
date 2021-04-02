@@ -6,7 +6,7 @@ import Avatar from '../UI/Avatar';
 function Stories({ wrapperClassName, onAddStory, onStoryView }) {
   return (
     <div className={wrapperClassName}>
-      <div className="card py-1 px-3">
+      <div className="py-1 px-3">
         <div className="boldPrimaryText text-xl mb-2">live stories</div>
         <div className="flex space-x-4 overflow-auto">
           <div className="flex flex-col items-center space-y-2 cursor-pointer" onClick={onAddStory}>

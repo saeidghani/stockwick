@@ -65,7 +65,7 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
         onClose={onCancel}
         wrapClassName="w-full h-full"
         headerStyle={{ backgroundColor: styleVar.colors.fadePrimary2, border: 0 }}
-        bodyStyle={{ backgroundColor: styleVar.colors.fadePrimary2 }}
+        bodyStyle={{ backgroundColor: styleVar.colors.fadePrimary2, paddingTop: 10 }}
         title={
           <BackButton
             onClick={onCancel}

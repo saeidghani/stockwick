@@ -35,7 +35,7 @@ function ChartModal({ children, modalVisible, drawerVisible, onOk, onCancel }) {
 ChartModal.propTypes = {
   modalVisible: PropTypes.bool,
   drawerVisible: PropTypes.bool,
-  onCancel: PropTypes.func.isRequired,
+  onCancel: PropTypes.func,
   onOk: PropTypes.func,
   children: PropTypes.node,
 };
@@ -44,6 +44,7 @@ ChartModal.defaultProps = {
   modalVisible: false,
   drawerVisible: false,
   onOk: () => {},
+  onCancel: () => {},
   children: null,
 };
 
