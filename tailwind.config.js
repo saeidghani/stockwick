@@ -44,12 +44,17 @@ module.exports = {
         '8px': '8px',
         '22px': '22px',
         '26px': '26px',
+        '32px': '32px',
       },
       borderRadius: {
         '6px': '6px',
       },
       opacity: {
         40: '40%',
+      },
+      spacing: {
+        18: '4.5rem',
+        19: '4.75rem',
       },
       screens: {
         xs: '576px',

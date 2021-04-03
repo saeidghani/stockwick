@@ -33,7 +33,7 @@ const _Dropdown = ({
       labelInValue={labelInValue}
       value={value || undefined}
       defaultValue={defaultValue || undefined}
-      dropdownAlign={{ offset: [-1, -2] }}
+      dropdownAlign={{ offset: [0, -2] }}
     >
       {options?.length > 0
         ? options.map((el, i) => (

@@ -43,17 +43,17 @@ function StockWall({
           Apple Stock Surging Ahead Of Possible Record Holiday Quarter. Wall Street analysts are
           pounding the table for Apple stock ahead of the company’s December-quarter earnings…
         </p>
-        <div className="flex space-x-6">
-          <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4 pb-2">
             <img className="cursor-pointer" src={likeFilledIcon} alt="a" />
-            <div className="boldPrimaryText">{isComment ? 'Like' : 'Agree'}</div>
+            <div className="boldPrimaryText pt-1">{isComment ? 'Like' : 'Agree'}</div>
           </div>
           <div className="flex items-center space-x-4">
             <img className="cursor-pointer" src={dislikeOutlineIcon} alt="a" />
-            <div className="boldPrimaryText">{isComment ? 'Dislike' : 'Disagree'}</div>
+            <div className="boldPrimaryText pb-1">{isComment ? 'Dislike' : 'Disagree'}</div>
           </div>
           {!isComment && (
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 pb-1">
               <img className="cursor-pointer" src={arrowFilledIcon} alt="a" />
               <div className="boldPrimaryText">Reply</div>
             </div>

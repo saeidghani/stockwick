@@ -4,14 +4,19 @@
   border-radius: 6px;
   padding: 25px 32px;
 }
-.c-secondary-btn .ant-btn:focus,
-.c-secondary-btn .ant-btn:active {
-  border: none !important;
+.c-secondary-btn .ant-btn:focus {
+  border: 1px solid #5fe90a !important;
   background-color: #5fe90a !important;
 }
-.c-secondary-btn .ant-btn:focus p,
-.c-secondary-btn .ant-btn:active p {
+.c-secondary-btn .ant-btn:focus p {
   color: #001560 !important;
+}
+.c-secondary-btn .ant-btn:active {
+  border: 1px solid #5fe90a !important;
+  background-color: #5fe90a !important;
+}
+.c-secondary-btn .ant-btn:active p {
+  color: #5fe90a !important;
 }
 .c-secondary-btn--sm .ant-btn {
   padding: 22px 18px;
@@ -287,6 +292,13 @@
 .c-modal-padding-none .ant-modal-body {
   padding: 0 !important;
 }
+.c-autocomplete--gray .ant-select-selector {
+  background-color: #EDEDED !important;
+  border: none !important;
+}
+.c-autocomplete--gray .ant-select-selection-placeholder {
+  color: #7B7C7E !important;
+}
 .c-autocomplete .ant-select-selector {
   height: 100% !important;
   border-top-left-radius: 0 !important;
@@ -309,8 +321,12 @@
   height: 100% !important;
   background-color: #0D276B !important;
   padding-top: 10px !important;
-  padding-left: 20px !important;
+  padding-left: 15px !important;
   cursor: pointer !important;
+  border-top-left-radius: 5px !important;
+  border-bottom-left-radius: 5px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }
 .c-select .ant-select .ant-select-selector:focus,
 .c-select .ant-select .ant-select-selector:active {

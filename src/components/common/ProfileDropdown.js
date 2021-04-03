@@ -56,7 +56,7 @@ function ProfileDropdown({ src }) {
   return (
     <Dropdown overlay={_Menu} trigger={['click']} placement="bottomRight">
       <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
-        <Avatar src={src} className="" />
+        <Avatar src={src} avatarClassName="w-8 h-8" />
       </a>
     </Dropdown>
   );

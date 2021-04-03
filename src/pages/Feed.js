@@ -34,7 +34,7 @@ function Feed() {
   const [parsedQuery, query, setQuery] = useQuery();
 
   const { useBreakpoint } = Grid;
-  const { sm: smOrHigherScreen } = useBreakpoint();
+  const { sm: smUp, xl: lgUp } = useBreakpoint();
 
   useEffect(() => {
     setQuery({ auth: true });
@@ -84,15 +84,15 @@ function Feed() {
     <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
       {stocksListCards.map(({ key, title, filter }) => (
         <StocksListModal
-          modalVisible={smOrHigherScreen && stocksListModalVisible[key]}
-          drawerVisible={!smOrHigherScreen && stocksListModalVisible[key]}
+          modalVisible={smUp && stocksListModalVisible[key]}
+          drawerVisible={!smUp && stocksListModalVisible[key]}
         >
           <StocksList
             title={title}
             wrapperClassName="mb-4"
             expand={false}
             onClose={() => setStocksListModalVisible({ [key]: false })}
-            height={!smOrHigherScreen ? 600 : 450}
+            height={!smUp ? 600 : 450}
           >
             <FilterSlider filterList={watchListFilterList} />
           </StocksList>
@@ -100,23 +100,23 @@ function Feed() {
       ))}
       <AddStoryModal
         onCancel={() => setAddStoryModalVisible(false)}
-        modalVisible={smOrHigherScreen && addStoryModalVisible}
-        drawerVisible={!smOrHigherScreen && addStoryModalVisible}
+        modalVisible={smUp && addStoryModalVisible}
+        drawerVisible={!smUp && addStoryModalVisible}
       />
       <StoryViewModal
         onCancel={() => setStoryViewModalVisible(false)}
-        modalVisible={smOrHigherScreen && storyViewModalVisible}
-        drawerVisible={!smOrHigherScreen && storyViewModalVisible}
+        modalVisible={smUp && storyViewModalVisible}
+        drawerVisible={!smUp && storyViewModalVisible}
         onStoryViewers={() => setStoryViewersModalVisible(true)}
       />
       <StoryViewersModal
         onCancel={() => setStoryViewersModalVisible(false)}
-        modalVisible={smOrHigherScreen && storyViewersModalVisible}
-        drawerVisible={!smOrHigherScreen && storyViewersModalVisible}
+        modalVisible={smUp && storyViewersModalVisible}
+        drawerVisible={!smUp && storyViewersModalVisible}
       />
       <div className="pb-6 bg-blueGray px-4 pt-6 md:pt-4 md:pb-10">
-        <div className="hidden md:grid md:grid-cols-4 md:gap-x-4">
-          <div className="col-start-1">
+        <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
+          <div className="col-start-1 col-span-2">
             {stocksListCards.map(({ key, title, filter }) => (
               <StocksList
                 title={title}
@@ -133,7 +133,7 @@ function Feed() {
               </div>
             </div>
           </div>
-          <div className="col-start-2 col-span-2">
+          <div className="col-start-3 col-span-3">
             <Tags />
             <div className="">
               <div className="w-full boldPrimaryText text-xl px-4 py-2 bg-white border border-solid border-itemBorder">
@@ -143,7 +143,7 @@ function Feed() {
                 miniBox
                 footerClassName="flex-col xl:flex-row"
                 postBtnClassName="self-end xl:self-center"
-                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
+                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 xl:pr-4 mb-4"
                 uploadBtsPosition="end"
                 placeholder="#stonksgame #strong, post something…"
               />
@@ -165,17 +165,19 @@ function Feed() {
               isBullish
             />
           </div>
-          <div className="col-start-4">
+          <div className="col-start-6 col-span-2">
             <Stories
               wrapperClassName="card p-1 mb-4"
               onAddStory={() => setAddStoryModalVisible(true)}
               onStoryView={() => setStoryViewModalVisible(true)}
+              gridCols={lgUp ? 3 : 2}
+              isSmSlider
             />
             <NewsReleaseSummary wrapperClassName="mb-4" />
             <Activity />
           </div>
         </div>
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <Tags />
           <Stories
             wrapperClassName="my-6"

@@ -11,7 +11,7 @@ function StockDataSlider({ wrapperClassName }) {
     infinite: true,
     autoplay: true,
     speed: 8000,
-    autoplaySpeed: 1000,
+    autoplaySpeed: 0,
     slidesToShow: 6,
     slidesToScroll: 1,
     cssEase: 'linear',
@@ -60,7 +60,7 @@ function StockDataSlider({ wrapperClassName }) {
 
   return (
     <div className={`bg-primary ${wrapperClassName}`}>
-      <div className="border-b border-solid border-fadePrimary" style={{ width: '100vw' }}>
+      <div className="border-b border-solid border-fadePrimary" style={{ width: '100%' }}>
         <Carousel {...settings} ref={carouselRef} draggable>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((i) => (
             <div key={i}>

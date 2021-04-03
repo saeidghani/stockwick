@@ -49,26 +49,30 @@ export const MessagesIcon = ({ fill, wrapperClassName }) => {
 };
 
 export const AddStoryIcon = () => (
-  <svg width="78" height="78" viewBox="0 0 78 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg width="84" height="84" viewBox="0 0 84 84" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
-      d="M38.7666 77C59.8823 77 77 59.8823 77 38.7666C77 17.6509 59.8823 0.533203 38.7666 0.533203C17.6509 0.533203 0.533203 17.6509 0.533203 38.7666C0.533203 59.8823 17.6509 77 38.7666 77Z"
+      d="M42 84C65.196 84 84 65.196 84 42C84 18.804 65.196 0 42 0C18.804 0 0 18.804 0 42C0 65.196 18.804 84 42 84Z"
+      fill="#001560"
+    />
+    <path
+      d="M41.7646 80C62.8804 80 79.998 62.8823 79.998 41.7666C79.998 20.6509 62.8804 3.5332 41.7646 3.5332C20.6489 3.5332 3.53125 20.6509 3.53125 41.7666C3.53125 62.8823 20.6489 80 41.7646 80Z"
       fill="#F8F8F8"
-      fillOpacity="0.33"
+      fill-opacity="0.33"
     />
     <path
-      d="M39 76C59.4345 76 76 59.4345 76 39C76 18.5655 59.4345 2 39 2C18.5655 2 2 18.5655 2 39C2 59.4345 18.5655 76 39 76Z"
+      d="M42 79C62.4345 79 79 62.4345 79 42C79 21.5655 62.4345 5 42 5C21.5655 5 5 21.5655 5 42C5 62.4345 21.5655 79 42 79Z"
       stroke="white"
-      strokeWidth="4"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeDasharray="18 18"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-dasharray="18 18"
     />
     <path
-      d="M51 38.0769V39.9231H39.9231V51H38.0769V39.9231H27V38.0769H38.0769V27H39.9231V38.0769H51Z"
+      d="M54 41.0769V42.9231H42.9231V54H41.0769V42.9231H30V41.0769H41.0769V30H42.9231V41.0769H54Z"
       fill="#001560"
       stroke="#001560"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );

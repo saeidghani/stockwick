@@ -26,11 +26,18 @@
     border: 1px solid @secondary-color !important;
     border-radius: @border-radius;
     padding: @button-padding;
-    &:focus, &:active {
-      border: none !important;
+    &:focus {
+      border: 1px solid @secondary-color !important;
       background-color: @secondary-color !important;
       p {
         color: @primary-color !important;
+      }
+    }
+    &:active {
+      border: 1px solid @secondary-color !important;
+      background-color: @secondary-color !important;
+      p {
+        color: @secondary-color !important;
       }
     }
   }
@@ -354,8 +361,6 @@
 }
 }
 
-
-
 .c-edit-profile-form {
   .ant-form-item {
     display: flex !important;
@@ -396,6 +401,15 @@
 }
 
 .c-autocomplete {
+  &--gray {
+    .ant-select-selector {
+      background-color: #EDEDED !important;
+      border: none !important;
+    }
+    .ant-select-selection-placeholder {
+      color: #7B7C7E !important;
+    }
+  }
   .ant-select-selector {
     height: 100% !important;
     border-top-left-radius: 0 !important;
@@ -422,8 +436,12 @@
      height: 100% !important;
      background-color: @fade-primary-color-2 !important;
      padding-top: 10px !important;
-     padding-left: 20px !important;
+     padding-left: 15px !important;
      cursor: pointer !important;
+     border-top-left-radius: 5px !important;
+     border-bottom-left-radius: 5px !important;
+     border-top-right-radius: 0 !important;
+     border-bottom-right-radius: 0 !important;
      &:focus, &:active {
       border: none !important;
       outline: none !important;

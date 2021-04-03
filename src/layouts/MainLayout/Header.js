@@ -9,6 +9,7 @@ import usFlag from '../../assets/icons/usFlag.svg';
 import { useQuery } from '../../hooks/useQuery';
 import routes from '../../routes/RouteMap';
 import menuIcon from '../../assets/icons/menu.svg';
+import searchWhiteIcon from '../../assets/icons/searchWhite.svg';
 import Button from '../../components/UI/Button';
 import ProfileDropdown from '../../components/common/ProfileDropdown';
 import MenuDrawer from '../../components/common/MenuDrawer';
@@ -25,6 +26,7 @@ import NotificationModal from '../../components/common/NotificationModal';
 import AddPostModal from '../../components/common/AddPostModal';
 import FindAccountModal from '../../components/common/FindAccountModal';
 import ResetPasswordModal from '../../components/common/ResetPasswordModal';
+import SearchModal from '../../components/common/SearchModal';
 
 function Header() {
   const [changeTimeZoneModalVisible, setChangeTimeZoneModalVisible] = useState(false);
@@ -37,10 +39,11 @@ function Header() {
   const [notificationModalVisible, setNotificationModalVisible] = useState(false);
   const [directMessageModalVisible, setDirectMessageModalVisible] = useState(false);
   const [addPostModalVisible, setAddPostModalVisible] = useState(false);
+  const [searchModalVisible, setSearchModalVisible] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
 
   const { useBreakpoint } = Grid;
-  const { sm: smOrHigherScreen } = useBreakpoint();
+  const { sm: smUp } = useBreakpoint();
   const { pathname } = useLocation();
   const [parsedQuery, query, setQuery] = useQuery();
 
@@ -54,8 +57,8 @@ function Header() {
   return (
     <header className="page-header">
       <ChangeTimeZoneModal
-        modalVisible={smOrHigherScreen && changeTimeZoneModalVisible}
-        drawerVisible={!smOrHigherScreen && changeTimeZoneModalVisible}
+        modalVisible={smUp && changeTimeZoneModalVisible}
+        drawerVisible={!smUp && changeTimeZoneModalVisible}
         onCancel={() => setChangeTimeZoneModalVisible(false)}
       />
       <ChangeMarketModal
@@ -63,36 +66,36 @@ function Header() {
         onCancel={() => setChangeMarketModalVisible(false)}
       />
       <RegisterModal
-        modalVisible={smOrHigherScreen && registerModalVisible}
-        drawerVisible={!smOrHigherScreen && registerModalVisible}
+        modalVisible={smUp && registerModalVisible}
+        drawerVisible={!smUp && registerModalVisible}
         onCancel={() => setRegisterModalVisible(false)}
         onOpenLoginModal={() => setLoginModalVisible(true)}
       />
       <LoginModal
-        modalVisible={smOrHigherScreen && loginModalVisible}
-        drawerVisible={!smOrHigherScreen && loginModalVisible}
+        modalVisible={smUp && loginModalVisible}
+        drawerVisible={!smUp && loginModalVisible}
         onForgotPasswordClick={() => setFindAccountModalVisible(true)}
         onCancel={() => setLoginModalVisible(false)}
         onOpenRegisterModal={() => setRegisterModalVisible(true)}
       />
       <FindAccountModal
-        modalVisible={smOrHigherScreen && findAccountModalVisible}
-        drawerVisible={!smOrHigherScreen && findAccountModalVisible}
+        modalVisible={smUp && findAccountModalVisible}
+        drawerVisible={!smUp && findAccountModalVisible}
         onCancel={() => setFindAccountModalVisible(false)}
       />
       <CreateAccountModal
-        modalVisible={smOrHigherScreen && createAccountModalVisible}
-        drawerVisible={!smOrHigherScreen && createAccountModalVisible}
+        modalVisible={smUp && createAccountModalVisible}
+        drawerVisible={!smUp && createAccountModalVisible}
         onCancel={() => setCreateAccountModalVisible(false)}
       />
       <ResetPasswordModal
-        modalVisible={smOrHigherScreen && resetPasswordModalVisible}
-        drawerVisible={!smOrHigherScreen && resetPasswordModalVisible}
+        modalVisible={smUp && resetPasswordModalVisible}
+        drawerVisible={!smUp && resetPasswordModalVisible}
         onCancel={() => setResetPasswordModalVisible(false)}
       />
       <DirectMessageModal
-        modalVisible={smOrHigherScreen && directMessageModalVisible}
-        drawerVisible={!smOrHigherScreen && directMessageModalVisible}
+        modalVisible={smUp && directMessageModalVisible}
+        drawerVisible={!smUp && directMessageModalVisible}
         onCancel={() => setDirectMessageModalVisible(false)}
       />
       <NotificationModal
@@ -100,8 +103,8 @@ function Header() {
         onCancel={() => setNotificationModalVisible(false)}
       />
       <AddPostModal
-        modalVisible={smOrHigherScreen && addPostModalVisible}
-        drawerVisible={!smOrHigherScreen && addPostModalVisible}
+        modalVisible={smUp && addPostModalVisible}
+        drawerVisible={!smUp && addPostModalVisible}
         onCancel={() => setAddPostModalVisible(false)}
       />
       <MenuDrawer
@@ -115,9 +118,14 @@ function Header() {
         onMessagesClick={() => setDirectMessageModalVisible(true)}
         onNotificationsClick={() => setNotificationModalVisible(true)}
       />
+      <SearchModal
+        modalVisible={smUp && searchModalVisible}
+        drawerVisible={!smUp && searchModalVisible}
+        onCancel={() => setSearchModalVisible(false)}
+      />
       <div className="hidden md:block relative">
         <div className="page-header-base bg-primary border-b border-solid border-fadePrimary">
-          <div className="flex justify-between px-4 py-4 lg:container">
+          <div className="flex justify-between px-4 py-4 xl:container">
             <div className="flex items-center space-x-3 lg:space-x-5">
               {/* TODO just use routes.home after adding auth */}
               <Link to={!!parsedQuery?.auth ? `${routes?.home}?auth=true` : routes?.home}>
@@ -128,7 +136,7 @@ function Header() {
                 <div className="text-white">03 : 03 : 59</div>
               </div>
             </div>
-            <div className="flex items-center space-x-4 lg:space-x-10">
+            <div className="flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
               <div className="flex items-center space-x-1">
                 <img src={clock} alt="" />
                 <div
@@ -148,9 +156,14 @@ function Header() {
                 </div>
               </div>
               {!pathname.includes(routes.home) && (
-                <div className="md:hidden">
-                  <CategoriesSearch />
-                </div>
+                <>
+                  <div className="hidden lg:block w-64 xl:w-80">
+                    <CategoriesSearch selectWrapperClassName="h-14 w-24" />
+                  </div>
+                  <div className="lg:hidden pl-4" onClick={() => setSearchModalVisible(true)}>
+                    <img src={searchWhiteIcon} className="w-6" alt="" />
+                  </div>
+                </>
               )}
             </div>
             {parsedQuery.auth ? (
@@ -220,13 +233,20 @@ function Header() {
           >
             <div className="textLogo justify-self-center text-2xl">stockwick</div>
           </Link>
-          <Button
-            type="link"
-            onClick={() => setDrawerVisible(true)}
-            icon={<img src={menuIcon} alt="" />}
-            className="p-0"
-            wrapperClassName="justify-self-end"
-          />
+          <div className="justify-self-end flex items-center space-x-8">
+            {!pathname.includes(routes.home) && (
+              <div className="lg:hidden pl-4" onClick={() => setSearchModalVisible(true)}>
+                <img src={searchWhiteIcon} className="w-6" alt="" />
+              </div>
+            )}
+            <Button
+              type="link"
+              onClick={() => setDrawerVisible(true)}
+              icon={<img src={menuIcon} alt="" />}
+              className="p-0"
+              wrapperClassName=""
+            />
+          </div>
         </div>
         {parsedQuery.auth && <StockDataSlider wrapperClassName="hidden sm:block" />}
         <div

@@ -186,7 +186,7 @@ function AddPost({
               </div>
               <div className="lg:pl-6">
                 <div className="text-darkGray mb-2">share to:</div>
-                <div className="flex xl:grid grid-cols-4 lg:grid-cols-5">
+                <div className="flex lg:grid grid-cols-4">
                   <ShareTo text="select all" textClassName="whitespace-no-wrap" />
                   <ShareTo text="facebook">
                     <img src={facebookIcon} className="w-4 h-4" alt="" />

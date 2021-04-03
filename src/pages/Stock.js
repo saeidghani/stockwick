@@ -32,7 +32,7 @@ function Stock() {
   const { tab } = parsedQuery;
 
   const { useBreakpoint } = Grid;
-  const { sm: smOrHigherScreen } = useBreakpoint();
+  const { sm: smUp, xs } = useBreakpoint();
 
   useEffect(() => {
     setQuery({ auth: true, tab: 'overview' });
@@ -63,10 +63,10 @@ function Stock() {
   ];
 
   return (
-    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+    <Layout mainClassName="min-h-screen lg:pt-8 lg:pb-10 lg:px-4 xl:container">
       <ChartModal
-        modalVisible={smOrHigherScreen && chartModalVisible}
-        drawerVisible={!smOrHigherScreen && chartModalVisible}
+        modalVisible={smUp && chartModalVisible}
+        drawerVisible={!smUp && chartModalVisible}
       >
         <Chart
           wrapperClassName="mb-4 card p-4"
@@ -78,23 +78,23 @@ function Stock() {
       </ChartModal>
       <AddStoryModal
         onCancel={() => setAddStoryModalVisible(false)}
-        modalVisible={smOrHigherScreen && addStoryModalVisible}
-        drawerVisible={!smOrHigherScreen && addStoryModalVisible}
+        modalVisible={smUp && addStoryModalVisible}
+        drawerVisible={!smUp && addStoryModalVisible}
       />
       <StoryViewModal
         onCancel={() => setStoryViewModalVisible(false)}
-        modalVisible={smOrHigherScreen && storyViewModalVisible}
-        drawerVisible={!smOrHigherScreen && storyViewModalVisible}
+        modalVisible={smUp && storyViewModalVisible}
+        drawerVisible={!smUp && storyViewModalVisible}
         onStoryViewers={() => setStoryViewersModalVisible(true)}
       />
       <StoryViewersModal
         onCancel={() => setStoryViewersModalVisible(false)}
-        modalVisible={smOrHigherScreen && storyViewersModalVisible}
-        drawerVisible={!smOrHigherScreen && storyViewersModalVisible}
+        modalVisible={smUp && storyViewersModalVisible}
+        drawerVisible={!smUp && storyViewersModalVisible}
       />
-      <div className="pb-2 bg-blueGray md:px-4 md:pt-4 md:pb-10">
+      <div className="pb-2 bg-blueGray lg:px-4 lg:pt-4 lg:pb-10">
         <StockSummary />
-        <div className="hidden md:block mt-4">
+        <div className="hidden lg:block mt-4">
           <div className="grid grid-cols-2 gap-x-4">
             <div className="">
               <Chart
@@ -123,7 +123,7 @@ function Stock() {
                   <CircleChart wrapperClassName="w-full h-48" />
                 </div>
               </div>
-              <SimilarSocks wrapperClassName="mb-4" />
+              <SimilarSocks wrapperClassName="mb-4" displayTitle />
               <div className="flex space-x-4 mb-4">
                 <NewsReleaseDetailed maxHeight={600} displayTitle />
                 <NewsReleaseDetailed maxHeight={600} displayTitle />
@@ -179,7 +179,7 @@ function Stock() {
           <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
           <div className="text-lightGray text-center mt-6">© stockwick inc.</div>
         </div>
-        <div className="md:hidden c-tabs px-4">
+        <div className="lg:hidden c-tabs px-4">
           <Tabs activeKey={tab} onChange={onTabChange}>
             <TabPane
               tab={
@@ -193,6 +193,7 @@ function Stock() {
                 wrapperClassName="mb-4"
                 onAddStory={() => setAddStoryModalVisible(true)}
                 onStoryView={() => setStoryViewModalVisible(true)}
+                gridCols={xs ? 4 : smUp ? 7 : 5}
               />
               <div className="boldPrimaryText text-lg mb-2">advance charting</div>
               <Chart wrapperClassName="w-full h-80 mb-8" />
@@ -230,10 +231,10 @@ function Stock() {
                 <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} displayTitle />
               </div>
               <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
-              <TopMembers wrapperClassName="overflow-auto mb-8" width="100%" />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width="100%" />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width="100%" />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width="100%" />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width={945} />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width={945} />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width={945} />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width={945} />
             </TabPane>
             <TabPane
               tab={

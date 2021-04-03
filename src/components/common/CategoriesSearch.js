@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import searchColorfulIcon from '../../assets/icons/searchColorful.svg';
@@ -10,7 +9,12 @@ const mockVal = (str, repeat = 1) => ({
   value: str.repeat(repeat),
 });
 
-function CategoriesSearch({ wrapperClassName }) {
+function CategoriesSearch({
+  wrapperClassName,
+  selectWrapperClassName,
+  autoCompleteClassName,
+  height,
+}) {
   const [options, setOptions] = useState([]);
   const [parsedQuery, query, setQuery] = useQuery();
   const { qs } = parsedQuery || {};
@@ -38,7 +42,7 @@ function CategoriesSearch({ wrapperClassName }) {
         <Select
           onChange={() => {}}
           options={categories}
-          wrapperClassName="h-14 w-28 md:w-32"
+          wrapperClassName={`${height || 'h-14'} ${selectWrapperClassName || 'w-28 md:w-32'}`}
           dropdownClassName="bg-fadePrimary2 relative bottom-4"
           className="text-secondary text-base"
           optionClassName="text-secondary"
@@ -59,7 +63,7 @@ function CategoriesSearch({ wrapperClassName }) {
           value={qs}
           placeholder="Start Typing"
           wrapperClassName="w-full"
-          className="h-14"
+          className={`${height || 'h-14'} ${autoCompleteClassName}`}
         />
         <img src={searchColorfulIcon} className="absolute top-4 right-4 w-6" alt="" />
       </div>
@@ -69,10 +73,16 @@ function CategoriesSearch({ wrapperClassName }) {
 
 CategoriesSearch.propTypes = {
   wrapperClassName: PropTypes.string,
+  selectWrapperClassName: PropTypes.string,
+  autoCompleteClassName: PropTypes.string,
+  height: PropTypes.string,
 };
 
 CategoriesSearch.defaultProps = {
   wrapperClassName: '',
+  selectWrapperClassName: '',
+  autoCompleteClassName: '',
+  height: 'h-14',
 };
 
 export default CategoriesSearch;

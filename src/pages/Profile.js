@@ -40,7 +40,7 @@ function Profile() {
   const { tab } = parsedQuery;
 
   const { useBreakpoint } = Grid;
-  const { sm: smOrHigherScreen } = useBreakpoint();
+  const { sm: smUp } = useBreakpoint();
 
   useEffect(() => {
     setQuery({ auth: true, tab: 'idea', followTab: 'followers' });
@@ -68,18 +68,18 @@ function Profile() {
       />
       <FollowListModal
         onCancel={() => setFollowListModalVisible(false)}
-        modalVisible={smOrHigherScreen && followListModalVisible}
-        drawerVisible={!smOrHigherScreen && followListModalVisible}
+        modalVisible={smUp && followListModalVisible}
+        drawerVisible={!smUp && followListModalVisible}
       />
       <StocksListModal
-        modalVisible={smOrHigherScreen && stocksListModalVisible}
-        drawerVisible={!smOrHigherScreen && stocksListModalVisible}
+        modalVisible={smUp && stocksListModalVisible}
+        drawerVisible={!smUp && stocksListModalVisible}
       >
         <StocksList
           title="My Watchlist"
           wrapperClassName="mb-4"
           expand={false}
-          height={!smOrHigherScreen ? 600 : 450}
+          height={!smUp ? 600 : 450}
           onClose={() => setStocksListModalVisible(false)}
         >
           <FilterSlider filterList={watchListFilterList} />
@@ -87,23 +87,23 @@ function Profile() {
       </StocksListModal>
       <AddStoryModal
         onCancel={() => setAddStoryModalVisible(false)}
-        modalVisible={smOrHigherScreen && addStoryModalVisible}
-        drawerVisible={!smOrHigherScreen && addStoryModalVisible}
+        modalVisible={smUp && addStoryModalVisible}
+        drawerVisible={!smUp && addStoryModalVisible}
       />
       <StoryViewModal
         onCancel={() => setStoryViewModalVisible(false)}
-        modalVisible={smOrHigherScreen && storyViewModalVisible}
-        drawerVisible={!smOrHigherScreen && storyViewModalVisible}
+        modalVisible={smUp && storyViewModalVisible}
+        drawerVisible={!smUp && storyViewModalVisible}
         onStoryViewers={() => setStoryViewersModalVisible(true)}
       />
       <StoryViewersModal
         onCancel={() => setStoryViewersModalVisible(false)}
-        modalVisible={smOrHigherScreen && storyViewersModalVisible}
-        drawerVisible={!smOrHigherScreen && storyViewersModalVisible}
+        modalVisible={smUp && storyViewersModalVisible}
+        drawerVisible={!smUp && storyViewersModalVisible}
       />
       <div className="pb-2 bg-blueGray md:px-4 md:pt-4 md:pb-10">
-        <div className="hidden md:grid md:grid-cols-4 md:gap-x-4">
-          <div className="col-start-1">
+        <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
+          <div className="col-start-1 col-span-2">
             <div className="bg-white flex flex-col items-center mb-4 pt-4">
               <div
                 className="flex mb-4 relative cursor-pointer"
@@ -128,7 +128,7 @@ function Profile() {
             </div>
             <Activity />
           </div>
-          <div className="col-start-2 col-span-2">
+          <div className="col-start-3 col-span-3">
             <div
               className="w-full boldPrimaryText text-xl px-4 py-2 bg-white
                     border border-solid border-itemBorder"
@@ -210,7 +210,7 @@ function Profile() {
               </TabPane>
             </Tabs>
           </div>
-          <div className="col-start-4">
+          <div className="col-start-6 col-span-2">
             <StocksList
               title="My Watchlist"
               wrapperClassName="mb-4"
@@ -221,7 +221,7 @@ function Profile() {
             <Activity />
           </div>
         </div>
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <div className="bg-primary px-5">
             <div
               className="flex items-center space-x-4
