@@ -117,19 +117,21 @@ function Feed() {
       <div className="pb-6 bg-blueGray px-4 pt-6 md:pt-4 md:pb-10">
         <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
           <div className="col-start-1 col-span-2">
-            {stocksListCards.map(({ key, title, filter }) => (
-              <StocksList
-                title={title}
-                wrapperClassName="mb-4"
-                onExpandClick={() => setStocksListModalVisible({ [key]: true })}
-              >
-                <FilterSlider filterList={filter} />
-              </StocksList>
-            ))}
-            <div className="bg-primary flex justify-center items-center h-60 rounded">
-              <div className="flex flex-col items-center">
-                <div className="text-white">powered by</div>
-                <div className="textLogo text-3xl">stockwick</div>
+            <div className="sticky-position">
+              {stocksListCards.map(({ key, title, filter }) => (
+                <StocksList
+                  title={title}
+                  wrapperClassName="mb-4"
+                  onExpandClick={() => setStocksListModalVisible({ [key]: true })}
+                >
+                  <FilterSlider filterList={filter} />
+                </StocksList>
+              ))}
+              <div className="bg-primary flex justify-center items-center h-60 rounded">
+                <div className="flex flex-col items-center">
+                  <div className="text-white">powered by</div>
+                  <div className="textLogo text-3xl">stockwick</div>
+                </div>
               </div>
             </div>
           </div>
@@ -165,7 +167,7 @@ function Feed() {
               isBullish
             />
           </div>
-          <div className="col-start-6 col-span-2">
+          <div className="sticky-position col-start-6 col-span-2">
             <Stories
               wrapperClassName="card p-1 mb-4"
               onAddStory={() => setAddStoryModalVisible(true)}

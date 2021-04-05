@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Form, Input } from 'antd';
 import Modal from '../UI/Modal';
 import Drawer from '../UI/Drawer';
 import Button from '../UI/Button';
 import BackButton from './BackButton';
 import SocialAuthButtons from './SocialAuthButtons';
+import { emailRules, userNameRules } from '../../constants/formRules';
+
+const { Item } = Form;
+
+const stages = {
+  socialAuth: 'socialAuth',
+  createAccount: 'createAccount',
+};
 
 function RegisterModal({
   modalVisible,
@@ -16,9 +25,52 @@ function RegisterModal({
   // eslint-disable-next-line no-unused-vars
   onOpenCreateAccountModal,
 }) {
+  // eslint-disable-next-line no-unused-vars
+  const [currentStage, setCurrentStage] = useState(stages.createAccount);
+
   const dispatch = useDispatch();
 
-  const Content = () => (
+  const onFinish = async (values) => {
+    console.log('Success:', values);
+    await dispatch.auth.setRequiredFields(values);
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
+
+  const CreateAccountContent = () => (
+    <div className="flex flex-col items-center">
+      <div className="text-22px text-primary mt-10 mb-8">Create Your Account</div>
+      <div className="w-full grid grid-cols-12">
+        <Form
+          name="createAccount"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          className="w-full col-span-12 md:col-start-4 md:col-span-6"
+        >
+          <Item name="email" rules={emailRules} className="c-primary-input">
+            <Input placeholder="Email *" />
+          </Item>
+
+          <Item name="username" rules={userNameRules} className="c-primary-input">
+            <Input placeholder="Username *" />
+          </Item>
+
+          <Item>
+            <Button htmlType="submit" wrapperClassName="c-filled-btn c-filled-btn--blue" block>
+              Submit
+            </Button>
+          </Item>
+        </Form>
+      </div>
+    </div>
+  );
+
+  const RegisterContent = () => (
     <div className="w-full grid grid-cols-12 px-0 xs:px-1 sm:px-8 pb-6">
       <div className="col-span-12 md:col-start-4 md:col-span-6 flex flex-col items-center mb-7">
         <div className="text-22px text-primary mb-2">Register</div>
@@ -56,6 +108,10 @@ function RegisterModal({
         }}
       />
     </div>
+  );
+
+  const Content = () => (
+    <div>{currentStage === stages.socialAuth ? <RegisterContent /> : <CreateAccountContent />}</div>
   );
 
   return (

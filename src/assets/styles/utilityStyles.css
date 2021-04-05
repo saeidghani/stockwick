@@ -87,4 +87,9 @@
   display: grid;
   grid-template-columns: 90px 1fr;
 }
+.sticky-position {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 /*# sourceMappingURL=utilityStyles.css.map */

@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 import { Grid, Tabs } from 'antd';
+import { useDispatch } from 'react-redux';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../layouts/MainLayout/MainLayout';
 import StockSummary from '../components/common/StockSummary';
@@ -18,7 +19,6 @@ import ChartModal from '../components/common/ChartModal';
 import AddStoryModal from '../components/common/AddStoryModal';
 import StoryViewModal from '../components/common/StoryViewModal';
 import StoryViewersModal from '../components/common/StoryViewersModal';
-import { useDispatch } from 'react-redux';
 
 const { TabPane } = Tabs;
 

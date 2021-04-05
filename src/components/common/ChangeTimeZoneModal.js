@@ -28,7 +28,7 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
   // eslint-disable-next-line react/prop-types
   const Content = ({ wrapperClassName }) => (
     <div className={wrapperClassName}>
-      <div className="text-white text-center mb-10">Change Time Zone</div>
+      <div className="text-white text-center mb-10">Choose Time Zone</div>
       <div className="flex justify-between px-4">
         {timeZones.map((t) => (
           <div
@@ -56,7 +56,7 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
         onCancel={onCancel}
         onOk={onOk}
         visible={modalVisible}
-        width={400}
+        width={450}
       >
         <Content wrapperClassName="pt-6" />
       </Modal>

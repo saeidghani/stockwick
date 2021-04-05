@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, Input } from 'antd';
 import Modal from '../UI/Modal';
@@ -10,8 +11,11 @@ import BackButton from './BackButton';
 const { Item } = Form;
 
 function CreateAccountModal({ modalVisible, drawerVisible, onOk, onCancel }) {
-  const onFinish = (values) => {
+  const dispatch = useDispatch();
+
+  const onFinish = async (values) => {
     console.log('Success:', values);
+    await dispatch.auth.setRequiredFields(values);
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -23,7 +27,7 @@ function CreateAccountModal({ modalVisible, drawerVisible, onOk, onCancel }) {
       <div className="text-22px text-primary mt-10 mb-8">Create Your Account</div>
       <div className="w-full grid grid-cols-12">
         <Form
-          name="basic"
+          name="createAccount"
           initialValues={{
             remember: true,
           }}
