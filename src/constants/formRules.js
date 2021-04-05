@@ -24,6 +24,10 @@ const userNameRules = [
     required: true,
     message: 'Please input your username!',
   },
+  {
+    min: 3,
+    message: 'Username can not be less than 3 characters',
+  },
 ];
 
 const emailRules = [
@@ -31,12 +35,24 @@ const emailRules = [
     required: true,
     message: 'Please input your email!',
   },
+  {
+    type: 'email',
+    message: 'Please enter valid email',
+  },
 ];
 
 const passwordRules = [
   {
     required: true,
     message: 'Please input your password!',
+  },
+  {
+    min: 6,
+    message: 'Password can not be less than 6 characters',
+  },
+  {
+    pattern: /[A-Za-z]+[0-9]+.*/,
+    message: 'Please enter valid password (ex. aaa111)',
   },
 ];
 

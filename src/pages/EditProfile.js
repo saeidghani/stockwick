@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Layout from '../layouts/MainLayout/MainLayout';
-import EditProfileForm from '../components/common/EditProfileForm';
 import { useQuery } from '../hooks/useQuery';
-import routes from '../routes/RouteMap';
+import RouteMap from '../routes/RouteMap';
+import EditProfileForm from '../components/common/EditProfileForm';
 
 function EditProfile() {
   const history = useHistory();
@@ -20,7 +20,7 @@ function EditProfile() {
         <EditProfileForm
           wrapperClassName="col-start-2 col-span-10 bg-white
                          pt-16 pb-20 px-10 sm:px-16 md:px-24"
-          afterSave={() => history.push(routes.profile.index)}
+          afterSave={() => history.push(RouteMap.profile.index)}
         />
       </div>
     </Layout>

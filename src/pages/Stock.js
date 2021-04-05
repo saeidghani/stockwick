@@ -18,6 +18,7 @@ import ChartModal from '../components/common/ChartModal';
 import AddStoryModal from '../components/common/AddStoryModal';
 import StoryViewModal from '../components/common/StoryViewModal';
 import StoryViewersModal from '../components/common/StoryViewersModal';
+import { useDispatch } from 'react-redux';
 
 const { TabPane } = Tabs;
 
@@ -34,7 +35,10 @@ function Stock() {
   const { useBreakpoint } = Grid;
   const { sm: smUp, xs } = useBreakpoint();
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    (async () => await dispatch.posts.getMyPosts())();
     setQuery({ auth: true, tab: 'overview' });
   }, []);
 

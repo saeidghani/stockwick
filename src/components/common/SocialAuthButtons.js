@@ -6,12 +6,21 @@ import twitterColorful from '../../assets/icons/twitterColorful.svg';
 import linkedinColorful from '../../assets/icons/linkedinColorful.svg';
 import facebookColorful from '../../assets/icons/facebookColorful.svg';
 
-function SocialAuthButtons({ wrapperClassName }) {
+function SocialAuthButtons({
+  wrapperClassName,
+  // eslint-disable-next-line no-unused-vars
+  onGetGoogleAuth,
+  onGetFacebookAuth,
+  onGetTwitterAuth,
+  onGetLinkedinAuth,
+}) {
   return (
     <div className={`flex flex-col space-y-4 w-full ${wrapperClassName}`}>
       <Button
         wrapperClassName="c-filled-btn c-filled-btn--primary flex"
-        className="justify-center md:justify-start"
+        className="justify-center xs:justify-start"
+        href="http://165.227.34.172:3020/api/users/auth/google"
+        target="_blank"
         block
       >
         <img src={googleColorful} alt="" className="mr-4" />
@@ -21,6 +30,7 @@ function SocialAuthButtons({ wrapperClassName }) {
         <Button
           wrapperClassName="c-filled-btn c-filled-btn--primary w-full"
           className="justify-center xs:justify-start"
+          onClick={onGetTwitterAuth}
           block
         >
           <img src={twitterColorful} alt="" className="mr-4" />
@@ -29,6 +39,7 @@ function SocialAuthButtons({ wrapperClassName }) {
         <Button
           wrapperClassName="c-filled-btn c-filled-btn--primary w-full"
           className="justify-center xs:justify-start"
+          onClick={onGetLinkedinAuth}
           block
         >
           <img src={linkedinColorful} alt="" className="mr-4" />
@@ -37,6 +48,7 @@ function SocialAuthButtons({ wrapperClassName }) {
         <Button
           wrapperClassName="c-filled-btn c-filled-btn--primary w-full"
           className="justify-center xs:justify-start"
+          onClick={onGetFacebookAuth}
           block
         >
           <img src={facebookColorful} alt="" className="mr-4" />
@@ -49,10 +61,18 @@ function SocialAuthButtons({ wrapperClassName }) {
 
 SocialAuthButtons.propTypes = {
   wrapperClassName: PropTypes.string,
+  onGetGoogleAuth: PropTypes.func,
+  onGetFacebookAuth: PropTypes.func,
+  onGetTwitterAuth: PropTypes.func,
+  onGetLinkedinAuth: PropTypes.func,
 };
 
 SocialAuthButtons.defaultProps = {
   wrapperClassName: '',
+  onGetGoogleAuth: () => {},
+  onGetFacebookAuth: () => {},
+  onGetTwitterAuth: () => {},
+  onGetLinkedinAuth: () => {},
 };
 
 export default SocialAuthButtons;

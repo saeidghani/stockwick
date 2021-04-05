@@ -25,6 +25,7 @@ const _Button = ({
   disabled,
   danger,
   htmlType,
+  ...props
 }) => {
   const RICON = ICONS[icon];
   if (icon && typeof icon !== 'object' && typeof RICON === 'undefined' && !RICON) {
@@ -46,6 +47,7 @@ const _Button = ({
         shape={shape}
         danger={danger}
         htmlType={htmlType}
+        {...props}
       >
         {iconPosition === 'left' ? (
           icon && typeof icon === 'object' ? (

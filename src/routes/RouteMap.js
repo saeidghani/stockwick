@@ -13,4 +13,7 @@ export default {
   feed: {
     index: '/feed',
   },
+  auth: {
+    google: '/api/users/auth/google/callback',
+  },
 };

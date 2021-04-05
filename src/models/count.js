@@ -12,7 +12,7 @@ export default {
       return actionWrapper(
         async () => {
           await new Promise((resolve) => setTimeout(resolve, 1000));
-          dispatch.count.increment(payload);
+          this.increment(payload);
         },
         dispatch.util.errorHandler,
         dispatch.util.alert,

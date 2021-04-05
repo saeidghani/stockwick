@@ -22,6 +22,6 @@ export default {
   dateFormat: 'Do MMM YYYY',
 
   // API
-  apiBaseUrl: '',
+  apiBaseUrl: 'http://165.227.34.172:3020/api/',
   mediaBaseUrl: '',
 };

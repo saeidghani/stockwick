@@ -10,6 +10,7 @@ import Stock from '../pages/Stock';
 import Feed from '../pages/Feed';
 import NotFound from '../pages/NotFound';
 import Chart from '../pages/Chart';
+import Auth from '../pages/Auth';
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
       <Route exact path="/" render={() => <Redirect to={routes.home} />} />
       <Route exact path={routes.home} component={Home} />
       <Route exact path="/demo" component={Demo} />
+      <Route exact path={routes.auth.google} component={Auth} />
       <Route exact path={routes.chart} component={Chart} />
       <Route exact path={routes.profile.index} component={Profile} />
       <Route exact path={routes.profile.edit} component={EditProfile} />
