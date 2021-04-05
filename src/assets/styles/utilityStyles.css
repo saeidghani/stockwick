@@ -90,6 +90,6 @@
 .sticky-position {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
+  top: 15px;
 }
 /*# sourceMappingURL=utilityStyles.css.map */

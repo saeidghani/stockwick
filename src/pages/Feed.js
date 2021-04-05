@@ -167,16 +167,18 @@ function Feed() {
               isBullish
             />
           </div>
-          <div className="sticky-position col-start-6 col-span-2">
-            <Stories
-              wrapperClassName="card p-1 mb-4"
-              onAddStory={() => setAddStoryModalVisible(true)}
-              onStoryView={() => setStoryViewModalVisible(true)}
-              gridCols={lgUp ? 3 : 2}
-              isSmSlider
-            />
-            <NewsReleaseSummary wrapperClassName="mb-4" />
-            <Activity />
+          <div className="col-start-6 col-span-2">
+            <div className="sticky-position">
+              <Stories
+                wrapperClassName="card p-1 mb-4"
+                onAddStory={() => setAddStoryModalVisible(true)}
+                onStoryView={() => setStoryViewModalVisible(true)}
+                gridCols={lgUp ? 3 : 2}
+                isSmSlider
+              />
+              <NewsReleaseSummary wrapperClassName="mb-4" />
+              <Activity />
+            </div>
           </div>
         </div>
         <div className="lg:hidden">

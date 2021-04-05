@@ -56,7 +56,6 @@ function Profile() {
     { key: 3, title: 'cryptocurrencies' },
     { key: 4, title: 'forex' },
     { key: 5, title: 'bitcoin' },
-    { key: 6, title: 'bitcoin' },
   ];
 
   return (
@@ -104,29 +103,31 @@ function Profile() {
       <div className="pb-2 bg-blueGray md:px-4 md:pt-4 md:pb-10">
         <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
           <div className="col-start-1 col-span-2">
-            <div className="bg-white flex flex-col items-center mb-4 pt-4">
-              <div
-                className="flex mb-4 relative cursor-pointer"
-                onClick={() => history.push(RouteMap.profile.edit)}
-              >
-                <Avatar wrapperClassName="storyRing" avatarClassName="w-20 h-20" />
-                <img
-                  src={editIcon}
-                  className="w-8 h-8 absolute bottom-0 left-14 rounded-full ring ring-white"
-                  alt=""
-                />
+            <div className="sticky-position">
+              <div className="bg-white flex flex-col items-center mb-4 pt-4">
+                <div
+                  className="flex mb-4 relative cursor-pointer"
+                  onClick={() => history.push(RouteMap.profile.edit)}
+                >
+                  <Avatar wrapperClassName="storyRing" avatarClassName="w-20 h-20" />
+                  <img
+                    src={editIcon}
+                    className="w-8 h-8 absolute bottom-0 left-14 rounded-full ring ring-white"
+                    alt=""
+                  />
+                </div>
+                <div className="boldPrimaryText mb-1">Jason Smith</div>
+                <div className="text-primary mb-2">Looking infinity & beyond…</div>
+                <FollowList />
+                <div
+                  className="text-primary font-medium h-12 bg-white pt-4 cursor-pointer"
+                  onClick={() => setFollowListModalVisible(true)}
+                >
+                  View more
+                </div>
               </div>
-              <div className="boldPrimaryText mb-1">Jason Smith</div>
-              <div className="text-primary mb-2">Looking infinity & beyond…</div>
-              <FollowList />
-              <div
-                className="text-primary font-medium h-12 bg-white pt-4 cursor-pointer"
-                onClick={() => setFollowListModalVisible(true)}
-              >
-                View more
-              </div>
+              <Activity />
             </div>
-            <Activity />
           </div>
           <div className="col-start-3 col-span-3">
             <div
@@ -211,14 +212,16 @@ function Profile() {
             </Tabs>
           </div>
           <div className="col-start-6 col-span-2">
-            <StocksList
-              title="My Watchlist"
-              wrapperClassName="mb-4"
-              onExpandClick={() => setStocksListModalVisible(true)}
-            >
-              <FilterSlider filterList={watchListFilterList} />
-            </StocksList>
-            <Activity />
+            <div className="sticky-position">
+              <StocksList
+                title="My Watchlist"
+                wrapperClassName="mb-4"
+                onExpandClick={() => setStocksListModalVisible(true)}
+              >
+                <FilterSlider filterList={watchListFilterList} />
+              </StocksList>
+              <Activity />
+            </div>
           </div>
         </div>
         <div className="lg:hidden">

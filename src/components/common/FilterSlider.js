@@ -20,7 +20,8 @@ function FilterSlider({ wrapperClassName, filterList }) {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 3,
+    variableWidth: true,
+    slidesToShow: 2,
     slidesToScroll: 1,
     speed: 500,
     cssEase: 'linear',
@@ -38,8 +39,8 @@ function FilterSlider({ wrapperClassName, filterList }) {
                 key={key}
                 className={
                   key === activeSlide + 1
-                    ? 'text-center text-white whitespace-no-wrap'
-                    : 'text-center text-white whitespace-no-wrap opacity-50'
+                    ? 'px-2 text-center text-white whitespace-no-wrap'
+                    : 'px-2 text-center text-white whitespace-no-wrap opacity-50'
                 }
               >
                 {title}
