@@ -123,7 +123,7 @@ function Header() {
         drawerVisible={!smUp && searchModalVisible}
         onCancel={() => setSearchModalVisible(false)}
       />
-      <div className="hidden md:block relative">
+      <div className="hidden lg:block relative">
         <div className="page-header-base bg-primary border-b border-solid border-fadePrimary">
           <div className="flex justify-between px-4 py-4 xl:container">
             <div className="flex items-center space-x-3 lg:space-x-5">
@@ -216,7 +216,7 @@ function Header() {
           </div>
         )}
       </div>
-      <div className="block md:hidden md:container">
+      <div className="block lg:hidden lg:container">
         <div
           className="bg-primary grid grid-cols-3 items-center pt-4 px-6 pb-2
                         border-b border-solid border-fadePrimary"

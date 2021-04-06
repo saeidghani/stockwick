@@ -199,14 +199,14 @@ function Stock() {
                 onStoryView={() => setStoryViewModalVisible(true)}
                 gridCols={xs ? 4 : smUp ? 7 : 5}
               />
-              <div className="boldPrimaryText text-lg mb-2">advance charting</div>
+              <div className="boldPrimaryText text-lg mb-2">Advance Charting</div>
               <Chart wrapperClassName="w-full h-80 mb-8" />
               <div className="relative" style={{ height: 70 }}>
                 <StockDetails wrapperClassName="mb-4 absolute w-full" />
               </div>
-              <div className="grid grid-cols-2 gap-x-2 mt-4 mb-4">
+              <div className="grid grid-cols-2 gap-x-4 mt-4 mb-4">
                 <div className="w-full mb-4 md:bg-white md:p-3">
-                  <div className="boldPrimaryText text-lg mb-4">technical analysis</div>
+                  <div className="boldPrimaryText text-lg mb-4">Technical Analysis</div>
                   <div className="card p-4">
                     <div className="mx-auto mb-4">
                       <FilterSlider filterList={timeList} />
@@ -215,7 +215,7 @@ function Stock() {
                   </div>
                 </div>
                 <div className="w-full mb-4 md:bg-white md:p-3">
-                  <div className="boldPrimaryText text-lg mb-4">bull vs bear poll</div>
+                  <div className="boldPrimaryText text-lg mb-4">Bull Vs Bear Poll</div>
                   <div className="card p-4">
                     <div className="mx-auto mb-4">
                       <FilterSlider filterList={periodList} />
@@ -224,10 +224,10 @@ function Stock() {
                   </div>
                 </div>
               </div>
-              <div className="boldPrimaryText text-lg mb-2">similar stocks</div>
+              <div className="boldPrimaryText text-lg mb-2">Similar Stocks</div>
               <SimilarSocks wrapperClassName="mb-8" />
               <div className="sm:hidden">
-                <div className="boldPrimaryText text-lg mb-2">news release</div>
+                <div className="boldPrimaryText text-lg mb-2">News Release</div>
                 <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} />
               </div>
               <div className="hidden sm:flex flex-col sm:flex-row sm:space-x-4">
@@ -235,10 +235,10 @@ function Stock() {
                 <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} displayTitle />
               </div>
               <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
-              <TopMembers wrapperClassName="overflow-auto mb-8" width={945} />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width={945} />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width={945} />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width={945} />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
+              <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
             </TabPane>
             <TabPane
               tab={

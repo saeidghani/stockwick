@@ -59,7 +59,7 @@ function Profile() {
   ];
 
   return (
-    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:container">
+    <Layout mainClassName="min-h-screen lg:pt-8 lg:pb-10 lg:px-4 lg:px-4 xl:container">
       <EditProfileDrawer
         onCancel={() => setEditProfileDrawerVisible(false)}
         afterSave={() => setEditProfileDrawerVisible(false)}
@@ -100,7 +100,7 @@ function Profile() {
         modalVisible={smUp && storyViewersModalVisible}
         drawerVisible={!smUp && storyViewersModalVisible}
       />
-      <div className="pb-2 bg-blueGray md:px-4 md:pt-4 md:pb-10">
+      <div className="pb-2 bg-blueGray lg:pt-4 lg:pb-10 lg:px-4 xl:container">
         <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
           <div className="col-start-1 col-span-2">
             <div className="sticky-position">
