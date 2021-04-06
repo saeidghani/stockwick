@@ -18,6 +18,29 @@
 .c-secondary-btn .ant-btn:active p {
   color: #5fe90a !important;
 }
+.c-secondary-btn--light .ant-btn {
+  background-color: transparent !important;
+  border: 1px solid #5fe90a !important;
+  border-radius: 6px;
+  padding: 25px 32px;
+}
+.c-secondary-btn--light .ant-btn:focus {
+  border: 1px solid #5fe90a !important;
+  background-color: #5fe90a !important;
+}
+.c-secondary-btn--light .ant-btn:focus p {
+  color: #fff !important;
+}
+.c-secondary-btn--light .ant-btn:active {
+  border: 1px solid #5fe90a !important;
+  background-color: #5fe90a !important;
+}
+.c-secondary-btn--light .ant-btn:active p {
+  color: #fff !important;
+}
+.c-secondary-btn--light .ant-btn > p {
+  color: #5fe90a !important;
+}
 .c-secondary-btn--sm .ant-btn {
   padding: 22px 18px;
 }
@@ -70,7 +93,7 @@
   background-color: transparent !important;
   border: 1px solid #45B8F5 !important;
   border-radius: 6px;
-  padding: 25px 32px;
+  padding: 10px 25px;
 }
 .c-blue-outline-btn .ant-btn > p {
   color: #45B8F5 !important;
@@ -191,6 +214,9 @@
 .c-tabs .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar,
 .c-tabs .ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-ink-bar {
   height: 4px !important;
+}
+.c-tabs-primary-bar .ant-tabs-ink-bar {
+  background: #001560;
 }
 .c-primary-filled-input .ant-input {
   border: none !important;

@@ -103,7 +103,7 @@ function Stories({ wrapperClassName, onAddStory, onStoryView, gridCols, isSmSlid
   return (
     <div className={wrapperClassName}>
       <div className="py-1 px-2">
-        <div className="boldPrimaryText text-xl mb-2">live stories</div>
+        <div className="boldPrimaryText text-xl mb-2">Live Stories</div>
         <div className={`grid grid-cols-${gridCols} gap-x-4`}>
           <div
             className="inline-flex flex-col items-center space-y-2 cursor-pointer"

@@ -1,5 +1,6 @@
 @primary-color: #001560;
 @secondary-color: #5fe90a;
+@secondary-color-light: #5fe90a;
 @accent-color: #FBAA9E;
 @danger-color: #EB6B6B;
 @warning-color: #F3BA2F;
@@ -39,6 +40,31 @@
       p {
         color: @secondary-color !important;
       }
+    }
+  }
+  &--light {
+    .ant-btn {
+      background-color: transparent !important;
+      border: 1px solid @secondary-color-light !important;
+      border-radius: @border-radius;
+      padding: @button-padding;
+      &:focus {
+        border: 1px solid @secondary-color-light !important;
+        background-color: @secondary-color-light !important;
+        p {
+          color: #fff !important;
+        }
+      }
+      &:active {
+        border: 1px solid @secondary-color-light !important;
+        background-color: @secondary-color-light !important;
+        p {
+          color: #fff !important;
+        }
+      }
+    }
+    .ant-btn > p {
+      color: @secondary-color !important;
     }
   }
   &--sm {
@@ -107,7 +133,7 @@
     background-color: transparent !important;
     border: 1px solid @blue-color !important;
     border-radius: @border-radius;
-    padding: @button-padding;
+    padding: 10px 25px;
 
     & > p {
       color: @blue-color !important;
@@ -264,6 +290,12 @@
 
   .ant-tabs-top > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-bottom > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-top > div > .ant-tabs-nav .ant-tabs-ink-bar, .ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-ink-bar {
     height: 4px !important;
+  }
+}
+
+.c-tabs-primary-bar {
+  .ant-tabs-ink-bar {
+    background: @primary-color;
   }
 }
 

@@ -9,7 +9,7 @@ function EditProfileDrawer({ visible, onCancel, afterSave }) {
     <Drawer
       visible={visible}
       onClose={onCancel}
-      wrapClassName="w-full h-full"
+      wrapClassName="w-full h-full relative"
       headerStyle={{ border: 0, padding: 0 }}
       title={
         <div className="bg-primary grid grid-cols-3 justify-items-center items-center py-2 px-4">

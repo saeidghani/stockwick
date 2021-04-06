@@ -22,7 +22,7 @@ function StocksList({ title, expand, children, wrapperClassName, height, onExpan
           )}
         </div>
         {children && <div className="w-full mb-4">{children}</div>}
-        <div className="flex flex-col child-borderBottom overflow-auto" style={{ height }}>
+        <div className="flex flex-col child-borderBottom px-2 overflow-auto" style={{ height }}>
           {items.map((i) => (
             <div key={i} className="flex justify-between items-center py-4">
               <div className="flex items-center space-x-2">

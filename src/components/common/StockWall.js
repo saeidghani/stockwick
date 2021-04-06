@@ -5,6 +5,7 @@ import dislikeOutlineIcon from '../../assets/icons/dislikeOutline.svg';
 import arrowFilledIcon from '../../assets/icons/arrowFilled.svg';
 import bullishIcon from '../../assets/icons/bullish.svg';
 import bearishIcon from '../../assets/icons/bearish.svg';
+import shareFilledIcon from '../../assets/icons/shareFilled.svg';
 import Avatar from '../UI/Avatar';
 import Chart from './Chart';
 
@@ -58,6 +59,9 @@ function StockWall({
               <div className="boldPrimaryText">Reply</div>
             </div>
           )}
+          <div className="flex items-center space-x-4">
+            <img className="cursor-pointer" src={shareFilledIcon} alt="a" />
+          </div>
         </div>
         {displayChartPost && <Chart wrapperClassName="mt-5" />}
       </div>
@@ -66,7 +70,7 @@ function StockWall({
 
   return (
     <div className={wrapperClassName}>
-      <div className="px-1 py-2 overflow-auto" style={{ maxHeight }}>
+      <div className="px-2 py-2 overflow-auto" style={{ maxHeight }}>
         {title && <div className="boldPrimaryText text-xl mb-8">{title}</div>}
         <Post isBullishType={isBullish} isBearishType={isBearish} displayChartPost={displayChart} />
         {comments.map((c) => (

@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Input } from 'antd';
 import PropTypes from 'prop-types';
 import {
-  passwordRules,
   emailRules,
   userNameRules,
   nameRules,
@@ -36,73 +35,51 @@ function EditProfileForm({ wrapperClassName, afterSave }) {
         onFinishFailed={onFinishFailed}
         className="c-edit-profile-form"
       >
+        <Button
+          text="Save"
+          htmlType="submit"
+          wrapperClassName="block xs:hidden absolute top-2 right-1"
+          textClassName="text-white px-1"
+          type="link"
+        />
         <div className="grid grid-cols-3">
           <Item className="col-start-2 justify-self-center flex flex-col items-center">
-            <Avatar avatarClassName="w-16 h-16" />
+            <Avatar avatarClassName="w-26 h-26" />
             <div className="text-secondary text-center mt-2">Edit Picture</div>
           </Item>
           <Item className="col-start-3 justify-self-end">
             <Button
               text="Save"
               htmlType="submit"
-              wrapperClassName="c-secondary-btn"
-              textClassName="text-secondary"
+              wrapperClassName="c-secondary-btn hidden xs:block"
+              textClassName="text-secondary px-1"
             />
           </Item>
         </div>
 
         <Item name="name" label="Name" rules={nameRules} className="c-primary-input">
-          <Input placeholder="Name" className="text-primary" />
+          <Input className="text-primary" />
         </Item>
 
         <Item name="username" label="Username" rules={userNameRules} className="c-primary-input">
-          <Input placeholder="Username" className="text-primary" />
+          <Input className="text-primary" />
         </Item>
 
         <Item name="bio" label="Bio" rules={bioRules} className="c-primary-input">
-          <Input placeholder="Bio" className="text-primary" />
+          <Input className="text-primary" />
         </Item>
 
         <Item name="email" label="Email" rules={emailRules} className="c-primary-input">
-          <Input placeholder="Email*" className="text-primary" />
+          <Input className="text-primary" />
         </Item>
 
         <Item name="mobile" label="Mobile" rules={mobileRules} className="c-primary-input">
-          <Input placeholder="Mobile" className="text-primary" />
+          <Input className="text-primary" />
         </Item>
         <div className="flex items-center mt-6 mb-6">
           <img src={googleColorfulIcon} alt="" />
           <div className="boldPrimaryText text-sm ml-4">Logged in with Google</div>
         </div>
-
-        <div className="text-primary text-center mt-16 mb-6">Change Password</div>
-
-        <Item
-          name="currentPassword"
-          label="Your Current Password"
-          rules={passwordRules}
-          className="c-primary-password-input c-primary-password-input--primary-input"
-        >
-          <Input.Password placeholder="Your Current Password" className="text-primary" />
-        </Item>
-
-        <Item
-          name="newPassword"
-          label="New Password"
-          rules={passwordRules}
-          className="c-primary-password-input c-primary-password-input--primary-input"
-        >
-          <Input.Password placeholder="New Password" className="text-primary" />
-        </Item>
-
-        <Item
-          name="repeatNewPassword"
-          label="Repeat New Password"
-          rules={passwordRules}
-          className="c-primary-password-input c-primary-password-input--primary-input"
-        >
-          <Input.Password placeholder="Repeat New Password" className="text-primary" />
-        </Item>
       </Form>
     </div>
   );

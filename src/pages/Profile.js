@@ -13,7 +13,6 @@ import StocksList from '../components/common/StocksList';
 import AddPost from '../components/common/AddPost';
 import FilterSlider from '../components/common/FilterSlider';
 import StockWall from '../components/common/StockWall';
-import FollowList from '../components/common/FollowList';
 import FollowListModal from '../components/common/FollowListModal';
 import EditProfileDrawer from '../components/common/EditProfileDrawer';
 import Avatar from '../components/UI/Avatar';
@@ -23,6 +22,7 @@ import StoryPreview from '../components/common/StoryPreview';
 import AddStoryModal from '../components/common/AddStoryModal';
 import StoryViewModal from '../components/common/StoryViewModal';
 import StoryViewersModal from '../components/common/StoryViewersModal';
+import ProfileIntro from '../components/common/ProfileIntro';
 
 const { TabPane } = Tabs;
 
@@ -43,7 +43,7 @@ function Profile() {
   const { sm: smUp } = useBreakpoint();
 
   useEffect(() => {
-    setQuery({ auth: true, tab: 'idea', followTab: 'followers' });
+    setQuery({ auth: true, tab: 'idea', followTab: 'followers', modalFollowTab: 'following' });
   }, []);
 
   const onTabChange = (key) => {
@@ -59,7 +59,7 @@ function Profile() {
   ];
 
   return (
-    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:container">
       <EditProfileDrawer
         onCancel={() => setEditProfileDrawerVisible(false)}
         afterSave={() => setEditProfileDrawerVisible(false)}
@@ -104,29 +104,8 @@ function Profile() {
         <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
           <div className="col-start-1 col-span-2">
             <div className="sticky-position">
-              <div className="bg-white flex flex-col items-center mb-4 pt-4">
-                <div
-                  className="flex mb-4 relative cursor-pointer"
-                  onClick={() => history.push(RouteMap.profile.edit)}
-                >
-                  <Avatar wrapperClassName="storyRing" avatarClassName="w-20 h-20" />
-                  <img
-                    src={editIcon}
-                    className="w-8 h-8 absolute bottom-0 left-14 rounded-full ring ring-white"
-                    alt=""
-                  />
-                </div>
-                <div className="boldPrimaryText mb-1">Jason Smith</div>
-                <div className="text-primary mb-2">Looking infinity & beyond…</div>
-                <FollowList />
-                <div
-                  className="text-primary font-medium h-12 bg-white pt-4 cursor-pointer"
-                  onClick={() => setFollowListModalVisible(true)}
-                >
-                  View more
-                </div>
-              </div>
-              <Activity />
+              <ProfileIntro onOpenFollowListModalVisible={() => setFollowListModalVisible(true)} />
+              <Activity title="My Activity" />
             </div>
           </div>
           <div className="col-start-3 col-span-3">
@@ -164,10 +143,6 @@ function Profile() {
                 <StockWall
                   wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-accent"
                   isBearish
-                />
-                <StockWall
-                  wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
-                  isBullish
                 />
               </TabPane>
               <TabPane
@@ -220,7 +195,7 @@ function Profile() {
               >
                 <FilterSlider filterList={watchListFilterList} />
               </StocksList>
-              <Activity />
+              <Activity title="Follower’s Activity" />
             </div>
           </div>
         </div>

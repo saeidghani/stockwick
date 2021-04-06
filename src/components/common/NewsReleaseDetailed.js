@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import PropTypes from 'prop-types';
 import monitors from '../../assets/images/monitors.png';
@@ -15,7 +14,8 @@ function NewsReleaseDetailed({ wrapperClassName, displayTitle, maxHeight }) {
             <p className="text-base text-black">
               Apple Stock Surging Ahead Of Possible Record Holiday Quarter. Wall Street analysts are
               pounding the table for Apple stock ahead of the company’s December-quarter earnings
-              report next week….
+              report next week…
+              <span className="text-primary text-sm cursor-pointer"> Read more</span>
             </p>
           </div>
         ))}

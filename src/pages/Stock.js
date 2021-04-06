@@ -103,7 +103,7 @@ function Stock() {
             <div className="">
               <Chart
                 wrapperClassName="mb-4 card p-4"
-                title="advance charting"
+                title="Advance Charting"
                 height={370}
                 onExpandClick={() => setChartModalVisible(true)}
                 expand
@@ -113,14 +113,14 @@ function Stock() {
               </div>
               <div className="grid grid-cols-2 gap-x-2">
                 <div className="w-full mb-4 md:bg-white md:p-3">
-                  <div className="boldPrimaryText text-lg mb-4">technical analysis</div>
+                  <div className="boldPrimaryText text-lg mb-4">Technical Analysis</div>
                   <div className="mx-auto mb-4">
                     <FilterSlider filterList={timeList} />
                   </div>
                   <CircleChart wrapperClassName="w-full h-48" />
                 </div>
                 <div className="w-full mb-4 md:bg-white md:p-3">
-                  <div className="boldPrimaryText text-lg mb-4">bull vs bear poll</div>
+                  <div className="boldPrimaryText text-lg mb-4">Bull Vs Bear Poll</div>
                   <div className="mx-auto mb-4">
                     <FilterSlider filterList={periodList} />
                   </div>

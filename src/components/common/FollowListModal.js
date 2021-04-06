@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
 import { useQuery } from '../../hooks/useQuery';
@@ -16,10 +16,6 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
   // eslint-disable-next-line no-unused-vars
   const [parsedQuery, query, setQuery] = useQuery();
   const { modalFollowTab } = parsedQuery;
-
-  useEffect(() => {
-    setQuery({ modalFollowTab: 'following' });
-  }, []);
 
   const onTabChange = (key) => {
     setQuery({ modalFollowTab: key });
@@ -42,7 +38,10 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
             <Avatar avatarClassName="w-11 h-11" />
             <div className="text-primary text-base font-medium mb-1">Jason Smith</div>
           </div>
-          <Button wrapperClassName="c-secondary-btn" text="Follow" />
+          <Button
+            wrapperClassName={modalVisible ? 'c-secondary-btn--light' : 'c-blue-outline-btn'}
+            text="Follow"
+          />
         </div>
       ))}
     </div>
@@ -63,7 +62,7 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
   // eslint-disable-next-line react/prop-types
   const Content = ({ height, wrapClassName }) => (
     <div className={wrapClassName}>
-      <div className={drawerVisible ? 'c-tabs' : ''}>
+      <div className={drawerVisible ? 'c-tabs' : 'c-tabs-primary-bar'}>
         <Tabs
           defaultActiveKey="following"
           activeKey={modalFollowTab}
@@ -75,11 +74,11 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
               tab={
                 <div
                   className={`flex flex-col items-center ${
-                    modalFollowTab !== t.key ? 'opacity-40' : ''
+                    modalFollowTab !== t.key ? 'opacity-30' : ''
                   }`}
                 >
-                  <div className="boldPrimaryText text-xl">{t.count}</div>
-                  <div className="boldPrimaryText text-base">{t.title}</div>
+                  <div className="text-primary font-medium text-xl">{t.count}</div>
+                  <div className="text-primary font-medium text-base">{t.title}</div>
                 </div>
               }
               key={t.key}
@@ -101,7 +100,7 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
         visible={drawerVisible}
         onClose={onCancel}
         wrapClassName="w-full h-full"
-        headerStyle={{ border: 0 }}
+        headerStyle={{ border: 0, padding: 0 }}
         bodyStyle={{ paddingTop: 0 }}
         title={
           <div className="bg-primary grid grid-cols-3 justify-items-center items-center py-2 px-4">

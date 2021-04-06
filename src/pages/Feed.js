@@ -81,7 +81,7 @@ function Feed() {
   );
 
   return (
-    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:px-0 lg:container">
+    <Layout mainClassName="min-h-screen md:pt-8 md:pb-10 md:px-4 lg:container">
       {stocksListCards.map(({ key, title, filter }) => (
         <StocksListModal
           modalVisible={smUp && stocksListModalVisible[key]}

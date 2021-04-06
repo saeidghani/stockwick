@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line no-unused-vars,react/prop-types
-function Tag({ children, text, wrapperClassName, textClassName }) {
+function Tag({ children, text, wrapperClassName, textBoxClassName, textClassName }) {
   return (
     <div className={wrapperClassName}>
       <div className="flex h-8">
         {children}
-        <div className="flex items-center px-2 bg-white text-primary text-xs">
+        <div className={textBoxClassName || 'flex items-center px-2 bg-white text-primary text-xs'}>
           <span className={textClassName}>{text}</span>
         </div>
       </div>
@@ -15,8 +14,9 @@ function Tag({ children, text, wrapperClassName, textClassName }) {
   );
 }
 
-Tag.prototype = {
+Tag.propTypes = {
   wrapperClassName: PropTypes.string,
+  textBoxClassName: PropTypes.string,
   textClassName: PropTypes.string,
   text: PropTypes.string,
   children: PropTypes.node,
@@ -24,6 +24,7 @@ Tag.prototype = {
 
 Tag.defaultProps = {
   wrapperClassName: '',
+  textBoxClassName: '',
   textClassName: '',
   text: '',
   children: null,

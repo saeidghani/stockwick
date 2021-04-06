@@ -6,7 +6,7 @@ import SwipeSlider from '../UI/SwipeSlider';
 
 function SimilarSocks({ wrapperClassName, displayTitle }) {
   // eslint-disable-next-line react/prop-types
-  const StockItem = ({ isCdf }) => (
+  const StockItem = ({ isCdf, isCmp, isRed }) => (
     <div className="flex flex-col items-center">
       {!isCdf ? (
         <LogoIcon
@@ -23,18 +23,18 @@ function SimilarSocks({ wrapperClassName, displayTitle }) {
           <div className="text-secondary text-32px pt-1">CDF</div>
         </div>
       )}
-      <div className="text-primary text-base">Apple nc.</div>
-      <div className="text-secondary text-base">300,000$</div>
+      <div className="text-primary text-base">{isCmp ? 'Cmp. Def.' : 'Apple Inc.'}</div>
+      <div className={isRed ? 'text-accent text-base' : 'text-secondary text-base'}>300,000$</div>
     </div>
   );
 
   return (
     <div className={wrapperClassName}>
       <div className="card px-2 py-4">
-        {displayTitle && <div className="boldPrimaryText text-xl mb-4 pl-2">similar stocks</div>}
+        {displayTitle && <div className="boldPrimaryText text-xl mb-4 pl-2">Similar Stocks</div>}
         <SwipeSlider>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-            <StockItem key={i} isCdf={i === 3} />
+            <StockItem key={i} isCdf={i === 3} isCmp={i === 3} isRed={i === 2 || i === 3} />
           ))}
         </SwipeSlider>
       </div>

@@ -101,10 +101,18 @@ function AddPoll({ wrapperClassName }) {
             rules={daysRules}
           >
             <Select>
-              <Option value={1}>1</Option>
-              <Option value={2}>2</Option>
-              <Option value={3}>3</Option>
-              <Option value={4}>4</Option>
+              <Option value={1}>
+                <span className="text-primary">1</span>
+              </Option>
+              <Option value={2}>
+                <span className="text-primary">2</span>
+              </Option>
+              <Option value={3}>
+                <span className="text-primary">3</span>
+              </Option>
+              <Option value={4}>
+                <span className="text-primary">4</span>
+              </Option>
             </Select>
           </Item>
           <Item
@@ -114,10 +122,18 @@ function AddPoll({ wrapperClassName }) {
             rules={hoursRules}
           >
             <Select>
-              <Option value={1}>1</Option>
-              <Option value={2}>2</Option>
-              <Option value={3}>3</Option>
-              <Option value={4}>4</Option>
+              <Option value={1}>
+                <span className="text-primary">1</span>
+              </Option>
+              <Option value={2}>
+                <span className="text-primary">2</span>
+              </Option>
+              <Option value={3}>
+                <span className="text-primary">3</span>
+              </Option>
+              <Option value={4}>
+                <span className="text-primary">4</span>
+              </Option>
             </Select>
           </Item>
           <Item
@@ -127,10 +143,18 @@ function AddPoll({ wrapperClassName }) {
             rules={minutesRules}
           >
             <Select>
-              <Option value={1}>1</Option>
-              <Option value={2}>2</Option>
-              <Option value={3}>3</Option>
-              <Option value={4}>4</Option>
+              <Option value={1}>
+                <span className="text-primary">1</span>
+              </Option>
+              <Option value={2}>
+                <span className="text-primary">2</span>
+              </Option>
+              <Option value={3}>
+                <span className="text-primary">3</span>
+              </Option>
+              <Option value={4}>
+                <span className="text-primary">4</span>
+              </Option>
             </Select>
           </Item>
         </div>

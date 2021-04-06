@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input } from 'antd';
 import Button from '../UI/Button';
@@ -18,6 +18,7 @@ import facebookIcon from '../../assets/icons/facebook.svg';
 import twitterIcon from '../../assets/icons/twitter.svg';
 import linkedinIcon from '../../assets/icons/linkedin.svg';
 import Checkbox from '../UI/Checkbox';
+import userEvent from '@testing-library/user-event';
 
 const { TextArea } = Input;
 const { Item } = Form;
@@ -38,6 +39,13 @@ function AddPost({
   children,
 }) {
   const [addPoll, setAddPoll] = useState(false);
+
+  /* const { setFieldsValue } = form;
+
+  useEffect(() => {
+    setAddPoll(false);
+    setFieldsValue({ days: 1 });
+  }, []);*/
 
   const initialValues = {
     choice1: '',
@@ -150,6 +158,9 @@ function AddPost({
                   className={`h-full justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 
                      absolute bottom-32 xs:bottom-0 ml-3 xs:pb-0 xs:relative ${uploadBtnClassName}`}
                 >
+                  <div className="cursor-pointer" onClick={() => setAddPoll(true)}>
+                    <img src={pollIcon} className="w-5" alt="" />
+                  </div>
                   <Item name="uploadImage" className="cursor-pointer m-0">
                     <img src={uploadImageIcon} className="w-6" alt="" />
                   </Item>
@@ -171,7 +182,11 @@ function AddPost({
                 <Tag text="all" wrapperClassName="" textClassName="px-3">
                   <img src={chartIcon} alt="" className="w-8 bg-primary px-1.5" />
                 </Tag>
-                <Tag text="bullish">
+                <Tag
+                  text="bullish"
+                  textClassName="text-secondary"
+                  textBoxClassName="bg-primary flex items-center px-2 text-primary text-xs"
+                >
                   <BullishIcon
                     fill="secondary"
                     wrapperClassName="w-8 bg-primary px-1.5 flex items-center"

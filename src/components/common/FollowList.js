@@ -35,7 +35,7 @@ function FollowList() {
   );
 
   return (
-    <div className="c-tabs">
+    <div className="c-tabs w-full">
       <Tabs activeKey={followTab} onChange={onTabChange}>
         <TabPane
           tab={
