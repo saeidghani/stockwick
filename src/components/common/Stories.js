@@ -10,7 +10,7 @@ function Stories({ wrapperClassName, onAddStory, onStoryView, gridCols, isSmSlid
     dots: false,
     className: 'center',
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 4,
     swipeToSlide: true,
     responsive: [
       {
@@ -147,7 +147,7 @@ Stories.propTypes = {
 
 Stories.defaultProps = {
   wrapperClassName: '',
-  gridCols: 5,
+  gridCols: 4,
   onAddStory: () => {},
   onStoryView: () => {},
   isSmSlider: false,

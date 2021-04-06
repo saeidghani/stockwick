@@ -133,7 +133,7 @@ function Stock() {
                 <NewsReleaseDetailed maxHeight={600} displayTitle />
               </div>
             </div>
-            <div className="">
+            <div className="col-start-2 col-span-1">
               <Stories
                 wrapperClassName="card mb-4 p-1"
                 onAddStory={() => setAddStoryModalVisible(true)}
