@@ -139,41 +139,43 @@ function Stock() {
                 onAddStory={() => setAddStoryModalVisible(true)}
                 onStoryView={() => setStoryViewModalVisible(true)}
               />
+              <StockWall
+                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
+                maxHeight={500}
+                comments={comments}
+                isBullish
+                title="appl wall"
+              />
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
+                contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                textAreaWrapperClassName="w-full flex space-x-4"
+                uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
                 footerClassName="flex-col xl:flex-row"
                 postBtnClassName="self-end xl:self-center"
                 tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
-                uploadBtsPosition="end"
                 formName="stockWall"
-              >
-                <StockWall
-                  wrapperClassName="px-4 pt-4"
-                  maxHeight={500}
-                  comments={comments}
-                  isBullish
-                  title="appl wall"
-                />
-              </AddPost>
+              />
+              <StockWall
+                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
+                maxHeight={485}
+                comments={comments}
+                isBearish
+                title="appl charts"
+                displayChart
+              />
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
+                contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                textAreaWrapperClassName="w-full flex space-x-4"
+                uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
                 footerClassName="flex-col xl:flex-row"
                 postBtnClassName="self-end xl:self-center"
                 tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
-                uploadBtsPosition="end"
-                formName="stockCharts"
-              >
-                <StockWall
-                  wrapperClassName="px-4 pt-4"
-                  maxHeight={485}
-                  comments={comments}
-                  isBearish
-                  title="appl charts"
-                  displayChart
-                />
-              </AddPost>
+                formName="stockWall"
+              />
             </div>
           </div>
           <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
@@ -248,23 +250,25 @@ function Stock() {
               }
               key="appleWall"
             >
+              <StockWall
+                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
+                maxHeight={500}
+                comments={comments}
+                isBullish
+                title="appl wall"
+              />
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
+                contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                textAreaWrapperClassName="w-full flex space-x-4"
+                uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
                 footerClassName="flex-col xl:flex-row"
                 postBtnClassName="self-end xl:self-center"
-                tagsClassName="grid grid-cols-2 gap-y-2 mb-2"
-                uploadBtsPosition="end"
+                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
+                pollPlusClassName="absolute top-24 sm:right-24 md:right-28"
                 formName="stockWall"
-              >
-                <StockWall
-                  wrapperClassName="px-4 pt-4"
-                  maxHeight={500}
-                  comments={comments}
-                  isBullish
-                  title="appl wall"
-                />
-              </AddPost>
+              />
             </TabPane>
             <TabPane
               tab={

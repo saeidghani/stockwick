@@ -18,7 +18,6 @@ import facebookIcon from '../../assets/icons/facebook.svg';
 import twitterIcon from '../../assets/icons/twitter.svg';
 import linkedinIcon from '../../assets/icons/linkedin.svg';
 import Checkbox from '../UI/Checkbox';
-import userEvent from '@testing-library/user-event';
 
 const { TextArea } = Input;
 const { Item } = Form;
@@ -30,13 +29,15 @@ function AddPost({
   uploadBtnClassName,
   footerClassName,
   tagsClassName,
+  textAreaWrapperClassName,
+  pollPlusClassName,
+  pollWidth,
   form,
   formName,
   placeholder,
   displayAvatar,
-  uploadBtsPosition,
   miniBox,
-  children,
+  textAreaRows,
 }) {
   const [addPoll, setAddPoll] = useState(false);
 
@@ -101,78 +102,50 @@ function AddPost({
         )}
         <div className="h-full">
           <div
-            className={`flex flex-col justify-between items-center w-full h-full my-auto
-         ${contentClassName} ${children ? '' : ''}`}
+            className={
+              contentClassName || 'flex flex-col justify-between items-center w-full h-full my-auto'
+            }
           >
-            {!miniBox ? (
-              <div className="w-full px-4">
-                <div className="w-full flex space-x-4 mb-4 pt-2 xs:border-t xs:border-solid xs:border-itemBorder">
-                  {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
-                  <div className="flex flex-col w-full">
-                    <Item name="text" label="" className="c-input-border-none w-full mb-0">
-                      <TextArea
-                        className="w-full pt-3"
-                        placeholder={placeholder}
-                        name="text"
-                        onChange={() => {}}
-                        rows={4}
-                      />
-                    </Item>
-                    <AddPoll wrapperClassName={`w-full mt-4 ${addPoll ? '' : 'hidden'}`} />
-                  </div>
-                </div>
-              </div>
-            ) : (
-              children
-            )}
-            {!miniBox ? (
-              <div
-                className={`justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 
-                     absolute bottom-32 xs:bottom-0 py-1 pl-3 xs:pb-0 xs:relative ${uploadBtnClassName}`}
-              >
-                <Item name="uploadImage" className="cursor-pointer m-0">
-                  <img src={uploadImageIcon} alt="" />
-                </Item>
-                <Item name="uploadGif" className="cursor-pointer m-0">
-                  <img src={uploadGifIcon} alt="" />
-                </Item>
-                <Item name="uploadVideo" className="cursor-pointer m-0">
-                  <img src={uploadVideoIcon} alt="" />
-                </Item>
-                <div className="cursor-pointer" onClick={() => setAddPoll(true)}>
-                  <img src={pollIcon} alt="" />
-                </div>
-              </div>
-            ) : (
-              <div className="w-full bg-white pr-4 flex justify-between border border-solid border-cardBorder">
+            <div className={textAreaWrapperClassName || 'w-full flex space-x-4 mb-4 pt-2'}>
+              {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
+              <div className="grid grid-cols-1 w-full">
                 <Item name="text" label="" className="c-input-border-none w-full mb-0">
                   <TextArea
                     className="w-full py-2"
                     placeholder={placeholder}
                     name="text"
                     onChange={() => {}}
-                    rows={1}
+                    rows={textAreaRows}
                   />
                 </Item>
-                <div
-                  className={`h-full justify-self-end self-${uploadBtsPosition} flex items-center space-x-3 
-                     absolute bottom-32 xs:bottom-0 ml-3 xs:pb-0 xs:relative ${uploadBtnClassName}`}
-                >
-                  <div className="cursor-pointer" onClick={() => setAddPoll(true)}>
-                    <img src={pollIcon} className="w-5" alt="" />
-                  </div>
-                  <Item name="uploadImage" className="cursor-pointer m-0">
-                    <img src={uploadImageIcon} className="w-6" alt="" />
-                  </Item>
-                  <Item name="uploadGif" className="cursor-pointer m-0">
-                    <img src={uploadGifIcon} className="w-5" alt="" />
-                  </Item>
-                  <Item name="uploadVideo" className="cursor-pointer m-0">
-                    <img src={uploadVideoIcon} className="w-6" alt="" />
-                  </Item>
-                </div>
+                <AddPoll
+                  wrapperClassName={`w-full mt-4 ${displayAvatar ? '' : 'pl-8'} ${
+                    addPoll ? '' : 'hidden'
+                  }`}
+                  pollPlusClassName={pollPlusClassName}
+                  pollWidth={pollWidth}
+                />
               </div>
-            )}
+            </div>
+            <div
+              className={
+                uploadBtnClassName ||
+                'justify-self-end self-start flex items-center space-x-3 absolute bottom-32 xs:bottom-0 pl-3 xs:pb-0 xs:relative'
+              }
+            >
+              <Item name="uploadImage" className="cursor-pointer m-0">
+                <img src={uploadImageIcon} alt="" />
+              </Item>
+              <Item name="uploadGif" className="cursor-pointer m-0">
+                <img src={uploadGifIcon} alt="" />
+              </Item>
+              <Item name="uploadVideo" className="cursor-pointer m-0">
+                <img src={uploadVideoIcon} alt="" />
+              </Item>
+              <div className="cursor-pointer" onClick={() => setAddPoll((prevState) => !prevState)}>
+                <img src={pollIcon} alt="" />
+              </div>
+            </div>
           </div>
           <footer
             className={`px-4 py-4 lg:pl-0 lg:pt-6 lg:pb-6 w-full bg-mediumGray flex justify-between absolute bottom-0 xs:relative ${footerClassName}`}
@@ -235,11 +208,14 @@ AddPost.propTypes = {
   postBtnClassName: PropTypes.string,
   footerClassName: PropTypes.string,
   tagsClassName: PropTypes.string,
+  pollPlusClassName: PropTypes.string,
+  pollWidth: PropTypes.string,
   placeholder: PropTypes.string,
   uploadBtsPosition: PropTypes.string,
   children: PropTypes.node,
   displayAvatar: PropTypes.bool,
   miniBox: PropTypes.bool,
+  textAreaRows: PropTypes.number,
 };
 
 AddPost.defaultProps = {
@@ -250,11 +226,14 @@ AddPost.defaultProps = {
   postBtnClassName: '',
   footerClassName: '',
   tagsClassName: '',
+  pollPlusClassName: '',
+  pollWidth: '',
   uploadBtsPosition: 'start',
   placeholder: 'Start typing',
   children: null,
   displayAvatar: false,
   miniBox: false,
+  textAreaRows: 1,
 };
 
 export default AddPost;

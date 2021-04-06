@@ -59,7 +59,7 @@ function Profile() {
   ];
 
   return (
-    <Layout mainClassName="min-h-screen lg:pt-8 lg:pb-10 lg:px-4 lg:px-4 xl:container">
+    <Layout mainClassName="min-h-screen lg:pt-8 lg:pb-10 lg:px-4 xl:container">
       <EditProfileDrawer
         onCancel={() => setEditProfileDrawerVisible(false)}
         afterSave={() => setEditProfileDrawerVisible(false)}
@@ -100,7 +100,7 @@ function Profile() {
         modalVisible={smUp && storyViewersModalVisible}
         drawerVisible={!smUp && storyViewersModalVisible}
       />
-      <div className="pb-2 bg-blueGray lg:pt-4 lg:pb-10 lg:px-4 xl:container">
+      <div className="pb-2 bg-blueGray px-4 lg:pt-4 lg:pb-10">
         <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
           <div className="col-start-1 col-span-2">
             <div className="sticky-position">
@@ -126,11 +126,16 @@ function Profile() {
               >
                 <AddPost
                   miniBox
-                  uploadBtsPosition="end"
+                  wrapperClassName="card p-0 mb-2"
+                  contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                  textAreaWrapperClassName="w-full flex space-x-4"
+                  uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
                   footerClassName="flex-col xl:flex-row"
                   postBtnClassName="self-end xl:self-center"
                   tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
-                  placeholder="#stonksgame #strong, post something…"
+                  pollPlusClassName="absolute top-24 right-12"
+                  pollWidth="w-4/5"
+                  formName="stockWall"
                 />
                 <StockWall
                   wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"

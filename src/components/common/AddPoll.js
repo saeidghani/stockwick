@@ -16,16 +16,15 @@ import {
 const { Item, List, ErrorList } = Form;
 const { Option } = Select;
 
-function AddPoll({ wrapperClassName }) {
+function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
   return (
     <div className={wrapperClassName}>
-      <div name="pollForm" className="relative w-full child-mb--sm" style={{ width: 720 }}>
+      <div className="relative child-mb--sm">
         <Item
           name="question"
           validateTrigger={['onChange', 'onBlur']}
           rules={questionRules}
-          className="c-input-border-none primary-placeholder--fade"
-          style={{ width: 650 }}
+          className={`c-input-border-none primary-placeholder--fade ${pollWidth || 'w-3/4'}`}
         >
           <Input placeholder="Ask a Question…" />
         </Item>
@@ -33,8 +32,7 @@ function AddPoll({ wrapperClassName }) {
           name="choice1"
           validateTrigger={['onChange', 'onBlur']}
           rules={choiceRules}
-          className="w-4/5 c-round-filled-input primary-placeholder--fade"
-          style={{ width: 650 }}
+          className={`c-round-filled-input primary-placeholder--fade ${pollWidth || 'w-3/4'}`}
         >
           <Input placeholder="choice text" />
         </Item>
@@ -42,8 +40,7 @@ function AddPoll({ wrapperClassName }) {
           name="choice2"
           validateTrigger={['onChange', 'onBlur']}
           rules={choiceRules}
-          className="w-4/5 c-round-filled-input primary-placeholder--fade"
-          style={{ width: 650 }}
+          className={`c-round-filled-input primary-placeholder--fade ${pollWidth || 'w-3/4'}`}
         >
           <Input placeholder="choice text" />
         </Item>
@@ -65,13 +62,16 @@ function AddPoll({ wrapperClassName }) {
           {(fields, { add, remove }, { errors }) => (
             <>
               {fields.map((field) => (
-                <Item className="relative" required={false} key={field.key}>
+                <Item
+                  className={`relative ${pollWidth || 'w-3/4'}`}
+                  required={false}
+                  key={field.key}
+                >
                   <Item
                     {...field}
                     validateTrigger={['onChange', 'onBlur']}
                     rules={choiceRules}
-                    className="w-4/5 c-round-filled-input primary-placeholder--fade"
-                    style={{ width: 650 }}
+                    className="c-round-filled-input primary-placeholder--fade"
                   >
                     <Input placeholder="choice text" />
                   </Item>
@@ -81,7 +81,7 @@ function AddPoll({ wrapperClassName }) {
                   />
                 </Item>
               ))}
-              <Item className="absolute top-24 right-4 mt-2 ml-4">
+              <Item className={pollPlusClassName || 'absolute top-28 right-20'}>
                 <Button
                   type="link"
                   onClick={() => add()}
@@ -92,71 +92,73 @@ function AddPoll({ wrapperClassName }) {
             </>
           )}
         </List>
-        <p className="text-primary text-base">Poll Length</p>
-        <div className="grid grid-cols-3 gap-x-4" style={{ width: 650 }}>
-          <Item
-            className="relative c-round-filled-select-item c-round-filled-select mb-0"
-            name="days"
-            label="Days"
-            rules={daysRules}
-          >
-            <Select>
-              <Option value={1}>
-                <span className="text-primary">1</span>
-              </Option>
-              <Option value={2}>
-                <span className="text-primary">2</span>
-              </Option>
-              <Option value={3}>
-                <span className="text-primary">3</span>
-              </Option>
-              <Option value={4}>
-                <span className="text-primary">4</span>
-              </Option>
-            </Select>
-          </Item>
-          <Item
-            className="relative c-round-filled-select-item c-round-filled-select mb-0"
-            name="hours"
-            label="Hours"
-            rules={hoursRules}
-          >
-            <Select>
-              <Option value={1}>
-                <span className="text-primary">1</span>
-              </Option>
-              <Option value={2}>
-                <span className="text-primary">2</span>
-              </Option>
-              <Option value={3}>
-                <span className="text-primary">3</span>
-              </Option>
-              <Option value={4}>
-                <span className="text-primary">4</span>
-              </Option>
-            </Select>
-          </Item>
-          <Item
-            className="relative c-round-filled-select-item c-round-filled-select mb-0"
-            name="minutes"
-            label="Minutes"
-            rules={minutesRules}
-          >
-            <Select>
-              <Option value={1}>
-                <span className="text-primary">1</span>
-              </Option>
-              <Option value={2}>
-                <span className="text-primary">2</span>
-              </Option>
-              <Option value={3}>
-                <span className="text-primary">3</span>
-              </Option>
-              <Option value={4}>
-                <span className="text-primary">4</span>
-              </Option>
-            </Select>
-          </Item>
+        <div className={pollWidth || 'w-3/4'}>
+          <p className="text-primary text-base mb-2">Poll Length</p>
+          <div className="grid grid-cols-3 gap-x-4">
+            <Item
+              className="relative c-round-filled-select-item c-round-filled-select mb-0"
+              name="days"
+              label="Days"
+              rules={daysRules}
+            >
+              <Select>
+                <Option value={1}>
+                  <span className="text-primary">1</span>
+                </Option>
+                <Option value={2}>
+                  <span className="text-primary">2</span>
+                </Option>
+                <Option value={3}>
+                  <span className="text-primary">3</span>
+                </Option>
+                <Option value={4}>
+                  <span className="text-primary">4</span>
+                </Option>
+              </Select>
+            </Item>
+            <Item
+              className="relative c-round-filled-select-item c-round-filled-select mb-0"
+              name="hours"
+              label="Hours"
+              rules={hoursRules}
+            >
+              <Select>
+                <Option value={1}>
+                  <span className="text-primary">1</span>
+                </Option>
+                <Option value={2}>
+                  <span className="text-primary">2</span>
+                </Option>
+                <Option value={3}>
+                  <span className="text-primary">3</span>
+                </Option>
+                <Option value={4}>
+                  <span className="text-primary">4</span>
+                </Option>
+              </Select>
+            </Item>
+            <Item
+              className="relative c-round-filled-select-item c-round-filled-select mb-0"
+              name="minutes"
+              label="Minutes"
+              rules={minutesRules}
+            >
+              <Select>
+                <Option value={1}>
+                  <span className="text-primary">1</span>
+                </Option>
+                <Option value={2}>
+                  <span className="text-primary">2</span>
+                </Option>
+                <Option value={3}>
+                  <span className="text-primary">3</span>
+                </Option>
+                <Option value={4}>
+                  <span className="text-primary">4</span>
+                </Option>
+              </Select>
+            </Item>
+          </div>
         </div>
       </div>
     </div>
@@ -165,10 +167,16 @@ function AddPoll({ wrapperClassName }) {
 
 AddPoll.propTypes = {
   wrapperClassName: PropTypes.string,
+  pollPlusClassName: PropTypes.string,
+  displayAvatar: PropTypes.bool,
+  pollWidth: PropTypes.string,
 };
 
 AddPoll.defaultProps = {
   wrapperClassName: '',
+  pollPlusClassName: '',
+  displayAvatar: false,
+  pollWidth: '',
 };
 
 export default AddPoll;

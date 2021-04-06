@@ -143,11 +143,16 @@ function Feed() {
               </div>
               <AddPost
                 miniBox
+                wrapperClassName="card p-0 mb-2"
+                contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                textAreaWrapperClassName="w-full flex space-x-4"
+                uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
                 footerClassName="flex-col xl:flex-row"
                 postBtnClassName="self-end xl:self-center"
-                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 xl:pr-4 mb-4"
-                uploadBtsPosition="end"
-                placeholder="#stonksgame #strong, post something…"
+                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
+                pollPlusClassName="absolute top-24 right-12"
+                pollWidth="w-4/5"
+                formName="stockWall"
               />
             </div>
             <StockWall

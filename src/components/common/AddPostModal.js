@@ -21,11 +21,15 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
         onCancel={onClose}
         onOk={onOk}
         visible={modalVisible}
+        width={800}
       >
         <AddPost
           form={form}
           wrapperClassName="xs:pt-12"
+          contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4"
+          uploadBtnClassName="justify-self-center self-start flex items-center space-x-3"
           tagsClassName="flex space-x-2 items-center lg:pl-6 mb-2"
+          pollPlusClassName="absolute top-32 right-28"
           placeholder="#stonksgame #strong, post something…"
           displayAvatar
         />
