@@ -41,6 +41,7 @@ function AddPost({
   textAreaRows,
 }) {
   const [addPoll, setAddPoll] = useState(false);
+  const [shareTo, setShareTo] = useState({});
 
   /* const { setFieldsValue } = form;
 
@@ -65,9 +66,24 @@ function AddPost({
   };
 
   // eslint-disable-next-line react/prop-types,no-shadow
-  const ShareTo = ({ wrapperClassName, children, text, textClassName = 'ml-1' }) => (
+  const ShareTo = ({ wrapperClassName, name, children, text, textClassName = 'ml-1' }) => (
     <div className={wrapperClassName || ''}>
-      <Checkbox className="c-checkbox-simple flex items-center" onChange={() => {}} checked={false}>
+      <Checkbox
+        className="c-checkbox-simple flex items-center"
+        onChange={() => {
+          if (name === 'selectAll') {
+            setShareTo({
+              selectAll: !shareTo.selectAll,
+              facebook: !shareTo.selectAll,
+              twitter: !shareTo.selectAll,
+              linkedin: !shareTo.selectAll,
+            });
+          } else {
+            setShareTo({ ...shareTo, [name]: !shareTo[name] });
+          }
+        }}
+        checked={shareTo[name]}
+      >
         <div className="flex justify-between items-center pb-0.5 ml-1">
           <div>{children}</div>
           <div className={`text-primary text-xs font-medium ${textClassName}`}>{text}</div>
@@ -194,14 +210,14 @@ function AddPost({
               <div className="pl-2 xs:pl-4">
                 <div className="text-darkGray mb-2">share to:</div>
                 <div className="grid grid-cols-2 justify-items-start gap-y-2 sm:flex sm:space-x-2">
-                  <ShareTo text="select all" textClassName="whitespace-no-wrap" />
-                  <ShareTo text="facebook">
+                  <ShareTo name="selectAll" text="select all" textClassName="whitespace-no-wrap" />
+                  <ShareTo name="facebook" text="facebook">
                     <img src={facebookIcon} className="w-4 h-4" alt="" />
                   </ShareTo>
-                  <ShareTo text="twitter">
+                  <ShareTo name="twitter" text="twitter">
                     <img src={twitterIcon} className="w-4 h-4" alt="" />
                   </ShareTo>
-                  <ShareTo text="linkedin">
+                  <ShareTo name="linkedin" text="linkedin">
                     <img src={linkedinIcon} className="w-4 h-4" alt="" />
                   </ShareTo>
                 </div>

@@ -11,6 +11,7 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
 
   const onClose = () => {
     form.resetFields();
+    form.setFieldsValue({ days: 1, hours: 1, minutes: 1 });
     onCancel();
   };
 
@@ -30,6 +31,7 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
           uploadBtnClassName="justify-self-center self-start flex items-center space-x-3"
           tagsClassName="flex space-x-2 items-center pl-4 mb-2"
           pollPlusClassName="absolute top-24 right-28"
+          postBtnClassName="self-end c-primary-btn hidden xs:block mt-4 xl:mt-0"
           placeholder="#stonksgame #strong, post something…"
           textAreaRows={4}
           displayAvatar

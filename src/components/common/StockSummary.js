@@ -11,8 +11,8 @@ import Button from '../UI/Button';
 
 function StockSummary() {
   return (
-    <div className="grid grid-cols-9 gap-y-4 lg:flex lg:justify-between items-center bg-primary text-white w-full px-2 pt-5 pb-5">
-      <div className="col-start-1 row-start-1 col-span-3 pl-3 sm:pl-2 sm:col-start-1 sm:row-start-1 sm:col-span-2 flex items-center space-x-3">
+    <div className="grid grid-cols-9 gap-y-5 lg:flex lg:justify-between items-center bg-primary text-white w-full px-2 pt-5 pb-5">
+      <div className="col-start-1 row-start-1 col-span-3 pl-2 sm:col-start-1 sm:row-start-1 sm:col-span-2 flex items-center space-x-3">
         <LogoIcon
           icon={apple}
           wrapperClassName="bg-white rounded-full relative"
@@ -20,7 +20,7 @@ function StockSummary() {
           width={50}
         />
         <div className="flex flex-col justify-between h-full">
-          <div className="text-xl uppercase">appl</div>
+          <div className="text-lg xs:text-xl uppercase">appl</div>
           <div className="whitespace-no-wrap text-sm capitalize">apple, Inc.</div>
         </div>
       </div>
@@ -29,14 +29,14 @@ function StockSummary() {
         <div className="text-sm sm:ml-2 sm:mb-2 lg:ml-0 lg:mb-0">nasdaq</div>
       </div>
       <div className="col-start-4 row-start-1 col-span-3 sm:col-start-1 sm:row-start-2 sm:col-span-2 sm:justify-self-end sm:relative sm:left-6 lg:left-0 flex flex-col justify-between items-center h-full">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1 xs:space-x-2">
           <div className="text-22px text-secondary">7.13</div>
           <img src={upArrowColorfulIcon} className="w-5" alt="" />
           <div className="bg-darkGreen h-5 px-1 pb-0.5 rounded">1.84%</div>
         </div>
         <div className="text-sm">price</div>
       </div>
-      <div className="col-start-7 row-start-1 col-span-3 sm:col-start-4 sm:row-start-2 sm:col-span-2 flex flex-col justify-between items-center h-full">
+      <div className="col-start-7 row-start-1 col-span-3 sm:col-start-4 sm:row-start-2 sm:col-span-2 flex flex-col justify-between items-center h-full pl-2 xs:pl-0">
         <div className="flex">
           <div className="mr-2 text-xl text-accent mb-2">400 M</div>
           <img src={downArrowColorfulIcon} className="w-5" alt="" />
@@ -50,7 +50,7 @@ function StockSummary() {
       </div>
       <div className="col-start-3 row-start-2 col-span-3 justify-self-end sm:justify-self-center sm:col-start-6 sm:row-start-2 sm:col-span-2 flex flex-col justify-between items-center h-full capitalize">
         <div className="text-base mb-1">may 04</div>
-        <div className="text-sm">upcoming earnings</div>
+        <div className="text-13px xs:text-sm">upcoming earnings</div>
       </div>
       <div className="col-start-6 row-start-2 col-span-2 justify-self-end sm:justify-self-center sm:col-start-8 sm:row-start-2 sm:col-span-1 flex flex-col justify-between items-center h-full">
         <div className="text-lg text-secondary">6.0%</div>

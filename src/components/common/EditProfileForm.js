@@ -45,7 +45,7 @@ function EditProfileForm({ wrapperClassName, afterSave }) {
         <div className="grid grid-cols-3">
           <Item className="col-start-2 justify-self-center flex flex-col items-center">
             <Avatar avatarClassName="w-26 h-26" />
-            <div className="text-secondary text-center mt-2">Edit Picture</div>
+            <div className="text-primary xs:text-secondary text-center mt-2">Edit Picture</div>
           </Item>
           <Item className="col-start-3 justify-self-end">
             <Button

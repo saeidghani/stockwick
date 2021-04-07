@@ -38,7 +38,7 @@ function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
             pollWidth || 'w-5/6 sm:w-3/4'
           }`}
         >
-          <Input placeholder="choice text" />
+          <Input placeholder="choice 1" />
         </Item>
         <Item
           name="choice2"
@@ -48,7 +48,7 @@ function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
             pollWidth || 'w-5/6 sm:w-3/4'
           }`}
         >
-          <Input placeholder="choice text" />
+          <Input placeholder="choice 2" />
         </Item>
         <List
           name="extraChoices"
@@ -79,7 +79,7 @@ function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
                     rules={choiceRules}
                     className="c-round-filled-input primary-placeholder--fade"
                   >
-                    <Input placeholder="choice text" />
+                    <Input placeholder={`choice ${field.key + 3}`} />
                   </Item>
                   <MinusCircleOutlined
                     className="absolute top-5 -left-6 text-primary text-base"

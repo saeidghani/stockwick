@@ -39,7 +39,7 @@ function Stock() {
 
   useEffect(() => {
     /*(async () => await dispatch.posts.getMyPosts())();*/
-    setQuery({ auth: true, tab: 'appleWall' });
+    setQuery({ auth: true, tab: 'overview' });
   }, []);
 
   const onTabChange = (key) => {
@@ -208,7 +208,7 @@ function Stock() {
               <div className="relative" style={{ height: 70 }}>
                 <StockDetails wrapperClassName="mb-4 absolute w-full" />
               </div>
-              <div className="grid grid-cols-2 gap-x-4 mt-4 mb-4">
+              <div className="grid grid-cols-1 xs:grid-cols-2 gap-x-4 mt-4 mb-4">
                 <div className="w-full mb-4 md:bg-white md:p-3">
                   <div className="boldPrimaryText text-lg mb-4">Technical Analysis</div>
                   <div className="card p-4">

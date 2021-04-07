@@ -41,9 +41,9 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
           </div>
         ))}
       </div>
-      <div className="flex px-6 relative mt-8 pb-80 c-primary-filled-input">
+      <div className="flex relative mt-8 px-4 pb-80 c-primary-filled-input">
         <Input name="search" placeholder="Search..." className="w-full text-white" />
-        <img className="absolute top-4 right-10" src={searchIcon} alt="" />
+        <img className="absolute top-4 right-4" src={searchIcon} alt="" />
       </div>
     </div>
   );
@@ -65,7 +65,12 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
         onClose={onCancel}
         wrapClassName="w-full h-full"
         headerStyle={{ backgroundColor: styleVar.colors.fadePrimary2, border: 0 }}
-        bodyStyle={{ backgroundColor: styleVar.colors.fadePrimary2, paddingTop: 10 }}
+        bodyStyle={{
+          backgroundColor: styleVar.colors.fadePrimary2,
+          paddingTop: 10,
+          paddingLeft: 15,
+          paddingRight: 15,
+        }}
         title={
           <BackButton
             onClick={onCancel}
