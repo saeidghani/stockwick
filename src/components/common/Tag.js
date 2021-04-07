@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function Tag({ children, text, wrapperClassName, textBoxClassName, textClassName }) {
   return (
     <div className={wrapperClassName}>
-      <div className="flex h-8">
+      <div className="flex h-8 w-full">
         {children}
         <div className={textBoxClassName || 'flex items-center px-2 bg-white text-primary text-xs'}>
           <span className={textClassName}>{text}</span>

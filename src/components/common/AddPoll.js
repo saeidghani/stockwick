@@ -24,7 +24,9 @@ function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
           name="question"
           validateTrigger={['onChange', 'onBlur']}
           rules={questionRules}
-          className={`c-input-border-none primary-placeholder--fade ${pollWidth || 'w-3/4'}`}
+          className={`c-input-border-none primary-placeholder--fade ${
+            pollWidth || 'w-5/6 sm:w-3/4'
+          }`}
         >
           <Input placeholder="Ask a Question…" />
         </Item>
@@ -32,7 +34,9 @@ function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
           name="choice1"
           validateTrigger={['onChange', 'onBlur']}
           rules={choiceRules}
-          className={`c-round-filled-input primary-placeholder--fade ${pollWidth || 'w-3/4'}`}
+          className={`c-round-filled-input primary-placeholder--fade ${
+            pollWidth || 'w-5/6 sm:w-3/4'
+          }`}
         >
           <Input placeholder="choice text" />
         </Item>
@@ -40,7 +44,9 @@ function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
           name="choice2"
           validateTrigger={['onChange', 'onBlur']}
           rules={choiceRules}
-          className={`c-round-filled-input primary-placeholder--fade ${pollWidth || 'w-3/4'}`}
+          className={`c-round-filled-input primary-placeholder--fade ${
+            pollWidth || 'w-5/6 sm:w-3/4'
+          }`}
         >
           <Input placeholder="choice text" />
         </Item>
@@ -63,7 +69,7 @@ function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
             <>
               {fields.map((field) => (
                 <Item
-                  className={`relative ${pollWidth || 'w-3/4'}`}
+                  className={`relative ${pollWidth || 'w-5/6 sm:w-3/4'}`}
                   required={false}
                   key={field.key}
                 >
@@ -92,7 +98,7 @@ function AddPoll({ wrapperClassName, pollPlusClassName, pollWidth }) {
             </>
           )}
         </List>
-        <div className={pollWidth || 'w-3/4'}>
+        <div className={pollWidth || 'w-5/6 sm:w-3/4'}>
           <p className="text-primary text-base mb-2">Poll Length</p>
           <div className="grid grid-cols-3 gap-x-4">
             <Item

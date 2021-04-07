@@ -26,11 +26,12 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
         <AddPost
           form={form}
           wrapperClassName="xs:pt-12"
-          contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4"
+          contentClassName="flex justify-between items-center w-full h-full my-auto px-4"
           uploadBtnClassName="justify-self-center self-start flex items-center space-x-3"
-          tagsClassName="flex space-x-2 items-center lg:pl-6 mb-2"
-          pollPlusClassName="absolute top-32 right-28"
+          tagsClassName="flex space-x-2 items-center pl-4 mb-2"
+          pollPlusClassName="absolute top-24 right-28"
           placeholder="#stonksgame #strong, post something…"
+          textAreaRows={4}
           displayAvatar
         />
       </Modal>
@@ -48,9 +49,15 @@ function AddPostModal({ modalVisible, drawerVisible, onOk, onCancel }) {
       >
         <AddPost
           form={form}
-          wrapperClassName="xs:pt-12"
-          contentClassName="xs:border xs:border-solid xs:border-gray-100"
+          contentClassName="flex justify-between items-center w-full h-full my-auto px-4"
+          footerClassName="px-2 py-4 w-full bg-mediumGray flex justify-between absolute bottom-0"
+          uploadBtnClassName="justify-self-center self-start flex items-center space-x-3
+                              absolute bottom-36 pb-2"
+          tagsClassName="flex space-x-2 items-center mb-2"
+          pollPlusClassName="absolute top-24 right-28"
+          allTagsClassName="px-0"
           placeholder="#stonksgame #strong, post something…"
+          textAreaRows={4}
           displayAvatar
         />
       </Drawer>

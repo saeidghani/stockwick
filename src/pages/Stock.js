@@ -38,8 +38,8 @@ function Stock() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => await dispatch.posts.getMyPosts())();
-    setQuery({ auth: true, tab: 'overview' });
+    /*(async () => await dispatch.posts.getMyPosts())();*/
+    setQuery({ auth: true, tab: 'appleWall' });
   }, []);
 
   const onTabChange = (key) => {
@@ -149,12 +149,13 @@ function Stock() {
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
-                contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
                 textAreaWrapperClassName="w-full flex space-x-4"
+                pollPlusClassName="absolute top-24 lg:right-10 xl:right-16"
                 uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
-                footerClassName="flex-col xl:flex-row"
-                postBtnClassName="self-end xl:self-center"
-                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
+                footerClassName="flex flex-col xl:flex-row pr-4 py-4 w-full bg-mediumGray justify-between"
+                postBtnClassName="c-primary-btn self-end mt-4 xl:self-center"
+                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
                 formName="stockWall"
               />
               <StockWall
@@ -168,12 +169,13 @@ function Stock() {
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
-                contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
                 textAreaWrapperClassName="w-full flex space-x-4"
+                pollPlusClassName="absolute top-24 lg:right-10 xl:right-16"
                 uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
-                footerClassName="flex-col xl:flex-row"
-                postBtnClassName="self-end xl:self-center"
-                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
+                footerClassName="flex flex-col xl:flex-row pr-4 py-4 w-full bg-mediumGray justify-between"
+                postBtnClassName="c-primary-btn self-end mt-4 xl:self-center"
+                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
                 formName="stockWall"
               />
             </div>
@@ -185,7 +187,7 @@ function Stock() {
           <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
           <div className="text-lightGray text-center mt-6">© stockwick inc.</div>
         </div>
-        <div className="lg:hidden c-tabs px-4">
+        <div className="lg:hidden c-tabs px-2 xs:px-4">
           <Tabs activeKey={tab} onChange={onTabChange}>
             <TabPane
               tab={
@@ -260,13 +262,13 @@ function Stock() {
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
-                contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
                 textAreaWrapperClassName="w-full flex space-x-4"
                 uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
-                footerClassName="flex-col xl:flex-row"
-                postBtnClassName="self-end xl:self-center"
-                tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
-                pollPlusClassName="absolute top-24 sm:right-24 md:right-28"
+                footerClassName="flex flex-col sm:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
+                postBtnClassName="self-end sm:self-center c-primary-btn mt-4 pr-2"
+                tagsClassName="grid grid-cols-2 gap-y-2 xs:flex xs:space-x-4 mb-4 pl-4"
+                pollPlusClassName="absolute top-24 right-0 sm:right-20 md:right-28"
                 formName="stockWall"
               />
             </TabPane>
@@ -280,24 +282,26 @@ function Stock() {
               }
               key="appleCharts"
             >
+              <StockWall
+                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
+                maxHeight={500}
+                comments={comments}
+                isBullish
+                title="appl charts"
+                displayChart
+              />
               <AddPost
                 miniBox
                 wrapperClassName="card p-0 mb-2"
-                footerClassName="flex-col xl:flex-row"
-                postBtnClassName="self-end xl:self-center"
-                tagsClassName="grid grid-cols-2 gap-y-2 mb-2"
-                uploadBtsPosition="end"
-                formName="stockCharts"
-              >
-                <StockWall
-                  wrapperClassName="px-4 pt-4"
-                  maxHeight={485}
-                  comments={comments}
-                  isBearish
-                  title="appl charts"
-                  displayChart
-                />
-              </AddPost>
+                contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                textAreaWrapperClassName="w-full flex space-x-4"
+                uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
+                footerClassName="flex flex-col sm:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
+                postBtnClassName="self-end sm:self-center c-primary-btn mt-4 pr-2"
+                tagsClassName="grid grid-cols-2 gap-y-2 xs:flex xs:space-x-4 mb-4 pl-4"
+                pollPlusClassName="absolute top-24 right-0 sm:right-20 md:right-28"
+                formName="stockWall"
+              />
             </TabPane>
           </Tabs>
           <div className="text-lightGray text-center mt-3 mb-20">© stockwick inc.</div>

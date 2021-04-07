@@ -100,7 +100,7 @@ function Profile() {
         modalVisible={smUp && storyViewersModalVisible}
         drawerVisible={!smUp && storyViewersModalVisible}
       />
-      <div className="pb-2 bg-blueGray px-4 lg:pt-4 lg:pb-10">
+      <div className="pb-2 bg-blueGray lg:px-4 lg:pt-4 lg:pb-10">
         <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
           <div className="col-start-1 col-span-2">
             <div className="sticky-position">
@@ -127,14 +127,14 @@ function Profile() {
                 <AddPost
                   miniBox
                   wrapperClassName="card p-0 mb-2"
-                  contentClassName="flex flex-col justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                  contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
                   textAreaWrapperClassName="w-full flex space-x-4"
+                  pollPlusClassName="absolute top-24 lg:right-10 xl:right-16"
                   uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
-                  footerClassName="flex-col xl:flex-row"
-                  postBtnClassName="self-end xl:self-center"
-                  tagsClassName="grid grid-cols-2 gap-y-2 lg:grid-cols-4 xl:grid-cols-5 justify-items-start lg:justify-items-center xl:gap-x-2 gap-y-4 lg:pl-2 xl:pl-4 mb-4"
-                  pollPlusClassName="absolute top-24 right-12"
-                  pollWidth="w-4/5"
+                  footerClassName="flex flex-col xl:flex-row pr-4 py-4 w-full bg-mediumGray justify-between"
+                  postBtnClassName="c-primary-btn self-end mt-4 xl:self-center pl-4"
+                  tagsClassName="flex justify-between items-center pl-4 mb-4"
+                  allTagsClassName="px-0"
                   formName="stockWall"
                 />
                 <StockWall
@@ -241,7 +241,7 @@ function Profile() {
               </div>
             </div>
           </div>
-          <div className="c-tabs px-4">
+          <div className="c-tabs px-2 xs:px-4">
             <Tabs activeKey={tab} onChange={onTabChange}>
               <TabPane
                 tab={
@@ -260,7 +260,15 @@ function Profile() {
                   </div>
                   <AddPost
                     miniBox
-                    uploadBtsPosition="end"
+                    wrapperClassName="card p-0 mb-2"
+                    contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                    textAreaWrapperClassName="w-full flex space-x-4"
+                    uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
+                    footerClassName="flex flex-col sm:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
+                    postBtnClassName="self-end sm:self-center c-primary-btn mt-4 pr-2"
+                    tagsClassName="grid grid-cols-2 gap-y-2 xs:flex xs:space-x-4 mb-4 pl-4"
+                    pollPlusClassName="absolute top-24 right-0 sm:right-20 md:right-28"
+                    formName="stockWall"
                     placeholder="#stonksgame #strong, post something…"
                   />
                 </div>
