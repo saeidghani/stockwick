@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Carousel } from 'antd';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 function SwipeSlider({ wrapperClassName, children, sliderSettings }) {
   const carouselRef = React.createRef();
@@ -33,13 +34,41 @@ function SwipeSlider({ wrapperClassName, children, sliderSettings }) {
     ],
   };
 
+  const handlePrevious = () => {
+    carouselRef.current.innerSlider.slickPrev();
+  };
+
+  const handleNext = () => {
+    carouselRef.current.innerSlider.slickNext();
+  };
+
   const settings = sliderSettings || defaultSettings;
 
   return (
     <div className={wrapperClassName}>
-      <Carousel {...settings} ref={carouselRef} draggable>
-        {children}
-      </Carousel>
+      <div className="relative">
+        <div className="hidden lg:block">
+          <div
+            className="absolute top-8 -left-4 pb-0.5 w-7 h-7 rounded-full
+                    flex justify-center items-center z-10"
+            style={{ backgroundColor: 'rgba(246, 248, 255, 0.7)' }}
+          >
+            <LeftOutlined onClick={handlePrevious} className="text-lg text-primary" />
+          </div>
+        </div>
+        <Carousel {...settings} ref={carouselRef} draggable>
+          {children}
+        </Carousel>
+        <div className="hidden lg:block">
+          <div
+            className="absolute top-8 right-0 pb-0.5 w-7 h-7 rounded-full
+                    flex justify-center items-center z-10"
+            style={{ backgroundColor: 'rgba(246, 248, 255, 0.7)' }}
+          >
+            <RightOutlined onClick={handleNext} className="text-lg text-primary" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,10 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Carousel } from 'antd';
 import apple from '../../assets/icons/apple.svg';
 import LogoIcon from './LogoIcon';
-import SwipeSlider from '../UI/SwipeSlider';
 
 function SimilarSocks({ wrapperClassName, displayTitle }) {
+  const carouselRef = React.createRef();
+
+  const settings = {
+    dots: false,
+    className: 'center',
+    infinite: true,
+    slidesToShow: 5,
+    swipeToSlide: true,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
+  };
+
   // eslint-disable-next-line react/prop-types
   const StockItem = ({ isCdf, isCmp, isRed }) => (
     <div className="flex flex-col items-center">
@@ -32,11 +62,11 @@ function SimilarSocks({ wrapperClassName, displayTitle }) {
     <div className={wrapperClassName}>
       <div className="card px-2 py-4">
         {displayTitle && <div className="boldPrimaryText text-xl mb-4 pl-2">Similar Stocks</div>}
-        <SwipeSlider>
+        <Carousel {...settings} ref={carouselRef} draggable>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
             <StockItem key={i} isCdf={i === 3} isCmp={i === 3} isRed={i === 2 || i === 3} />
           ))}
-        </SwipeSlider>
+        </Carousel>
       </div>
     </div>
   );
