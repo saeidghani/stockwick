@@ -5,108 +5,14 @@ import { AddStoryIcon } from './Icons';
 import Avatar from '../UI/Avatar';
 import SwipeSlider from '../UI/SwipeSlider';
 
-function Stories({ wrapperClassName, onAddStory, onStoryView, gridCols, isSmSlider }) {
-  const mdSliderSettings = {
-    dots: false,
-    className: 'center',
-    infinite: true,
-    slidesToShow: 4,
-    swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 1070,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 1023,
-        settings: {
-          slidesToShow: 7,
-        },
-      },
-      {
-        breakpoint: 860,
-        settings: {
-          slidesToShow: 5,
-        },
-      },
-      {
-        breakpoint: 620,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-      {
-        breakpoint: 400,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-    ],
-  };
-
-  const smSliderSettings = {
-    dots: false,
-    className: 'center',
-    infinite: true,
-    slidesToShow: 2,
-    swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 1023,
-        settings: {
-          slidesToShow: 7,
-        },
-      },
-      {
-        breakpoint: 860,
-        settings: {
-          slidesToShow: 5,
-        },
-      },
-      {
-        breakpoint: 620,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-    ],
-  };
-
-  const settings = isSmSlider ? smSliderSettings : mdSliderSettings;
-
+function Stories({ wrapperClassName, onAddStory, onStoryView, gridCols }) {
   return (
     <div className={wrapperClassName}>
-      <div className="py-1 px-2">
-        <div className="boldPrimaryText text-xl mb-2">Live Stories</div>
-        <div className={`grid grid-cols-${gridCols} gap-x-4`}>
+      <div className="py-1 pr-2">
+        <div className="boldPrimaryText text-xl mb-2 pl-2">Live Stories</div>
+        <div className={`h-28 overflow-hidden grid grid-cols-${gridCols} gap-x-4`}>
           <div
-            className="inline-flex flex-col items-center space-y-2 cursor-pointer"
+            className="inline-flex flex-col items-center space-y-2 cursor-pointer pl-4"
             onClick={onAddStory}
           >
             <div className="flex">
@@ -114,14 +20,11 @@ function Stories({ wrapperClassName, onAddStory, onStoryView, gridCols, isSmSlid
             </div>
             <div className="text-primary font-medium">My story</div>
           </div>
-          <SwipeSlider
-            wrapperClassName={`col-start-2 col-span-${gridCols - 1}`}
-            sliderSettings={settings}
-          >
+          <SwipeSlider wrapperClassName={`col-start-2 col-span-${gridCols - 1}`}>
             {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
               <div
                 key={i}
-                className="flex flex-col items-center space-y-2 cursor-pointer"
+                className="flex flex-col items-center space-y-2 cursor-pointer mx-2"
                 onClick={onStoryView}
               >
                 <div className="flex">
@@ -147,7 +50,7 @@ Stories.propTypes = {
 
 Stories.defaultProps = {
   wrapperClassName: '',
-  gridCols: 4,
+  gridCols: 5,
   onAddStory: () => {},
   onStoryView: () => {},
   isSmSlider: false,

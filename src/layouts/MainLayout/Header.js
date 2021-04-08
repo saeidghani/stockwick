@@ -233,9 +233,9 @@ function Header() {
           >
             <div className="textLogo justify-self-center text-2xl">stockwick</div>
           </Link>
-          <div className="justify-self-end flex items-center space-x-8">
+          <div className="justify-self-end flex items-center space-x-6">
             {!pathname.includes(routes.home) && (
-              <div className="lg:hidden pl-4" onClick={() => setSearchModalVisible(true)}>
+              <div className="lg:hidden" onClick={() => setSearchModalVisible(true)}>
                 <img src={searchWhiteIcon} className="w-6" alt="" />
               </div>
             )}

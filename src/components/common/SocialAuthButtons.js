@@ -42,7 +42,7 @@ function SocialAuthButtons({
           onClick={onGetLinkedinAuth}
           block
         >
-          <img src={linkedinColorful} alt="" className="mr-4" />
+          <img src={linkedinColorful} alt="" className="mr-4 bg-white rounded" />
           <p className="hidden xs:block">Sign in with Linkedin</p>
         </Button>
         <Button

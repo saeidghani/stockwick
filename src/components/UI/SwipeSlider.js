@@ -3,35 +3,16 @@ import PropTypes from 'prop-types';
 import { Carousel } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
-function SwipeSlider({ wrapperClassName, children, sliderSettings }) {
+function SwipeSlider({ wrapperClassName, children, arrowClassName }) {
   const carouselRef = React.createRef();
 
-  const defaultSettings = {
+  const settings = {
     dots: false,
     className: 'center',
     infinite: true,
-    slidesToShow: 5,
+    slidesToShow: 4,
     swipeToSlide: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 5,
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 4,
-        },
-      },
-      {
-        breakpoint: 640,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-    ],
+    variableWidth: true,
   };
 
   const handlePrevious = () => {
@@ -42,14 +23,12 @@ function SwipeSlider({ wrapperClassName, children, sliderSettings }) {
     carouselRef.current.innerSlider.slickNext();
   };
 
-  const settings = sliderSettings || defaultSettings;
-
   return (
     <div className={wrapperClassName}>
       <div className="relative">
-        <div className="hidden lg:block">
+        <div className={arrowClassName || 'hidden lg:block'}>
           <div
-            className="absolute top-8 -left-4 pb-0.5 w-7 h-7 rounded-full
+            className="absolute top-8 -left-2 pb-0.5 w-7 h-7 rounded-full
                     flex justify-center items-center z-10"
             style={{ backgroundColor: 'rgba(246, 248, 255, 0.7)' }}
           >
@@ -59,7 +38,7 @@ function SwipeSlider({ wrapperClassName, children, sliderSettings }) {
         <Carousel {...settings} ref={carouselRef} draggable>
           {children}
         </Carousel>
-        <div className="hidden lg:block">
+        <div className={arrowClassName || 'hidden lg:block'}>
           <div
             className="absolute top-8 right-0 pb-0.5 w-7 h-7 rounded-full
                     flex justify-center items-center z-10"
@@ -75,13 +54,13 @@ function SwipeSlider({ wrapperClassName, children, sliderSettings }) {
 
 SwipeSlider.propTypes = {
   wrapperClassName: PropTypes.string,
+  arrowClassName: PropTypes.string,
   children: PropTypes.node.isRequired,
-  sliderSettings: PropTypes.shape({}),
 };
 
 SwipeSlider.defaultProps = {
   wrapperClassName: '',
-  sliderSettings: null,
+  arrowClassName: '',
 };
 
 export default SwipeSlider;

@@ -24,7 +24,7 @@ function StockSummary() {
           <div className="whitespace-no-wrap text-sm capitalize">apple, Inc.</div>
         </div>
       </div>
-      <div className="col-start-1 row-start-2 col-span-2 sm:col-start-3 sm:row-start-1 sm:col-span-2 sm:justify-self-start sm:pt-4 lg:pt-0 lg:col-start-2 flex flex-col sm:flex-row lg:flex-col justify-between items-center h-full">
+      <div className="col-start-1 row-start-2 col-span-2 sm:col-start-3 sm:row-start-1 sm:col-span-2 sm:justify-self-start sm:pt-4 md:relative md:right-8 lg:right-0 lg:pt-0 lg:col-start-2 flex flex-col sm:flex-row lg:flex-col justify-between items-center h-full">
         <img className="w-8 mb-2" src={usFlag} alt="" />
         <div className="text-sm sm:ml-2 sm:mb-2 lg:ml-0 lg:mb-0">nasdaq</div>
       </div>
@@ -69,7 +69,7 @@ function StockSummary() {
       </div>
       <Button
         text="+follow stock"
-        wrapperClassName="col-start-1 row-start-3 col-span-7 sm:pr-2 sm:col-start-7 sm:row-start-1 sm:col-span-2 c-secondary-btn c-secondary-btn--sm"
+        wrapperClassName="col-start-1 row-start-3 col-span-7 sm:pl-6 lg:pl-0 sm:pr-2 sm:col-start-7 sm:row-start-1 sm:col-span-2 c-secondary-btn c-secondary-btn--sm"
         textClassName="text-sm"
         block
       />

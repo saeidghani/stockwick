@@ -15,10 +15,10 @@ const { TabPane } = Tabs;
 function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
   // eslint-disable-next-line no-unused-vars
   const [parsedQuery, query, setQuery] = useQuery();
-  const { modalFollowTab } = parsedQuery;
+  const { followTab } = parsedQuery;
 
   const onTabChange = (key) => {
-    setQuery({ modalFollowTab: key });
+    setQuery({ followTab: key });
   };
 
   const allItems = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -65,7 +65,7 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
       <div className={drawerVisible ? 'c-tabs' : 'c-tabs-primary-bar'}>
         <Tabs
           defaultActiveKey="following"
-          activeKey={modalFollowTab}
+          activeKey={followTab}
           onChange={onTabChange}
           tabBarExtraContent={modalVisible && SearchInput}
         >
@@ -74,7 +74,7 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
               tab={
                 <div
                   className={`flex flex-col items-center ${
-                    modalFollowTab !== t.key ? 'opacity-30' : ''
+                    followTab !== t.key ? 'opacity-30' : ''
                   }`}
                 >
                   <div className="text-primary font-medium text-xl">{t.count}</div>

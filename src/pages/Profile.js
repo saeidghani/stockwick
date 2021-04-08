@@ -43,7 +43,7 @@ function Profile() {
   const { sm: smUp } = useBreakpoint();
 
   useEffect(() => {
-    setQuery({ auth: true, tab: 'idea', followTab: 'followers', modalFollowTab: 'following' });
+    setQuery({ auth: true, tab: 'idea', followTab: 'followers' });
   }, []);
 
   const onTabChange = (key) => {
@@ -230,14 +230,14 @@ function Profile() {
                 />
               </div>
             </div>
-            <div className="flex justify-center space-x-20 py-4">
-              <div className="flex flex-col items-center">
-                <div className="text-white">64</div>
-                <div className="text-white">followers</div>
-              </div>
-              <div className="flex flex-col items-center">
+            <div className="grid grid-cols-12 py-4">
+              <div className="col-start-3 col-span-2 flex flex-col items-center">
                 <div className="text-white">32</div>
-                <div className="text-white">following</div>
+                <div className="text-white">Followings</div>
+              </div>
+              <div className="col-start-9 col-span-2 flex flex-col items-center">
+                <div className="text-white">64</div>
+                <div className="text-white">Followers</div>
               </div>
             </div>
           </div>
@@ -245,7 +245,9 @@ function Profile() {
             <Tabs activeKey={tab} onChange={onTabChange}>
               <TabPane
                 tab={
-                  <div className={`text-primary text-lg ${tab !== 'idea' ? 'opacity-40' : ''}`}>
+                  <div
+                    className={`text-primary text-lg ${tab !== 'idea' ? 'text-opacity-40' : ''}`}
+                  >
                     Idea
                   </div>
                 }
@@ -291,7 +293,9 @@ function Profile() {
               </TabPane>
               <TabPane
                 tab={
-                  <div className={`text-primary text-lg ${tab !== 'story' ? 'opacity-40' : ''}`}>
+                  <div
+                    className={`text-primary text-lg ${tab !== 'story' ? 'text-opacity-40' : ''}`}
+                  >
                     Story
                   </div>
                 }

@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React from 'react';
 import { Input } from 'antd';
 import PropTypes from 'prop-types';
@@ -6,12 +7,14 @@ import southAmericaIcon from '../../assets/icons/southAmerica.svg';
 import europeIcon from '../../assets/icons/europe.svg';
 import africaIcon from '../../assets/icons/africa.svg';
 import asiaIcon from '../../assets/icons/asia.svg';
+import australiaIcon from '../../assets/icons/australia.svg';
 import searchIcon from '../../assets/icons/search.svg';
 import styleVar from '../../constants/styleVariables';
+import { useQuery } from '../../hooks/useQuery';
 import BackButton from './BackButton';
 import Modal from '../UI/Modal';
 import Drawer from '../UI/Drawer';
-import { useQuery } from '../../hooks/useQuery';
+import SwipeSlider from '../UI/SwipeSlider';
 
 function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
   // eslint-disable-next-line no-unused-vars
@@ -23,27 +26,41 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
     { key: 3, title: 'Africa', slug: 'Africa', icon: africaIcon },
     { key: 4, title: 'Europe', slug: 'Europe', icon: europeIcon },
     { key: 5, title: 'Asia', slug: 'Asia', icon: asiaIcon },
+    { key: 6, title: 'Australia', slug: 'Australia', icon: australiaIcon },
   ];
+
+  const settings = {
+    dots: false,
+    className: 'center',
+    infinite: true,
+    slidesToShow: 6,
+    swipeToSlide: true,
+    variableWidth: true,
+  };
 
   // eslint-disable-next-line react/prop-types
   const Content = ({ wrapperClassName }) => (
     <div className={wrapperClassName}>
       <div className="text-white text-center mb-10">Choose Time Zone</div>
-      <div className="flex justify-between px-4">
-        {timeZones.map((t) => (
-          <div
-            key={t.key}
-            className="flex flex-col justify-between items-center"
-            onClick={() => setQuery({ timeZone: t.slug })}
-          >
-            <img src={t.icon} alt="" />
-            <div className="text-white">{t.title}</div>
-          </div>
-        ))}
+      <div className="px-2 xs:px-8 h-20 overflow-hidden">
+        <SwipeSlider sliderSettings={settings} arrowClassName="md:hidden">
+          {timeZones.map((t) => (
+            <div
+              key={t.key}
+              className={`flex flex-col justify-between items-center mx-2 h-20 overflow-hidden ${
+                t.slug === parsedQuery.timeZone ? 'opacity-100' : 'opacity-50'
+              }`}
+              onClick={() => setQuery({ timeZone: t.slug })}
+            >
+              <img src={t.icon} alt="" className="h-16 mx-auto" />
+              <div className="text-white text-center">{t.title}</div>
+            </div>
+          ))}
+        </SwipeSlider>
       </div>
-      <div className="flex relative mt-8 px-4 pb-80 c-primary-filled-input">
+      <div className="flex relative mt-8 px-2 xs:px-8 pb-80 c-primary-filled-input">
         <Input name="search" placeholder="Search..." className="w-full text-white" />
-        <img className="absolute top-4 right-4" src={searchIcon} alt="" />
+        <img className="absolute top-4 right-8 xs:right-12" src={searchIcon} alt="" />
       </div>
     </div>
   );
@@ -56,7 +73,7 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
         onCancel={onCancel}
         onOk={onOk}
         visible={modalVisible}
-        width={450}
+        width={700}
       >
         <Content wrapperClassName="pt-6" />
       </Modal>

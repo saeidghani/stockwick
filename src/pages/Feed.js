@@ -34,7 +34,7 @@ function Feed() {
   const [parsedQuery, query, setQuery] = useQuery();
 
   const { useBreakpoint } = Grid;
-  const { sm: smUp, xl: lgUp } = useBreakpoint();
+  const { xs: xsUp, sm: smUp, xl: lgUp } = useBreakpoint();
 
   useEffect(() => {
     setQuery({ auth: true });
@@ -64,7 +64,7 @@ function Feed() {
   ];
 
   const Tags = () => (
-    <div className="flex justify-between items-center mb-4">
+    <div className="flex flex-wrap justify-between items-center mb-4 child-mb--sm">
       <Tag text="all" textClassName="px-2">
         <img src={chartIcon} alt="" className="w-8 bg-primary px-1.5" />
       </Tag>
@@ -179,7 +179,6 @@ function Feed() {
                 onAddStory={() => setAddStoryModalVisible(true)}
                 onStoryView={() => setStoryViewModalVisible(true)}
                 gridCols={lgUp ? 3 : 2}
-                isSmSlider
               />
               <NewsReleaseSummary wrapperClassName="mb-4" />
               <Activity title="Follower’s Activity" />
@@ -192,6 +191,7 @@ function Feed() {
             wrapperClassName="my-6"
             onAddStory={() => setAddStoryModalVisible(true)}
             onStoryView={() => setStoryViewModalVisible(true)}
+            gridCols={xsUp && !smUp ? 4 : !xsUp && smUp ? 7 : 3}
           />
           <div className="">
             <div className="w-full boldPrimaryText text-xl px-4 py-2 bg-white border border-solid border-itemBorder">

@@ -33,8 +33,7 @@ function Stock() {
   const { tab } = parsedQuery;
 
   const { useBreakpoint } = Grid;
-  const { sm: smUp, xs } = useBreakpoint();
-
+  const { sm: smUp, xs: xsUp } = useBreakpoint();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,9 +51,8 @@ function Stock() {
     { key: 1, title: '1 minute' },
     { key: 2, title: '5 minute' },
     { key: 3, title: '15 minute' },
-    { key: 4, title: '20 minute' },
-    { key: 5, title: '30 minute' },
-    { key: 6, title: '45 minute' },
+    { key: 4, title: '1 hours' },
+    { key: 5, title: '4 hours' },
   ];
 
   const periodList = [
@@ -191,7 +189,9 @@ function Stock() {
           <Tabs activeKey={tab} onChange={onTabChange}>
             <TabPane
               tab={
-                <div className={`text-primary text-lg ${tab !== 'overview' ? 'opacity-40' : ''}`}>
+                <div
+                  className={`text-primary text-lg ${tab !== 'overview' ? 'text-opacity-40' : ''}`}
+                >
                   Overview
                 </div>
               }
@@ -201,7 +201,7 @@ function Stock() {
                 wrapperClassName="mb-4"
                 onAddStory={() => setAddStoryModalVisible(true)}
                 onStoryView={() => setStoryViewModalVisible(true)}
-                gridCols={xs ? 4 : smUp ? 7 : 5}
+                gridCols={xsUp && !smUp ? 4 : !xsUp && smUp ? 7 : 3}
               />
               <div className="boldPrimaryText text-lg mb-2">Advance Charting</div>
               <Chart wrapperClassName="w-full h-80 mb-8" />
@@ -246,7 +246,9 @@ function Stock() {
             </TabPane>
             <TabPane
               tab={
-                <div className={`text-primary text-lg ${tab !== 'appleWall' ? 'opacity-40' : ''}`}>
+                <div
+                  className={`text-primary text-lg ${tab !== 'appleWall' ? 'text-opacity-40' : ''}`}
+                >
                   Apple Wall
                 </div>
               }
@@ -275,19 +277,23 @@ function Stock() {
             <TabPane
               tab={
                 <div
-                  className={`text-primary text-lg ${tab !== 'appleCharts' ? 'opacity-40' : ''}`}
+                  className={`text-primary text-lg ${
+                    tab !== 'appleCharts' ? 'text-opacity-40' : ''
+                  }`}
                 >
                   Apple charts
                 </div>
               }
               key="appleCharts"
             >
+              <div className="boldPrimaryText mb-4">appl charts</div>
               <StockWall
                 wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
                 maxHeight={500}
                 comments={comments}
                 isBullish
-                title="appl charts"
+                title="Market’s commitment long title #1"
+                titleClassName="boldPrimaryText text-xl mt-2 mb-4"
                 displayChart
               />
               <AddPost
