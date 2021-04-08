@@ -54,6 +54,7 @@ module.exports = {
         40: '40%',
       },
       spacing: {
+        17: '4.25rem',
         18: '4.5rem',
         19: '4.75rem',
         21: '5.25rem',

@@ -29,21 +29,12 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
     { key: 6, title: 'Australia', slug: 'Australia', icon: australiaIcon },
   ];
 
-  const settings = {
-    dots: false,
-    className: 'center',
-    infinite: true,
-    slidesToShow: 6,
-    swipeToSlide: true,
-    variableWidth: true,
-  };
-
   // eslint-disable-next-line react/prop-types
   const Content = ({ wrapperClassName }) => (
     <div className={wrapperClassName}>
       <div className="text-white text-center mb-10">Choose Time Zone</div>
       <div className="px-2 xs:px-8 h-20 overflow-hidden">
-        <SwipeSlider sliderSettings={settings} arrowClassName="md:hidden">
+        <SwipeSlider arrowClassName="md:hidden" wrapperClassName="relative">
           {timeZones.map((t) => (
             <div
               key={t.key}
