@@ -94,11 +94,11 @@
 }
 .stories-left-arrow {
   top: 32px;
-  left: 112px;
+  left: 120px;
 }
 @media (max-width: 1200px) and (min-width: 1024px) {
   .stories-left-arrow {
-    left: 100px;
+    left: 105px;
   }
 }
 /*# sourceMappingURL=utilityStyles.css.map */
