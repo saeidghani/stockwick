@@ -1,7 +1,6 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 import { Grid, Tabs } from 'antd';
-import { useDispatch } from 'react-redux';
 import { useQuery } from '../hooks/useQuery';
 import Layout from '../layouts/MainLayout/MainLayout';
 import StockSummary from '../components/common/StockSummary';
@@ -34,10 +33,8 @@ function Stock() {
 
   const { useBreakpoint } = Grid;
   const { sm: smUp, xs: xsUp } = useBreakpoint();
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    /*(async () => await dispatch.posts.getMyPosts())();*/
     setQuery({ auth: true, tab: 'overview' });
   }, []);
 
