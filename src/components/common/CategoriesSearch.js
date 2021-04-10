@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import searchColorfulIcon from '../../assets/icons/searchColorful.svg';
 import AutoComplete from '../UI/AutoComplete';
 import Select from '../UI/Select';
 import { useQuery } from '../../hooks/useQuery';
+import RouteMap from '../../routes/RouteMap';
 
 const mockVal = (str, repeat = 1) => ({
   value: str.repeat(repeat),
@@ -19,6 +21,8 @@ function CategoriesSearch({
   const [parsedQuery, query, setQuery] = useQuery();
   const { qs } = parsedQuery || {};
 
+  const history = useHistory();
+
   useEffect(() => {
     if (qs) {
       setOptions([mockVal(qs), mockVal(qs, 2), mockVal(qs, 3)]);
@@ -26,6 +30,13 @@ function CategoriesSearch({
   }, [query, qs]);
 
   const onSelect = (data) => {
+    if (parsedQuery?.categoryTitle === 'stocks') {
+      history.push(RouteMap.stock.view(1));
+    } else if (parsedQuery?.categoryTitle === 'crypto') {
+      history.push(`${RouteMap.stock.view(1)}?isCrypto=true`);
+    } else if (parsedQuery?.categoryTitle === 'people') {
+      history.push(RouteMap.profile.index);
+    }
     console.log('onSelect', data);
   };
 
@@ -40,7 +51,10 @@ function CategoriesSearch({
     <div className={`flex items-center w-full ${wrapperClassName}`}>
       <div className="c-select">
         <Select
-          onChange={() => {}}
+          onChange={(val) => {
+            const categoryTitle = categories?.find((c) => c?.value === val)?.title;
+            setQuery({ categoryTitle });
+          }}
           options={categories}
           wrapperClassName={`${height || 'h-14'} ${selectWrapperClassName || 'w-28 md:w-32'}`}
           dropdownClassName="bg-fadePrimary2 relative bottom-4"

@@ -5,8 +5,8 @@ import Avatar from '../UI/Avatar';
 function Activity({ title, height }) {
   const items = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
-    <div className="card p-4">
-      <div className="boldPrimaryText text-xl mb-5">{title}</div>
+    <div className="card py-4 px-2">
+      <div className="boldPrimaryText text-xl mb-5 pl-2">{title}</div>
       <div className="flex flex-col child-borderBottom px-2 overflow-auto" style={{ height }}>
         {items.map((i) => (
           <div key={i} className="flex items-start space-x-2 py-4">

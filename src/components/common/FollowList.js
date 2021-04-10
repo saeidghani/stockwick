@@ -20,7 +20,10 @@ function FollowList() {
 
   // eslint-disable-next-line react/prop-types
   const FollowColumn = ({ items }) => (
-    <div className="flex flex-col px-4 child-borderBottom overflow-auto" style={{ height: 400 }}>
+    <div
+      className="flex flex-col px-4 mx-2 child-borderBottom overflow-auto"
+      style={{ height: 400 }}
+    >
       {/* eslint-disable-next-line react/prop-types */}
       {items.map((i) => (
         <div key={i} className="flex justify-between items-center space-x-2 py-4">

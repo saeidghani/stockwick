@@ -2,26 +2,48 @@
 import React from 'react';
 import { UserOutlined } from '@ant-design/icons';
 // import PropTypes from 'prop-types';
-import apple from '../../assets/icons/appleBlack.svg';
+import appleIcon from '../../assets/icons/appleBlack.svg';
+import bitcoinIcon from '../../assets/icons/bitcoin.svg';
 import usFlag from '../../assets/icons/usFlag.svg';
 import upArrowColorfulIcon from '../../assets/icons/upArrowColorful.svg';
 import downArrowColorfulIcon from '../../assets/icons/downArrowColorful.svg';
+import { useQuery } from '../../hooks/useQuery';
 import LogoIcon from './LogoIcon';
 import Button from '../UI/Button';
 
 function StockSummary() {
+  const [parsedQuery, query, setQuery] = useQuery();
+  const { isCrypto } = parsedQuery || {};
+
   return (
     <div className="grid grid-cols-9 gap-y-5 lg:flex lg:justify-between items-center bg-primary text-white w-full px-2 pt-5 pb-5">
       <div className="col-start-1 row-start-1 col-span-3 pl-2 sm:col-start-1 sm:row-start-1 sm:col-span-2 flex items-center space-x-3">
-        <LogoIcon
-          icon={apple}
-          wrapperClassName="bg-white rounded-full relative"
-          iconClassName="w-10 h-10 absolute top-1 left-1 pt-0.5"
-          width={50}
-        />
+        {isCrypto ? (
+          <LogoIcon
+            icon={bitcoinIcon}
+            wrapperClassName="rounded-full"
+            iconClassName="pl-0"
+            width={50}
+          />
+        ) : (
+          <LogoIcon
+            icon={appleIcon}
+            wrapperClassName="bg-white rounded-full relative"
+            iconClassName="w-10 h-10 absolute top-1 left-1 pt-0.5"
+            width={50}
+          />
+        )}
         <div className="flex flex-col justify-between h-full">
-          <div className="text-lg xs:text-xl uppercase">appl</div>
-          <div className="whitespace-no-wrap text-sm capitalize">apple, Inc.</div>
+          {isCrypto ? (
+            <div className="text-lg uppercase">BITCOIN</div>
+          ) : (
+            <div className="text-lg xs:text-xl uppercase">appl</div>
+          )}
+          {isCrypto ? (
+            <div className="whitespace-no-wrap text-sm text-white text-opacity-60">crypto</div>
+          ) : (
+            <div className="whitespace-no-wrap text-sm capitalize">apple, Inc.</div>
+          )}
         </div>
       </div>
       <div className="col-start-1 row-start-2 col-span-2 sm:col-start-3 sm:row-start-1 sm:col-span-2 sm:justify-self-start sm:pt-4 md:relative md:right-8 lg:right-0 lg:pt-0 lg:col-start-2 flex flex-col sm:flex-row lg:flex-col justify-between items-center h-full">

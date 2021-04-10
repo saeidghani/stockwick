@@ -47,12 +47,13 @@ function Header() {
   const { pathname } = useLocation();
   const [parsedQuery, query, setQuery] = useQuery();
 
-  const { market, timeZone } = parsedQuery || {};
+  const { market, timeZone, categoryTitle } = parsedQuery || {};
 
   useEffect(() => {
     if (!market) setQuery({ market: 'New-York-United-States' });
     if (!timeZone) setQuery({ timeZone: 'North-America' });
-  }, [query, market, timeZone]);
+    if (!categoryTitle) setQuery({ categoryTitle: 'stocks' });
+  }, [query, market, timeZone, categoryTitle]);
 
   return (
     <header className="page-header">
@@ -128,7 +129,9 @@ function Header() {
           <div className="flex justify-between px-4 py-4 xl:container">
             <div className="flex items-center space-x-3 lg:space-x-5">
               {/* TODO just use routes.home after adding auth */}
-              <Link to={!!parsedQuery?.auth ? `${routes?.home}?auth=true` : routes?.home}>
+              <Link
+                to={!!parsedQuery?.auth ? `${routes?.feed.index}?auth=true` : routes?.feed.index}
+              >
                 <div className="textLogo text-2xl cursor-pointer">stockwick</div>
               </Link>
               <div className="">

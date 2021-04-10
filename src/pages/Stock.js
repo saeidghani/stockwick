@@ -175,11 +175,15 @@ function Stock() {
               />
             </div>
           </div>
-          <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
-          <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
-          <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
-          <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
-          <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
+          {!parsedQuery?.isCrypto && (
+            <>
+              <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
+              <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
+              <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
+              <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
+              <TopMembers wrapperClassName="overflow-auto mb-4" width="100%" />
+            </>
+          )}
           <div className="text-lightGray text-center mt-6">© stockwick inc.</div>
         </div>
         <div className="lg:hidden c-tabs px-2 xs:px-4">
@@ -235,11 +239,15 @@ function Stock() {
                 <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} displayTitle />
                 <NewsReleaseDetailed wrapperClassName="mb-8" maxHeight={470} displayTitle />
               </div>
-              <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
-              <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
-              <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
+              {!parsedQuery?.isCrypto && (
+                <>
+                  <div className="boldPrimaryText text-lg mb-2">pie chart title</div>
+                  <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
+                  <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
+                  <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
+                  <TopMembers wrapperClassName="overflow-auto mb-8" width={1000} />
+                </>
+              )}
             </TabPane>
             <TabPane
               tab={

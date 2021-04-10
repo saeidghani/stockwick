@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import { Grid, Tabs } from 'antd';
 // import PropTypes from 'prop-types';
 import storyPreview from '../assets/images/storyPreview.png';
@@ -42,10 +42,10 @@ function Profile() {
   const { useBreakpoint } = Grid;
   const { sm: smUp } = useBreakpoint();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => await dispatch.posts.getMyPosts())();
+    /*(async () => await dispatch.posts.getMyPosts())();*/
     setQuery({ auth: true, tab: 'idea', followTab: 'followers' });
   }, []);
 
