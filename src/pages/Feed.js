@@ -84,6 +84,7 @@ function Feed() {
     <Layout mainClassName="min-h-screen lg:pt-8 lg:pb-10 lg:px-4 xl:container">
       {stocksListCards.map(({ key, title, filter }) => (
         <StocksListModal
+          key={key}
           modalVisible={smUp && stocksListModalVisible[key]}
           drawerVisible={!smUp && stocksListModalVisible[key]}
         >
@@ -120,6 +121,7 @@ function Feed() {
             <div className="sticky-position">
               {stocksListCards.map(({ key, title, filter }) => (
                 <StocksList
+                  key={key}
                   title={title}
                   wrapperClassName="mb-4"
                   onExpandClick={() => setStocksListModalVisible({ [key]: true })}

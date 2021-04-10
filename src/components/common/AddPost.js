@@ -82,7 +82,7 @@ function AddPost({
             setShareTo({ ...shareTo, [name]: !shareTo[name] });
           }
         }}
-        checked={shareTo[name]}
+        checked={shareTo[name] || false}
       >
         <div className="flex justify-between items-center pb-0.5 ml-1">
           <div>{children}</div>
