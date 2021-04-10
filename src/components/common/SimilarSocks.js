@@ -41,13 +41,15 @@ function SimilarSocks({ wrapperClassName, displayTitle }) {
 
   return (
     <div className={wrapperClassName}>
-      <div className="card px-2 py-4">
+      <div className="card px-2 pt-4 pb-2">
         {displayTitle && <div className="boldPrimaryText text-xl mb-4 pl-2">Similar Stocks</div>}
-        <Carousel {...settings} ref={carouselRef} draggable>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-            <StockItem key={i} isCdf={i === 3} isCmp={i === 3} isRed={i === 2 || i === 3} />
-          ))}
-        </Carousel>
+        <div className="h-40">
+          <Carousel {...settings} ref={carouselRef} draggable>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+              <StockItem key={i} isCdf={i === 3} isCmp={i === 3} isRed={i === 2 || i === 3} />
+            ))}
+          </Carousel>
+        </div>
       </div>
     </div>
   );

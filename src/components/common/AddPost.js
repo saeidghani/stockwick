@@ -43,13 +43,6 @@ function AddPost({
   const [addPoll, setAddPoll] = useState(false);
   const [shareTo, setShareTo] = useState({});
 
-  /* const { setFieldsValue } = form;
-
-  useEffect(() => {
-    setAddPoll(false);
-    setFieldsValue({ days: 1 });
-  }, []);*/
-
   const initialValues = {
     choice1: '',
     choice2: '',
@@ -84,7 +77,7 @@ function AddPost({
         }}
         checked={shareTo[name] || false}
       >
-        <div className="flex justify-between items-center pb-0.5 ml-1">
+        <div className="flex justify-between items-center ml-1">
           <div>{children}</div>
           <div className={`text-primary text-xs font-medium ${textClassName}`}>{text}</div>
         </div>
