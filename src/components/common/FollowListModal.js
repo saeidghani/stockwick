@@ -2,17 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Tabs } from 'antd';
 import { useQuery } from '../../hooks/useQuery';
-import Modal from '../UI/Modal';
-import Button from '../UI/Button';
-import Drawer from '../UI/Drawer';
-import BackButton from './BackButton';
-import Avatar from '../UI/Avatar';
-import Input from '../UI/Input';
 import searchIcon from '../../assets/icons/search.svg';
+import Modal from '../UI/Modal';
+import Drawer from '../UI/Drawer';
+import Input from '../UI/Input';
+import BackButton from './BackButton';
+import FollowColumn from './FollowColumn';
 
 const { TabPane } = Tabs;
 
-function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
+function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel, followed, onSetFollowed }) {
   // eslint-disable-next-line no-unused-vars
   const [parsedQuery, query, setQuery] = useQuery();
   const { followTab } = parsedQuery;
@@ -27,25 +26,6 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
     { title: 'Followers', count: 21, items: allItems, key: 'followers' },
     { title: 'Blocklist', count: 21, items: allItems, key: 'blocklist' },
   ];
-
-  // eslint-disable-next-line react/prop-types
-  const FollowColumn = ({ items, height }) => (
-    <div className="flex flex-col px-4 w-full overflow-auto" style={{ height }}>
-      {/* eslint-disable-next-line react/prop-types */}
-      {items?.map((i) => (
-        <div key={i} className="flex justify-between items-center space-x-2 py-4">
-          <div className="flex items-center space-x-2 w-full">
-            <Avatar avatarClassName="w-11 h-11" />
-            <div className="text-primary text-base font-medium mb-1">Jason Smith</div>
-          </div>
-          <Button
-            wrapperClassName={modalVisible ? 'c-secondary-btn--light' : 'c-blue-outline-btn'}
-            text="Follow"
-          />
-        </div>
-      ))}
-    </div>
-  );
 
   const SearchInput = (
     <div className="relative w-80">
@@ -83,7 +63,16 @@ function FollowListModal({ modalVisible, drawerVisible, onOk, onCancel }) {
               }
               key={t.key}
             >
-              <FollowColumn items={t.items} height={height} />
+              <FollowColumn
+                followed={followed}
+                onSetFollowed={onSetFollowed}
+                btnClassName={
+                  modalVisible ? 'c-secondary-btn--light w-26' : 'c-blue-outline-btn w-26'
+                }
+                items={t.items}
+                height={height}
+                childBorder={false}
+              />
             </TabPane>
           ))}
         </Tabs>
@@ -125,12 +114,16 @@ FollowListModal.propTypes = {
   drawerVisible: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func,
+  followed: PropTypes.arrayOf(PropTypes.shape({})),
+  onSetFollowed: PropTypes.func,
 };
 
 FollowListModal.defaultProps = {
   modalVisible: false,
   drawerVisible: false,
   onOk: () => {},
+  followed: [],
+  onSetFollowed: () => {},
 };
 
 export default FollowListModal;

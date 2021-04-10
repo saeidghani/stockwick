@@ -22,7 +22,7 @@ function Stories({ wrapperClassName, onAddStory, onStoryView, gridCols }) {
           </div>
           <div className={`col-start-2 col-span-${gridCols - 1}`}>
             <SwipeSlider leftArrowPosition="stories-left-arrow" rightArrowPosition="top-8 right-0">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                 <div
                   key={i}
                   className="flex flex-col items-center space-y-2 cursor-pointer mx-2"

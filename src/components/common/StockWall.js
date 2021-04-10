@@ -44,6 +44,7 @@ function StockWall({
         <p className="mb-4 text-black text-base">
           Apple Stock Surging Ahead Of Possible Record Holiday Quarter. Wall Street analysts are
           pounding the table for Apple stock ahead of the company’s December-quarter earnings…
+          <span className="text-primary text-sm cursor-pointer"> Read more</span>
         </p>
         <div className="flex justify-between items-center" style={{ maxWidth: 400 }}>
           <div className="flex items-center space-x-2">

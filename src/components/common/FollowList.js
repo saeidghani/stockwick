@@ -1,13 +1,14 @@
+/*eslint-disable*/
 import React from 'react';
 import { Tabs } from 'antd';
 // import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { useQuery } from '../../hooks/useQuery';
-import Avatar from '../UI/Avatar';
-import Button from '../UI/Button';
+import FollowColumn from './FollowColumn';
 
 const { TabPane } = Tabs;
 
-function FollowList() {
+function FollowList({ followed, onSetFollowed }) {
   const allItems = [1, 2, 3, 4, 5, 6, 7];
 
   // eslint-disable-next-line no-unused-vars
@@ -17,25 +18,6 @@ function FollowList() {
   const onTabChange = (key) => {
     setQuery({ followTab: key });
   };
-
-  // eslint-disable-next-line react/prop-types
-  const FollowColumn = ({ items }) => (
-    <div
-      className="flex flex-col px-4 mx-2 child-borderBottom overflow-auto"
-      style={{ height: 400 }}
-    >
-      {/* eslint-disable-next-line react/prop-types */}
-      {items.map((i) => (
-        <div key={i} className="flex justify-between items-center space-x-2 py-4">
-          <div className="flex items-center space-x-2 w-full">
-            <Avatar avatarClassName="w-11 h-11" />
-            <div className="text-primary text-base font-medium mb-1">Jason Smith</div>
-          </div>
-          <Button wrapperClassName="c-blue-outline-btn" text="+Follow" />
-        </div>
-      ))}
-    </div>
-  );
 
   return (
     <div className="c-tabs w-full">
@@ -52,7 +34,7 @@ function FollowList() {
           }
           key="followers"
         >
-          <FollowColumn items={allItems} />
+          <FollowColumn items={allItems} followed={followed} onSetFollowed={onSetFollowed} />
         </TabPane>
         <TabPane
           tab={
@@ -66,7 +48,7 @@ function FollowList() {
           }
           key="following"
         >
-          <FollowColumn items={allItems} />
+          <FollowColumn items={allItems} followed={followed} onSetFollowed={onSetFollowed} />
         </TabPane>
       </Tabs>
     </div>
@@ -74,7 +56,13 @@ function FollowList() {
 }
 
 FollowList.propTypes = {
-  //
+  followed: PropTypes.arrayOf(PropTypes.shape({})),
+  onSetFollowed: PropTypes.func,
+};
+
+FollowList.defaultProps = {
+  followed: [],
+  onSetFollowed: () => {},
 };
 
 export default FollowList;

@@ -8,25 +8,23 @@ import facebookColorful from '../../assets/icons/facebookColorful.svg';
 
 function SocialAuthButtons({
   wrapperClassName,
-  // eslint-disable-next-line no-unused-vars
   onGetGoogleAuth,
   onGetFacebookAuth,
   onGetTwitterAuth,
   onGetLinkedinAuth,
 }) {
   return (
-    <div className={`flex flex-col space-y-4 w-full ${wrapperClassName}`}>
-      <Button
-        wrapperClassName="c-filled-btn c-filled-btn--primary flex"
-        className="justify-center xs:justify-start"
-        href="http://165.227.34.172:3020/api/users/auth/google"
-        target="_blank"
-        block
-      >
-        <img src={googleColorful} alt="" className="mr-4" />
-        <p>Sign in with Google</p>
-      </Button>
+    <div className={`w-full ${wrapperClassName}`}>
       <div className="grid grid-cols-3 gap-x-2 xs:grid-cols-1 xs:gap-y-4">
+        <Button
+          wrapperClassName="c-filled-btn c-filled-btn--primary flex"
+          className="justify-center xs:justify-start"
+          onClick={onGetGoogleAuth}
+          block
+        >
+          <img src={googleColorful} alt="" className="mr-4" />
+          <p>Sign in with Google</p>
+        </Button>
         <Button
           wrapperClassName="c-filled-btn c-filled-btn--primary w-full"
           className="justify-center xs:justify-start"

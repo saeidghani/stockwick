@@ -1,4 +1,4 @@
-/* eslint-disable react/jsx-indent */
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Select } from 'antd';
@@ -20,6 +20,7 @@ const _Dropdown = ({
   type,
   defaultValue,
   options,
+  ...props
 }) => (
   <div className={wrapperClassName}>
     <Select
@@ -34,6 +35,7 @@ const _Dropdown = ({
       value={value || undefined}
       defaultValue={defaultValue || undefined}
       dropdownAlign={{ offset: [0, -2] }}
+      {...props}
     >
       {options?.length > 0
         ? options.map((el, i) => (

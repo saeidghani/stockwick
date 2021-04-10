@@ -129,6 +129,16 @@
 }
 
 .c-blue-outline-btn {
+  &--sm {
+    .ant-btn {
+      padding: 22px 20px !important;
+    }
+  }
+  &--md {
+    .ant-btn {
+      padding: 22px 25px !important;
+    }
+  }
   .ant-btn {
     background-color: transparent !important;
     border: 1px solid @blue-color !important;
@@ -139,14 +149,12 @@
       color: @blue-color !important;
     }
     &:focus {
-      border: none !important;
       background-color: @blue-color !important;
       p {
         color: #fff !important;
       }
     }
   }
-
   &--disabled {
     .ant-btn {
       background-color: transparent !important;
@@ -490,6 +498,7 @@
     }
     .ant-select-arrow {
       color: @secondary-color !important;
+      margin-right: 10px !important;
     }
   }
 }

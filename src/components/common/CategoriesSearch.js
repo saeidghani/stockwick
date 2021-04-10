@@ -6,6 +6,7 @@ import AutoComplete from '../UI/AutoComplete';
 import Select from '../UI/Select';
 import { useQuery } from '../../hooks/useQuery';
 import RouteMap from '../../routes/RouteMap';
+import arrowDownIcon from '../../assets/icons/arrowDown.svg';
 
 const mockVal = (str, repeat = 1) => ({
   value: str.repeat(repeat),
@@ -35,7 +36,7 @@ function CategoriesSearch({
     } else if (parsedQuery?.categoryTitle === 'crypto') {
       history.push(`${RouteMap.stock.view(1)}?isCrypto=true`);
     } else if (parsedQuery?.categoryTitle === 'people') {
-      history.push(RouteMap.profile.index);
+      history.push(`${RouteMap.profile.index}?othersProfile=true`);
     }
     console.log('onSelect', data);
   };
@@ -61,6 +62,7 @@ function CategoriesSearch({
           className="text-secondary text-base"
           optionClassName="text-secondary"
           defaultValue={1}
+          suffixIcon={<img className="mt-1" src={arrowDownIcon} alt="" />}
         />
       </div>
       <div className="relative w-full">

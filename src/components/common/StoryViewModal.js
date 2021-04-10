@@ -2,19 +2,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CloseOutlined } from '@ant-design/icons';
-import Modal from '../UI/Modal';
-import Drawer from '../UI/Drawer';
-import Avatar from '../UI/Avatar';
 import dotsMenuIcon from '../../assets/icons/dotsMenu.svg';
 import story from '../../assets/images/story.png';
 import avatar2 from '../../assets/images/avatar2.png';
 import avatar3 from '../../assets/images/avatar3.png';
+import Modal from '../UI/Modal';
+import Drawer from '../UI/Drawer';
+import Avatar from '../UI/Avatar';
 
 function StoryViewModal({ modalVisible, drawerVisible, onOk, onCancel, onStoryViewers }) {
   const Content = () => (
     <div className="h-full relative">
-      <img src={story} alt="" />
-      <div className="absolute -bottom-6 left-4">
+      <HeaderExtra />
+      <img className="h-full w-full object-cover" src={story} alt="" />
+      <div className="absolute bottom-0 left-4 pb-4">
         <div className="flex items-center space-x-2">
           <Avatar src={avatar2} />
           <Avatar src={avatar3} />
@@ -32,13 +33,21 @@ function StoryViewModal({ modalVisible, drawerVisible, onOk, onCancel, onStoryVi
     </div>
   );
 
-  const HeaderExtra = ({ width }) => (
-    <div className="flex justify-between items-center" style={{ width }}>
-      <div className="flex items-center space-x-2">
-        <Avatar />
-        <div className="">your story</div>
+  const HeaderExtra = () => (
+    <div className="">
+      <div className="bg-gradient-to-b from-midGray absolute top-0 left-0 right-0 h-20" />
+      <div className="z-10">
+        <div className="flex items-center space-x-2 absolute top-4 left-4">
+          <Avatar />
+          <div className="text-white">your story</div>
+        </div>
+        <div className="flex space-x-2 items-center absolute top-7 right-4">
+          <img className="" src={dotsMenuIcon} alt="" />
+          <div onClick={onCancel}>
+            <CloseOutlined className="text-primary text-xl pb-1 cursor-pointer" />
+          </div>
+        </div>
       </div>
-      <img src={dotsMenuIcon} alt="" />
     </div>
   );
 
@@ -46,24 +55,24 @@ function StoryViewModal({ modalVisible, drawerVisible, onOk, onCancel, onStoryVi
     <div>
       <Modal
         className="c-modal-header-sm"
-        closeIconClassName="text-primary text-xl pt-5"
+        closable={false}
         onCancel={onCancel}
         onOk={onOk}
         visible={modalVisible}
         width={400}
         bodyStyle={{ padding: 0, height: 650 }}
-        title={<HeaderExtra width={340} />}
+        title=""
       >
         <Content />
       </Modal>
       <Drawer
         visible={drawerVisible}
         onClose={onCancel}
-        closeIcon={<CloseOutlined className="text-primary text-xl pb-4" />}
+        closable={false}
         wrapClassName="w-full h-full"
         bodyStyle={{ padding: 0 }}
         headerStyle={{ padding: 0 }}
-        title={<HeaderExtra />}
+        title=""
       >
         <Content />
       </Drawer>

@@ -15,7 +15,7 @@ function SwipeSlider({
   const settings = {
     dots: false,
     className: 'center',
-    infinite: true,
+    infinite: false,
     slidesToShow: 4,
     swipeToSlide: true,
     variableWidth: true,
