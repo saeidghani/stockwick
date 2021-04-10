@@ -39,21 +39,12 @@ function FollowList() {
       <Tabs activeKey={followTab} onChange={onTabChange}>
         <TabPane
           tab={
-            <div className="flex flex-col items-center">
-              <div
-                className={`boldPrimaryText text-xl ${
-                  followTab !== 'followers' ? 'text-opacity-40' : ''
-                }`}
-              >
-                64
-              </div>
-              <div
-                className={`boldPrimaryText text-base ${
-                  followTab !== 'followers' ? 'text-opacity-40' : ''
-                }`}
-              >
-                followers
-              </div>
+            <div
+              className="flex flex-col items-center"
+              style={{ opacity: followTab === 'followers' ? '' : '0.4' }}
+            >
+              <div className="boldPrimaryText text-xl">64</div>
+              <div className="boldPrimaryText text-base">followers</div>
             </div>
           }
           key="followers"
@@ -62,21 +53,12 @@ function FollowList() {
         </TabPane>
         <TabPane
           tab={
-            <div className="flex flex-col items-center">
-              <div
-                className={`boldPrimaryText text-xl ${
-                  followTab !== 'following' ? 'text-opacity-40' : ''
-                }`}
-              >
-                32
-              </div>
-              <div
-                className={`boldPrimaryText text-base ${
-                  followTab !== 'following' ? 'text-opacity-40' : ''
-                }`}
-              >
-                following
-              </div>
+            <div
+              className="flex flex-col items-center"
+              style={{ opacity: followTab === 'following' ? '' : '0.4' }}
+            >
+              <div className="boldPrimaryText text-xl">32</div>
+              <div className="boldPrimaryText text-base">following</div>
             </div>
           }
           key="following"
