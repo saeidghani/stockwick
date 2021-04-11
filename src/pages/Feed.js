@@ -124,6 +124,7 @@ function Feed() {
                   key={key}
                   title={title}
                   wrapperClassName="mb-4"
+                  height={430}
                   onExpandClick={() => setStocksListModalVisible({ [key]: true })}
                 >
                   <FilterSlider filterList={filter} />

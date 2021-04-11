@@ -249,6 +249,11 @@
   top: 0;
   left: 10px;
 }
+@media (max-width: 576px) {
+  .c-round-filled-select-item .ant-form-item-label {
+    left: 5px !important;
+  }
+}
 .c-round-filled-select-item .ant-form-item-label > label {
   font-size: 14px !important;
   color: #001560 !important;
@@ -258,6 +263,11 @@
 }
 .c-round-filled-select-item .ant-form-item-label > label::after {
   content: '' !important;
+}
+@media (max-width: 576px) {
+  .c-round-filled-select-item .ant-form-item-label > label {
+    font-size: 13px !important;
+  }
 }
 .c-round-filled-select .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
   height: 50px !important;
@@ -276,6 +286,12 @@
   color: #001560 !important;
   margin-right: 10px !important;
   top: 59% !important;
+}
+@media (max-width: 576px) {
+  .c-round-filled-select .ant-select-arrow {
+    font-size: 13px !important;
+    margin-right: 1px !important;
+  }
 }
 .c-primary-input .ant-input {
   border: 1px solid #001560 !important;
@@ -374,6 +390,11 @@
 .c-select .ant-select .ant-select-arrow {
   color: #5fe90a !important;
   margin-right: 10px !important;
+}
+@media (max-width: 1280px) {
+  .c-select .ant-select .ant-select-arrow {
+    margin-right: 5px !important;
+  }
 }
 .ant-select-item {
   background-color: transparent !important;

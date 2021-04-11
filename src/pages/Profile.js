@@ -279,13 +279,7 @@ function Profile() {
                 key="idea"
               >
                 {!othersProfile && (
-                  <div className="">
-                    <div
-                      className="w-full boldPrimaryText text-xl px-4 py-2 bg-white
-                               border border-solid border-itemBorder"
-                    >
-                      My Wall
-                    </div>
+                  <div className="hidden sm:block">
                     <AddPost
                       miniBox
                       wrapperClassName="card p-0 mb-2"

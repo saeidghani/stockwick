@@ -60,6 +60,8 @@ module.exports = {
         21: '5.25rem',
         26: '6.5rem',
         36: '9rem',
+        68: '17rem',
+        90: '22.5rem',
       },
       screens: {
         xs: '576px',

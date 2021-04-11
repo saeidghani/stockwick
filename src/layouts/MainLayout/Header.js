@@ -158,17 +158,17 @@ function Header() {
                   New York
                 </div>
               </div>
-              {!pathname.includes(routes.home) && (
-                <>
-                  <div className="hidden lg:block w-64 xl:w-80">
-                    <CategoriesSearch selectWrapperClassName="h-14 w-24" />
-                  </div>
-                  <div className="lg:hidden pl-4" onClick={() => setSearchModalVisible(true)}>
-                    <img src={searchWhiteIcon} className="w-6" alt="" />
-                  </div>
-                </>
-              )}
             </div>
+            {!pathname.includes(routes.home) && (
+              <>
+                <div className="hidden lg:block w-68 xl:w-90">
+                  <CategoriesSearch selectWrapperClassName="h-14 w-28" />
+                </div>
+                <div className="lg:hidden pl-4" onClick={() => setSearchModalVisible(true)}>
+                  <img src={searchWhiteIcon} className="w-6" alt="" />
+                </div>
+              </>
+            )}
             {parsedQuery.auth ? (
               <div className="flex items-center space-x-4 lg:space-x-10">
                 <div className="flex items-center space-x-5">

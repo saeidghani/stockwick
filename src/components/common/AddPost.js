@@ -1,23 +1,23 @@
 /*eslint-disable*/
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Input } from 'antd';
-import Button from '../UI/Button';
-import Avatar from '../UI/Avatar';
-import AddPoll from './AddPoll';
 import uploadImageIcon from '../../assets/icons/uploadImage.svg';
 import uploadGifIcon from '../../assets/icons/uploadGif.svg';
 import uploadVideoIcon from '../../assets/icons/uploadVideo.svg';
 import pollIcon from '../../assets/icons/poll.svg';
-import Tag from './Tag';
-import chartIcon from '../../assets/icons/chart.svg';
-import { BullishIcon } from './Icons';
 import balancedIcon from '../../assets/icons/balanced.svg';
 import bearishIcon from '../../assets/icons/bearish.svg';
 import facebookIcon from '../../assets/icons/facebook.svg';
 import twitterIcon from '../../assets/icons/twitter.svg';
 import linkedinIcon from '../../assets/icons/linkedin.svg';
+import chartIcon from '../../assets/icons/chart.svg';
+import Tag from './Tag';
+import { BullishIcon } from './Icons';
 import Checkbox from '../UI/Checkbox';
+import Button from '../UI/Button';
+import Avatar from '../UI/Avatar';
+import AddPoll from './AddPoll';
 
 const { TextArea } = Input;
 const { Item } = Form;
@@ -61,27 +61,28 @@ function AddPost({
   // eslint-disable-next-line react/prop-types,no-shadow
   const ShareTo = ({ wrapperClassName, name, children, text, textClassName = 'ml-1' }) => (
     <div className={wrapperClassName || ''}>
-      <Checkbox
-        className="c-checkbox-simple flex items-center"
-        onChange={() => {
-          if (name === 'selectAll') {
-            setShareTo({
-              selectAll: !shareTo.selectAll,
-              facebook: !shareTo.selectAll,
-              twitter: !shareTo.selectAll,
-              linkedin: !shareTo.selectAll,
-            });
-          } else {
-            setShareTo({ ...shareTo, [name]: !shareTo[name] });
-          }
-        }}
-        checked={shareTo[name] || false}
-      >
+      <div className="flex items-center">
+        <Checkbox
+          className="c-checkbox-simple flex items-center"
+          onChange={() => {
+            if (name === 'selectAll') {
+              setShareTo({
+                selectAll: !shareTo.selectAll,
+                facebook: !shareTo.selectAll,
+                twitter: !shareTo.selectAll,
+                linkedin: !shareTo.selectAll,
+              });
+            } else {
+              setShareTo({ ...shareTo, [name]: !shareTo[name] });
+            }
+          }}
+          checked={shareTo[name] || false}
+        />
         <div className="flex justify-between items-center ml-1">
           <div>{children}</div>
           <div className={`text-primary text-xs font-medium ${textClassName}`}>{text}</div>
         </div>
-      </Checkbox>
+      </div>
     </div>
   );
 
@@ -118,7 +119,9 @@ function AddPost({
               !miniBox ? 'flex-col' : addPoll ? 'flex-col' : 'flex-row'
             }`}
           >
-            <div className={textAreaWrapperClassName || 'w-full flex space-x-4 mb-4 pt-2'}>
+            <div
+              className={textAreaWrapperClassName || 'w-full flex space-x-1 xs:space-x-4 mb-4 pt-2'}
+            >
               {displayAvatar && <Avatar wrapperClassName="" avatarClassName="w-11 h-11" />}
               <div className="grid grid-cols-1 w-full">
                 <Item name="text" label="" className="c-input-border-none w-full mb-0">
