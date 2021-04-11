@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Input } from 'antd';
+import { Form, Input, Checkbox } from 'antd';
 import uploadImageIcon from '../../assets/icons/uploadImage.svg';
 import uploadGifIcon from '../../assets/icons/uploadGif.svg';
 import uploadVideoIcon from '../../assets/icons/uploadVideo.svg';
@@ -14,7 +14,6 @@ import linkedinIcon from '../../assets/icons/linkedin.svg';
 import chartIcon from '../../assets/icons/chart.svg';
 import Tag from './Tag';
 import { BullishIcon } from './Icons';
-import Checkbox from '../UI/Checkbox';
 import Button from '../UI/Button';
 import Avatar from '../UI/Avatar';
 import AddPoll from './AddPoll';
@@ -61,24 +60,26 @@ function AddPost({
   // eslint-disable-next-line react/prop-types,no-shadow
   const ShareTo = ({ wrapperClassName, name, children, text, textClassName = 'ml-1' }) => (
     <div className={wrapperClassName || ''}>
-      <div className="flex items-center">
-        <Checkbox
-          className="c-checkbox-simple flex items-center"
-          onChange={() => {
-            if (name === 'selectAll') {
-              setShareTo({
-                selectAll: !shareTo.selectAll,
-                facebook: !shareTo.selectAll,
-                twitter: !shareTo.selectAll,
-                linkedin: !shareTo.selectAll,
-              });
-            } else {
-              setShareTo({ ...shareTo, [name]: !shareTo[name] });
-            }
-          }}
-          checked={shareTo[name] || false}
-        />
-        <div className="flex justify-between items-center ml-1">
+      <div className="flex items-center space-x-1">
+        <div className="c-checkbox-simple">
+          <Checkbox
+            className=""
+            onChange={() => {
+              if (name === 'selectAll') {
+                setShareTo({
+                  selectAll: !shareTo.selectAll,
+                  facebook: !shareTo.selectAll,
+                  twitter: !shareTo.selectAll,
+                  linkedin: !shareTo.selectAll,
+                });
+              } else {
+                setShareTo({ ...shareTo, [name]: !shareTo[name] });
+              }
+            }}
+            checked={shareTo[name] || false}
+          />
+        </div>
+        <div className="flex justify-between items-center">
           <div>{children}</div>
           <div className={`text-primary text-xs font-medium ${textClassName}`}>{text}</div>
         </div>
