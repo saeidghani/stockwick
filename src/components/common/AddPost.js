@@ -182,7 +182,7 @@ function AddPost({
               'px-4 py-4 lg:pl-0 lg:pt-6 lg:pb-6 w-full bg-mediumGray flex justify-between absolute bottom-0 xs:relative'
             }
           >
-            <div className="">
+            <div className="xl:w-full">
               <div className={tagsClassName || 'flex space-x-2 items-center mb-2'}>
                 <Tag text="all" wrapperClassName="full" textClassName={allTagsClassName || 'px-4'}>
                   <img src={chartIcon} alt="" className="w-8 bg-primary px-1.5" />
@@ -204,9 +204,9 @@ function AddPost({
                   <img src={bearishIcon} alt="" className="w-8 bg-primary px-1.5" />
                 </Tag>
               </div>
-              <div className="pl-2 xs:pl-4">
+              <div className="pl-4">
                 <div className="text-darkGray mb-2">share to:</div>
-                <div className="grid grid-cols-2 justify-items-start gap-y-2 sm:flex sm:space-x-2">
+                <div className="grid grid-cols-2 justify-items-start gap-y-2 xs:flex xs:justify-between max-w-120">
                   <ShareTo name="selectAll" text="select all" textClassName="whitespace-no-wrap" />
                   <ShareTo name="facebook" text="facebook">
                     <img src={facebookIcon} className="w-4 h-4" alt="" />

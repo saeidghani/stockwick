@@ -124,14 +124,12 @@ function Header() {
         drawerVisible={!smUp && searchModalVisible}
         onCancel={() => setSearchModalVisible(false)}
       />
-      <div className="hidden lg:block relative">
+      <div className="hidden xl:block relative">
         <div className="page-header-base bg-primary border-b border-solid border-fadePrimary">
           <div className="flex justify-between px-4 py-4 xl:container">
             <div className="flex items-center space-x-3 lg:space-x-5">
               {/* TODO just use routes.home after adding auth */}
-              <Link
-                to={!!parsedQuery?.auth ? `${routes?.feed.index}?auth=true` : routes?.feed.index}
-              >
+              <Link to={routes?.feed.index}>
                 <div className="textLogo text-2xl cursor-pointer">stockwick</div>
               </Link>
               <div className="">
@@ -161,10 +159,10 @@ function Header() {
             </div>
             {!pathname.includes(routes.home) && (
               <>
-                <div className="hidden lg:block w-68 xl:w-90">
+                <div className="hidden xl:block w-68 xl:w-90">
                   <CategoriesSearch selectWrapperClassName="h-14 w-28" />
                 </div>
-                <div className="lg:hidden pl-4" onClick={() => setSearchModalVisible(true)}>
+                <div className="xl:hidden pl-4" onClick={() => setSearchModalVisible(true)}>
                   <img src={searchWhiteIcon} className="w-6" alt="" />
                 </div>
               </>
@@ -219,7 +217,7 @@ function Header() {
           </div>
         )}
       </div>
-      <div className="block lg:hidden lg:container">
+      <div className="block xl:hidden xl:container">
         <div
           className="bg-primary grid grid-cols-3 items-center pt-4 px-6 pb-2
                         border-b border-solid border-fadePrimary"
@@ -230,15 +228,12 @@ function Header() {
             <div />
           )}
           {/* TODO just use routes.home after adding auth */}
-          <Link
-            className="justify-self-center"
-            to={!!parsedQuery.auth ? `${routes.home}?auth=true` : routes.home}
-          >
+          <Link className="justify-self-center" to={routes.feed.index}>
             <div className="textLogo justify-self-center text-2xl">stockwick</div>
           </Link>
           <div className="justify-self-end flex items-center space-x-6">
             {!pathname.includes(routes.home) && (
-              <div className="lg:hidden" onClick={() => setSearchModalVisible(true)}>
+              <div className="xl:hidden" onClick={() => setSearchModalVisible(true)}>
                 <img src={searchWhiteIcon} className="w-6" alt="" />
               </div>
             )}

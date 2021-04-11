@@ -64,7 +64,7 @@ function Feed() {
   ];
 
   const Tags = () => (
-    <div className="flex flex-wrap justify-between items-center mb-4 child-mb--sm">
+    <div className="flex flex-wrap justify-between items-center mb-4 max-w-120 mx-auto child-mb--sm">
       <Tag text="all" textClassName="px-2">
         <img src={chartIcon} alt="" className="w-8 bg-primary px-1.5" />
       </Tag>
@@ -81,7 +81,7 @@ function Feed() {
   );
 
   return (
-    <Layout mainClassName="min-h-screen lg:pt-8 lg:pb-10 lg:px-4 xl:container">
+    <Layout mainClassName="min-h-screen xl:pt-8 xl:pb-10 xl:container">
       {stocksListCards.map(({ key, title, filter }) => (
         <StocksListModal
           key={key}
@@ -116,7 +116,7 @@ function Feed() {
         drawerVisible={!smUp && storyViewersModalVisible}
       />
       <div className="pb-6 bg-blueGray px-2 sm:px-4 pt-6 md:pt-4 md:pb-10">
-        <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
+        <div className="hidden xl:grid xl:grid-cols-7 xl:gap-x-4">
           <div className="col-start-1 col-span-2">
             <div className="sticky-position">
               {stocksListCards.map(({ key, title, filter }) => (
@@ -181,20 +181,18 @@ function Feed() {
                 wrapperClassName="card p-1 mb-4"
                 onAddStory={() => setAddStoryModalVisible(true)}
                 onStoryView={() => setStoryViewModalVisible(true)}
-                gridCols={lgUp ? 3 : 2}
               />
               <NewsReleaseSummary wrapperClassName="mb-4" />
               <Activity title="Follower’s Activity" />
             </div>
           </div>
         </div>
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <Tags />
           <Stories
             wrapperClassName="my-6"
             onAddStory={() => setAddStoryModalVisible(true)}
             onStoryView={() => setStoryViewModalVisible(true)}
-            gridCols={xsUp && !smUp ? 4 : !xsUp && smUp ? 7 : 3}
           />
           <div className="">
             <div className="w-full boldPrimaryText text-xl px-4 py-2 bg-white border border-solid border-itemBorder">
@@ -206,24 +204,24 @@ function Feed() {
               contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
               textAreaWrapperClassName="w-full flex space-x-4"
               uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
-              footerClassName="flex flex-col sm:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
-              postBtnClassName="self-end sm:self-center c-primary-btn mt-4 pr-2"
+              footerClassName="flex flex-col xs:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
               tagsClassName="grid grid-cols-2 gap-y-2 xs:flex xs:space-x-4 mb-4 pl-4"
               pollPlusClassName="absolute top-24 right-0 sm:right-20 md:right-28"
+              postBtnClassName="self-end xs:self-center c-primary-btn mt-4 pr-2"
               formName="stockWall"
             />
           </div>
           <StockWall
-            wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
+            wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded border border-solid border-darkGreen"
             isBullish
           />
-          <StockWall wrapperClassName="mt-4 p-4 bg-white rounded" displayChart />
+          <StockWall wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded" displayChart />
           <StockWall
-            wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-accent"
+            wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded border border-solid border-accent"
             isBearish
           />
           <StockWall
-            wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
+            wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded border border-solid border-darkGreen"
             isBullish
           />
           <div className="text-lightGray text-center mt-6">© stockwick inc.</div>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function NewsReleaseSummary({ wrapperClassName, height }) {
   return (
     <div className={wrapperClassName}>
-      <div className="card p-4">
+      <div className="card py-4 px-2">
         <div className="boldPrimaryText text-xl mb-5">News Release</div>
         <div className="flex flex-col space-y-5 px-2 overflow-auto" style={{ height }}>
           {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (

@@ -72,7 +72,7 @@ function Profile() {
   };
 
   return (
-    <Layout mainClassName="min-h-screen lg:pt-8 lg:pb-10 lg:px-4 xl:container">
+    <Layout mainClassName="min-h-screen xl:pt-8 xl:pb-10 xl:container">
       <EditProfileDrawer
         onCancel={() => setEditProfileDrawerVisible(false)}
         afterSave={() => setEditProfileDrawerVisible(false)}
@@ -115,8 +115,8 @@ function Profile() {
         modalVisible={smUp && storyViewersModalVisible}
         drawerVisible={!smUp && storyViewersModalVisible}
       />
-      <div className="pb-2 bg-blueGray lg:px-4 lg:pt-4 lg:pb-10">
-        <div className="hidden lg:grid lg:grid-cols-7 lg:gap-x-4">
+      <div className="pb-2 bg-blueGray xl:px-4 xl:pt-4 xl:pb-10">
+        <div className="hidden xl:grid xl:grid-cols-7 xl:gap-x-4">
           <div className="col-start-1 col-span-2">
             <div className="sticky-position">
               <ProfileIntro
@@ -227,7 +227,7 @@ function Profile() {
             </div>
           </div>
         </div>
-        <div className="lg:hidden">
+        <div className="xl:hidden">
           <div className="bg-primary px-5">
             <div
               className="flex items-center space-x-4
@@ -279,36 +279,34 @@ function Profile() {
                 key="idea"
               >
                 {!othersProfile && (
-                  <div className="hidden sm:block">
-                    <AddPost
-                      miniBox
-                      wrapperClassName="card p-0 mb-2"
-                      contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
-                      textAreaWrapperClassName="w-full flex space-x-4"
-                      uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
-                      footerClassName="flex flex-col sm:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
-                      postBtnClassName="self-end sm:self-center c-primary-btn mt-4 pr-2"
-                      tagsClassName="grid grid-cols-2 gap-y-2 xs:flex xs:space-x-4 mb-4 pl-4"
-                      pollPlusClassName="absolute top-24 right-0 sm:right-20 md:right-28"
-                      formName="stockWall"
-                      placeholder="#stonksgame #strong, post something…"
-                    />
-                  </div>
+                  <AddPost
+                    miniBox
+                    wrapperClassName="card p-0 mb-2"
+                    contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
+                    textAreaWrapperClassName="w-full flex space-x-4"
+                    uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
+                    footerClassName="flex flex-col xs:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
+                    postBtnClassName="self-end xs:self-center c-primary-btn mt-4 pr-2"
+                    tagsClassName="grid grid-cols-2 gap-y-2 xs:flex xs:space-x-4 mb-4 pl-4"
+                    pollPlusClassName="absolute top-24 right-0 sm:right-20 md:right-28"
+                    placeholder="#stonksgame #strong, post something…"
+                    formName="stockWall"
+                  />
                 )}
                 <StockWall
-                  wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
+                  wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded border border-solid border-darkGreen"
                   isBullish
                 />
                 <StockWall
-                  wrapperClassName="mt-4 p-4 bg-white rounded rounded border border-solid border-itemBorder"
+                  wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded rounded border border-solid border-itemBorder"
                   displayChart
                 />
                 <StockWall
-                  wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-accent"
+                  wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded border border-solid border-accent"
                   isBearish
                 />
                 <StockWall
-                  wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
+                  wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded border border-solid border-darkGreen"
                   isBullish
                 />
               </TabPane>

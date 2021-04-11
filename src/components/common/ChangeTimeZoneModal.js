@@ -34,11 +34,11 @@ function ChangeTimeZoneModal({ onOk, onCancel, modalVisible, drawerVisible }) {
     <div className={wrapperClassName}>
       <div className="text-white text-center mb-10">Choose Time Zone</div>
       <div className="px-2 xs:px-8 h-20 overflow-hidden">
-        <SwipeSlider arrowClassName="md:hidden" wrapperClassName="relative">
+        <SwipeSlider arrowClassName="hidden" wrapperClassName="relative">
           {timeZones.map((t) => (
             <div
               key={t.key}
-              className={`flex flex-col justify-between items-center mx-2 h-20 overflow-hidden ${
+              className={`flex flex-col justify-between items-center mx-4 h-20 overflow-hidden ${
                 t.slug === parsedQuery.timeZone ? 'opacity-100' : 'opacity-50'
               }`}
               onClick={() => setQuery({ timeZone: t.slug })}

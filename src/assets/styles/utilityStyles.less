@@ -49,6 +49,7 @@
 
 .page-header {
   &-slider {
+    transition: all .3s;
     opacity: 0;
     position: absolute;
     top: 0;
@@ -69,13 +70,13 @@
 .home-page {
   min-height: calc(100vh - 205px);
   &_full {
-  min-height: calc(100vh - 302px);
-  @media(max-width: 768px) {
-  min-height: calc(100vh - 295px);
-  }
-  @media(max-width: 640px) {
-  min-height: calc(100vh - 218px);
-  }
+   min-height: calc(100vh - 302px);
+   @media(max-width: 768px) {
+   min-height: calc(100vh - 295px);
+   }
+   @media(max-width: 640px) {
+   min-height: calc(100vh - 218px);
+   }
   }
 }
 
@@ -106,13 +107,4 @@
   top: 15px;
 }
 
-.stories-left-arrow {
-      top: 32px;
-      left: 120px;
-  @media(max-width: 1200px) {
-    @media(min-width: 1024px) {
-      left: 105px;
-    }
-  }
-}
 

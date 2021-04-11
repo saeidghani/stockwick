@@ -34,7 +34,7 @@ function SwipeSlider({
 
   return (
     <div className={wrapperClassName}>
-      <div className={arrowClassName || 'hidden lg:block'}>
+      <div className={arrowClassName || 'hidden xl:block'}>
         <div
           className={`${arrowBaseClassName} ${leftArrowPosition || 'top-8 left-0'}`}
           style={{ backgroundColor: 'rgba(246, 248, 255, 0.7)' }}
@@ -45,7 +45,7 @@ function SwipeSlider({
       <Carousel {...settings} ref={carouselRef} draggable>
         {children}
       </Carousel>
-      <div className={arrowClassName || 'hidden lg:block'}>
+      <div className={arrowClassName || 'hidden xl:block'}>
         <div
           className={`${arrowBaseClassName} ${rightArrowPosition || 'top-8 right-0'}`}
           style={{ backgroundColor: 'rgba(246, 248, 255, 0.7)' }}

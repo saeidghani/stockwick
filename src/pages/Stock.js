@@ -62,7 +62,7 @@ function Stock() {
   ];
 
   return (
-    <Layout mainClassName="min-h-screen lg:pt-8 lg:pb-10 lg:px-4 xl:container">
+    <Layout mainClassName="min-h-screen xl:pt-8 xl:pb-10 xl:container">
       <ChartModal
         modalVisible={smUp && chartModalVisible}
         drawerVisible={!smUp && chartModalVisible}
@@ -91,9 +91,9 @@ function Stock() {
         modalVisible={smUp && storyViewersModalVisible}
         drawerVisible={!smUp && storyViewersModalVisible}
       />
-      <div className="pb-2 bg-blueGray lg:px-4 lg:pt-4 lg:pb-10">
+      <div className="pb-2 bg-blueGray xl:px-4 xl:pt-4 xl:pb-10">
         <StockSummary />
-        <div className="hidden lg:block mt-4">
+        <div className="hidden xl:block mt-4">
           <div className="grid grid-cols-2 gap-x-4">
             <div className="">
               <Chart
@@ -135,15 +135,15 @@ function Stock() {
                 onStoryView={() => setStoryViewModalVisible(true)}
               />
               <StockWall
-                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
-                maxHeight={500}
+                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4"
+                maxHeight={470}
                 comments={comments}
                 isBullish
                 title="appl wall"
               />
               <AddPost
                 miniBox
-                wrapperClassName="card p-0 mb-2"
+                wrapperClassName="card p-0 mb-4"
                 contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
                 textAreaWrapperClassName="w-full flex space-x-4"
                 pollPlusClassName="absolute top-24 lg:right-10 xl:right-16"
@@ -154,8 +154,8 @@ function Stock() {
                 formName="stockWall"
               />
               <StockWall
-                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
-                maxHeight={485}
+                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4"
+                maxHeight={468}
                 comments={comments}
                 isBearish
                 title="appl charts"
@@ -186,7 +186,7 @@ function Stock() {
           )}
           <div className="text-lightGray text-center mt-6">© stockwick inc.</div>
         </div>
-        <div className="lg:hidden c-tabs px-2 xs:px-4">
+        <div className="xl:hidden c-tabs px-2 xs:px-4">
           <Tabs activeKey={tab} onChange={onTabChange}>
             <TabPane
               tab={
@@ -260,7 +260,7 @@ function Stock() {
               key="appleWall"
             >
               <StockWall
-                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
+                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 pl-0 xs:px-2"
                 maxHeight={500}
                 comments={comments}
                 isBullish
@@ -272,8 +272,8 @@ function Stock() {
                 contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
                 textAreaWrapperClassName="w-full flex space-x-4"
                 uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
-                footerClassName="flex flex-col sm:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
-                postBtnClassName="self-end sm:self-center c-primary-btn mt-4 pr-2"
+                footerClassName="flex flex-col xs:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
+                postBtnClassName="self-end xs:self-center c-primary-btn mt-4 pr-2"
                 tagsClassName="grid grid-cols-2 gap-y-2 xs:flex xs:space-x-4 mb-4 pl-4"
                 pollPlusClassName="absolute top-24 right-0 sm:right-20 md:right-28"
                 formName="stockWall"
@@ -293,12 +293,12 @@ function Stock() {
             >
               <div className="boldPrimaryText mb-4">appl charts</div>
               <StockWall
-                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 px-4"
+                wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4 pl-0 xs:px-2"
                 maxHeight={500}
                 comments={comments}
                 isBullish
                 title="Market’s commitment long title #1"
-                titleClassName="boldPrimaryText text-xl mt-2 mb-4"
+                titleClassName="boldPrimaryText text-xl mt-2 mb-4 pl-2 xs:pl-4"
                 displayChart
               />
               <AddPost
@@ -307,8 +307,8 @@ function Stock() {
                 contentClassName="flex justify-between items-center w-full h-full my-auto px-4 space-x-4"
                 textAreaWrapperClassName="w-full flex space-x-4"
                 uploadBtnClassName="justify-self-center self-end flex items-center space-x-3"
-                footerClassName="flex flex-col sm:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
-                postBtnClassName="self-end sm:self-center c-primary-btn mt-4 pr-2"
+                footerClassName="flex flex-col xs:flex-row px-2 sm:px-4 py-4 w-full bg-mediumGray justify-between"
+                postBtnClassName="self-end xs:self-center c-primary-btn mt-4 pr-2"
                 tagsClassName="grid grid-cols-2 gap-y-2 xs:flex xs:space-x-4 mb-4 pl-4"
                 pollPlusClassName="absolute top-24 right-0 sm:right-20 md:right-28"
                 formName="stockWall"

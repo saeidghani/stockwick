@@ -39,6 +39,7 @@
   opacity: 0.6 !important;
 }
 .page-header-slider {
+  transition: all 0.3s;
   opacity: 0;
   position: absolute;
   top: 0;
@@ -91,14 +92,5 @@
   position: -webkit-sticky;
   position: sticky;
   top: 15px;
-}
-.stories-left-arrow {
-  top: 32px;
-  left: 120px;
-}
-@media (max-width: 1200px) and (min-width: 1024px) {
-  .stories-left-arrow {
-    left: 105px;
-  }
 }
 /*# sourceMappingURL=utilityStyles.css.map */

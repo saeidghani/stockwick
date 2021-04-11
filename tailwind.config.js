@@ -63,6 +63,10 @@ module.exports = {
         68: '17rem',
         90: '22.5rem',
       },
+      maxWidth: {
+        100: '25rem',
+        120: '30rem',
+      },
       screens: {
         xs: '576px',
       },
