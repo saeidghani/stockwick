@@ -9,7 +9,6 @@ import EditProfile from '../pages/EditProfile';
 import Stock from '../pages/Stock';
 import Feed from '../pages/Feed';
 import NotFound from '../pages/NotFound';
-import Chart from '../pages/Chart';
 import Auth from '../pages/Auth';
 
 const Routes = () => {
@@ -19,7 +18,6 @@ const Routes = () => {
       <Route exact path={routes.home} component={Home} />
       <Route exact path="/demo" component={Demo} />
       <Route exact path={routes.auth.google} component={Auth} />
-      <Route exact path={routes.chart} component={Chart} />
       <Route exact path={routes.profile.index} component={Profile} />
       <Route exact path={routes.profile.edit} component={EditProfile} />
       <Route exact path={routes.stock.view(':stockId')} component={Stock} />

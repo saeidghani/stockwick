@@ -5,16 +5,12 @@ import { useQuery } from '../hooks/useQuery';
 import Layout from '../layouts/MainLayout/MainLayout';
 import StockSummary from '../components/common/StockSummary';
 import Stories from '../components/common/Stories';
-import Chart from '../components/common/Chart';
 import StockDetails from '../components/common/StockDetails';
-import CircleChart from '../components/common/CircleChart';
 import SimilarSocks from '../components/common/SimilarSocks';
 import NewsReleaseDetailed from '../components/common/NewsReleaseDetailed';
 import TopMembers from '../components/common/TopMembers';
-import FilterSlider from '../components/common/FilterSlider';
 import AddPost from '../components/common/AddPost';
 import StockWall from '../components/common/StockWall';
-import ChartModal from '../components/common/ChartModal';
 import AddStoryModal from '../components/common/AddStoryModal';
 import StoryViewModal from '../components/common/StoryViewModal';
 import StoryViewersModal from '../components/common/StoryViewersModal';
@@ -23,7 +19,6 @@ const { TabPane } = Tabs;
 
 function Stock() {
   const [addStoryModalVisible, setAddStoryModalVisible] = useState(false);
-  const [chartModalVisible, setChartModalVisible] = useState(false);
   const [storyViewModalVisible, setStoryViewModalVisible] = useState(false);
   const [storyViewersModalVisible, setStoryViewersModalVisible] = useState(false);
 
@@ -44,37 +39,8 @@ function Stock() {
 
   const comments = [{ key: 1 }, { key: 2 }, { key: 3 }, { key: 4 }, { key: 5 }, { key: 6 }];
 
-  const timeList = [
-    { key: 1, title: '1 minute' },
-    { key: 2, title: '5 minute' },
-    { key: 3, title: '15 minute' },
-    { key: 4, title: '1 hours' },
-    { key: 5, title: '4 hours' },
-  ];
-
-  const periodList = [
-    { key: 1, title: 'daily' },
-    { key: 2, title: 'weekly' },
-    { key: 3, title: 'monthly' },
-    { key: 4, title: 'yearly' },
-    { key: 5, title: 'yearly' },
-    { key: 6, title: 'yearly' },
-  ];
-
   return (
     <Layout mainClassName="min-h-screen xl:pt-8 xl:pb-10 xl:container">
-      <ChartModal
-        modalVisible={smUp && chartModalVisible}
-        drawerVisible={!smUp && chartModalVisible}
-      >
-        <Chart
-          wrapperClassName="mb-4 card p-4"
-          title="advance charting"
-          height={370}
-          onClose={() => setChartModalVisible(false)}
-          unExpand
-        />
-      </ChartModal>
       <AddStoryModal
         onCancel={() => setAddStoryModalVisible(false)}
         modalVisible={smUp && addStoryModalVisible}
@@ -96,47 +62,24 @@ function Stock() {
         <div className="hidden xl:block mt-4">
           <div className="grid grid-cols-2 gap-x-4">
             <div className="">
-              <Chart
-                wrapperClassName="mb-4 card p-4"
-                title="Advance Charting"
-                height={370}
-                onExpandClick={() => setChartModalVisible(true)}
-                expand
-              />
-              <div className="relative" style={{ height: 70 }}>
-                <StockDetails wrapperClassName="mb-4 absolute w-full" />
-              </div>
-              <div className="grid grid-cols-2 gap-x-2">
-                <div className="w-full mb-4 md:bg-white md:p-3">
-                  <div className="boldPrimaryText text-lg mb-4">Technical Analysis</div>
-                  <div className="mx-auto mb-4">
-                    <FilterSlider filterList={timeList} />
-                  </div>
-                  <CircleChart wrapperClassName="w-full h-48" />
-                </div>
-                <div className="w-full mb-4 md:bg-white md:p-3">
-                  <div className="boldPrimaryText text-lg mb-4">Bull Vs Bear Poll</div>
-                  <div className="mx-auto mb-4">
-                    <FilterSlider filterList={periodList} />
-                  </div>
-                  <CircleChart wrapperClassName="w-full h-48" />
-                </div>
-              </div>
-              <SimilarSocks wrapperClassName="mb-4" displayTitle />
-              <div className="flex space-x-4 mb-4">
-                <NewsReleaseDetailed maxHeight={600} displayTitle />
-                <NewsReleaseDetailed maxHeight={600} displayTitle />
-              </div>
-            </div>
-            <div className="col-start-2 col-span-1">
               <Stories
                 wrapperClassName="card mb-4 p-1"
                 onAddStory={() => setAddStoryModalVisible(true)}
                 onStoryView={() => setStoryViewModalVisible(true)}
               />
+              <div className="relative" style={{ height: 70 }}>
+                <StockDetails wrapperClassName="mb-4 absolute w-full" />
+              </div>
+              <SimilarSocks wrapperClassName="mb-4" displayTitle />
+              <div className="flex space-x-4 mb-4">
+                <NewsReleaseDetailed maxHeight={812} displayTitle />
+                <NewsReleaseDetailed maxHeight={812} displayTitle />
+              </div>
+            </div>
+            <div className="col-start-2 col-span-1">
               <StockWall
                 wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4"
-                maxHeight={470}
+                maxHeight={400}
                 comments={comments}
                 isBullish
                 title="appl wall"
@@ -155,11 +98,10 @@ function Stock() {
               />
               <StockWall
                 wrapperClassName="border-t border-l border-r border-solid border-cardBorder bg-white top-4"
-                maxHeight={468}
+                maxHeight={400}
                 comments={comments}
                 isBearish
                 title="appl charts"
-                displayChart
               />
               <AddPost
                 miniBox
@@ -204,30 +146,8 @@ function Stock() {
                 onStoryView={() => setStoryViewModalVisible(true)}
                 gridCols={xsUp && !smUp ? 4 : !xsUp && smUp ? 7 : 3}
               />
-              <div className="boldPrimaryText text-lg mb-2">Advance Charting</div>
-              <Chart wrapperClassName="w-full h-80 mb-8" />
               <div className="relative" style={{ height: 70 }}>
                 <StockDetails wrapperClassName="mb-4 absolute w-full" />
-              </div>
-              <div className="grid grid-cols-1 xs:grid-cols-2 gap-x-4 mt-4 mb-4">
-                <div className="w-full mb-4 md:bg-white md:p-3">
-                  <div className="boldPrimaryText text-lg mb-4">Technical Analysis</div>
-                  <div className="card p-4">
-                    <div className="mx-auto mb-4">
-                      <FilterSlider filterList={timeList} />
-                    </div>
-                    <CircleChart wrapperClassName="w-full h-48" />
-                  </div>
-                </div>
-                <div className="w-full mb-4 md:bg-white md:p-3">
-                  <div className="boldPrimaryText text-lg mb-4">Bull Vs Bear Poll</div>
-                  <div className="card p-4">
-                    <div className="mx-auto mb-4">
-                      <FilterSlider filterList={periodList} />
-                    </div>
-                    <CircleChart wrapperClassName="w-full h-48" />
-                  </div>
-                </div>
               </div>
               <div className="boldPrimaryText text-lg mb-2">Similar Stocks</div>
               <SimilarSocks wrapperClassName="mb-8" />
@@ -299,7 +219,6 @@ function Stock() {
                 isBullish
                 title="Market’s commitment long title #1"
                 titleClassName="boldPrimaryText text-xl mt-2 mb-4 pl-2 xs:pl-4"
-                displayChart
               />
               <AddPost
                 miniBox

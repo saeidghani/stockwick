@@ -163,10 +163,7 @@ function Profile() {
                   wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-darkGreen"
                   isBullish
                 />
-                <StockWall
-                  wrapperClassName="mt-4 p-4 bg-white rounded rounded border border-solid border-itemBorder"
-                  displayChart
-                />
+                <StockWall wrapperClassName="mt-4 p-4 bg-white rounded rounded border border-solid border-itemBorder" />
                 <StockWall
                   wrapperClassName="mt-4 p-4 bg-white rounded border border-solid border-accent"
                   isBearish
@@ -297,10 +294,7 @@ function Profile() {
                   wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded border border-solid border-darkGreen"
                   isBullish
                 />
-                <StockWall
-                  wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded rounded border border-solid border-itemBorder"
-                  displayChart
-                />
+                <StockWall wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded rounded border border-solid border-itemBorder" />
                 <StockWall
                   wrapperClassName="mt-4 py-4 px-1 xs:px-4 bg-white rounded border border-solid border-accent"
                   isBearish

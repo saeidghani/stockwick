@@ -7,7 +7,6 @@ import bullishIcon from '../../assets/icons/bullish.svg';
 import bearishIcon from '../../assets/icons/bearish.svg';
 import shareFilledIcon from '../../assets/icons/shareFilled.svg';
 import Avatar from '../UI/Avatar';
-import Chart from './Chart';
 
 function StockWall({
   wrapperClassName,
@@ -16,11 +15,10 @@ function StockWall({
   isBullish,
   isBearish,
   title,
-  displayChart,
   comments,
 }) {
   // eslint-disable-next-line react/prop-types
-  const Post = ({ isComment, isBullishType, isBearishType, displayChartPost }) => (
+  const Post = ({ isComment, isBullishType, isBearishType }) => (
     <div className="flex space-x-2">
       <Avatar avatarClassName="w-12 h-12" />
       <div className="flex flex-col">
@@ -65,7 +63,6 @@ function StockWall({
             <img className="cursor-pointer pt-1" src={shareFilledIcon} alt="a" />
           </div>
         </div>
-        {displayChartPost && <Chart wrapperClassName="mt-5" />}
       </div>
     </div>
   );
@@ -77,11 +74,7 @@ function StockWall({
           <div className={titleClassName || 'boldPrimaryText text-xl pl-2 mb-8'}>{title}</div>
         )}
         <div className="px-2 overflow-auto" style={{ maxHeight }}>
-          <Post
-            isBullishType={isBullish}
-            isBearishType={isBearish}
-            displayChartPost={displayChart}
-          />
+          <Post isBullishType={isBullish} isBearishType={isBearish} />
           {comments.map((c) => (
             <div key={c.key} className="mt-8 ml-12">
               <Post isComment isBearishType />
@@ -97,7 +90,6 @@ StockWall.propTypes = {
   wrapperClassName: PropTypes.string,
   titleClassName: PropTypes.string,
   title: PropTypes.string,
-  displayChart: PropTypes.bool,
   isBullish: PropTypes.bool,
   isBearish: PropTypes.bool,
   maxHeight: PropTypes.number,
@@ -108,7 +100,6 @@ StockWall.defaultProps = {
   wrapperClassName: '',
   titleClassName: '',
   title: '',
-  displayChart: false,
   isBullish: false,
   isBearish: false,
   maxHeight: 610,

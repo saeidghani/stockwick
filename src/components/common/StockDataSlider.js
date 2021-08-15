@@ -1,10 +1,13 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Carousel } from 'antd';
 import { CaretUpOutlined } from '@ant-design/icons';
+import RouteMap from '../../routes/RouteMap';
 
 function StockDataSlider({ wrapperClassName }) {
   const carouselRef = React.createRef();
+  const history = useHistory();
 
   const settings = {
     dots: false,
@@ -63,7 +66,11 @@ function StockDataSlider({ wrapperClassName }) {
       <div className="border-b border-solid border-fadePrimary" style={{ width: '100%' }}>
         <Carousel {...settings} ref={carouselRef} draggable>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((i) => (
-            <div key={i}>
+            <div
+              className="cursor-pointer"
+              key={i}
+              onClick={() => history.push(RouteMap.stock.view(i))}
+            >
               <StockData />
             </div>
           ))}
